@@ -1,0 +1,177 @@
+<template>
+  <div class="news d-lfex flex-column">
+    <div class="news-title">
+      <v-img :src="require(`@/assets/news/new-title.webp`)"></v-img>
+    </div>
+    <div class="pt-10 d-flex item-center">
+      <v-card class="mx-5" max-width="22%" white>
+        <v-sheet
+          v-if="loading"
+          :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
+        >
+          <v-skeleton-loader
+            class="mx-auto"
+            max-width="100%"
+            type="image"
+          ></v-skeleton-loader>
+        </v-sheet>
+        <v-img
+          v-else
+          class="mx-auto"
+          :src="require(`@/assets/news/new1-image.webp`)"
+          max-width="100%"
+        />
+        <div class="pl-4 pt-4 bungee-font gray-text">
+          <p style="margin: 0">NEWS</p>
+        </div>
+        <v-card-title class="bungee-font" style="font-size: 23px">
+          NEW Hero is coming!
+        </v-card-title>
+
+        <v-card-subtitle
+          class="text-break kanit-font pt-2"
+          style="font-size: 15px"
+        >
+          > Read More
+        </v-card-subtitle>
+      </v-card>
+
+      <v-card class="mx-5" max-width="22%" white>
+        <v-sheet
+          v-if="loading"
+          :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
+        >
+          <v-skeleton-loader
+            class="mx-auto"
+            max-width="100%"
+            type="image"
+          ></v-skeleton-loader>
+        </v-sheet>
+        <v-img
+          v-else
+          class="mx-auto"
+          :src="require(`@/assets/news/new2-image.webp`)"
+          max-width="100%"
+        />
+        <div class="pl-4 pt-4 bungee-font gray-text">
+          <p style="margin: 0">NEWS</p>
+        </div>
+        <v-card-title class="bungee-font" style="font-size: 23px">
+          Changes are coming!
+        </v-card-title>
+
+        <v-card-subtitle
+          class="text-break kanit-font pt-2"
+          style="font-size: 15px"
+        >
+          > Read More
+        </v-card-subtitle>
+      </v-card>
+
+      <v-card class="mx-5" max-width="22%" white>
+        <v-sheet
+          v-if="loading"
+          :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
+        >
+          <v-skeleton-loader
+            class="mx-auto"
+            max-width="100%"
+            type="image"
+          ></v-skeleton-loader>
+        </v-sheet>
+        <v-img
+          v-else
+          class="mx-auto"
+          :src="require(`@/assets/news/new3-image.webp`)"
+          max-width="100%"
+        />
+        <div class="pl-4 pt-4 bungee-font gray-text">
+          <p style="margin: 0">NEWS</p>
+        </div>
+        <v-card-title class="bungee-font" style="font-size: 23px">
+          Changes are coming!
+        </v-card-title>
+
+        <v-card-subtitle
+          class="text-break kanit-font pt-2"
+          style="font-size: 15px"
+        >
+          > Read More
+        </v-card-subtitle>
+      </v-card>
+    </div>
+    <div class="new-btn">
+      <v-btn
+        color="violet"
+        class="white--text btn-customize bungee-font"
+        height="50px"
+      >
+        <span style="font-size: 18px">VIEW ALL</span>
+      </v-btn>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Home",
+
+  components: {},
+  inject: {
+    theme: {
+      default: { isDark: false },
+    },
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 1500);
+  },
+  data: () => {
+    return {
+      loading: true,
+    };
+  },
+};
+</script>
+<style scoped>
+.news {
+  height: 770px;
+  width: 100%;
+  padding-top: 6%;
+  position: relative;
+  background: transparent;
+}
+.news-title {
+  max-width: 6%;
+  margin: 0 auto;
+}
+.bungee-font {
+  font-family: Bungee, Helvetica, Arial;
+}
+.kanit-font {
+  font-family: Kanit, Helvetica, Arial;
+}
+.text-center {
+  text-align: center;
+}
+.item-center {
+  justify-content: center;
+}
+.v-card {
+  border-radius: 16px;
+  box-shadow: 0px 11px 1px 0px #d9d9d9 !important;
+}
+.btn-customize {
+  border-radius: 15px;
+  box-shadow: 0px 6px 1px 0px #4b56ba;
+}
+.gray-text {
+  color: #717171;
+}
+.new-btn {
+  max-width: fit-content;
+  margin: 0 auto;
+  margin-top: 3%;
+}
+</style>

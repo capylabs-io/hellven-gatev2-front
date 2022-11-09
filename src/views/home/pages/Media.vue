@@ -1,0 +1,107 @@
+<template>
+  <div class="media d-lfex flex-column">
+    <div class="media-title">
+      <v-img :src="require(`@/assets/media/media-title.webp`)"></v-img>
+    </div>
+    <div class="pt-15 d-flex item-center px-15">
+      <div class="slider">
+        <v-img
+          class="align-seft-center"
+          :src="require(`@/assets/media/slide-left.webp`)"
+        ></v-img>
+      </div>
+      <div class="d-flex flex-wrap item-center" style="gap: 30px">
+        <card
+          v-for="media in medias"
+          :key="media.index"
+          v-bind:media="media"
+        ></card>
+      </div>
+      <div class="slider">
+        <v-img
+          class="align-seft-center"
+          :src="require(`@/assets/media/slide-right.webp`)"
+        ></v-img>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Card from "@/views/home/components/media/Media-card.vue";
+export default {
+  name: "Media",
+
+  components: {
+    card: Card,
+  },
+  data() {
+    return {
+      medias: [
+        {
+          index: "1",
+          image: "@/assets/media/Media1.webp",
+        },
+        {
+          index: "2",
+          image: `@/assets/media/Media2.webp`,
+        },
+        {
+          index: "3",
+          image: `@/assets/media/Media3.webp`,
+        },
+        {
+          index: "4",
+          image: `@/assets/media/Media4.webp`,
+        },
+        {
+          index: "5",
+          image: `@/assets/media/Media5.webp`,
+        },
+        {
+          index: "6",
+          image: `@/assets/media/Media6.webp`,
+        },
+        {
+          index: "7",
+          image: `@/assets/media/Media7.webp`,
+        },
+        {
+          index: "8",
+          image: `@/assets/media/Media8.webp`,
+        },
+        {
+          index: "9",
+          image: `@/assets/media/Media9.webp`,
+        },
+        {
+          index: "10",
+          image: `@/assets/media/Media10.webp`,
+        },
+      ],
+    };
+  },
+};
+</script>
+<style scoped>
+.media {
+  height: 770px;
+  width: 100%;
+  padding-top: 6%;
+  position: relative;
+  background: linear-gradient(180deg, #4da9ff 0.52%, #0072dd 100%);
+}
+.media-title {
+  max-width: 6%;
+  margin: 0 auto;
+}
+.text-center {
+  text-align: center;
+}
+.item-center {
+  justify-content: center;
+}
+.slider {
+  padding-top: 9%;
+}
+</style>
