@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueMeta from 'vue-meta'
 import Home from '../views/home/pages/Home.vue'
 
 Vue.use(VueRouter)
-
+Vue.use(VueMeta)
 const routes = [
   {
     path: '/',
