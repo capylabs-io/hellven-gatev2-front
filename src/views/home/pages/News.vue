@@ -22,17 +22,17 @@
           max-width="100%"
         />
         <div class="pl-4 pt-4 bungee-font gray-text">
-          <p style="margin: 0">NEWS</p>
+          <p style="margin: 0">{{ $t("new.new1.subtitle") }}</p>
         </div>
         <v-card-title class="bungee-font" style="font-size: 23px">
-          NEW Hero is coming!
+          {{ $t("new.new1.title") }}
         </v-card-title>
 
         <v-card-subtitle
           class="text-break kanit-font pt-2"
           style="font-size: 15px"
         >
-          > Read More
+          {{ $t("new.new1.link") }}
         </v-card-subtitle>
       </v-card>
 
@@ -54,17 +54,17 @@
           max-width="100%"
         />
         <div class="pl-4 pt-4 bungee-font gray-text">
-          <p style="margin: 0">NEWS</p>
+          <p style="margin: 0">{{ $t("new.new2.subtitle") }}</p>
         </div>
         <v-card-title class="bungee-font" style="font-size: 23px">
-          Changes are coming!
+          {{ $t("new.new2.title") }}
         </v-card-title>
 
         <v-card-subtitle
           class="text-break kanit-font pt-2"
           style="font-size: 15px"
         >
-          > Read More
+        {{ $t("new.new2.link") }}
         </v-card-subtitle>
       </v-card>
 
@@ -86,17 +86,17 @@
           max-width="100%"
         />
         <div class="pl-4 pt-4 bungee-font gray-text">
-          <p style="margin: 0">NEWS</p>
+          <p style="margin: 0">{{ $t("new.new3.subtitle") }}</p>
         </div>
         <v-card-title class="bungee-font" style="font-size: 23px">
-          Changes are coming!
+          {{ $t("new.new3.title") }}
         </v-card-title>
 
         <v-card-subtitle
           class="text-break kanit-font pt-2"
           style="font-size: 15px"
         >
-          > Read More
+        {{ $t("new.new3.link") }}
         </v-card-subtitle>
       </v-card>
     </div>
@@ -106,7 +106,7 @@
         class="white--text btn-customize bungee-font"
         height="50px"
       >
-        <span style="font-size: 18px">VIEW ALL</span>
+        <span style="font-size: 18px">{{$t('new.btnView')}}</span>
       </v-btn>
     </div>
   </div>

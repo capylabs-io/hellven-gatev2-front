@@ -6,6 +6,7 @@
     <new></new>
     <media></media>
     <community></community> 
+    <!-- <p class="mt-4" v-html="$t('about.content')" /> -->
   </div>
 </template>
 
@@ -29,6 +30,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .main-content {
   width: 100%;

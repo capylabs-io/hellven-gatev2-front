@@ -3,7 +3,7 @@
     <div class="mode-title">
       <v-img :src="require(`@/assets/mode/mode-title.webp`)"></v-img>
     </div>
-    <div class="pt-10 d-flex item-center ">
+    <div class="pt-10 d-flex item-center">
       <v-card class="card pt-5 mx-5" max-width="22%" white>
         <v-img
           class="mx-auto"
@@ -15,15 +15,14 @@
           class="justify-center bungee-font"
           style="font-size: 25px"
         >
-          Adventure Awaits
+          {{ $t("mode.card1.title") }}
         </v-card-title>
 
         <v-card-subtitle
           class="text-break kanit-font pt-2 pb-10 text-center mx-auto"
           style="font-size: 20px"
         >
-          Explore a wide variety of herores. Venture into contrasting biomes
-          with unique enemy factions, environments and battlefields.
+          {{ $t("mode.card1.text") }}
         </v-card-subtitle>
       </v-card>
       <v-card class="pt-5 mx-5" max-width="22%" white>
@@ -37,15 +36,14 @@
           class="justify-center bungee-font"
           style="font-size: 25px"
         >
-          game on!
+          {{ $t("mode.card2.title") }}
         </v-card-title>
 
         <v-card-subtitle
           class="text-break kanit-font pt-2 pb-10 text-center mx-auto"
           style="font-size: 20px"
         >
-          An immense collection of challenging modes will ensure to constantly
-          keep you on the edge of your sit.
+          {{ $t("mode.card2.text") }}
         </v-card-subtitle>
       </v-card>
       <v-card class="pt-5 mx-5" max-width="22%" white>
@@ -59,15 +57,14 @@
           class="justify-center bungee-font"
           style="font-size: 25px"
         >
-          free to play
+          {{ $t("mode.card3.title") }}
         </v-card-title>
 
         <v-card-subtitle
           class="text-break kanit-font pt-2 pb-10 text-center mx-auto"
           style="font-size: 20px"
         >
-          Fighter Club is a free to play game that does not require any fee to
-          participate. The only thing you need is a will to become the champion.
+          {{ $t("mode.card3.text") }}
         </v-card-subtitle>
       </v-card>
     </div>

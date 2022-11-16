@@ -18,7 +18,7 @@
           <v-card-subtitle
             class="bungee-font text-shadow yellow-text"
             style="font-size: 20px"
-            >LEGENDARY</v-card-subtitle
+            >{{ $t("hero.heroRank") }}</v-card-subtitle
           >
         </div>
       </div>

@@ -39,6 +39,7 @@
           ></v-img>
         </div>
       </div>
+
       <hr />
       <div class="footer-bottom white--text d-flex flex-row mt-5">
         <div>

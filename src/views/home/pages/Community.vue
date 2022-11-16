@@ -8,10 +8,7 @@
       style="font-size: 20px"
     >
       <p class="text-break mx-auto" style="max-width: 35%">
-        We have several friendly communities where people discuss about
-        everything related to Fighter Club. Come and join in the conversation
-        with the developers team as we can discuss features together and learn
-        from the feedback we get!
+        {{ $t("community.text") }}
       </p>
     </div>
     <v-btn
@@ -20,8 +17,8 @@
       height="70px"
     >
       <div class="text-break btn-title mb-4 ml-4 mr-2">
-        <p class="clear-margin">Join Our</p>
-        <p class="clear-margin">Server On</p>
+        <p class="clear-margin">{{ $t("community.btndiscordtext1") }}</p>
+        <p class="clear-margin">{{ $t("community.btndiscordtext2") }}</p>
       </div>
       <v-img
         class="align-seft-center ml-3 mr-4"

@@ -14,27 +14,27 @@
         :src="require(`@/assets/introduction/game-logo.webp`)"
       ></v-img>
     </div>
-    <div class="white--text text-shadow text-center introduction-title">
-      <p class="clear-margin text-capitalize bungee-font">
-        Choose 3 of your best fighters from across the
+    <div
+      class="text-center text-capitalize mx-auto white--text text-shadow text-center introduction-title bungee-font"
+    >
+      <p class="text-break mx-auto" style="max-width: 35%">
+        {{ $t("introduction.title") }}
       </p>
-      <p class="clear-margin text-capitalize bungee-font">
-        world to battle in a tournament for endless
-      </p>
-      <p class="clear-margin text-capitalize bungee-font">fortune and fame!</p>
     </div>
     <v-btn
       color="yellow"
       class="black--text btn-customize px-3"
       height="60px"
-      width="11%"
+      width="13%"
     >
       <v-img
         class="align-seft-center mr-2"
         max-width="35px"
         :src="require(`@/assets/introduction/steam-icon.webp`)"
       ></v-img>
-      <span class="bungee-font" style="font-size: 21px">DOWNLOAD</span>
+      <span class="bungee-font" style="font-size: 21px">{{
+        $t("introduction.btndownload")
+      }}</span>
     </v-btn>
     <!-- -webkit-text-stroke-width: 0.5px;
 -webkit-text-stroke-color: black; -->
@@ -85,5 +85,9 @@ export default {
 .introduction-title {
   font-size: 26px;
   font-weight: bolder;
+  justify-content: center;
+}
+.v-btn {
+  max-width: max-content;
 }
 </style>
