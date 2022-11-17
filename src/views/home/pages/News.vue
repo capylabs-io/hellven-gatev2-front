@@ -64,7 +64,7 @@
           class="text-break kanit-font pt-2"
           style="font-size: 15px"
         >
-        {{ $t("new.new2.link") }}
+          {{ $t("new.new2.link") }}
         </v-card-subtitle>
       </v-card>
 
@@ -96,7 +96,7 @@
           class="text-break kanit-font pt-2"
           style="font-size: 15px"
         >
-        {{ $t("new.new3.link") }}
+          {{ $t("new.new3.link") }}
         </v-card-subtitle>
       </v-card>
     </div>
@@ -106,7 +106,7 @@
         class="white--text btn-customize bungee-font"
         height="50px"
       >
-        <span style="font-size: 18px">{{$t('new.btnView')}}</span>
+        <span style="font-size: 18px">{{ $t("new.btnView") }}</span>
       </v-btn>
     </div>
   </div>
@@ -146,12 +146,7 @@ export default {
   max-width: 6%;
   margin: 0 auto;
 }
-.bungee-font {
-  font-family: Bungee, Helvetica, Arial;
-}
-.kanit-font {
-  font-family: Kanit, Helvetica, Arial;
-}
+
 .text-center {
   text-align: center;
 }

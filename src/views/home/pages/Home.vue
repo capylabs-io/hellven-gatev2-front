@@ -5,7 +5,7 @@
     <hero></hero>
     <new></new>
     <media></media>
-    <community></community> 
+    <community></community>
     <!-- <p class="mt-4" v-html="$t('about.content')" /> -->
   </div>
 </template>
@@ -34,6 +34,7 @@ export default {
 <style scoped>
 .main-content {
   width: 100%;
+  height: 100%;
   background-color: #eaeef4;
   background-size: 100%;
   background-repeat: no-repeat;

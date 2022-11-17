@@ -3,8 +3,8 @@
     <div class="mode-title">
       <v-img :src="require(`@/assets/mode/mode-title.webp`)"></v-img>
     </div>
-    <div class="pt-10 d-flex item-center">
-      <v-card class="card pt-5 mx-5" max-width="22%" white>
+    <div class="pt-10 d-flex item-center mode-list">
+      <v-card class="mode-card pt-5" white>
         <v-img
           class="mx-auto"
           :src="require(`@/assets/mode/gamemode1-icon.webp`)"
@@ -25,7 +25,7 @@
           {{ $t("mode.card1.text") }}
         </v-card-subtitle>
       </v-card>
-      <v-card class="pt-5 mx-5" max-width="22%" white>
+      <v-card class="mode-card pt-5" white>
         <v-img
           class="mx-auto"
           :src="require(`@/assets/mode/gamemode2-icon.webp`)"
@@ -46,7 +46,7 @@
           {{ $t("mode.card2.text") }}
         </v-card-subtitle>
       </v-card>
-      <v-card class="pt-5 mx-5" max-width="22%" white>
+      <v-card class="mode-card pt-5" white>
         <v-img
           class="mx-auto"
           :src="require(`@/assets/mode/gamemode3-icon.webp`)"
@@ -86,15 +86,15 @@ export default {
   position: relative;
   background: transparent;
 }
+.mode-card {
+  max-width: 22%;
+}
 .mode-title {
   max-width: 6%;
   margin: 0 auto;
 }
-.bungee-font {
-  font-family: Bungee, Helvetica, Arial;
-}
-.kanit-font {
-  font-family: Kanit, Helvetica, Arial;
+.mode-list {
+  column-gap: 2%;
 }
 .text-center {
   text-align: center;

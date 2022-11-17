@@ -3,34 +3,42 @@
     <div class="hero-title">
       <v-img :src="require(`@/assets/hero/hero-title.webp`)"></v-img>
     </div>
-    <div class="d-flex mt-15 gap-200 item-center">
-      <div class="">
-        <v-img
-          class="align-seft-center shadow"
-          :src="require(`@/assets/hero/hero-image-shadow.webp`)"
-        ></v-img>
-        <v-img
-          class="align-seft-center ml-16 mt-5"
-          :src="require(`@/assets/hero/hero-image.webp`)"
-        ></v-img>
+    <div class="flex-reverse">
+      <div class="hero-info item-center">
+        <div class="hero-image">
+          <v-img
+            class="align-seft-center shadow"
+            :src="require(`@/assets/hero/hero-image-shadow.webp`)"
+          ></v-img>
+          <v-img
+            class="align-seft-center ml-16 mt-5"
+            :src="require(`@/assets/hero/hero-image.webp`)"
+          ></v-img>
+        </div>
+        <div>
+          <infoCard></infoCard>
+        </div>
       </div>
-      <infoCard></infoCard>
-    </div>
-    <div class="hero-card d-flex item-center">
-      <div class="slider">
-        <v-img
-          class="align-seft-center"
-          :src="require(`@/assets/media/slide-left.webp`)"
-        ></v-img>
-      </div>
-      <div class="hero-card-list d-flex justify-space-around">
-        <card v-for="hero in heros" :key="hero.index" v-bind:hero="hero"></card>
-      </div>
-      <div class="slider">
-        <v-img
-          class="align-seft-center"
-          :src="require(`@/assets/media/slide-right.webp`)"
-        ></v-img>
+      <div class="hero-card d-flex item-center">
+        <div class="slider">
+          <v-img
+            class="align-seft-center"
+            :src="require(`@/assets/media/slide-left.webp`)"
+          ></v-img>
+        </div>
+        <div class="hero-card-list d-flex justify-space-around">
+          <card
+            v-for="hero in heros"
+            :key="hero.index"
+            v-bind:hero="hero"
+          ></card>
+        </div>
+        <div class="slider">
+          <v-img
+            class="align-seft-center"
+            :src="require(`@/assets/media/slide-right.webp`)"
+          ></v-img>
+        </div>
       </div>
     </div>
   </div>
@@ -92,16 +100,22 @@ export default {
 .hero {
   height: 950px;
   width: 100% fit-content;
+  margin-top: 2%;
   padding-top: 5%;
-  position: relative;
+  position: relative !important;
   background: linear-gradient(180deg, #4da9ff 0.52%, #0072dd 100%);
 }
 
 .hero-card {
-  padding-top: 4%;
+  margin-top: 6%;
   column-gap: 5%;
 }
-
+.hero-info {
+  position: relative;
+  margin-top: 50px;
+  column-gap: 7%;
+  display: flex;
+}
 .hero-card-list {
   column-gap: 3%;
 }
@@ -121,7 +135,8 @@ export default {
 .slider {
   padding-top: 10px;
 }
-.gap-200 {
-  column-gap: 200px;
+.flex-reverse {
+}
+.hero-image {
 }
 </style>

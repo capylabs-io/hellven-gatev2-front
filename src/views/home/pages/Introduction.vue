@@ -17,16 +17,11 @@
     <div
       class="text-center text-capitalize mx-auto white--text text-shadow text-center introduction-title bungee-font"
     >
-      <p class="text-break mx-auto" style="max-width: 35%">
+      <p class="text-break mx-auto">
         {{ $t("introduction.title") }}
       </p>
     </div>
-    <v-btn
-      color="yellow"
-      class="black--text btn-customize px-3"
-      height="60px"
-      width="13%"
-    >
+    <v-btn color="yellow" class="black--text btn-customize-introduction px-3">
       <v-img
         class="align-seft-center mr-2"
         max-width="35px"
@@ -51,15 +46,17 @@ export default {
 <style scoped>
 .introduction {
   width: 100%;
-  height: 900px;
+  height: 750px;
   background-size: 100%;
   background-repeat: no-repeat;
   padding-top: 6%;
   row-gap: 8%;
 }
-.btn-customize {
+.btn-customize-introduction {
   border-radius: 15px;
   box-shadow: 0px 8px 1px 0px #40b22d;
+  width: 13%;
+  height: 60px !important;
 }
 
 .text-shadow {
@@ -67,12 +64,7 @@ export default {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
 }
-.bungee-font {
-  font-family: Bungee, Helvetica, Arial;
-}
-.kanit-font {
-  font-family: Kanit, Helvetica, Arial;
-}
+
 .logo {
   width: 20%;
 }
@@ -86,6 +78,7 @@ export default {
   font-size: 26px;
   font-weight: bolder;
   justify-content: center;
+  max-width: 35%;
 }
 .v-btn {
   max-width: max-content;
