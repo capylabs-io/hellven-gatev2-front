@@ -4,7 +4,7 @@
       <v-img :src="require(`@/assets/news/new-title.webp`)"></v-img>
     </div>
     <div class="pt-10 d-flex item-center">
-      <v-card class="mx-5" max-width="22%" white>
+      <v-card class="new-card" white>
         <v-sheet
           v-if="loading"
           :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
@@ -36,7 +36,7 @@
         </v-card-subtitle>
       </v-card>
 
-      <v-card class="mx-5" max-width="22%" white>
+      <v-card class="new-card" white>
         <v-sheet
           v-if="loading"
           :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
@@ -68,7 +68,7 @@
         </v-card-subtitle>
       </v-card>
 
-      <v-card class="mx-5" max-width="22%" white>
+      <v-card class="new-card" white>
         <v-sheet
           v-if="loading"
           :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
@@ -153,9 +153,11 @@ export default {
 .item-center {
   justify-content: center;
 }
-.v-card {
+.new-card {
   border-radius: 16px;
   box-shadow: 0px 11px 1px 0px #d9d9d9 !important;
+  max-width: 22%;
+  margin: 0 20px;
 }
 .btn-customize {
   border-radius: 15px;

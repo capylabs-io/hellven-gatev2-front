@@ -36,13 +36,13 @@
       </div>
 
       <hr />
-      <div class="footer-bottom white--text d-flex flex-row mt-5">
+      <div class="footer-bottom white--text d-flex mt-5 ">
         <div class="footer-bottom-copyright">
           <p class="font-weight-lighter">
             Copyright © 2022 Capy Lab. All Rights Reserved
           </p>
         </div>
-        <div class="d-flex font-weight-bold" style="gap: 15%">
+        <div class="d-flex font-weight-bold" style="gap: 20px">
           <div class="text-none align-seft-center">Terms</div>
           <div class="text-none align-seft-center">Privacy</div>
           <div class="text-none align-seft-center">Cookies</div>
@@ -89,11 +89,11 @@ export default {
 }
 .footer-bottom {
   height: 25%;
-  width: 98%;
-  gap: 850px;
+  width: 95%;
   position: relative;
   font-size: small;
   align-items: center;
+  justify-content: space-between;
 }
 
 hr {
@@ -104,7 +104,7 @@ hr {
   display: flex;
   gap: 10%;
 }
-.footer-image{
+.footer-image {
   max-width: 48%;
 }
 </style>

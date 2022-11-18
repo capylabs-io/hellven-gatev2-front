@@ -6,9 +6,8 @@
     <div class="pt-10 d-flex item-center mode-list">
       <v-card class="mode-card pt-5" white>
         <v-img
-          class="mx-auto"
+          class="mx-auto mode-card-image"
           :src="require(`@/assets/mode/gamemode1-icon.webp`)"
-          max-width="23%"
         />
 
         <v-card-title
@@ -27,9 +26,8 @@
       </v-card>
       <v-card class="mode-card pt-5" white>
         <v-img
-          class="mx-auto"
+          class="mx-auto mode-card-image"
           :src="require(`@/assets/mode/gamemode2-icon.webp`)"
-          max-width="23%"
         />
 
         <v-card-title
@@ -48,9 +46,8 @@
       </v-card>
       <v-card class="mode-card pt-5" white>
         <v-img
-          class="mx-auto"
+          class="mx-auto mode-card-image"
           :src="require(`@/assets/mode/gamemode3-icon.webp`)"
-          max-width="23%"
         />
 
         <v-card-title
@@ -109,5 +106,8 @@ export default {
 
 .v-card__subtitle {
   max-width: 90%;
+}
+.mode-card-image {
+  max-width: 23%;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <v-card class="hero-info-card">
     <div class="title d-flex">
-      <div class="title-right">
+      <div class="title-left">
         <v-card-title
           class="bungee-font white--text text-shadow"
           style="font-size: 32px"
@@ -13,7 +13,7 @@
           >TANKER</v-card-subtitle
         >
       </div>
-      <div class="title-left">
+      <div class="title-right">
         <v-card-subtitle
           class="bungee-font text-shadow yellow-text"
           style="font-size: 20px"
@@ -21,7 +21,7 @@
         >
       </div>
     </div>
-    <div class="text-break kanit-font" style="max-width: 550px">
+    <div class="text-break kanit-font">
       <v-card-text style="font-size: 18px"
         >Spike throws cactus grenades that send needles flying, and a
         show-stopping Super: a field of cactus spines that slows down and
@@ -189,10 +189,13 @@ export default {};
 .hero-info-card {
   border-radius: 16px;
   position: relative;
+  width: max-content !important;
   box-shadow: 0px 13px 1px 0px #d9d9d9 !important ;
 }
+.title-right {
+  margin-left: auto;
+}
 .title-left {
-  margin-left: 45%;
 }
 .ability {
   max-width: 10%;
@@ -208,15 +211,16 @@ export default {};
 .gap-50 {
   column-gap: 50px;
 }
+
 .number-left {
   position: absolute;
-  z-index: 999;
+  z-index: 3;
   padding-left: 32%;
   padding-top: 15px;
 }
 .number-right {
   position: absolute;
-  z-index: 999;
+  z-index: 3;
   padding-left: 79%;
   padding-top: 15px;
 }

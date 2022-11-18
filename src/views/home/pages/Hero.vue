@@ -15,7 +15,7 @@
             :src="require(`@/assets/hero/hero-image.webp`)"
           ></v-img>
         </div>
-        <div>
+        <div class="info-card">
           <infoCard></infoCard>
         </div>
       </div>
@@ -26,9 +26,16 @@
             :src="require(`@/assets/media/slide-left.webp`)"
           ></v-img>
         </div>
-        <div class="hero-card-list d-flex justify-space-around">
+        <div class="hero-card-list">
           <card
             v-for="hero in heros"
+            :key="hero.index"
+            v-bind:hero="hero"
+          ></card>
+        </div>
+        <div class="hero-card-list-responsive">
+          <card
+            v-for="hero in heros2"
             :key="hero.index"
             v-bind:hero="hero"
           ></card>
@@ -92,6 +99,36 @@ export default {
           image: "@/assets/hero/Hero9.webp",
         },
       ],
+      heros2: [
+        {
+          index: "1",
+          image: "@/assets/hero/Hero1.webp",
+        },
+        {
+          index: "2",
+          image: "@/assets/hero/Hero2.webp",
+        },
+        {
+          index: "3",
+          image: "@/assets/hero/Hero3.webp",
+        },
+        {
+          index: "4",
+          image: "@/assets/hero/Hero4.webp",
+        },
+        {
+          index: "5",
+          image: "@/assets/hero/Hero5.webp",
+        },
+        {
+          index: "6",
+          image: "@/assets/hero/Hero6.webp",
+        },
+        {
+          index: "7",
+          image: "@/assets/hero/Hero7.webp",
+        },
+      ],
     };
   },
 };
@@ -118,6 +155,11 @@ export default {
 }
 .hero-card-list {
   column-gap: 3%;
+  display: flex;
+  justify-content: space-around;
+}
+.hero-card-list-responsive {
+  display: none;
 }
 .hero-title {
   max-width: 6%;
@@ -138,5 +180,8 @@ export default {
 .flex-reverse {
 }
 .hero-image {
+}
+.info-card {
+  width: 30%;
 }
 </style>

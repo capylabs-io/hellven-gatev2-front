@@ -46,11 +46,13 @@ export default {
 <style scoped>
 .introduction {
   width: 100%;
-  height: 750px;
-  background-size: 100%;
+  height: 950px;
+  background-size: cover;
   background-repeat: no-repeat;
   padding-top: 6%;
+  background-position: center;
   row-gap: 8%;
+  position: relative;
 }
 .btn-customize-introduction {
   border-radius: 15px;
