@@ -220,7 +220,7 @@ export default {
   }
   .introduction-title {
     margin-top: 5%;
-    max-width: 75% !important;
+    max-width: 80% !important;
   }
   .logo {
     width: 40% !important;
@@ -235,7 +235,7 @@ export default {
   }
 
   .mode-card {
-    max-width: 50% !important;
+    max-width: 65% !important;
   }
   .mode-card-image {
     max-width: 25% !important;
@@ -248,9 +248,10 @@ export default {
     display: none !important;
   }
   .hero-card-list-responsive {
-    column-gap: 3%;
+    column-gap: 2%;
     display: flex !important;
     justify-content: space-around;
+    max-width: 70% !important;
   }
   .info-card {
     margin: 0 auto;
@@ -289,7 +290,7 @@ export default {
   .media-image-responsive {
     display: flex !important;
     flex-wrap: wrap;
-    gap: 17px;
+    gap: 16px;
   }
 
   .media-section {
@@ -327,7 +328,7 @@ export default {
   .footer-top {
     padding-top: 4%;
     flex-direction: column;
-    height: 78% !important;
+    height: 90% !important;
   }
   .footer-logo {
     max-width: 100% !important;
@@ -337,7 +338,7 @@ export default {
   }
   .footer-top-right {
     margin-top: 20px;
-    width: 43% !important;
+    width: 46% !important;
   }
 }
 </style>
