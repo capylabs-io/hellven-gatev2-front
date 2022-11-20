@@ -5,21 +5,42 @@
     </div>
     <div class="flex-reverse">
       <div class="hero-info item-center">
-        <div class="hero-image">
+        <div class="">
           <v-img
             class="align-seft-center shadow"
             :src="require(`@/assets/hero/hero-image-shadow.webp`)"
           ></v-img>
           <v-img
-            class="align-seft-center ml-16 mt-5"
+            class="align-seft-center ml-16 mt-5 hero-image"
             :src="require(`@/assets/hero/hero-image.webp`)"
           ></v-img>
+        </div>
+        <div class="hero-card-mb d-flex item-center">
+          <div class="slider-mb">
+            <v-img
+              class="align-seft-center"
+              :src="require(`@/assets/media/slide-left.webp`)"
+            ></v-img>
+          </div>
+          <div class="hero-card-list-responsive-mb">
+            <card
+              v-for="hero in heros3"
+              :key="hero.index"
+              v-bind:hero="hero"
+            ></card>
+          </div>
+          <div class="slider-mb">
+            <v-img
+              class="align-seft-center"
+              :src="require(`@/assets/media/slide-right.webp`)"
+            ></v-img>
+          </div>
         </div>
         <div class="info-card">
           <infoCard></infoCard>
         </div>
       </div>
-      <div class="hero-card d-flex item-center">
+      <div class="hero-card">
         <div class="slider">
           <v-img
             class="align-seft-center"
@@ -40,6 +61,7 @@
             v-bind:hero="hero"
           ></card>
         </div>
+
         <div class="slider">
           <v-img
             class="align-seft-center"
@@ -129,6 +151,24 @@ export default {
           image: "@/assets/hero/Hero7.webp",
         },
       ],
+      heros3: [
+        {
+          index: "1",
+          image: "@/assets/hero/Hero1.webp",
+        },
+        {
+          index: "2",
+          image: "@/assets/hero/Hero2.webp",
+        },
+        {
+          index: "3",
+          image: "@/assets/hero/Hero3.webp",
+        },
+        {
+          index: "4",
+          image: "@/assets/hero/Hero4.webp",
+        },
+      ],
     };
   },
 };
@@ -144,14 +184,22 @@ export default {
 }
 
 .hero-card {
+  display: flex;
   margin-top: 6%;
   column-gap: 5%;
+  justify-content: center;
 }
+
 .hero-info {
   position: relative;
   margin-top: 50px;
   column-gap: 7%;
   display: flex;
+}
+.hero-card-mb,
+.hero-card-list-responsive-mb,
+.slider-mb {
+  display: none;
 }
 .hero-card-list {
   column-gap: 3%;
@@ -161,6 +209,7 @@ export default {
 .hero-card-list-responsive {
   display: none;
 }
+
 .hero-title {
   max-width: 6%;
   margin: 0 auto;
@@ -177,11 +226,12 @@ export default {
 .slider {
   padding-top: 10px;
 }
+
 .flex-reverse {
 }
 .hero-image {
 }
 .info-card {
-  width: 30%;
+  width: 35%;
 }
 </style>

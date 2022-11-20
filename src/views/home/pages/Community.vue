@@ -3,11 +3,8 @@
     <div class="community-title">
       <v-img :src="require(`@/assets/community/community-title.webp`)"></v-img>
     </div>
-    <div
-      class="pt-10 item-center kanit-font text-center mx-auto"
-      style="font-size: 20px"
-    >
-      <p class="text-break mx-auto community-text">
+    <div class="pt-10 item-center kanit-font mx-auto text-break community-text">
+      <p>
         {{ $t("community.text") }}
       </p>
     </div>
@@ -25,6 +22,19 @@
         max-width="60%"
         :src="require(`@/assets/community/discord-btn-logo.webp`)"
       ></v-img>
+    </v-btn>
+
+    <v-btn
+      color="violet"
+      height="45px"
+      class="white--text new-btn-responsive btn-customize"
+    >
+      <v-img
+        class="align-seft-center mr-2"
+        max-width="18px"
+        :src="require(`@/assets/nav/discord-icon.webp`)"
+      ></v-img>
+      <span>{{ $t("navbar.btndiscord") }}</span>
     </v-btn>
     <div class="d-flex social-icon">
       <v-img
@@ -67,6 +77,7 @@ export default {
 }
 .community-text {
   max-width: 35%;
+  font-size: 20px;
 }
 .community-title {
   max-width: 16%;
@@ -89,7 +100,11 @@ export default {
   margin: 0 auto;
   margin-top: 2%;
 }
-
+.new-btn-responsive {
+  display: none;
+  margin: 0 auto;
+  margin-top: 2%;
+}
 .btn-title {
   font-size: 16px;
   max-width: 150px;

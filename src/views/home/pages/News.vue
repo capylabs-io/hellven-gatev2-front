@@ -3,7 +3,7 @@
     <div class="news-title">
       <v-img :src="require(`@/assets/news/new-title.webp`)"></v-img>
     </div>
-    <div class="pt-10 d-flex item-center">
+    <div class="news-card pt-10 item-center">
       <v-card class="new-card" white>
         <v-sheet
           v-if="loading"
@@ -141,6 +141,9 @@ export default {
   padding-top: 6%;
   position: relative;
   background: transparent;
+}
+.news-card {
+  display: flex;
 }
 .news-title {
   max-width: 6%;

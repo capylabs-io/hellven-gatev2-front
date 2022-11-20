@@ -28,35 +28,35 @@
         damages enemies!</v-card-text
       >
     </div>
-    <div class="d-flex gap-110 item-center">
-      <div class="ability d-flex flex-column">
+    <div class="hero-ability">
+      <div class="ability d-flex">
         <v-img
           class="align-seft-center"
           :src="require(`@/assets/hero/hero-ability1.webp`)"
         ></v-img>
       </div>
-      <div class="ability d-flex flex-column">
+      <div class="ability d-flex">
         <v-img
           class="align-seft-center"
           :src="require(`@/assets/hero/hero-ability2.webp`)"
         ></v-img>
       </div>
-      <div class="ability d-flex flex-column">
+      <div class="ability d-flex">
         <v-img
           class="align-seft-center"
           :src="require(`@/assets/hero/hero-ability3.webp`)"
         ></v-img>
       </div>
     </div>
-    <div class="d-flex gap-50 mt-2 item-center">
-      <div class="d-flex flex-column">
-        <span class="bungee-font" style="font-size: 17px">Pincushion</span>
+    <div class="hero-ability-text mt-2">
+      <div class="d-flex">
+        <span class="bungee-font">Pincushion</span>
       </div>
-      <div class="d-flex flex-column">
-        <span class="bungee-font" style="font-size: 17px">Life Plant</span>
+      <div class="d-flex">
+        <span class="bungee-font">Life Plant</span>
       </div>
-      <div class="d-flex flex-column">
-        <span class="bungee-font" style="font-size: 17px">Curveball</span>
+      <div class="d-flex">
+        <span class="bungee-font">Curveball</span>
       </div>
     </div>
 
@@ -155,6 +155,86 @@
         ></v-col>
       </v-row>
     </div>
+    <div class="statistic-responsive item-center">
+      <v-row>
+        <v-col class="number-responsive" col="12">
+          <p class="bungee-font white--text text-shadow clear-margin number">
+            500
+          </p>
+        </v-col>
+        <v-col col="12">
+          <v-img
+            class="mx-auto statistic-image"
+            :src="require(`@/assets/hero/hero-health.webp`)"
+          ></v-img>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="number-responsive" col="12">
+          <p class="bungee-font white--text text-shadow clear-margin number">
+            500
+          </p>
+        </v-col>
+        <v-col col="12">
+          <v-img
+            class="mx-auto statistic-image"
+            :src="require(`@/assets/hero/hero-damage.webp`)"
+          ></v-img>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="number-responsive" col="12">
+          <p class="bungee-font white--text text-shadow clear-margin number">
+            500
+          </p>
+        </v-col>
+        <v-col col="12">
+          <v-img
+            class="mx-auto statistic-image"
+            :src="require(`@/assets/hero/hero-mana.webp`)"
+          ></v-img>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="number-responsive" col="12">
+          <p class="bungee-font white--text text-shadow clear-margin number">
+            500
+          </p>
+        </v-col>
+        <v-col col="12">
+          <v-img
+            class="mx-auto statistic-image"
+            :src="require(`@/assets/hero/hero-vision.webp`)"
+          ></v-img>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="number-responsive" col="12">
+          <p class="bungee-font white--text text-shadow clear-margin number">
+            500
+          </p>
+        </v-col>
+        <v-col col="12">
+          <v-img
+            class="mx-auto statistic-image"
+            :src="require(`@/assets/hero/hero-move.webp`)"
+          ></v-img>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col class="number-responsive" col="12">
+          <p class="bungee-font white--text text-shadow clear-margin number">
+            500
+          </p>
+        </v-col>
+        <v-col col="12">
+          <v-img
+            class="mx-auto statistic-image"
+            :src="require(`@/assets/hero/hero-speed.webp`)"
+          ></v-img>
+        </v-col>
+      </v-row>
+    </div>
   </v-card>
 </template>
 
@@ -205,23 +285,46 @@ export default {};
   padding-right: 16px;
   padding-top: 5%;
 }
-.gap-110 {
-  column-gap: 110px;
+.statistic-responsive {
+  display: none;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 5%;
 }
-.gap-50 {
-  column-gap: 50px;
+.hero-ability {
+  display: flex;
+  column-gap: 110px;
+  justify-content: center;
 }
 
+.hero-ability-text {
+  display: flex;
+  justify-content: center;
+  column-gap: 50px;
+  font-size: 17px;
+}
+.number-responsive {
+  position: absolute;
+  z-index: 3;
+  font-size: 27px;
+  padding-left: 70%;
+  padding-top: 20px;
+  font-size: 27px;
+}
 .number-left {
   position: absolute;
   z-index: 3;
   padding-left: 32%;
   padding-top: 15px;
+  font-size: 27px;
 }
 .number-right {
   position: absolute;
   z-index: 3;
   padding-left: 79%;
   padding-top: 15px;
+  font-size: 27px;
+}
+.statistic-image {
 }
 </style>

@@ -11,6 +11,13 @@
           v-bind:media="media"
         ></card>
       </div>
+      <div class="media-image-responsive-mb item-center">
+        <card
+          v-for="media in medias"
+          :key="media.index"
+          v-bind:media="media"
+        ></card>
+      </div>
       <div class="media-section">
         <div class="slider">
           <v-img
@@ -159,6 +166,10 @@ export default {
 .media-image-responsive {
   display: none;
 }
+.media-image-responsive-mb {
+  display: none;
+}
+
 .media-content {
   display: flex;
 }

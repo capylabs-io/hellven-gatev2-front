@@ -27,7 +27,7 @@
         max-width="35px"
         :src="require(`@/assets/introduction/steam-icon.webp`)"
       ></v-img>
-      <span class="bungee-font" style="font-size: 21px">{{
+      <span class="bungee-font" style="font-size: 20px">{{
         $t("introduction.btndownload")
       }}</span>
     </v-btn>
