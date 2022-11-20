@@ -44,6 +44,11 @@ export default {
     width: 42% !important;
   }
 }
+@media screen and (max-width: 1364px) {
+  .nav-link {
+    width: 500px !important;
+  }
+}
 @media screen and (max-width: 1264px) {
   /* ------------------- home-nav --------------*/
   .nav-image {
@@ -203,7 +208,9 @@ export default {
 
 @media screen and (max-width: 960px) {
   /* ------------------- home-nav --------------*/
-
+  .nav-link {
+    width: 300px !important;
+  }
   .nav-container {
     font-size: smaller !important;
   }
@@ -354,7 +361,11 @@ export default {
     gap: 16px;
   }
 }
-
+@media screen and (max-width: 700px) {
+  .nav-link {
+    width: 230px !important;
+  }
+}
 @media screen and (max-width: 599px) {
   /* ------------------- home-nav --------------*/
 
