@@ -5,13 +5,13 @@
     </div>
     <div class="flex-reverse">
       <div class="hero-info item-center">
-        <div class="">
+        <div class="hero-info-left">
           <v-img
-            class="align-seft-center shadow"
+            class="shadow"
             :src="require(`@/assets/hero/hero-image-shadow.webp`)"
           ></v-img>
           <v-img
-            class="align-seft-center ml-16 mt-5 hero-image"
+            class="hero-image"
             :src="require(`@/assets/hero/hero-image.webp`)"
           ></v-img>
         </div>
@@ -193,7 +193,7 @@ export default {
 .hero-info {
   position: relative;
   margin-top: 50px;
-  column-gap: 7%;
+  column-gap: 4%;
   display: flex;
 }
 .hero-card-mb,
@@ -230,8 +230,12 @@ export default {
 .flex-reverse {
 }
 .hero-image {
+  margin-top: 20px;
+  margin-left: 100px;
 }
 .info-card {
   width: 35%;
+}
+.hero-info-left {
 }
 </style>

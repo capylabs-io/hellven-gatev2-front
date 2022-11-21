@@ -10,7 +10,7 @@
     </div>
     <v-btn
       color="violet"
-      class="new-btn white--text btn-customize bungee-font"
+      class="community-btn white--text btn-customize bungee-font"
       height="70px"
     >
       <div class="text-break btn-title mb-4 ml-4 mr-2">
@@ -27,7 +27,7 @@
     <v-btn
       color="violet"
       height="45px"
-      class="white--text new-btn-responsive btn-customize"
+      class="white--text community-btn-responsive btn-customize"
     >
       <v-img
         class="align-seft-center mr-2"
@@ -96,11 +96,11 @@ export default {
   border-radius: 15px;
   box-shadow: 0px 8px 1px 0px #4b56ba;
 }
-.new-btn {
+.community-btn {
   margin: 0 auto;
   margin-top: 2%;
 }
-.new-btn-responsive {
+.community-btn-responsive {
   display: none;
   margin: 0 auto;
   margin-top: 2%;

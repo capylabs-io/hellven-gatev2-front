@@ -53,35 +53,54 @@
             </div>
           </div>
 
-          <v-menu offset-y>
-            <template v-slot:activator="{ on, attrs }">
-              <div class="d-flex align-center ml-4">
-                <v-btn
-                  icon
-                  elevation="0"
-                  v-bind="attrs"
-                  v-on="on"
-                  class="nav-btn-responsive"
-                >
-                  <v-icon color="white"> mdi-format-list-bulleted </v-icon>
-                </v-btn>
-              </div>
-            </template>
-            <v-list class="gray12">
-              <v-list-item>
-                <v-list-item-title>Game</v-list-item-title>
-              </v-list-item>
-              <v-list-item>
-                <v-list-item-title>Heroes</v-list-item-title>
-              </v-list-item>
-              <v-list-item>
-                <v-list-item-title> {{ $t("navbar.media") }}</v-list-item-title>
-              </v-list-item>
-              <v-list-item>
-                <v-list-item-title> {{ $t("navbar.new") }} </v-list-item-title>
-              </v-list-item>
+          <v-app-bar-nav-icon
+            color="white"
+            class="nav-btn-responsive"
+            @click.stop="drawer = !drawer"
+          ></v-app-bar-nav-icon>
+
+          <v-navigation-drawer
+            app
+            v-model="drawer"
+            right
+            hide-overlay
+            color="#1b379a"
+          >
+            <v-list nav dense>
+              <v-list-item-group v-model="group" active-class=" text--accent-4">
+                <v-list-item class="white--text pb-2">
+                  <v-list-item-title>
+                    <v-img
+                      class="align-seft-center drawer-logo"
+                      :src="require(`@/assets/introduction/game-logo.webp`)"
+                    ></v-img
+                  ></v-list-item-title>
+                </v-list-item>
+                <v-list-item class="white--text">
+                  <v-list-item-title
+                    ><span>GAME</span>
+                    <v-icon class="pb-2 pl-2" small color="white">
+                      mdi-chevron-down
+                    </v-icon>
+                  </v-list-item-title>
+                </v-list-item>
+
+                <v-list-item class="white--text">
+                  <v-list-item-title>Heroes</v-list-item-title>
+                </v-list-item>
+
+                <v-list-item class="white--text">
+                  <v-list-item-title>{{
+                    $t("navbar.media")
+                  }}</v-list-item-title>
+                </v-list-item>
+
+                <v-list-item class="white--text">
+                  <v-list-item-title>{{ $t("navbar.new") }}</v-list-item-title>
+                </v-list-item>
+              </v-list-item-group>
             </v-list>
-          </v-menu>
+          </v-navigation-drawer>
         </v-col>
       </v-row>
     </div>
@@ -96,6 +115,16 @@ export default {
     window.open(url, "_blank");
   },
   components: { LanguageSwitch },
+  data: () => ({
+    drawer: false,
+    group: null,
+  }),
+
+  watch: {
+    group() {
+      this.drawer = false;
+    },
+  },
 };
 </script>
 
@@ -128,9 +157,17 @@ export default {
   column-gap: 12px;
 }
 .nav-btn-responsive {
+  justify-content: center;
   display: none;
 }
 .nav-lang-responsive {
   display: none;
+}
+.drawer {
+  display: none;
+}
+.drawer-logo {
+  margin: 0 auto;
+  max-width: 80%;
 }
 </style>

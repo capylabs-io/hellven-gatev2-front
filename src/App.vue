@@ -43,6 +43,28 @@ export default {
   .info-card {
     width: 42% !important;
   }
+  /* ------------------- home-introduction --------------*/
+  .btn-customize-introduction {
+    width: 16% !important;
+    height: 60px !important;
+  }
+  .introduction-title {
+    max-width: 55% !important;
+  }
+  /* ------------------- home-mode --------------*/
+  .mode-card {
+    max-width: 29% !important;
+  }
+  /* ------------------- home-hero --------------*/
+  .hero-card {
+    column-gap: 8% !important;
+  }
+
+  /* ------------------- home-media --------------*/
+  .media {
+    height: fit-content !important;
+    padding-bottom: 120px;
+  }
 }
 @media screen and (max-width: 1364px) {
   .nav-link {
@@ -204,6 +226,32 @@ export default {
     flex-wrap: wrap;
     gap: 30px;
   }
+  .hero-image {
+    margin: 0 auto !important;
+    margin-top: 2% !important;
+    margin-left: 39% !important;
+    max-width: 400px !important;
+  }
+  .shadow {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    max-width: 420px !important;
+  }
+  .news {
+    height: max-content !important;
+    padding-bottom: 30px !important;
+  }
+  .news-card {
+    flex-direction: column;
+    row-gap: 30px;
+    align-items: center;
+  }
+  .new-card {
+    max-width: 50% !important;
+  }
 }
 
 @media screen and (max-width: 960px) {
@@ -248,10 +296,10 @@ export default {
   }
 
   .mode-card {
-    max-width: 65% !important;
+    max-width: 60% !important;
   }
   .mode-card-image {
-    max-width: 25% !important;
+    max-width: 22% !important;
   }
   /* ------------------- home-hero --------------*/
   .hero {
@@ -288,7 +336,7 @@ export default {
     margin-top: 6% !important;
   }
   .new-card {
-    max-width: 31% !important;
+    max-width: 35% !important;
     margin: 0 8px !important;
   }
 
@@ -327,7 +375,7 @@ export default {
     margin-top: 6% !important;
     margin-left: 34% !important;
   }
-  .new-btn {
+  .community-btn {
     width: 60% !important;
   }
 
@@ -354,16 +402,47 @@ export default {
   .nav-image {
     max-width: 8% !important;
   }
+  /* ------------------- home-news --------------*/
+  .news {
+    height: max-content !important;
+    padding-bottom: 30px !important;
+  }
+  .news-card {
+    flex-direction: column;
+    row-gap: 25px;
+    align-items: center;
+  }
+  .new-card {
+    max-width: 88% !important;
+  }
   /* ------------------- home-media --------------*/
   .media-image-responsive {
     display: flex !important;
     flex-wrap: wrap;
     gap: 16px;
   }
+  /* ------------------- home-hero --------------*/
+  .hero-image {
+    margin: 0 auto !important;
+    margin-top: 2% !important;
+    margin-left: 34% !important;
+    max-width: 410px !important;
+  }
+  .shadow {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    max-width: 420px !important;
+  }
+  .hero-info-left {
+    justify-content: center !important;
+  }
 }
 @media screen and (max-width: 700px) {
   .nav-link {
-    width: 230px !important;
+    width: 220px !important;
   }
 }
 @media screen and (max-width: 599px) {
@@ -385,10 +464,13 @@ export default {
   .nav-lang-responsive {
     display: block !important;
   }
+  .drawer {
+    display: block !important;
+  }
   /* ------------------- home-introduction --------------*/
 
   .btn-customize-introduction {
-    width: 36% !important;
+    width: 45% !important;
     height: 60px !important;
   }
   .introduction-title {
@@ -398,6 +480,9 @@ export default {
   /* ------------------- home-mode --------------*/
   .mode-card {
     max-width: 86% !important;
+  }
+  .mode-card-image {
+    max-width: 20% !important;
   }
   /* ------------------- home-hero --------------*/
   .hero {
@@ -451,7 +536,7 @@ export default {
   /* ------------------- home-news --------------*/
   .news {
     height: max-content !important;
-    padding-bottom: 30px;
+    padding-bottom: 30px !important;
   }
   .news-card {
     flex-direction: column;
@@ -463,7 +548,7 @@ export default {
   }
   /* ------------------- home-media --------------*/
   .media-card {
-    width: 48% !important;
+    width: 83% !important;
   }
   .media-image-responsive-mb {
     display: flex !important;
@@ -475,11 +560,11 @@ export default {
     height: max-content !important;
     padding-bottom: 20px !important;
   }
-  .new-btn-responsive {
+  .community-btn-responsive {
     display: block !important;
     width: 70% !important;
   }
-  .new-btn {
+  .community-btn {
     display: none !important;
   }
   .community-text {
@@ -518,6 +603,13 @@ export default {
   }
 }
 @media screen and (max-width: 399px) {
+  .btn-customize-introduction {
+    width: 60% !important;
+    height: 60px !important;
+  }
+  .mode-card-image {
+    max-width: 26% !important;
+  }
   .nav-image {
     max-width: 30% !important;
   }
