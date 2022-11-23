@@ -5,7 +5,7 @@
     height="80px"
     app
     flat
-    color="blue1"
+    color="black"
   >
     <div class="nav-container mx-auto white--text" style="min-width: 93%">
       <v-row class="d-flex align-center">
@@ -13,7 +13,7 @@
           <div class="nav-left justify-start">
             <v-img
               class="nav-image"
-              :src="require(`@/assets/nav/Logo.webp`)"
+              :src="require(`@/assets/game-logo-v2.webp`)"
             ></v-img>
             <div class="nav-link">
               <div class="text-none">
@@ -33,22 +33,26 @@
             </div>
           </div>
         </v-col>
-        <v-col col="3">
-          <LanguageSwitch class="nav-lang-responsive"></LanguageSwitch>
-        </v-col>
+        <LanguageSwitch class="nav-lang-responsive"></LanguageSwitch>
         <v-col col="3">
           <div class="nav-right">
             <div>
               <LanguageSwitch></LanguageSwitch>
             </div>
+            <div class="align-center">
+              <v-btn color="darkgrey" class="white--text btn-customize gap-20">
+                <span>{{ $t("navbar.btnlogin") }}</span>
+              </v-btn>
+            </div>
+
             <div class="d-flex align-center">
               <v-btn color="violet" class="white--text btn-customize">
-                <v-img
+                <!-- <v-img
                   class="align-seft-center mr-2"
                   max-width="18px"
                   :src="require(`@/assets/nav/discord-icon.webp`)"
-                ></v-img>
-                <span>{{ $t("navbar.btndiscord") }}</span>
+                ></v-img> -->
+                <span>{{ $t("navbar.btnplay") }}</span>
               </v-btn>
             </div>
           </div>
@@ -64,7 +68,7 @@
             v-model="drawer"
             right
             hide-overlay
-            color="#1b379a"
+            color="black"
           >
             <v-list nav dense>
               <v-list-item-group v-model="group" active-class=" text--accent-4">
@@ -72,7 +76,7 @@
                   <v-list-item-title>
                     <v-img
                       class="align-seft-center drawer-logo"
-                      :src="require(`@/assets/introduction/game-logo.webp`)"
+                      :src="require(`@/assets/fighter-force.webp`)"
                     ></v-img
                   ></v-list-item-title>
                 </v-list-item>
@@ -145,7 +149,6 @@ export default {
 
 .btn-customize {
   border-radius: 15px;
-  box-shadow: 0px 6px 1px 0px #4b56ba;
   height: 45px !important;
 }
 .nav-image {
@@ -169,5 +172,8 @@ export default {
 .drawer-logo {
   margin: 0 auto;
   max-width: 80%;
+}
+.gap-20 {
+  column-gap: 20px;
 }
 </style>

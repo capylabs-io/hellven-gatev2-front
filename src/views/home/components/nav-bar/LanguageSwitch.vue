@@ -80,7 +80,7 @@ a {
   align-items: center;
 }
 .dropdown-color {
-  background-color: #1b379a;
+  background-color: black;
 }
 .lang-item:hover {
 }

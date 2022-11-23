@@ -9,7 +9,7 @@
         >
           <v-img
             class="align-seft-center footer-logo"
-            :src="require(`@/assets/footer/footer-logo.webp`)"
+            :src="require(`@/assets/fighter-force.webp`)"
           ></v-img>
           <div class="logo-nav">
             <div class="text-none d-flex">
@@ -36,7 +36,7 @@
       </div>
 
       <hr />
-      <div class="footer-bottom white--text d-flex mt-5 ">
+      <div class="footer-bottom white--text d-flex mt-5">
         <div class="footer-bottom-copyright">
           <p class="font-weight-lighter">
             Copyright © 2022 Capy Lab. All Rights Reserved

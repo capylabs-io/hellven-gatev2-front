@@ -17,7 +17,7 @@
         </v-sheet>
         <v-img
           v-else
-          class="mx-auto"
+          class="mx-auto new-card-image"
           :src="require(`@/assets/news/new1-image.webp`)"
           max-width="100%"
         />
@@ -49,7 +49,7 @@
         </v-sheet>
         <v-img
           v-else
-          class="mx-auto"
+          class="mx-auto new-card-image"
           :src="require(`@/assets/news/new2-image.webp`)"
           max-width="100%"
         />
@@ -81,7 +81,7 @@
         </v-sheet>
         <v-img
           v-else
-          class="mx-auto"
+          class="mx-auto new-card-image"
           :src="require(`@/assets/news/new3-image.webp`)"
           max-width="100%"
         />
@@ -90,6 +90,37 @@
         </div>
         <v-card-title class="bungee-font" style="font-size: 23px">
           {{ $t("new.new3.title") }}
+        </v-card-title>
+
+        <v-card-subtitle
+          class="text-break kanit-font pt-2"
+          style="font-size: 15px"
+        >
+          {{ $t("new.new3.link") }}
+        </v-card-subtitle>
+      </v-card>
+      <v-card class="new-card" white>
+        <v-sheet
+          v-if="loading"
+          :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
+        >
+          <v-skeleton-loader
+            class="mx-auto"
+            max-width="100%"
+            type="image"
+          ></v-skeleton-loader>
+        </v-sheet>
+        <v-img
+          v-else
+          class="mx-auto new-card-image"
+          :src="require(`@/assets/news/new4-image.webp`)"
+          max-width="100%"
+        />
+        <div class="pl-4 pt-4 bungee-font gray-text">
+          <p style="margin: 0">{{ $t("new.new4.subtitle") }}</p>
+        </div>
+        <v-card-title class="bungee-font" style="font-size: 23px">
+          {{ $t("new.new4.title") }}
         </v-card-title>
 
         <v-card-subtitle
@@ -159,12 +190,11 @@ export default {
 .new-card {
   border-radius: 16px;
   box-shadow: 0px 11px 1px 0px #d9d9d9 !important;
-  max-width: 22%;
+  max-width: 23%;
   margin: 0 20px;
 }
 .btn-customize {
   border-radius: 15px;
-  box-shadow: 0px 6px 1px 0px #4b56ba;
 }
 .gray-text {
   color: #717171;
@@ -173,5 +203,8 @@ export default {
   max-width: fit-content;
   margin: 0 auto;
   margin-top: 3%;
+}
+.new-card-image {
+  max-height: 70%;
 }
 </style>

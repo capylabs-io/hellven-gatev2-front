@@ -11,7 +11,7 @@
     <div class="logo">
       <v-img
         class="align-seft-center"
-        :src="require(`@/assets/introduction/game-logo.webp`)"
+        :src="require(`@/assets/fighter-force.webp`)"
       ></v-img>
     </div>
     <div
@@ -22,13 +22,13 @@
       </p>
     </div>
     <v-btn color="yellow" class="black--text btn-customize-introduction px-3">
-      <v-img
+      <!-- <v-img
         class="align-seft-center mr-2"
         max-width="35px"
         :src="require(`@/assets/introduction/steam-icon.webp`)"
-      ></v-img>
+      ></v-img> -->
       <span class="bungee-font" style="font-size: 20px">{{
-        $t("introduction.btndownload")
+        $t("introduction.btnplay")
       }}</span>
     </v-btn>
     <!-- -webkit-text-stroke-width: 0.5px;

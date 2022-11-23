@@ -219,6 +219,9 @@ export default {
   }
 }
 @media screen and (min-width: 961px) and (max-width: 1264px) {
+  .nav-link {
+    width: 400px !important;
+  }
   /* ------------------- home-media --------------*/
 
   .media-image-responsive {
@@ -256,8 +259,9 @@ export default {
 
 @media screen and (max-width: 960px) {
   /* ------------------- home-nav --------------*/
+
   .nav-link {
-    width: 300px !important;
+    width: 278px !important;
   }
   .nav-container {
     font-size: smaller !important;
@@ -408,12 +412,13 @@ export default {
     padding-bottom: 30px !important;
   }
   .news-card {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     row-gap: 25px;
     align-items: center;
   }
   .new-card {
-    max-width: 88% !important;
+    max-width: 47% !important;
   }
   /* ------------------- home-media --------------*/
   .media-image-responsive {
@@ -440,9 +445,28 @@ export default {
     justify-content: center !important;
   }
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 747px) {
+  .nav-image {
+    max-width: 20% !important;
+  }
   .nav-link {
-    width: 220px !important;
+    display: none !important;
+  }
+  .nav-right {
+    display: none !important;
+  }
+  .nav-btn-responsive {
+    justify-content: flex-end;
+    display: flex !important;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .nav-lang-responsive {
+    display: block !important;
+  }
+  .drawer {
+    display: block !important;
   }
 }
 @media screen and (max-width: 599px) {
@@ -560,13 +584,7 @@ export default {
     height: max-content !important;
     padding-bottom: 20px !important;
   }
-  .community-btn-responsive {
-    display: block !important;
-    width: 70% !important;
-  }
-  .community-btn {
-    display: none !important;
-  }
+
   .community-text {
     font-size: 15px !important;
   }
@@ -590,7 +608,7 @@ export default {
   /* ------------------- home-nav --------------*/
 
   .nav-image {
-    max-width: 21% !important;
+    max-width: 23% !important;
   }
   /* ------------------- home-hero --------------*/
   .statistic-image {
@@ -601,17 +619,25 @@ export default {
   .footer-top-right {
     width: 72% !important;
   }
+
+  .community-btn {
+    width: 78% !important; 
+  }
 }
 @media screen and (max-width: 399px) {
   .btn-customize-introduction {
     width: 60% !important;
     height: 60px !important;
   }
+  
+  .community-btn {
+    width: 90% !important; 
+  }
   .mode-card-image {
     max-width: 26% !important;
   }
   .nav-image {
-    max-width: 30% !important;
+    max-width: 37% !important;
   }
   .mode-title {
     max-width: 27% !important;

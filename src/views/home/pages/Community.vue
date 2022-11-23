@@ -24,18 +24,7 @@
       ></v-img>
     </v-btn>
 
-    <v-btn
-      color="violet"
-      height="45px"
-      class="white--text community-btn-responsive btn-customize"
-    >
-      <v-img
-        class="align-seft-center mr-2"
-        max-width="18px"
-        :src="require(`@/assets/nav/discord-icon.webp`)"
-      ></v-img>
-      <span>{{ $t("navbar.btndiscord") }}</span>
-    </v-btn>
+
     <div class="d-flex social-icon">
       <v-img
         class="align-seft-center community-image"
