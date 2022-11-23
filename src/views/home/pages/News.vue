@@ -52,21 +52,21 @@
           <v-img
             v-else
             class="mx-auto new-card-image"
-            :src="require(`@/assets/news/new1-image.webp`)"
+            :src="require(`@/assets/news/new2-image.webp`)"
             max-width="100%"
           />
           <div class="pl-4 pt-4 bungee-font gray-text">
-            <p style="margin: 0">{{ $t("new.new1.subtitle") }}</p>
+            <p style="margin: 0">{{ $t("new.new2.subtitle") }}</p>
           </div>
           <v-card-title class="bungee-font" style="font-size: 23px">
-            {{ $t("new.new1.title") }}
+            {{ $t("new.new2.title") }}
           </v-card-title>
 
           <v-card-subtitle
             class="text-break kanit-font pt-2"
             style="font-size: 15px"
           >
-            {{ $t("new.new1.link") }}
+            {{ $t("new.new2.link") }}
           </v-card-subtitle>
         </v-card>
       </v-col>
@@ -85,21 +85,21 @@
           <v-img
             v-else
             class="mx-auto new-card-image"
-            :src="require(`@/assets/news/new1-image.webp`)"
+            :src="require(`@/assets/news/new3-image.webp`)"
             max-width="100%"
           />
           <div class="pl-4 pt-4 bungee-font gray-text">
-            <p style="margin: 0">{{ $t("new.new1.subtitle") }}</p>
+            <p style="margin: 0">{{ $t("new.new3.subtitle") }}</p>
           </div>
           <v-card-title class="bungee-font" style="font-size: 23px">
-            {{ $t("new.new1.title") }}
+            {{ $t("new.new3.title") }}
           </v-card-title>
 
           <v-card-subtitle
             class="text-break kanit-font pt-2"
             style="font-size: 15px"
           >
-            {{ $t("new.new1.link") }}
+            {{ $t("new.new3.link") }}
           </v-card-subtitle>
         </v-card>
       </v-col>
@@ -308,7 +308,7 @@ export default {
   background: transparent;
 }
 .max-content {
-  max-width: 88%;
+  max-width: 90%;
 }
 @media screen and (max-width: 960px) {
   .max-content {
