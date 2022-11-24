@@ -4,8 +4,9 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 import i18n from './i18n'
+import scrollanimation from './views/home/components/directives/scrollanimation'
 Vue.config.productionTip = false
-
+Vue.directive('scrollanimation', scrollanimation)
 router.beforeEach((to, from, next) => {
 
   // use the language from the routing param or default language

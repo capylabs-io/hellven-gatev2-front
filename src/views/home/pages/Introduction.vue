@@ -15,6 +15,7 @@
       ></v-img>
     </div>
     <div
+      v-scrollanimation
       class="text-center text-capitalize mx-auto white--text text-shadow text-center introduction-title bungee-font"
     >
       <p class="text-break mx-auto">
@@ -81,8 +82,20 @@ export default {
   font-weight: bolder;
   justify-content: center;
   max-width: 35%;
+  transition-delay: 0.1s;
 }
 .v-btn {
   max-width: max-content;
+}
+.unactive {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.41, 0.01, 0.57, 1.61);
+}
+
+.active {
+  transform: translateY(0);
+  opacity: 1;
 }
 </style>

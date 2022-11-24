@@ -171,6 +171,7 @@ export default {
       ],
     };
   },
+  computed() {},
 };
 </script>
 <style scoped>
@@ -237,5 +238,16 @@ export default {
   width: 35%;
 }
 .hero-info-left {
+}
+
+.reveal {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+.reveal.active {
+  transform: translateY(0);
+  opacity: 1;
 }
 </style>
