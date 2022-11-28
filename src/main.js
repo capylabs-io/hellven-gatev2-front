@@ -14,7 +14,6 @@ router.beforeEach((to, from, next) => {
   if (!language) {
     language = 'en'
   }
-
   // set the current language for i18n.
   i18n.locale = language
   next()

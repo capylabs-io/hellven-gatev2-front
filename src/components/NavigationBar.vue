@@ -40,7 +40,11 @@
               <LanguageSwitch></LanguageSwitch>
             </div>
             <div class="align-center">
-              <v-btn color="darkgrey" class="white--text btn-customize gap-20">
+              <v-btn
+                color="darkgrey"
+                class="white--text btn-customize gap-20"
+                @click="gotoRouter('Signin')"
+              >
                 <span>{{ $t("navbar.btnlogin") }}</span>
               </v-btn>
             </div>
@@ -113,11 +117,9 @@
 
 <script>
 import LanguageSwitch from "@/views/home/components/nav-bar/LanguageSwitch.vue";
+import i18n from "@/i18n";
 
 export default {
-  openLink(url) {
-    window.open(url, "_blank");
-  },
   components: { LanguageSwitch },
   data: () => ({
     drawer: false,
@@ -127,6 +129,17 @@ export default {
   watch: {
     group() {
       this.drawer = false;
+    },
+  },
+  methods: {
+    openLink(url) {
+      window.open(url, "_blank");
+    },
+    gotoRouter(url) {
+      this.$router.push({
+        params: { lang: i18n.locale },
+        name: url,
+      });
     },
   },
 };

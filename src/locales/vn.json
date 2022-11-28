@@ -1,62 +1,79 @@
 {
-    "navbar": {
-        "new": "Tin Tức",
-        "media": "Hình Ảnh",
-        "btnplay": "Tham gia Ngay",
-        "btnlogin": "Đăng Nhập"
+  "navbar": {
+    "new": "Tin Tức",
+    "media": "Hình Ảnh",
+    "btnplay": "Tham gia Ngay",
+    "btnlogin": "Đăng Nhập"
+  },
+  "introduction": {
+    "title": "Choose 3 Of Your Best Fighters From Across The World To Battle In A Tournament For Endless Fortune And Fame!",
+    "btnplay": "Play For Free"
+  },
+  "mode": {
+    "card1": {
+      "title": "Adventure Awaits",
+      "text": "Explore a wide variety of herores. Venture into contrasting biomes with unique enemy factions, environments and battlefields."
     },
-    "introduction": {
-        "title": "Choose 3 Of Your Best Fighters From Across The World To Battle In A Tournament For Endless Fortune And Fame!",
-        "btnplay": "Play For Free"
+    "card2": {
+      "title": "Build an Empire",
+      "text": "Manage resources, research new advancements and level up your heroes. Plan your team to match your playstyle."
     },
-    "mode": {
-        "card1": {
-            "title": "Adventure Awaits",
-            "text": "Explore a wide variety of herores. Venture into contrasting biomes with unique enemy factions, environments and battlefields."
-        },
-        "card2": {
-            "title": "Build an Empire",
-            "text": "Manage resources, research new advancements and level up your heroes. Plan your team to match your playstyle."
-        },
-        "card3": {
-            "title": "Wage War",
-            "text": "Dive into a deep combat system utilizing troop abilities and powerful magic. Combine troops to maximize available spells and damage potential."
-        }
-    },
-    "hero": {
-        "heroType": "TANKER",
-        "heroRank": "Huyền Thoại",
-        "heroDes": "Spike throws cactus grenades that send needles flying, and a show-stopping Super: a field of cactus spines that slows down and damages enemies!",
-        "heroAbi1": "Pincushion",
-        "heroAbi2": "Life Plant",
-        "heroAbi3": "Curveball"
-    },
-    "new": {
-        "btnView": "Xem Tất Cả",
-        "new1": {
-            "subtitle": "NEWS",
-            "title": "Changes are coming!",
-            "link": "Ngày 10 Tháng 10 Năm 2022"
-        },
-        "new2": {
-            "subtitle": "NEWS",
-            "title": "Changes are coming!",
-            "link": "Ngày 10 Tháng 10 Năm 2022"
-        },
-        "new3": {
-            "subtitle": "NEWS",
-            "title": "Changes are coming!",
-            "link": "Ngày 10 Tháng 10 Năm 2022"
-        },
-        "new4": {
-            "subtitle": "NEWS",
-            "title": "Changes are coming!",
-            "link": "Ngày 10 Tháng 10 Năm 2022"
-        }
-    },
-    "community": {
-        "text": "We have several friendly communities where people discuss about everything related to Fighter Club. Come and join in the conversation with the developers team as we can discuss features together and learn from the feedback we get!",
-        "btndiscordtext1": "Truy Cập",
-        "btndiscordtext2": "Server trên"
+    "card3": {
+      "title": "Wage War",
+      "text": "Dive into a deep combat system utilizing troop abilities and powerful magic. Combine troops to maximize available spells and damage potential."
     }
+  },
+  "hero": {
+    "heroType": "TANKER",
+    "heroRank": "Huyền Thoại",
+    "heroDes": "Spike throws cactus grenades that send needles flying, and a show-stopping Super: a field of cactus spines that slows down and damages enemies!",
+    "heroAbi1": "Pincushion",
+    "heroAbi2": "Life Plant",
+    "heroAbi3": "Curveball"
+  },
+  "new": {
+    "btnView": "Xem Tất Cả",
+    "new1": {
+      "subtitle": "NEWS",
+      "title": "Changes are coming!",
+      "link": "Ngày 10 Tháng 10 Năm 2022"
+    },
+    "new2": {
+      "subtitle": "NEWS",
+      "title": "Changes are coming!",
+      "link": "Ngày 10 Tháng 10 Năm 2022"
+    },
+    "new3": {
+      "subtitle": "NEWS",
+      "title": "Changes are coming!",
+      "link": "Ngày 10 Tháng 10 Năm 2022"
+    },
+    "new4": {
+      "subtitle": "NEWS",
+      "title": "Changes are coming!",
+      "link": "Ngày 10 Tháng 10 Năm 2022"
+    }
+  },
+  "community": {
+    "text": "We have several friendly communities where people discuss about everything related to Fighter Club. Come and join in the conversation with the developers team as we can discuss features together and learn from the feedback we get!",
+    "btndiscordtext1": "Truy Cập",
+    "btndiscordtext2": "Server trên"
+  },
+  "signin": {
+    "signin": "Đăng nhập",
+    "username": "Tên đăng nhập",
+    "password": "Mật khẩu",
+    "remember-me": "Ghi nhớ tài khoản",
+    "forget-password": "Quên mật khẩu",
+    "create-new-account": "Tạo tài khoản mới",
+    "forget-password-des": "Nhập tên tài khoản bạn muốn đăng nhập.",
+    "sign-up-with-mail":"Đăng ký bằng email",
+    "sign-up-with-phone":"Đăng ký bằng số điện thoại",
+    "email":"Email",
+    "phone":"Số điện thoại",
+    "confirm-password":"Nhập lại mật khẩu",
+    "date-of-birth":"Ngày sinh",
+    "accept-term-service" :"Chấp nhận điều khoản",
+    "instead":""
+  }
 }
