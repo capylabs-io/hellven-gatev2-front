@@ -11,30 +11,26 @@
     <div class="logo">
       <v-img
         class="align-seft-center"
-        :src="require(`@/assets/introduction/game-logo.webp`)"
+        :src="require(`@/assets/fighter-force.webp`)"
       ></v-img>
     </div>
-    <div class="white--text text-shadow text-center introduction-title">
-      <p class="clear-margin text-capitalize bungee-font">
-        Choose 3 of your best fighters from across the
-      </p>
-      <p class="clear-margin text-capitalize bungee-font">
-        world to battle in a tournament for endless
-      </p>
-      <p class="clear-margin text-capitalize bungee-font">fortune and fame!</p>
-    </div>
-    <v-btn
-      color="yellow"
-      class="black--text btn-customize px-3"
-      height="60px"
-      width="11%"
+    <div
+      v-scrollanimation
+      class="text-center text-capitalize mx-auto white--text text-shadow text-center introduction-title bungee-font"
     >
-      <v-img
+      <p class="text-break mx-auto">
+        {{ $t("introduction.title") }}
+      </p>
+    </div>
+    <v-btn color="yellow" class="black--text btn-customize-introduction px-3">
+      <!-- <v-img
         class="align-seft-center mr-2"
         max-width="35px"
         :src="require(`@/assets/introduction/steam-icon.webp`)"
-      ></v-img>
-      <span class="bungee-font" style="font-size: 21px">DOWNLOAD</span>
+      ></v-img> -->
+      <span class="bungee-font" style="font-size: 20px">{{
+        $t("introduction.btnplay")
+      }}</span>
     </v-btn>
     <!-- -webkit-text-stroke-width: 0.5px;
 -webkit-text-stroke-color: black; -->
@@ -51,15 +47,19 @@ export default {
 <style scoped>
 .introduction {
   width: 100%;
-  height: 900px;
-  background-size: 100%;
+  height: 950px;
+  background-size: cover;
   background-repeat: no-repeat;
   padding-top: 6%;
+  background-position: center;
   row-gap: 8%;
+  position: relative;
 }
-.btn-customize {
+.btn-customize-introduction {
   border-radius: 15px;
   box-shadow: 0px 8px 1px 0px #40b22d;
+  width: 13%;
+  height: 60px !important;
 }
 
 .text-shadow {
@@ -67,12 +67,7 @@ export default {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
 }
-.bungee-font {
-  font-family: Bungee, Helvetica, Arial;
-}
-.kanit-font {
-  font-family: Kanit, Helvetica, Arial;
-}
+
 .logo {
   width: 20%;
 }
@@ -85,5 +80,22 @@ export default {
 .introduction-title {
   font-size: 26px;
   font-weight: bolder;
+  justify-content: center;
+  max-width: 35%;
+  transition-delay: 0.1s;
+}
+.v-btn {
+  max-width: max-content;
+}
+.unactive {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.41, 0.01, 0.57, 1.61);
+}
+
+.active {
+  transform: translateY(0);
+  opacity: 1;
 }
 </style>

@@ -3,25 +3,19 @@
     <div class="community-title">
       <v-img :src="require(`@/assets/community/community-title.webp`)"></v-img>
     </div>
-    <div
-      class="pt-10 item-center kanit-font text-center mx-auto"
-      style="font-size: 20px"
-    >
-      <p class="text-break mx-auto" style="max-width: 35%">
-        We have several friendly communities where people discuss about
-        everything related to Fighter Club. Come and join in the conversation
-        with the developers team as we can discuss features together and learn
-        from the feedback we get!
+    <div class="pt-10 item-center kanit-font mx-auto text-break community-text">
+      <p>
+        {{ $t("community.text") }}
       </p>
     </div>
     <v-btn
       color="violet"
-      class="new-btn white--text btn-customize bungee-font"
+      class="community-btn white--text btn-customize bungee-font"
       height="70px"
     >
       <div class="text-break btn-title mb-4 ml-4 mr-2">
-        <p class="clear-margin">Join Our</p>
-        <p class="clear-margin">Server On</p>
+        <p class="clear-margin">{{ $t("community.btndiscordtext1") }}</p>
+        <p class="clear-margin">{{ $t("community.btndiscordtext2") }}</p>
       </div>
       <v-img
         class="align-seft-center ml-3 mr-4"
@@ -29,24 +23,25 @@
         :src="require(`@/assets/community/discord-btn-logo.webp`)"
       ></v-img>
     </v-btn>
+
+
     <div class="d-flex social-icon">
       <v-img
-        class="align-seft-center"
-        max-width="20%"
+        class="align-seft-center community-image"
         :src="require(`@/assets/community/facebook-icon.webp`)"
       ></v-img>
       <v-img
-        class="align-seft-center"
+        class="align-seft-center community-image"
         max-width="20%"
         :src="require(`@/assets/community/twitter-icon.webp`)"
       ></v-img>
       <v-img
-        class="align-seft-center"
+        class="align-seft-center community-image"
         max-width="20%"
         :src="require(`@/assets/community/discord-icon.webp`)"
       ></v-img>
       <v-img
-        class="align-seft-center"
+        class="align-seft-center community-image"
         max-width="20%"
         :src="require(`@/assets/community/youtube-icon.webp`)"
       ></v-img>
@@ -69,15 +64,16 @@ export default {
   position: relative;
   background: transparent;
 }
+.community-text {
+  max-width: 35%;
+  font-size: 20px;
+}
 .community-title {
   max-width: 16%;
   margin: 0 auto;
 }
-.bungee-font {
-  font-family: Bungee, Helvetica, Arial;
-}
-.kanit-font {
-  font-family: Kanit, Helvetica, Arial;
+.community-image {
+  max-width: 20%;
 }
 .text-center {
   text-align: center;
@@ -89,11 +85,15 @@ export default {
   border-radius: 15px;
   box-shadow: 0px 8px 1px 0px #4b56ba;
 }
-.new-btn {
+.community-btn {
   margin: 0 auto;
   margin-top: 2%;
 }
-
+.community-btn-responsive {
+  display: none;
+  margin: 0 auto;
+  margin-top: 2%;
+}
 .btn-title {
   font-size: 16px;
   max-width: 150px;
@@ -105,7 +105,7 @@ export default {
 }
 .social-icon {
   max-width: 15%;
-  margin: 0 auto;
+  margin-left: 43%;
   margin-top: 3%;
   column-gap: 5%;
 }

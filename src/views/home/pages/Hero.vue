@@ -3,34 +3,83 @@
     <div class="hero-title">
       <v-img :src="require(`@/assets/hero/hero-title.webp`)"></v-img>
     </div>
-    <div class="d-flex mt-15 gap-200 item-center">
-      <div class="">
-        <v-img
-          class="align-seft-center shadow"
-          :src="require(`@/assets/hero/hero-image-shadow.webp`)"
-        ></v-img>
-        <v-img
-          class="align-seft-center ml-16 mt-5"
-          :src="require(`@/assets/hero/hero-image.webp`)"
-        ></v-img>
+    <div class="flex-reverse">
+      <div class="hero-info item-center">
+        <div class="hero-info-left">
+          <v-img
+            class="shadow"
+            :src="require(`@/assets/hero/hero-image-shadow.webp`)"
+          ></v-img>
+          <!-- <v-img
+            class="hero-image"
+            :src="require(`@/assets/hero/hero-image.webp`)"
+          ></v-img> -->
+          <heroImage
+            v-for="(image, index) in heroImages"
+            :key="image"
+            :index="index"
+            :visibleImage="visibleImage"
+          >
+            <v-img class="hero-image" :src="image"></v-img>
+          </heroImage>
+        </div>
+        <div class="hero-card-mb d-flex item-center">
+          <div class="slider-mb">
+            <v-img
+              class="align-seft-center"
+              :src="require(`@/assets/media/slide-left.webp`)"
+            ></v-img>
+          </div>
+          <div class="hero-card-list-responsive-mb">
+            <card
+              v-for="hero in heros3"
+              :key="hero.index"
+              v-bind:hero="hero"
+            ></card>
+          </div>
+          <div class="slider-mb">
+            <v-img
+              class="align-seft-center"
+              :src="require(`@/assets/media/slide-right.webp`)"
+            ></v-img>
+          </div>
+        </div>
+        <div class="info-card">
+          <infoCard></infoCard>
+        </div>
       </div>
-      <infoCard></infoCard>
-    </div>
-    <div class="hero-card d-flex item-center">
-      <div class="slider">
-        <v-img
-          class="align-seft-center"
-          :src="require(`@/assets/media/slide-left.webp`)"
-        ></v-img>
-      </div>
-      <div class="hero-card-list d-flex justify-space-around">
-        <card v-for="hero in heros" :key="hero.index" v-bind:hero="hero"></card>
-      </div>
-      <div class="slider">
-        <v-img
-          class="align-seft-center"
-          :src="require(`@/assets/media/slide-right.webp`)"
-        ></v-img>
+      <div class="hero-card">
+        <div class="slider">
+          <button @click="prev">
+            <v-img
+              class="align-seft-center"
+              :src="require(`@/assets/media/slide-left.webp`)"
+            ></v-img>
+          </button>
+        </div>
+        <div class="hero-card-list">
+          <card
+            v-for="hero in heros"
+            :key="hero.index"
+            v-bind:hero="hero"
+          ></card>
+        </div>
+        <div class="hero-card-list-responsive">
+          <card
+            v-for="hero in heros2"
+            :key="hero.index"
+            v-bind:hero="hero"
+          ></card>
+        </div>
+
+        <div class="slider">
+          <button @click="next">
+            <v-img
+              class="align-seft-center"
+              :src="require(`@/assets/media/slide-right.webp`)"
+            ></v-img>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -39,10 +88,12 @@
 <script>
 import HeroInfo from "../components/hero/hero-info-card.vue";
 import HeroCard from "../components/hero/hero-card.vue";
+import heroImageSlider from "../components/hero/hero-image-slider.vue";
 export default {
   components: {
     infoCard: HeroInfo,
     card: HeroCard,
+    heroImage: heroImageSlider,
   },
   data() {
     return {
@@ -84,27 +135,119 @@ export default {
           image: "@/assets/hero/Hero9.webp",
         },
       ],
+      heros2: [
+        {
+          index: "1",
+          image: "@/assets/hero/Hero1.webp",
+        },
+        {
+          index: "2",
+          image: "@/assets/hero/Hero2.webp",
+        },
+        {
+          index: "3",
+          image: "@/assets/hero/Hero3.webp",
+        },
+        {
+          index: "4",
+          image: "@/assets/hero/Hero4.webp",
+        },
+        {
+          index: "5",
+          image: "@/assets/hero/Hero5.webp",
+        },
+        {
+          index: "6",
+          image: "@/assets/hero/Hero6.webp",
+        },
+        {
+          index: "7",
+          image: "@/assets/hero/Hero7.webp",
+        },
+      ],
+      heros3: [
+        {
+          index: "1",
+          image: "@/assets/hero/Hero1.webp",
+        },
+        {
+          index: "2",
+          image: "@/assets/hero/Hero2.webp",
+        },
+        {
+          index: "3",
+          image: "@/assets/hero/Hero3.webp",
+        },
+        {
+          index: "4",
+          image: "@/assets/hero/Hero4.webp",
+        },
+      ],
+      heroImages: [
+        require(`../../../assets/hero/hero-image.webp`),
+        require(`../../../assets/hero/hero-image1.webp`),
+        require(`../../../assets/hero/hero-image2.webp`),
+      ],
+      visibleImage: 0,
     };
   },
+  methods: {
+    next() {
+      if (this.visibleImage >= this.heroImages.length - 1) {
+        this.visibleImage = 0;
+      } else {
+        this.visibleImage++;
+      }
+    },
+
+    prev() {
+      if (this.visibleImage <= 0) {
+        this.visibleImage = this.heroImages.length - 1;
+      } else {
+        this.visibleImage--;
+      }
+    },
+  },
+  computed() {},
 };
 </script>
 <style scoped>
 .hero {
   height: 950px;
   width: 100% fit-content;
+  margin-top: 2%;
   padding-top: 5%;
-  position: relative;
+  position: relative !important;
   background: linear-gradient(180deg, #4da9ff 0.52%, #0072dd 100%);
 }
 
 .hero-card {
-  padding-top: 4%;
+  display: flex;
+  margin-top: 6%;
   column-gap: 5%;
+  justify-content: center;
 }
 
+.hero-info {
+  position: relative;
+  margin-top: 50px;
+  column-gap: 4%;
+  display: flex;
+}
+.hero-card-mb,
+.hero-card-list-responsive-mb,
+.slider-mb {
+  display: none;
+}
 .hero-card-list {
   column-gap: 3%;
+  display: flex;
+  justify-content: space-around;
 }
+.hero-card-list-responsive {
+  display: none;
+}
+
 .hero-title {
   max-width: 6%;
   margin: 0 auto;
@@ -121,7 +264,27 @@ export default {
 .slider {
   padding-top: 10px;
 }
-.gap-200 {
-  column-gap: 200px;
+
+.flex-reverse {
+}
+.hero-image {
+  margin-top: 20px;
+  margin-left: 100px;
+}
+.info-card {
+  width: 35%;
+}
+.hero-info-left {
+}
+
+.reveal {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+.reveal.active {
+  transform: translateY(0);
+  opacity: 1;
 }
 </style>

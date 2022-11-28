@@ -3,71 +3,65 @@
     <div class="mode-title">
       <v-img :src="require(`@/assets/mode/mode-title.webp`)"></v-img>
     </div>
-    <div class="pt-10 d-flex item-center ">
-      <v-card class="card pt-5 mx-5" max-width="22%" white>
+    <div class="pt-10 d-flex item-center mode-list">
+      <v-card class="mode-card pt-5" white>
         <v-img
-          class="mx-auto"
+          class="mx-auto mode-card-image"
           :src="require(`@/assets/mode/gamemode1-icon.webp`)"
-          max-width="23%"
         />
 
         <v-card-title
           class="justify-center bungee-font"
           style="font-size: 25px"
         >
-          Adventure Awaits
+          {{ $t("mode.card1.title") }}
         </v-card-title>
 
         <v-card-subtitle
           class="text-break kanit-font pt-2 pb-10 text-center mx-auto"
           style="font-size: 20px"
         >
-          Explore a wide variety of herores. Venture into contrasting biomes
-          with unique enemy factions, environments and battlefields.
+          {{ $t("mode.card1.text") }}
         </v-card-subtitle>
       </v-card>
-      <v-card class="pt-5 mx-5" max-width="22%" white>
+      <v-card class="mode-card pt-5" white>
         <v-img
-          class="mx-auto"
+          class="mx-auto mode-card-image"
           :src="require(`@/assets/mode/gamemode2-icon.webp`)"
-          max-width="23%"
         />
 
         <v-card-title
           class="justify-center bungee-font"
           style="font-size: 25px"
         >
-          game on!
+          {{ $t("mode.card2.title") }}
         </v-card-title>
 
         <v-card-subtitle
           class="text-break kanit-font pt-2 pb-10 text-center mx-auto"
           style="font-size: 20px"
         >
-          An immense collection of challenging modes will ensure to constantly
-          keep you on the edge of your sit.
+          {{ $t("mode.card2.text") }}
         </v-card-subtitle>
       </v-card>
-      <v-card class="pt-5 mx-5" max-width="22%" white>
+      <v-card class="mode-card pt-5" white>
         <v-img
-          class="mx-auto"
+          class="mx-auto mode-card-image"
           :src="require(`@/assets/mode/gamemode3-icon.webp`)"
-          max-width="23%"
         />
 
         <v-card-title
           class="justify-center bungee-font"
           style="font-size: 25px"
         >
-          free to play
+          {{ $t("mode.card3.title") }}
         </v-card-title>
 
         <v-card-subtitle
           class="text-break kanit-font pt-2 pb-10 text-center mx-auto"
           style="font-size: 20px"
         >
-          Fighter Club is a free to play game that does not require any fee to
-          participate. The only thing you need is a will to become the champion.
+          {{ $t("mode.card3.text") }}
         </v-card-subtitle>
       </v-card>
     </div>
@@ -89,15 +83,15 @@ export default {
   position: relative;
   background: transparent;
 }
+.mode-card {
+  max-width: 22%;
+}
 .mode-title {
   max-width: 6%;
   margin: 0 auto;
 }
-.bungee-font {
-  font-family: Bungee, Helvetica, Arial;
-}
-.kanit-font {
-  font-family: Kanit, Helvetica, Arial;
+.mode-list {
+  column-gap: 2%;
 }
 .text-center {
   text-align: center;
@@ -112,5 +106,8 @@ export default {
 
 .v-card__subtitle {
   max-width: 90%;
+}
+.mode-card-image {
+  max-width: 23%;
 }
 </style>

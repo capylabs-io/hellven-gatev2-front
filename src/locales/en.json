@@ -1,0 +1,62 @@
+{
+  "navbar": {
+    "new": "NEWS",
+    "media": "MEDIA",
+    "btnplay": "Play Now",
+    "btnlogin": "Login"
+  },
+  "introduction": {
+    "title": "Choose 3 Of Your Best Fighters From Across The World To Battle In A Tournament For Endless Fortune And Fame!",
+    "btnplay": "Play For Free"
+  },
+  "mode": {
+    "card1": {
+      "title": "Adventure Awaits",
+      "text": "Explore a wide variety of herores. Venture into contrasting biomes with unique enemy factions, environments and battlefields."
+    },
+    "card2": {
+      "title": "Build an Empire",
+      "text": "Manage resources, research new advancements and level up your heroes. Plan your team to match your playstyle."
+    },
+    "card3": {
+      "title": "Wage War",
+      "text": "Dive into a deep combat system utilizing troop abilities and powerful magic. Combine troops to maximize available spells and damage potential."
+    }
+  },
+  "hero": {
+    "heroType": "TANKER",
+    "heroRank": "LEGENDARY",
+    "heroDes": "Spike throws cactus grenades that send needles flying, and a show-stopping Super: a field of cactus spines that slows down and damages enemies!",
+    "heroAbi1": "Pincushion",
+    "heroAbi2": "Life Plant",
+    "heroAbi3": "Curveball"
+  },
+  "new": {
+    "btnView": "VIEW ALL",
+    "new1": {
+      "subtitle": "NEWS",
+      "title": "Changes are coming!",
+      "link": "10 Oct 2022"
+    },
+    "new2": {
+      "subtitle": "NEWS",
+      "title": "Changes are coming!",
+      "link": "10 Oct 2022"
+    },
+    "new3": {
+      "subtitle": "NEWS",
+      "title": "Changes are coming!",
+      "link": "10 Oct 2022"
+    },
+    "new4": {
+      "subtitle": "NEWS",
+      "title": "Changes are coming!",
+      "link": "10 Oct 2022"
+    }
+  },
+  "community": {
+    "text": "We have several friendly communities where people discuss about everything related to Fighter Club. Come and join in the conversation with the developers team as we can discuss features together and learn from the feedback we get!",
+    "btndiscordtext1": "Join Our",
+    "btndiscordtext2": "Server On"
+  }
+}

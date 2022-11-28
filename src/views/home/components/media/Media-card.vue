@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="media-card">
     <v-img :src="require(`@/assets/media/Media${media.index}.webp`)"></v-img>
   </v-card>
 </template>
@@ -11,7 +11,7 @@ export default {
 };
 </script>
 <style scoped>
-.v-card {
+.media-card {
   width: 16%;
   border-radius: 5px;
   border: solid 3px white;

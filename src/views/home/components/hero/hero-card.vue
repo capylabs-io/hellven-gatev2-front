@@ -18,6 +18,9 @@ export default {
   border-radius: 10px;
   background-color: black;
 }
+.active {
+  border: 3px solid white !important;
+}
 .on-hover {
   border: 3px solid white !important;
 }

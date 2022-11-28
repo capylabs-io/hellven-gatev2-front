@@ -1,22 +1,32 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueMeta from 'vue-meta'
 import Home from '../views/home/pages/Home.vue'
-
+import i18n from '@/i18n';
 Vue.use(VueRouter)
-
+Vue.use(VueMeta)
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
+    redirect: `/${i18n.locale}`
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/:lang',
+    component: {
+      render (c) { return c('router-view') }
+    },
+    children: [
+      {
+        path: '/',
+        name: 'home',
+        component: Home
+      },
+      // {
+      //   path: 'about',
+      //   name: 'about',
+      //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      // },
+    ]
   }
 ]
 
