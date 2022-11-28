@@ -2,9 +2,9 @@
   <div class="main-content">
     <introduction v-scrollanimation> </introduction>
     <mode v-scrollanimation></mode>
-    <hero v-scrollanimation class="fade-right"></hero>
+    <hero></hero>
     <new v-scrollanimation></new>
-    <media v-scrollanimation class="fade-left"></media>
+    <media></media>
     <community v-scrollanimation class="fade-bottom"></community>
     <!-- <p class="mt-4" v-html="$t('about.content')" /> -->
   </div>

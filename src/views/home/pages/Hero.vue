@@ -10,10 +10,18 @@
             class="shadow"
             :src="require(`@/assets/hero/hero-image-shadow.webp`)"
           ></v-img>
-          <v-img
+          <!-- <v-img
             class="hero-image"
             :src="require(`@/assets/hero/hero-image.webp`)"
-          ></v-img>
+          ></v-img> -->
+          <heroImage
+            v-for="(image, index) in heroImages"
+            :key="image"
+            :index="index"
+            :visibleImage="visibleImage"
+          >
+            <v-img class="hero-image" :src="image"></v-img>
+          </heroImage>
         </div>
         <div class="hero-card-mb d-flex item-center">
           <div class="slider-mb">
@@ -42,10 +50,12 @@
       </div>
       <div class="hero-card">
         <div class="slider">
-          <v-img
-            class="align-seft-center"
-            :src="require(`@/assets/media/slide-left.webp`)"
-          ></v-img>
+          <button @click="prev">
+            <v-img
+              class="align-seft-center"
+              :src="require(`@/assets/media/slide-left.webp`)"
+            ></v-img>
+          </button>
         </div>
         <div class="hero-card-list">
           <card
@@ -63,10 +73,12 @@
         </div>
 
         <div class="slider">
-          <v-img
-            class="align-seft-center"
-            :src="require(`@/assets/media/slide-right.webp`)"
-          ></v-img>
+          <button @click="next">
+            <v-img
+              class="align-seft-center"
+              :src="require(`@/assets/media/slide-right.webp`)"
+            ></v-img>
+          </button>
         </div>
       </div>
     </div>
@@ -76,10 +88,12 @@
 <script>
 import HeroInfo from "../components/hero/hero-info-card.vue";
 import HeroCard from "../components/hero/hero-card.vue";
+import heroImageSlider from "../components/hero/hero-image-slider.vue";
 export default {
   components: {
     infoCard: HeroInfo,
     card: HeroCard,
+    heroImage: heroImageSlider,
   },
   data() {
     return {
@@ -169,7 +183,30 @@ export default {
           image: "@/assets/hero/Hero4.webp",
         },
       ],
+      heroImages: [
+        require(`../../../assets/hero/hero-image.webp`),
+        require(`../../../assets/hero/hero-image1.webp`),
+        require(`../../../assets/hero/hero-image2.webp`),
+      ],
+      visibleImage: 0,
     };
+  },
+  methods: {
+    next() {
+      if (this.visibleImage >= this.heroImages.length - 1) {
+        this.visibleImage = 0;
+      } else {
+        this.visibleImage++;
+      }
+    },
+
+    prev() {
+      if (this.visibleImage <= 0) {
+        this.visibleImage = this.heroImages.length - 1;
+      } else {
+        this.visibleImage--;
+      }
+    },
   },
   computed() {},
 };
