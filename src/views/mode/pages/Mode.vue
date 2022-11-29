@@ -16,7 +16,7 @@
         <div class="box text-none align-seft-center">Mode 3</div>
         <div class="box text-none align-seft-center">Mode 4</div>
       </div>
-      <div class="mode-content d-flex gap-50">
+      <div class="mode-content d-flex gap-50 justify-center">
         <div class="slider">
           <button @click="prev">
             <v-img
