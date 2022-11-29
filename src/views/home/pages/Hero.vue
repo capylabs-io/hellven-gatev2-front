@@ -189,9 +189,25 @@ export default {
         require(`../../../assets/hero/hero-image2.webp`),
       ],
       visibleImage: 0,
+      imageInterval: null,
     };
   },
+  mounted() {
+    this.imageInterval = setInterval(() => {
+      const index =
+        this.visibleImage <= this.heroImages.length - 1
+          ? this.visibleImage + 1
+          : 0;
+      this.setvisibleImage(index);
+    }, 5000);
+  },
+  beforeMount() {
+    clearInterval(this.imageInterval);
+  },
   methods: {
+    setvisibleImage(index) {
+      this.visibleImage = index;
+    },
     next() {
       if (this.visibleImage >= this.heroImages.length - 1) {
         this.visibleImage = 0;

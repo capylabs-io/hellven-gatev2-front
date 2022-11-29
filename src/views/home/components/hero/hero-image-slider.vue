@@ -22,7 +22,6 @@ export default {
 
 .active {
   transform: translateY(0);
-  animation: fade-right 1s ease-in;
   opacity: 1;
 }
 @keyframes fade-right {

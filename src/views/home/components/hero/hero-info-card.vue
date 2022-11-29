@@ -308,21 +308,21 @@ export default {};
   z-index: 3;
   font-size: 27px;
   padding-left: 70%;
-  padding-top: 20px;
+  align-self: center;
   font-size: 27px;
 }
 .number-left {
   position: absolute;
   z-index: 3;
   padding-left: 32%;
-  padding-top: 15px;
+  align-self: center;
   font-size: 27px;
 }
 .number-right {
   position: absolute;
   z-index: 3;
   padding-left: 79%;
-  padding-top: 15px;
+  align-self: center;
   font-size: 27px;
 }
 .statistic-image {
