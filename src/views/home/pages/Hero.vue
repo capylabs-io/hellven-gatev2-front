@@ -1,18 +1,18 @@
 <template>
   <div class="hero d-lfex flex-column">
     <div class="hero-title">
-      <v-img :src="require(`@/assets/hero/hero-title.webp`)"></v-img>
+      <v-img :src="require(`@/assets/home/hero/hero-title.webp`)"></v-img>
     </div>
     <div class="flex-reverse">
       <div class="hero-info item-center">
         <div class="hero-info-left">
           <v-img
             class="shadow"
-            :src="require(`@/assets/hero/hero-image-shadow.webp`)"
+            :src="require(`@/assets/home/hero/hero-image-shadow.webp`)"
           ></v-img>
           <!-- <v-img
             class="hero-image"
-            :src="require(`@/assets/hero/hero-image.webp`)"
+            :src="require(`@/assets/home/hero/hero-image.webp`)"
           ></v-img> -->
           <heroImage
             v-for="(image, index) in heroImages"
@@ -27,7 +27,7 @@
           <div class="slider-mb">
             <v-img
               class="align-seft-center"
-              :src="require(`@/assets/media/slide-left.webp`)"
+              :src="require(`@/assets/home/media/slide-left.webp`)"
             ></v-img>
           </div>
           <div class="hero-card-list-responsive-mb">
@@ -40,7 +40,7 @@
           <div class="slider-mb">
             <v-img
               class="align-seft-center"
-              :src="require(`@/assets/media/slide-right.webp`)"
+              :src="require(`@/assets/home/media/slide-right.webp`)"
             ></v-img>
           </div>
         </div>
@@ -53,7 +53,7 @@
           <button @click="prev">
             <v-img
               class="align-seft-center"
-              :src="require(`@/assets/media/slide-left.webp`)"
+              :src="require(`@/assets/home/media/slide-left.webp`)"
             ></v-img>
           </button>
         </div>
@@ -76,7 +76,7 @@
           <button @click="next">
             <v-img
               class="align-seft-center"
-              :src="require(`@/assets/media/slide-right.webp`)"
+              :src="require(`@/assets/home/media/slide-right.webp`)"
             ></v-img>
           </button>
         </div>
@@ -100,93 +100,93 @@ export default {
       heros: [
         {
           index: "1",
-          image: "@/assets/hero/Hero1.webp",
+          image: "@/assets/home/hero/Hero1.webp",
         },
         {
           index: "2",
-          image: "@/assets/hero/Hero2.webp",
+          image: "@/assets/home/hero/Hero2.webp",
         },
         {
           index: "3",
-          image: "@/assets/hero/Hero3.webp",
+          image: "@/assets/home/hero/Hero3.webp",
         },
         {
           index: "4",
-          image: "@/assets/hero/Hero4.webp",
+          image: "@/assets/home/hero/Hero4.webp",
         },
         {
           index: "5",
-          image: "@/assets/hero/Hero5.webp",
+          image: "@/assets/home/hero/Hero5.webp",
         },
         {
           index: "6",
-          image: "@/assets/hero/Hero6.webp",
+          image: "@/assets/home/hero/Hero6.webp",
         },
         {
           index: "7",
-          image: "@/assets/hero/Hero7.webp",
+          image: "@/assets/home/hero/Hero7.webp",
         },
         {
           index: "8",
-          image: "@/assets/hero/Hero8.webp",
+          image: "@/assets/home/hero/Hero8.webp",
         },
         {
           index: "9",
-          image: "@/assets/hero/Hero9.webp",
+          image: "@/assets/home/hero/Hero9.webp",
         },
       ],
       heros2: [
         {
           index: "1",
-          image: "@/assets/hero/Hero1.webp",
+          image: "@/assets/home/hero/Hero1.webp",
         },
         {
           index: "2",
-          image: "@/assets/hero/Hero2.webp",
+          image: "@/assets/home/hero/Hero2.webp",
         },
         {
           index: "3",
-          image: "@/assets/hero/Hero3.webp",
+          image: "@/assets/home/hero/Hero3.webp",
         },
         {
           index: "4",
-          image: "@/assets/hero/Hero4.webp",
+          image: "@/assets/home/hero/Hero4.webp",
         },
         {
           index: "5",
-          image: "@/assets/hero/Hero5.webp",
+          image: "@/assets/home/hero/Hero5.webp",
         },
         {
           index: "6",
-          image: "@/assets/hero/Hero6.webp",
+          image: "@/assets/home/hero/Hero6.webp",
         },
         {
           index: "7",
-          image: "@/assets/hero/Hero7.webp",
+          image: "@/assets/home/hero/Hero7.webp",
         },
       ],
       heros3: [
         {
           index: "1",
-          image: "@/assets/hero/Hero1.webp",
+          image: "@/assets/home/hero/Hero1.webp",
         },
         {
           index: "2",
-          image: "@/assets/hero/Hero2.webp",
+          image: "@/assets/home/hero/Hero2.webp",
         },
         {
           index: "3",
-          image: "@/assets/hero/Hero3.webp",
+          image: "@/assets/home/hero/Hero3.webp",
         },
         {
           index: "4",
-          image: "@/assets/hero/Hero4.webp",
+          image: "@/assets/home/hero/Hero4.webp",
         },
       ],
       heroImages: [
-        require(`../../../assets/hero/hero-image.webp`),
-        require(`../../../assets/hero/hero-image1.webp`),
-        require(`../../../assets/hero/hero-image2.webp`),
+        require(`../../../assets/home/hero/hero-image.webp`),
+        require(`../../../assets/home/hero/hero-image1.webp`),
+        require(`../../../assets/home/hero/hero-image2.webp`),
       ],
       visibleImage: 0,
       imageInterval: null,

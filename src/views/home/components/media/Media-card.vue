@@ -1,6 +1,6 @@
 <template>
   <v-card class="media-card">
-    <v-img :src="require(`@/assets/media/Media${media.index}.webp`)"></v-img>
+    <v-img :src="require(`@/assets/home/media/Media${media.index}.webp`)"></v-img>
   </v-card>
 </template>
 

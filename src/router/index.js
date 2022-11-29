@@ -17,15 +17,15 @@ const routes = [
     },
     children: [
       {
-        path: '/',
+        path: '',
         name: 'home',
         component: Home
       },
-      // {
-      //   path: 'about',
-      //   name: 'about',
-      //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-      // },
+      {
+        path: 'mode',
+        name: 'gamemode',
+        component: () => import(/* webpackChunkName: "about" */ '../views/mode/pages/Mode.vue')
+      },
     ]
   }
 ]

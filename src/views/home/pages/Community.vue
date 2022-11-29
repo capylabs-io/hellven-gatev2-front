@@ -1,7 +1,7 @@
 <template>
   <div class="community d-lfex flex-column item-center text-center">
     <div class="community-title">
-      <v-img :src="require(`@/assets/community/community-title.webp`)"></v-img>
+      <v-img :src="require(`@/assets/home/community/community-title.webp`)"></v-img>
     </div>
     <div class="pt-10 item-center kanit-font mx-auto text-break community-text">
       <p>
@@ -20,7 +20,7 @@
       <v-img
         class="align-seft-center ml-3 mr-4"
         max-width="60%"
-        :src="require(`@/assets/community/discord-btn-logo.webp`)"
+        :src="require(`@/assets/home/community/discord-btn-logo.webp`)"
       ></v-img>
     </v-btn>
 
@@ -28,22 +28,22 @@
     <div class="d-flex social-icon">
       <v-img
         class="align-seft-center community-image"
-        :src="require(`@/assets/community/facebook-icon.webp`)"
+        :src="require(`@/assets/home/community/facebook-icon.webp`)"
       ></v-img>
       <v-img
         class="align-seft-center community-image"
         max-width="20%"
-        :src="require(`@/assets/community/twitter-icon.webp`)"
+        :src="require(`@/assets/home/community/twitter-icon.webp`)"
       ></v-img>
       <v-img
         class="align-seft-center community-image"
         max-width="20%"
-        :src="require(`@/assets/community/discord-icon.webp`)"
+        :src="require(`@/assets/home/community/discord-icon.webp`)"
       ></v-img>
       <v-img
         class="align-seft-center community-image"
         max-width="20%"
-        :src="require(`@/assets/community/youtube-icon.webp`)"
+        :src="require(`@/assets/home/community/youtube-icon.webp`)"
       ></v-img>
     </div>
   </div>

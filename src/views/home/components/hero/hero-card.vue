@@ -1,7 +1,7 @@
 <template>
   <v-hover v-slot="{ hover }">
     <v-card :class="{ 'on-hover cursor-pointer': hover }">
-      <v-img :src="require(`@/assets/hero/hero${hero.index}.webp`)"></v-img>
+      <v-img :src="require(`@/assets/home/hero/hero${hero.index}.webp`)"></v-img>
     </v-card>
   </v-hover>
 </template>

@@ -4,7 +4,7 @@
     v-bind:style="{
       backgroundImage:
         'url(' +
-        require('@/assets/introduction/background-introduction.webp') +
+        require('@/assets/home/introduction/background-introduction.webp') +
         ')',
     }"
   >

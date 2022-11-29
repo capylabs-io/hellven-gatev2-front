@@ -22,7 +22,13 @@
                   mdi-chevron-down
                 </v-icon>
               </div>
-              <div class="text-none align-seft-center">HEROES</div>
+              <div class="text-none">
+                <span>GUIDE</span>
+                <v-icon class="pb-2 pl-2" small color="white">
+                  mdi-chevron-down
+                </v-icon>
+              </div>
+              <!-- <div class="text-none align-seft-center">HEROES</div> -->
               <!-- <router-link :to="`/${$i18n.locale}/about`" class="text-copy-primary hover:text-gray-600">About</router-link> -->
               <div class="text-none align-seft-center">
                 {{ $t("navbar.media") }}

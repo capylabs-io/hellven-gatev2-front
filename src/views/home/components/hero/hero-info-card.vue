@@ -32,19 +32,19 @@
       <div class="ability d-flex">
         <v-img
           class="align-seft-center"
-          :src="require(`@/assets/hero/hero-ability1.webp`)"
+          :src="require(`@/assets/home/hero/hero-ability1.webp`)"
         ></v-img>
       </div>
       <div class="ability d-flex">
         <v-img
           class="align-seft-center"
-          :src="require(`@/assets/hero/hero-ability2.webp`)"
+          :src="require(`@/assets/home/hero/hero-ability2.webp`)"
         ></v-img>
       </div>
       <div class="ability d-flex">
         <v-img
           class="align-seft-center"
-          :src="require(`@/assets/hero/hero-ability3.webp`)"
+          :src="require(`@/assets/home/hero/hero-ability3.webp`)"
         ></v-img>
       </div>
     </div>
@@ -81,14 +81,14 @@
         <v-col col="5">
           <v-img
             class="align-seft-center"
-            :src="require(`@/assets/hero/hero-health.webp`)"
+            :src="require(`@/assets/home/hero/hero-health.webp`)"
           ></v-img>
         </v-col>
 
         <v-col col="5">
           <v-img
             class="align-seft-center"
-            :src="require(`@/assets/hero/hero-speed.webp`)"
+            :src="require(`@/assets/home/hero/hero-speed.webp`)"
           ></v-img
         ></v-col>
       </v-row>
@@ -113,13 +113,13 @@
         <v-col col="5">
           <v-img
             class="align-seft-center"
-            :src="require(`@/assets/hero/hero-damage.webp`)"
+            :src="require(`@/assets/home/hero/hero-damage.webp`)"
           ></v-img
         ></v-col>
         <v-col col="5">
           <v-img
             class="align-seft-center"
-            :src="require(`@/assets/hero/hero-vision.webp`)"
+            :src="require(`@/assets/home/hero/hero-vision.webp`)"
           ></v-img
         ></v-col>
       </v-row>
@@ -144,13 +144,13 @@
         <v-col col="5">
           <v-img
             class="align-seft-center"
-            :src="require(`@/assets/hero/hero-move.webp`)"
+            :src="require(`@/assets/home/hero/hero-move.webp`)"
           ></v-img
         ></v-col>
         <v-col col="5">
           <v-img
             class="align-seft-center"
-            :src="require(`@/assets/hero/hero-mana.webp`)"
+            :src="require(`@/assets/home/hero/hero-mana.webp`)"
           ></v-img
         ></v-col>
       </v-row>
@@ -165,7 +165,7 @@
         <v-col col="12">
           <v-img
             class="mx-auto statistic-image"
-            :src="require(`@/assets/hero/hero-health.webp`)"
+            :src="require(`@/assets/home/hero/hero-health.webp`)"
           ></v-img>
         </v-col>
       </v-row>
@@ -178,7 +178,7 @@
         <v-col col="12">
           <v-img
             class="mx-auto statistic-image"
-            :src="require(`@/assets/hero/hero-damage.webp`)"
+            :src="require(`@/assets/home/hero/hero-damage.webp`)"
           ></v-img>
         </v-col>
       </v-row>
@@ -191,7 +191,7 @@
         <v-col col="12">
           <v-img
             class="mx-auto statistic-image"
-            :src="require(`@/assets/hero/hero-mana.webp`)"
+            :src="require(`@/assets/home/hero/hero-mana.webp`)"
           ></v-img>
         </v-col>
       </v-row>
@@ -204,7 +204,7 @@
         <v-col col="12">
           <v-img
             class="mx-auto statistic-image"
-            :src="require(`@/assets/hero/hero-vision.webp`)"
+            :src="require(`@/assets/home/hero/hero-vision.webp`)"
           ></v-img>
         </v-col>
       </v-row>
@@ -217,7 +217,7 @@
         <v-col col="12">
           <v-img
             class="mx-auto statistic-image"
-            :src="require(`@/assets/hero/hero-move.webp`)"
+            :src="require(`@/assets/home/hero/hero-move.webp`)"
           ></v-img>
         </v-col>
       </v-row>
@@ -230,7 +230,7 @@
         <v-col col="12">
           <v-img
             class="mx-auto statistic-image"
-            :src="require(`@/assets/hero/hero-speed.webp`)"
+            :src="require(`@/assets/home/hero/hero-speed.webp`)"
           ></v-img>
         </v-col>
       </v-row>
@@ -249,12 +249,6 @@ export default {};
   text-shadow: 0px 3px #323554;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: #323554;
-}
-.bungee-font {
-  font-family: Bungee, Helvetica, Arial;
-}
-.kanit-font {
-  font-family: Kanit, Helvetica, Arial;
 }
 .yellow-text {
   color: #fae31b;

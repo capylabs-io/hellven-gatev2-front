@@ -1,7 +1,7 @@
 <template>
   <div class="news d-lfex flex-column py-16">
     <div class="news-title">
-      <v-img :src="require(`@/assets/news/new-title.webp`)"></v-img>
+      <v-img :src="require(`@/assets/home/news/new-title.webp`)"></v-img>
     </div>
     <v-row class="pt-10 ma-auto px-5 max-content">
       <v-col cols="12" sm="6" lg="3">
@@ -19,7 +19,7 @@
           <v-img
             v-else
             class="mx-auto new-card-image"
-            :src="require(`@/assets/news/new1-image.webp`)"
+            :src="require(`@/assets/home/news/new1-image.webp`)"
             max-width="100%"
           />
           <div class="pl-4 pt-4 bungee-font gray-text">
@@ -52,7 +52,7 @@
           <v-img
             v-else
             class="mx-auto new-card-image"
-            :src="require(`@/assets/news/new2-image.webp`)"
+            :src="require(`@/assets/home/news/new2-image.webp`)"
             max-width="100%"
           />
           <div class="pl-4 pt-4 bungee-font gray-text">
@@ -85,7 +85,7 @@
           <v-img
             v-else
             class="mx-auto new-card-image"
-            :src="require(`@/assets/news/new3-image.webp`)"
+            :src="require(`@/assets/home/news/new3-image.webp`)"
             max-width="100%"
           />
           <div class="pl-4 pt-4 bungee-font gray-text">
@@ -118,7 +118,7 @@
           <v-img
             v-else
             class="mx-auto new-card-image"
-            :src="require(`@/assets/news/new1-image.webp`)"
+            :src="require(`@/assets/home/news/new1-image.webp`)"
             max-width="100%"
           />
           <div class="pl-4 pt-4 bungee-font gray-text">
@@ -152,7 +152,7 @@
         <v-img
           v-else
           class="mx-auto new-card-image"
-          :src="require(`@/assets/news/new1-image.webp`)"
+          :src="require(`@/assets/home/news/new1-image.webp`)"
           max-width="100%"
         />
         <div class="pl-4 pt-4 bungee-font gray-text">
@@ -184,7 +184,7 @@
         <v-img
           v-else
           class="mx-auto new-card-image"
-          :src="require(`@/assets/news/new2-image.webp`)"
+          :src="require(`@/assets/home/news/new2-image.webp`)"
           max-width="100%"
         />
         <div class="pl-4 pt-4 bungee-font gray-text">
@@ -216,7 +216,7 @@
         <v-img
           v-else
           class="mx-auto new-card-image"
-          :src="require(`@/assets/news/new3-image.webp`)"
+          :src="require(`@/assets/home/news/new3-image.webp`)"
           max-width="100%"
         />
         <div class="pl-4 pt-4 bungee-font gray-text">
@@ -247,7 +247,7 @@
         <v-img
           v-else
           class="mx-auto new-card-image"
-          :src="require(`@/assets/news/new4-image.webp`)"
+          :src="require(`@/assets/home/news/new4-image.webp`)"
           max-width="100%"
         />
         <div class="pl-4 pt-4 bungee-font gray-text">

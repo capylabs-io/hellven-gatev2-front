@@ -1,7 +1,7 @@
 <template>
   <div class="media d-lfex flex-column">
     <div class="media-title">
-      <v-img :src="require(`@/assets/media/media-title.webp`)"></v-img>
+      <v-img :src="require(`@/assets/home/media/media-title.webp`)"></v-img>
     </div>
     <div class="media-content pt-15 item-center px-15">
       <div class="media-image-responsive item-center">
@@ -22,7 +22,7 @@
         <div class="slider">
           <v-img
             class="align-seft-center"
-            :src="require(`@/assets/media/slide-left.webp`)"
+            :src="require(`@/assets/home/media/slide-left.webp`)"
           ></v-img>
         </div>
         <div class="media-image item-center">
@@ -35,7 +35,7 @@
         <div class="slider">
           <v-img
             class="align-seft-center"
-            :src="require(`@/assets/media/slide-right.webp`)"
+            :src="require(`@/assets/home/media/slide-right.webp`)"
           ></v-img>
         </div>
       </div>
@@ -56,81 +56,81 @@ export default {
       medias: [
         {
           index: "1",
-          image: "@/assets/media/Media1.webp",
+          image: "@/assets/home/media/Media1.webp",
         },
         {
           index: "2",
-          image: `@/assets/media/Media2.webp`,
+          image: `@/assets/home/media/Media2.webp`,
         },
         {
           index: "3",
-          image: `@/assets/media/Media3.webp`,
+          image: `@/assets/home/media/Media3.webp`,
         },
         {
           index: "4",
-          image: `@/assets/media/Media4.webp`,
+          image: `@/assets/home/media/Media4.webp`,
         },
         {
           index: "5",
-          image: `@/assets/media/Media5.webp`,
+          image: `@/assets/home/media/Media5.webp`,
         },
         {
           index: "6",
-          image: `@/assets/media/Media6.webp`,
+          image: `@/assets/home/media/Media6.webp`,
         },
         {
           index: "7",
-          image: `@/assets/media/Media7.webp`,
+          image: `@/assets/home/media/Media7.webp`,
         },
         {
           index: "8",
-          image: `@/assets/media/Media8.webp`,
+          image: `@/assets/home/media/Media8.webp`,
         },
         {
           index: "9",
-          image: `@/assets/media/Media9.webp`,
+          image: `@/assets/home/media/Media9.webp`,
         },
         {
           index: "10",
-          image: `@/assets/media/Media10.webp`,
+          image: `@/assets/home/media/Media10.webp`,
         },
       ],
       medias2: [
         {
           index: "1",
-          image: "@/assets/media/Media1.webp",
+          image: "@/assets/home/media/Media1.webp",
         },
         {
           index: "2",
-          image: `@/assets/media/Media2.webp`,
+          image: `@/assets/home/media/Media2.webp`,
         },
         {
           index: "3",
-          image: `@/assets/media/Media3.webp`,
+          image: `@/assets/home/media/Media3.webp`,
         },
         {
           index: "4",
-          image: `@/assets/media/Media5.webp`,
+          image: `@/assets/home/media/Media5.webp`,
         },
         {
           index: "5",
-          image: `@/assets/media/Media6.webp`,
+          image: `@/assets/home/media/Media6.webp`,
         },
         {
           index: "6",
-          image: `@/assets/media/Media7.webp`,
+          image: `@/assets/home/media/Media7.webp`,
         },
         {
           index: "7",
-          image: `@/assets/media/Media8.webp`,
+          image: `@/assets/home/media/Media8.webp`,
         },
         {
           index: "8",
-          image: `@/assets/media/Media9.webp`,
+          image: `@/assets/home/media/Media9.webp`,
         },
         {
           index: "9",
-          image: `@/assets/media/Media10.webp`,
+          image: `@/assets/home/media/Media10.webp`,
         },
       ],
     };
