@@ -1,8 +1,9 @@
 <template>
   <div class="hero d-lfex flex-column">
-    <div class="hero-title">
-      <v-img :src="require(`@/assets/home/hero/hero-title.webp`)"></v-img>
+    <div class="hero-title white--text bungee-font">
+      <span>FIGHTERS</span>
     </div>
+    <!-- <v-img :src="require(`@/assets/home/hero/hero-title.webp`)"></v-img> -->
     <div class="flex-reverse">
       <div class="hero-info item-center">
         <div class="hero-info-left">
@@ -58,11 +59,17 @@
           </button>
         </div>
         <div class="hero-card-list">
-          <card
-            v-for="hero in heros"
-            :key="hero.index"
-            v-bind:hero="hero"
-          ></card>
+          <card v-for="(hero, index) in heros" :key="hero.index">
+            <v-img
+              :class="visibleImage == index ? 'indicators' : ''"
+              :src="require(`@/assets/home/hero/hero${hero.index}.webp`)"
+            ></v-img>
+          </card>
+          <!-- <card v-for="hero in heros" :key="hero.index" v-bind:hero="hero">
+            <v-img
+              :src="require(`@/assets/home/hero/hero${hero.index}.webp`)"
+            ></v-img
+          ></card> -->
         </div>
         <div class="hero-card-list-responsive">
           <card
@@ -195,7 +202,7 @@ export default {
   mounted() {
     this.imageInterval = setInterval(() => {
       const index =
-        this.visibleImage <= this.heroImages.length - 1
+        this.visibleImage < this.heroImages.length - 1
           ? this.visibleImage + 1
           : 0;
       this.setvisibleImage(index);
@@ -265,8 +272,13 @@ export default {
 }
 
 .hero-title {
-  max-width: 6%;
+  width: max-content;
   margin: 0 auto;
+  background-color: black;
+  font-size: x-large;
+  padding: 12px;
+  transform: skew(-5deg, 0deg);
+  box-shadow: 8px 7px 0px -2px rgba(0, 0, 0, 0.2);
 }
 .text-center {
   text-align: center;
@@ -299,8 +311,11 @@ export default {
   opacity: 0;
   transition: 2s all ease;
 }
-.reveal.active {
+.reveal .active {
   transform: translateY(0);
   opacity: 1;
+}
+.indicators {
+  border: 3px solid white !important;
 }
 </style>

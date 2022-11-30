@@ -17,7 +17,7 @@ function loadLocaleMessages() {
 }
 
 export default new VueI18n({
-  locale: 'vn',
-  fallbackLocale: 'vn',
+  locale: 'en',
+  fallbackLocale: 'en',
   messages: loadLocaleMessages()
 })

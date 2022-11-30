@@ -98,7 +98,8 @@ export default {
 
 hr {
   width: 98%;
-  border: 1px solid #6c6c6c;
+  border: 1px solid white;
+  opacity: 0.3;
 }
 .logo-nav {
   display: flex;

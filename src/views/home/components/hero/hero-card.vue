@@ -1,14 +1,20 @@
 <template>
-  <v-hover v-slot="{ hover }">
+  <v-card>
+    <slot></slot>
+  </v-card>
+  <!-- <v-hover v-slot="{ hover }">
     <v-card :class="{ 'on-hover cursor-pointer': hover }">
-      <v-img :src="require(`@/assets/home/hero/hero${hero.index}.webp`)"></v-img>
+     <slot></slot>
     </v-card>
-  </v-hover>
+  </v-hover> -->
 </template>
 
 <script>
 export default {
   props: ["hero"],
+  data() {
+    return {};
+  },
 };
 </script>
 <style scoped>

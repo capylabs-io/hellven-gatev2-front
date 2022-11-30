@@ -1,8 +1,12 @@
 <template>
   <div class="community d-lfex flex-column item-center text-center">
-    <div class="community-title">
-      <v-img :src="require(`@/assets/home/community/community-title.webp`)"></v-img>
+    <div class="community-title bungee-font white--text">
+      <span>JOIN THE COMMUNITY</span>
     </div>
+    <!-- <v-img
+      :src="require(`@/assets/home/community/community-title.webp`)"
+    ></v-img> -->
+
     <div class="pt-10 item-center kanit-font mx-auto text-break community-text">
       <p>
         {{ $t("community.text") }}
@@ -23,7 +27,6 @@
         :src="require(`@/assets/home/community/discord-btn-logo.webp`)"
       ></v-img>
     </v-btn>
-
 
     <div class="d-flex social-icon">
       <v-img
@@ -70,7 +73,13 @@ export default {
 }
 .community-title {
   max-width: 16%;
+  font-size: larger;
   margin: 0 auto;
+  background-color: black;
+  width: max-content;
+  padding: 15px;
+  transform: skew(-5deg, 0deg);
+  box-shadow: 8px 7px 0px -2px rgba(0, 0, 0, 0.2);
 }
 .community-image {
   max-width: 20%;

@@ -1,7 +1,7 @@
 <template>
   <div class="mode d-lfex flex-column">
-    <div class="mode-title">
-      <v-img :src="require(`@/assets/home/mode/mode-title.webp`)"></v-img>
+    <div class="mode-title white--text bungee-font">
+      <span>MODE</span>
     </div>
     <div class="pt-10 d-flex item-center mode-list">
       <v-card class="mode-card pt-5" white>
@@ -87,8 +87,14 @@ export default {
   max-width: 22%;
 }
 .mode-title {
-  max-width: 6%;
+  width: max-content;
   margin: 0 auto;
+  background-color: black;
+  font-size: x-large;
+  padding: 12px;
+
+  transform: skew(-5deg, 0deg);
+  box-shadow: 8px 7px 0px -2px rgba(0, 0, 0, 0.2);
 }
 .mode-list {
   column-gap: 2%;

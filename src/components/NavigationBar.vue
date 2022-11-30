@@ -39,12 +39,12 @@
             </div>
           </div>
         </v-col>
-        <LanguageSwitch class="nav-lang-responsive"></LanguageSwitch>
+        <!-- <LanguageSwitch class="nav-lang-responsive"></LanguageSwitch> -->
         <v-col col="3">
           <div class="nav-right">
-            <div>
+            <!-- <div>
               <LanguageSwitch></LanguageSwitch>
-            </div>
+            </div> -->
             <div class="align-center">
               <v-btn color="darkgrey" class="white--text btn-customize gap-20">
                 <span>{{ $t("navbar.btnlogin") }}</span>
@@ -118,13 +118,13 @@
 </template>
 
 <script>
-import LanguageSwitch from "@/views/home/components/nav-bar/LanguageSwitch.vue";
+// import LanguageSwitch from "@/views/home/components/nav-bar/LanguageSwitch.vue";
 
 export default {
   openLink(url) {
     window.open(url, "_blank");
   },
-  components: { LanguageSwitch },
+  // components: { LanguageSwitch },
   data: () => ({
     drawer: false,
     group: null,

@@ -1,7 +1,7 @@
 <template>
   <div class="media d-lfex flex-column">
-    <div class="media-title">
-      <v-img :src="require(`@/assets/home/media/media-title.webp`)"></v-img>
+    <div class="media-title white--text bungee-font">
+      <span>MEDIA</span>
     </div>
     <div class="media-content pt-15 item-center px-15">
       <div class="media-image-responsive item-center">
@@ -146,8 +146,14 @@ export default {
   background: linear-gradient(180deg, #4da9ff 0.52%, #0072dd 100%);
 }
 .media-title {
-  max-width: 6%;
+  width: max-content;
   margin: 0 auto;
+  background-color: black;
+  font-size: x-large;
+  padding: 12px;
+
+  transform: skew(-5deg, 0deg);
+  box-shadow: 8px 7px 0px -2px rgba(0, 0, 0, 0.2);
 }
 .text-center {
   text-align: center;

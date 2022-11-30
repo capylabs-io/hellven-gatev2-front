@@ -1,7 +1,7 @@
 <template>
   <div class="news d-lfex flex-column py-16">
-    <div class="news-title">
-      <v-img :src="require(`@/assets/home/news/new-title.webp`)"></v-img>
+    <div class="news-title white--text bungee-font">
+      <span>NEWS</span>
     </div>
     <v-row class="pt-10 ma-auto px-5 max-content">
       <v-col cols="12" sm="6" lg="3">
@@ -319,8 +319,14 @@ export default {
   display: flex;
 }
 .news-title {
-  max-width: 6%;
+  width: max-content;
   margin: 0 auto;
+  background-color: black;
+  font-size: x-large;
+  padding: 12px;
+
+  transform: skew(-5deg, 0deg);
+  box-shadow: 8px 7px 0px -2px rgba(0, 0, 0, 0.2);
 }
 
 .text-center {
