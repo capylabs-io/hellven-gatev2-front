@@ -38,7 +38,6 @@ export default {
         fullPath = window.location.href;
       }
       var absolutePath = fullPath.substr(fullPath.lastIndexOf("/") + 1);
-      console.log(fullPath);
       if (moduleNotUseTemplate.includes(absolutePath)) {
         this.isDisplayTemplate = false;
       }

@@ -61,19 +61,19 @@
   },
   "signin": {
     "signin": "Đăng nhập",
+    "ID": "Email hoặc số điện thoại",
     "username": "Tên đăng nhập",
     "password": "Mật khẩu",
     "remember-me": "Ghi nhớ tài khoản",
     "forget-password": "Quên mật khẩu",
     "create-new-account": "Tạo tài khoản mới",
     "forget-password-des": "Nhập tên tài khoản bạn muốn đăng nhập.",
-    "sign-up-with-mail":"Đăng ký bằng email",
-    "sign-up-with-phone":"Đăng ký bằng số điện thoại",
+    "sign-up":"Đăng ký",
     "email":"Email",
     "phone":"Số điện thoại",
     "confirm-password":"Nhập lại mật khẩu",
     "date-of-birth":"Ngày sinh",
     "accept-term-service" :"Chấp nhận điều khoản",
-    "instead":""
+    "contact-support" : "Liên lạc bộ phận hỗ trợ"
   }
 }
