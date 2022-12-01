@@ -1,10 +1,10 @@
 <template>
   <div class="main-content">
     <div class="content d-flex flex-column">
-      <div class="tower-title white--text bungee-font mx-auto mt-10">
-        <span>Towers</span>
+      <div class="rune-title white--text bungee-font mx-auto mt-10">
+        <span>RUNES</span>
       </div>
-      <div class="tower-text bungee-font d-flex mx-auto">
+      <div class="rune-text bungee-font d-flex mx-auto">
         <div class="text-none align-seft-center">
           <span
             >Boosters are combat enhancement that only appear in-game When
@@ -14,79 +14,41 @@
         </div>
       </div>
       <div
-        class="tower-content d-flex gap-100 justify-center"
+        class="rune-content d-flex gap-50 justify-center"
         v-bind:style="{
           backgroundImage:
             'url(' + require('@/assets/mode/modeBackground.webp') + ')',
         }"
       >
         <div class="info-card">
-          <towerInfo />
+          <runeInfo />
         </div>
         <div class="image">
-          <v-img :src="require(`@/assets/tower/tower-image.webp`)"></v-img>
+          <v-img :src="require(`@/assets/rune/rune-image.webp`)"></v-img>
         </div>
       </div>
-      <div class="tower-card-list">
-        <towerCard v-for="(card, index) in towerList" :key="index">
-          <v-img :src="card" class="tower-card mx-auto"></v-img>
-        </towerCard>
+      <div class="rune-card-list">
+        <runeCard v-for="(card, index) in towerList" :key="index">
+          <v-img :src="card" class="rune-card mx-auto"></v-img>
+        </runeCard>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import towerInfo from "../components/Tower-info.vue";
-import TowerCard from "../components/Tower-card.vue";
+import runeInfo from "../components/Rune-info.vue";
+import runeCard from "../components/Rune-card.vue";
 export default {
   setup() {
     return {};
   },
   components: {
-    towerInfo: towerInfo,
-    towerCard: TowerCard,
+    runeInfo: runeInfo,
+    runeCard: runeCard,
   },
   data() {
     return {
-      fighterCard: [
-        {
-          index: "1",
-          image: "@/assets/home/hero/Hero1.webp",
-        },
-        {
-          index: "2",
-          image: "@/assets/home/hero/Hero2.webp",
-        },
-        {
-          index: "3",
-          image: "@/assets/home/hero/Hero3.webp",
-        },
-        {
-          index: "4",
-          image: "@/assets/home/hero/Hero4.webp",
-        },
-        {
-          index: "5",
-          image: "@/assets/home/hero/Hero5.webp",
-        },
-        {
-          index: "6",
-          image: "@/assets/home/hero/Hero6.webp",
-        },
-        {
-          index: "7",
-          image: "@/assets/home/hero/Hero7.webp",
-        },
-        {
-          index: "8",
-          image: "@/assets/home/hero/Hero8.webp",
-        },
-        {
-          index: "9",
-          image: "@/assets/home/hero/Hero9.webp",
-        },
-      ],
       towerList: [
         require(`@/assets/tower/tower1.webp`),
         require(`@/assets/tower/tower2.webp`),
@@ -111,14 +73,16 @@ export default {
   height: 720px;
   row-gap: 50px;
 }
-.tower-content {
+.rune-content {
   width: 100%;
   height: 380px;
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
-.tower-title {
+.rune-title {
   width: max-content;
   margin: 0 auto;
   background-color: black;
@@ -127,7 +91,7 @@ export default {
   transform: skew(-5deg, 0deg);
   box-shadow: 8px 7px 0px -2px rgba(0, 0, 0, 0.2);
 }
-.tower-text {
+.rune-text {
   width: 50%;
   text-align: center;
   font-size: larger;
@@ -141,23 +105,23 @@ export default {
 .box {
   padding: 10px;
 }
-.gap-100 {
-  column-gap: 100px;
+.gap-50 {
+  column-gap: 200px;
 }
 .info-card {
   width: 35%;
   align-self: center;
 }
-.tower-card-list {
+.rune-card-list {
   width: 52%;
   column-gap: 1%;
   display: flex;
-  margin-left: 20%;
+  margin-left: 21%;
 }
 .image {
-  padding-top: 25px;
+  align-self: center;
 }
-.tower-card {
+.rune-card {
   align-self: center;
   width: calc(46px * 1.1);
   height: calc(64px * 1.1);

@@ -13,7 +13,7 @@ const routes = [
   {
     path: '/:lang',
     component: {
-      render (c) { return c('router-view') }
+      render(c) { return c('router-view') }
     },
     children: [
       {
@@ -34,7 +34,12 @@ const routes = [
       {
         path: 'tower',
         name: 'tower',
-        component: () => import(/* webpackChunkName: "about" */ '../views/fighters/pages/Fighters.vue')
+        component: () => import(/* webpackChunkName: "about" */ '../views/tower/pages/Tower.vue')
+      },
+      {
+        path: 'rune',
+        name: 'rune',
+        component: () => import(/* webpackChunkName: "about" */ '../views/rune/pages/Rune.vue')
       },
     ]
   }

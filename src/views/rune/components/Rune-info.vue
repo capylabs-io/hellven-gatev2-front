@@ -1,9 +1,9 @@
 <template>
-  <v-card class="tower-info">
+  <v-card class="rune-info">
     <div class="info-content p-12">
       <div class="info-top">
         <v-card-title class="bungee-font" style="font-size: 23px"
-          >Basic tower</v-card-title
+          >HEALTH RUNE</v-card-title
         >
         <v-card-title class="d-flex gap-10">
           <v-img
@@ -38,9 +38,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.tower-info {
-  width: 500px;
-  height: 260px;
+.rune-info {
+  width: 600px;
+  height: 233px;
   border-radius: 16px;
   position: relative;
   height: max-content;
