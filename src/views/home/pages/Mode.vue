@@ -92,7 +92,6 @@ export default {
   background-color: black;
   font-size: x-large;
   padding: 12px;
-
   transform: skew(-5deg, 0deg);
   box-shadow: 8px 7px 0px -2px rgba(0, 0, 0, 0.2);
 }

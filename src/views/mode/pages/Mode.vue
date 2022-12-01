@@ -7,8 +7,8 @@
     }"
   >
     <div class="content d-flex flex-column">
-      <div class="mode-title pt-10 mx-auto">
-        <v-img :src="require(`@/assets/mode/modeTitle.webp`)"></v-img>
+      <div class="mode-title white--text bungee-font mx-auto mt-10">
+        <span>MODES</span>
       </div>
       <div class="mode-link bungee-font d-flex mx-auto white--text">
         <div class="box text-none align-seft-center active">Mode 1</div>
@@ -55,6 +55,36 @@ export default {
     modeImage: modeImage,
     modeInfo: modeInfo,
   },
+  data() {
+    return {
+      modes: [
+        {
+          mode: "mode 1",
+          name: "Ruffs",
+          detail:
+            "He may bark orders at his subordinates, but Colonel Ruffs is a very good boy! Possessing a serious and calm demeanor, Ruffs keeps his dog traits hidden, unless there's a game of fetch going on.",
+        },
+        {
+          mode: "mode 2",
+          name: "Ruffs",
+          detail:
+            "He may bark orders at his subordinates, but Colonel Ruffs is a very good boy! Possessing a serious and calm demeanor, Ruffs keeps his dog traits hidden, unless there's a game of fetch going on.",
+        },
+        {
+          mode: "mode 3",
+          name: "Ruffs",
+          detail:
+            "He may bark orders at his subordinates, but Colonel Ruffs is a very good boy! Possessing a serious and calm demeanor, Ruffs keeps his dog traits hidden, unless there's a game of fetch going on.",
+        },
+        {
+          mode: "mode 4",
+          name: "Ruffs",
+          detail:
+            "He may bark orders at his subordinates, but Colonel Ruffs is a very good boy! Possessing a serious and calm demeanor, Ruffs keeps his dog traits hidden, unless there's a game of fetch going on.",
+        },
+      ],
+    };
+  },
 };
 </script>
 
@@ -64,6 +94,7 @@ export default {
   height: 100%;
   background-size: 100%;
   background-repeat: no-repeat;
+  background-position: center;
 }
 .content {
   position: relative;
@@ -96,5 +127,15 @@ export default {
 }
 .image {
   align-self: center;
+}
+
+.mode-title {
+  width: max-content;
+  margin: 0 auto;
+  background-color: black;
+  font-size: x-large;
+  padding: 12px;
+  transform: skew(-5deg, 0deg);
+  box-shadow: 8px 7px 0px -2px rgba(0, 0, 0, 0.2);
 }
 </style>

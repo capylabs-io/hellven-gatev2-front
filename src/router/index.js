@@ -26,6 +26,16 @@ const routes = [
         name: 'gamemode',
         component: () => import(/* webpackChunkName: "about" */ '../views/mode/pages/Mode.vue')
       },
+      {
+        path: 'fighters',
+        name: 'fighters',
+        component: () => import(/* webpackChunkName: "about" */ '../views/fighters/pages/Fighters.vue')
+      },
+      {
+        path: 'tower',
+        name: 'tower',
+        component: () => import(/* webpackChunkName: "about" */ '../views/fighters/pages/Fighters.vue')
+      },
     ]
   }
 ]

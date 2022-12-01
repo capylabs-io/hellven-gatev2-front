@@ -5,15 +5,15 @@
     </v-card>
   </v-hover>
   <!-- <v-hover v-slot="{ hover }">
-    <v-card :class="{ 'on-hover cursor-pointer': hover }">
-     <slot></slot>
-    </v-card>
-  </v-hover> -->
+      <v-card :class="{ 'on-hover cursor-pointer': hover }">
+       <slot></slot>
+      </v-card>
+    </v-hover> -->
 </template>
 
 <script>
 export default {
-  props: ["hero"],
+  props: ["fighter"],
   data() {
     return {};
   },
@@ -21,15 +21,15 @@ export default {
 </script>
 <style scoped>
 .v-card {
-  width: 16%;
+  width: 14%;
   height: max-content;
   border-radius: 10px;
   background-color: black;
 }
 .active {
-  border: 3px solid white !important;
+  border: 5px solid #5e6be9 !important;
 }
 .on-hover {
-  border: 3px solid white !important;
+  border: 5px solid #5e6be9 !important;
 }
 </style>
