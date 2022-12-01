@@ -58,5 +58,22 @@
     "text": "We have several friendly communities where people discuss about everything related to Fighter Club. Come and join in the conversation with the developers team as we can discuss features together and learn from the feedback we get!",
     "btndiscordtext1": "Join Our",
     "btndiscordtext2": "Server On"
+  },
+  "signin": {
+    "ID": "Your email or phone number",
+    "signin": "Sign in",
+    "username" : "Username",
+    "password": "Password",
+    "remember-me":"Remember me",
+    "forget-password": "Forget password",
+    "create-new-account": "Create new account",
+    "forget-password-des":"Enter your username that you use to sign in with.",
+    "sign-up":"Sign up",
+    "email":"Email",
+    "phone":"Phone Number",
+    "confirm-password":"Confirm Password",
+    "date-of-birth":"Date of birth",
+    "accept-term-service" :"Accept Term and Services",
+    "contact-support" : "Contact  Player Support"
   }
 }

@@ -1,25 +1,48 @@
 <template>
   <v-app>
-    <app-navbar></app-navbar>
+    <app-navbar v-if="isDisplayTemplate"></app-navbar>
     <v-main>
-      <router-view />
+      <router-view :key="$route.fullPath" />
     </v-main>
-    <app-footer></app-footer>
+    <app-footer v-if="isDisplayTemplate"></app-footer>
   </v-app>
 </template>
 
 <script>
 import Footer from "../src/components/Footer.vue";
 import NavigationBar from "../src/components/NavigationBar.vue";
+const moduleNotUseTemplate = ['sign-in','forget-password','sign-up'];
 export default {
   name: "App",
   components: {
     "app-navbar": NavigationBar,
     "app-footer": Footer,
   },
-  data: () => ({
-    //
-  }),
+  data() {
+    return {
+      isDisplayTemplate: true,
+    };
+  },
+  created() {
+    this.setDisplayTemplate();
+  },
+  updated() {
+    this.setDisplayTemplate();
+  },
+  methods: {
+    setDisplayTemplate() {
+      var fullPath;
+      if (this.$router.fullPath) {
+        fullPath = this.$router.fullPath;
+      } else {
+        fullPath = window.location.href;
+      }
+      var absolutePath = fullPath.substr(fullPath.lastIndexOf("/") + 1);
+      if (moduleNotUseTemplate.includes(absolutePath)) {
+        this.isDisplayTemplate = false;
+      }
+    },
+  },
 };
 </script>
 <style>
@@ -32,11 +55,14 @@ export default {
   font-family: "Kanit";
   src: local("Kanit"), url(./fonts/Kanit/Kanit-Regular.ttf) format("truetype");
 }
+body {
+  font-family: Kanit, Helvetica, Arial;
+}
 .bungee-font {
-  font-family: Bungee, Helvetica, Arial;
+  font-family: Bungee, Helvetica, Arial !important;
 }
 .kanit-font {
-  font-family: Kanit, Helvetica, Arial;
+  font-family: Kanit, Helvetica, Arial !important;
 }
 @media screen and (min-width: 1264px) and (max-width: 1500px) {
   /* ------------------- home-hero --------------*/
@@ -621,7 +647,7 @@ export default {
   }
 
   .community-btn {
-    width: 78% !important; 
+    width: 78% !important;
   }
 }
 @media screen and (max-width: 399px) {
@@ -629,9 +655,9 @@ export default {
     width: 60% !important;
     height: 60px !important;
   }
-  
+
   .community-btn {
-    width: 90% !important; 
+    width: 90% !important;
   }
   .mode-card-image {
     max-width: 26% !important;
@@ -654,5 +680,61 @@ export default {
   .community-title {
     max-width: 27% !important;
   }
+}
+//Typography
+//Font-size
+.text-xxs {
+  font-size: 10px !important;
+  line-height: 12px !important;
+}
+.text-xs {
+  font-size: 12px !important;
+  line-height: 18px !important;
+}
+.text-sm {
+  font-size: 14px !important;
+  line-height: 20px !important;
+}
+.text-md {
+  font-size: 16px !important;
+  line-height: 24px !important;
+}
+.text-lg {
+  font-size: 18px !important;
+  line-height: 28px !important;
+}
+.text-xl {
+  font-size: 20px !important;
+  line-height: 30px !important;
+}
+.text-dp-xs {
+  font-size: 24px !important;
+  line-height: 32px !important;
+}
+.text-dp-sm {
+  font-size: 28px !important;
+  line-height: 36px !important;
+}
+.text-dp-md {
+  font-size: 36px !important;
+  line-height: 44px !important;
+}
+.text-dp-lg {
+  font-size: 48px !important;
+  line-height: 60px !important;
+}
+.text-dp-xl {
+  font-size: 60px !important;
+  line-height: 72px !important;
+}
+.text-dp-xxl {
+  font-size: 72px !important;
+  line-height: 90px !important;
+}
+
+.dialog-title {
+  font-size: 20px !important;
+  line-height: 30px !important;
+  font-family: "Overpass" !important;
 }
 </style>

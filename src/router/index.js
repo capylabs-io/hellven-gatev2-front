@@ -24,13 +24,29 @@ const routes = [
       // {
       //   path: 'about',
       //   name: 'about',
-      //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
       // },
+      {
+        path: 'sign-in',
+        name: 'Signin',
+        component: () => import('../views/user/pages/Sign-in.vue')
+      },
+      {
+        path: 'forget-password',
+        name: 'ForgetPassword',
+        component: () => import('../views/user/pages/Forget-password.vue')
+      },
+      {
+        path: 'sign-up',
+        name: 'Signup',
+        component: () => import('../views/user/pages/Sign-up.vue')
+      },
     ]
   }
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 
