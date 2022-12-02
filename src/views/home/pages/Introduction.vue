@@ -16,7 +16,7 @@
     </div>
     <div
       v-scrollanimation
-      class="text-center text-capitalize mx-auto white--text text-shadow text-center introduction-title bungee-font"
+      class="text-capitalize mx-auto white--text text-shadow text-center introduction-title bungee-font"
     >
       <p class="text-break mx-auto">
         {{ $t("introduction.title") }}

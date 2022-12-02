@@ -46,6 +46,11 @@ const routes = [
         name: 'booster',
         component: () => import(/* webpackChunkName: "about" */ '../views/booster/pages/Booster.vue')
       },
+      {
+        path: 'comingsoon',
+        name: 'comingsoon',
+        component: () => import(/* webpackChunkName: "about" */ '../views/ComingSoon.vue')
+      },
     ]
   }
 ]

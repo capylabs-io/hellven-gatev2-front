@@ -14,7 +14,8 @@
             <v-img
               class="nav-image"
               :src="require(`@/assets/game-logo-v2.webp`)"
-            ></v-img>
+              @click="gotoRouter('home')"
+            />
             <div class="nav-link">
               <div class="text-none">
                 <span>GAME</span>
@@ -52,12 +53,16 @@
             </div>
 
             <div class="d-flex align-center">
-              <v-btn color="violet" class="white--text btn-customize">
+              <v-btn
+                color="violet"
+                class="white--text btn-customize"
+                @click="gotoRouter('comingsoon')"
+              >
                 <!-- <v-img
-                  class="align-seft-center mr-2"
+                    class="align-seft-center mr-2"
                   max-width="18px"
                   :src="require(`@/assets/nav/discord-icon.webp`)"
-                ></v-img> -->
+                  ></v-img> -->
                 <span>{{ $t("navbar.btnplay") }}</span>
               </v-btn>
             </div>
@@ -119,7 +124,7 @@
 
 <script>
 // import LanguageSwitch from "@/views/home/components/nav-bar/LanguageSwitch.vue";
-
+import i18n from "@/i18n";
 export default {
   openLink(url) {
     window.open(url, "_blank");
@@ -129,7 +134,17 @@ export default {
     drawer: false,
     group: null,
   }),
-
+  methods: {
+    openLink(url) {
+      window.open(url, "_blank");
+    },
+    gotoRouter(url) {
+      this.$router.push({
+        params: { lang: i18n.locale },
+        name: url,
+      });
+    },
+  },
   watch: {
     group() {
       this.drawer = false;

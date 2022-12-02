@@ -115,13 +115,13 @@ export default {
   width: 100%;
   height: 100%;
   padding-bottom: 160px;
+  background-color: #f8f8f8;
 }
 .content {
   position: relative;
   width: 100%;
   height: max-content;
   row-gap: 50px;
-  background-color: #f8f8f8;
 }
 .booster-content {
   width: 100%;
