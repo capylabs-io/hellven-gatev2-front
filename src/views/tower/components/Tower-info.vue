@@ -40,7 +40,7 @@ export default {
 <style lang="scss" scoped>
 .tower-info {
   width: 500px;
-  height: 260px;
+  height: 233px;
   border-radius: 16px;
   position: relative;
   height: max-content;

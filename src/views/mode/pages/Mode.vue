@@ -11,10 +11,11 @@
         <span>MODES</span>
       </div>
       <div class="mode-link bungee-font d-flex mx-auto white--text">
-        <div class="box text-none align-seft-center active">Mode 1</div>
-        <div class="box text-none align-seft-center">Mode 2</div>
-        <div class="box text-none align-seft-center">Mode 3</div>
-        <div class="box text-none align-seft-center">Mode 4</div>
+        <div class="box text-none align-seft-center active">Casual</div>
+        <div class="box text-none align-seft-center">Campaign</div>
+        <div class="box text-none align-seft-center">Ranking</div>
+        <div class="box text-none align-seft-center">Survival</div>
+        <div class="box text-none align-seft-center">City Defend</div>
       </div>
       <div class="mode-content d-flex gap-50 justify-center">
         <div class="slider">
@@ -106,6 +107,9 @@ export default {
 }
 .mode-link {
   column-gap: 10px;
+  background-color: black;
+  padding: 10px;
+  border-radius: 15px;
 }
 .active {
   border-radius: 15px;

@@ -4,7 +4,7 @@
       <div class="fighter-title white--text bungee-font mx-auto mt-10">
         <span>FIGHTERS</span>
       </div>
-      <div class="fighter-link bungee-font d-flex mx-auto">
+      <div class="fighter-link white--text bungee-font d-flex mx-auto">
         <div class="box text-none align-seft-center active">vanguard</div>
         <div class="box text-none align-seft-center">titan soul</div>
         <div class="box text-none align-seft-center">lightforce</div>
@@ -137,6 +137,9 @@ export default {
 }
 .fighter-link {
   column-gap: 30px;
+  background-color: black;
+  padding: 10px;
+  border-radius: 15px;
 }
 .active {
   border-radius: 15px;
