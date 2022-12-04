@@ -3,18 +3,12 @@
     <div class="sign-in-content d-flex">
       <div class="sign-in-form ma-auto pa-12">
         <div class="text-dp-xs bungee-font text-center">
-          {{ $t("signin.forget-password") }}
+          {{ $t("signin.reset-password") }}
         </div>
         <div class="text-lg text-center">
-          {{ $t("signin.forget-password-des") }}
+          {{ $t("signin.reset-password-des") }}
         </div>
-        <div
-          class="pa-3 lightcyan border-radius-12 my-4"
-          v-if="userStore.isSuccess"
-        >
-          {{ $t("signin.forget-password-done")
-          }}<a>{{ $t("signin.forget-password-contact") }}</a>
-        </div>
+        <div class="text-xl mt-4">{{ $t("signin.new-password") }}</div>
         <v-alert
           class="deeporange--text mt-4"
           dense
@@ -24,30 +18,28 @@
         >
           {{ userStore.errorMessage }}
         </v-alert>
-        <div class="text-xl mt-4">{{ $t("signin.ID") }}</div>
         <v-text-field
-          v-model="userStore.userData.email"
+          v-model="userStore.resetPasswordData.password"
           solo
           background-color="cream"
           hide-details="true"
           full-width
-          :disabled="userStore.isSuccess"
+          class="mt-2"
+        ></v-text-field>
+        <div class="text-xl mt-4">{{ $t("signin.new-password-confirm") }}</div>
+        <v-text-field
+          v-model="userStore.resetPasswordData.passwordConfirmation"
+          solo
+          background-color="cream"
+          hide-details="true"
+          full-width
           class="mt-2"
         ></v-text-field>
         <div class="text-center pt-4">
-          <v-btn
-            x-small
-            color="#5E6BE9"
-            class="py-7 px-3 btn-submit"
-            :disabled="userStore.isSuccess || userStore.userData.email === ''"
-            @click="userStore.forgetPassword()"
+          <v-btn class="py-7 px-3 btn-submit" color="#5E6BE9" @click="userStore.resetPassword()"
             ><ArrowRight
-          /></v-btn>
-        </div>
-        <div class="text-center pt-4">
-          <v-btn text class="text-capitalize text-md">{{
-            $t("signin.contact-support")
-          }}</v-btn>
+          /></v-btn
+          >
         </div>
       </div>
     </div>
@@ -58,14 +50,26 @@ import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
 import ArrowRight from "@/components/svg/arrow-right.vue";
 export default {
-  name: "ForgetPassword",
+  name: "ResetPassword",
+  props: ["code"],
   data() {
     return {
       userStore: userStore(),
     };
   },
   components: {
-    ArrowRight,
+    ArrowRight
+  },
+  created() {
+    this.$watch(
+      () => this.$route.params,
+      () => {
+        this.fetchData()
+      },
+      // fetch the data when the view is created and the data is
+      // already being observed
+      { immediate: true }
+    )
   },
   methods: {
     gotoRouter(url) {
@@ -73,6 +77,9 @@ export default {
         params: { lang: i18n.locale },
         name: url,
       });
+    },
+    fetchData() {
+      this.userStore.resetPasswordData.code = this.$route.params.code;
     },
   },
 };

@@ -5,30 +5,40 @@
         <div class="text-dp-xs bungee-font text-center">
           {{ $t("signin.signin") }}
         </div>
+        <v-alert
+          class="deeporange--text mt-4"
+          dense
+          outlined
+          type="error"
+          v-if="userStore.errorMessage"
+        >
+          {{ userStore.errorMessage }}
+        </v-alert>
         <div class="text-xl mt-4">{{ $t("signin.ID") }}</div>
         <v-text-field
-          v-model="userStore.userData.username"
-          outlined
+          v-model="userStore.siginInData.identifier"
+          solo
           background-color="cream"
           hide-details="true"
           full-width
-          dense
           class="mt-2"
         ></v-text-field>
         <div class="text-xl mt-2">{{ $t("signin.password") }}</div>
         <v-text-field
-          outlined
+          :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
+          :type="userStore.isShowPass ? 'text' : 'password'"
+          @click:append="userStore.isShowPass = !userStore.isShowPass"
+          solo
           background-color="cream"
-          v-model="userStore.userData.password"
+          v-model="userStore.siginInData.password"
           hide-details="true"
-          full-width
-          dense
-          type="password"
           class="mt-2"
         ></v-text-field>
         <div class="d-flex mt-6 flex-sm-row flex-column">
           <v-btn color="#2B69EA" class="px-14"><FacebookIcon /></v-btn>
-          <v-btn color="white" class="px-14 mx-sm-2 my-sm-0 my-2 mx-0"><GoogleIcon /></v-btn>
+          <v-btn color="white" class="px-14 mx-sm-2 my-sm-0 my-2 mx-0"
+            ><GoogleIcon
+          /></v-btn>
           <v-btn color="black" class="px-14"><AppleIcon /></v-btn>
         </div>
         <v-checkbox
@@ -36,7 +46,11 @@
           :label="$t('signin.remember-me')"
         ></v-checkbox>
         <div class="text-center">
-          <v-btn x-small color="#5E6BE9" class="py-5" @click="userStore.signIn()"
+          <v-btn
+            x-small
+            color="#5E6BE9"
+            class="py-5"
+            @click="userStore.signIn()"
             ><v-icon color="white">mdi-arrow-right-bold</v-icon></v-btn
           >
         </div>

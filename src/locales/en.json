@@ -74,6 +74,12 @@
     "confirm-password":"Confirm Password",
     "date-of-birth":"Date of birth",
     "accept-term-service" :"Accept Term and Services",
-    "contact-support" : "Contact  Player Support"
+    "contact-support" : "Contact  Player Support",
+    "forget-password-done": "If your username matches an existing account we will send a password reset email within a few minutes. If you have not received an email check your spam folder or",
+    "forget-password-contact" : " contact Player Support.",
+    "reset-password": "change password",
+    "reset-password-des" : "Please enter your new password below for your account ",
+    "new-password" : "New password",
+    "new-password-confirm" : "Enter new password again"
   }
 }

@@ -5,6 +5,15 @@
         <div class="text-dp-xs bungee-font text-center">
           <span>{{ $t("signin.sign-up") }}</span>
         </div>
+        <v-alert
+          class="deeporange--text mt-4"
+          dense
+          outlined
+          type="error"
+          v-if="userStore.errorMessage"
+        >
+          {{ userStore.errorMessage }}
+        </v-alert>
         <div class="text-xl mt-4">{{ $t("signin.email") }}</div>
         <v-text-field
           v-model="userStore.userData.email"
@@ -12,13 +21,13 @@
           full-width
           class="mt-2"
           background-color="cream"
-          outlined
+          solo
           dense
         ></v-text-field>
         <div class="text-xl mt-2">{{ $t("signin.phone") }}</div>
         <v-text-field
           v-model="userStore.userData.username"
-          outlined
+          solo
           hide-details="true"
           background-color="cream"
           full-width
@@ -27,21 +36,25 @@
         ></v-text-field>
         <div class="text-xl mt-2">{{ $t("signin.password") }}</div>
         <v-text-field
+          :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
+          :type="userStore.isShowPass ? 'text' : 'password'"
+          @click:append="userStore.isShowPass = !userStore.isShowPass"
           v-model="userStore.userData.password"
-          outlined
+          solo
           hide-details="true"
           background-color="cream"
-          type="password"
           full-width
           class="mt-2"
           dense
         ></v-text-field>
         <div class="text-xl mt-2">{{ $t("signin.confirm-password") }}</div>
         <v-text-field
-          outlined
+          solo
           hide-details="true"
           full-width
-          type="password"
+          :append-icon="userStore.isShowConfirmPass ? 'mdi-eye' : 'mdi-eye-off'"
+          :type="userStore.isShowConfirmPass ? 'text' : 'password'"
+          @click:append="userStore.isShowConfirmPass = !userStore.isShowConfirmPass"
           background-color="cream"
           class="mt-2"
           dense
@@ -64,7 +77,7 @@
               v-bind="attrs"
               v-on="on"
               background-color="cream"
-              outlined
+              solo
               dense
               hide-details="true"
             ></v-text-field>
@@ -115,7 +128,7 @@ export default {
       activePicker: null,
       menu: false,
       userStore: userStore(),
-      lang: i18n.locale
+      lang: i18n.locale,
     };
   },
   watch: {

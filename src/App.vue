@@ -11,7 +11,7 @@
 <script>
 import Footer from "../src/components/Footer.vue";
 import NavigationBar from "../src/components/NavigationBar.vue";
-const moduleNotUseTemplate = ['sign-in','forget-password','sign-up'];
+const moduleNotUseTemplate = ["sign-in", "forget-password", "sign-up"];
 export default {
   name: "App",
   components: {
@@ -38,7 +38,10 @@ export default {
         fullPath = window.location.href;
       }
       var absolutePath = fullPath.substr(fullPath.lastIndexOf("/") + 1);
-      if (moduleNotUseTemplate.includes(absolutePath)) {
+      if (
+        moduleNotUseTemplate.includes(absolutePath) ||
+        fullPath.includes("reset-password")
+      ) {
         this.isDisplayTemplate = false;
       }
     },
@@ -681,8 +684,13 @@ body {
     max-width: 27% !important;
   }
 }
-//Typography
-//Font-size
+.btn-submit {
+  box-shadow: inset 0px -4px 0px rgb(0 0 0 / 25%);
+  border-radius: 12px;
+}
+.border-radius-12 {
+  border-radius: 12px !important;
+}
 .text-xxs {
   font-size: 10px !important;
   line-height: 12px !important;

@@ -68,12 +68,18 @@
     "forget-password": "Quên mật khẩu",
     "create-new-account": "Tạo tài khoản mới",
     "forget-password-des": "Nhập tên tài khoản bạn muốn đăng nhập.",
-    "sign-up":"Đăng ký",
-    "email":"Email",
-    "phone":"Số điện thoại",
-    "confirm-password":"Nhập lại mật khẩu",
-    "date-of-birth":"Ngày sinh",
-    "accept-term-service" :"Chấp nhận điều khoản",
-    "contact-support" : "Liên lạc bộ phận hỗ trợ"
+    "sign-up": "Đăng ký",
+    "email": "Email",
+    "phone": "Số điện thoại",
+    "confirm-password": "Nhập lại mật khẩu",
+    "date-of-birth": "Ngày sinh",
+    "accept-term-service": "Chấp nhận điều khoản",
+    "contact-support": "Liên lạc bộ phận hỗ trợ",
+    "forget-password-done": "If your username matches an existing account we will send a password reset email within a few minutes. If you have not received an email check your spam folder or",
+    "forget-password-contact" : " contact Player Support.",
+    "reset-password": "change password",
+    "reset-password-des" : "Please enter your new password below for your account",
+    "new-password" : "New password",
+    "new-password-confirm" : "Enter new password again"
   }
 }
