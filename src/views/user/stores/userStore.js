@@ -16,8 +16,10 @@ export const userStore = defineStore("users", {
       password: "",
       dateOfbirth: "1980-01-01",
     },
-    acceptTerm: false,
-    isSuccess: false,
+    fogetPasswordData: {
+      email: "",
+      isSuccess: false,
+    },
     errorMessage: "",
     resetPasswordData: {
       code: "",
@@ -86,7 +88,7 @@ export const userStore = defineStore("users", {
         .post(
           forgetPasswordUrl,
           {
-            email: this.userData.email,
+            email: this.fogetPasswordData.email,
           },
           {
             headers: {
@@ -98,7 +100,7 @@ export const userStore = defineStore("users", {
         .then((response) => {
           if (response.statusText == "OK") {
             this.errorMessage = "";
-            this.isSuccess = true;
+            this.fogetPasswordData.isSuccess = true;
           }
         })
         .catch((error) => {

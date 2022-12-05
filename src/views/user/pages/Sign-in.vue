@@ -1,7 +1,8 @@
 <template>
   <div class="sign-in-page">
     <div class="sign-in-content d-flex">
-      <div class="sign-in-form ma-auto pa-12">
+      <!-- <div class="sign-in-form ma-auto pa-12"> -->
+      <v-form ref="form" lazy-validation class="sign-in-form ma-auto pa-12">
         <div class="text-dp-xs bungee-font text-center">
           {{ $t("signin.signin") }}
         </div>
@@ -17,21 +18,21 @@
         <div class="text-xl mt-4">{{ $t("signin.ID") }}</div>
         <v-text-field
           v-model="userStore.siginInData.identifier"
+          :rules="rules.checkIdentifier"
           solo
           background-color="cream"
-          hide-details="true"
           full-width
           class="mt-2"
         ></v-text-field>
-        <div class="text-xl mt-2">{{ $t("signin.password") }}</div>
+        <div class="text-xl">{{ $t("signin.password") }}</div>
         <v-text-field
           :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
+          :rules="rules.password"
           :type="userStore.isShowPass ? 'text' : 'password'"
           @click:append="userStore.isShowPass = !userStore.isShowPass"
           solo
           background-color="cream"
           v-model="userStore.siginInData.password"
-          hide-details="true"
           class="mt-2"
         ></v-text-field>
         <div class="d-flex mt-6 flex-sm-row flex-column">
@@ -50,7 +51,7 @@
             x-small
             color="#5E6BE9"
             class="py-5"
-            @click="userStore.signIn()"
+            @click="submitForm"
             ><v-icon color="white">mdi-arrow-right-bold</v-icon></v-btn
           >
         </div>
@@ -70,7 +71,8 @@
             >{{ $t("signin.create-new-account") }}</v-btn
           >
         </div>
-      </div>
+      </v-form>
+      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -80,11 +82,13 @@ import GoogleIcon from "@/components/svg/google.vue";
 import AppleIcon from "@/components/svg/apple.vue";
 import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
+import {rules} from "@/plugins/rules";
 export default {
   name: "Signin",
   data() {
     return {
       userStore: userStore(),
+      rules: rules,
     };
   },
   components: {
@@ -98,6 +102,11 @@ export default {
         params: { lang: i18n.locale },
         name: url,
       });
+    },
+    submitForm() {
+      if (this.$refs.form.validate()){
+        this.userStore.signIn();
+      }
     },
   },
 };

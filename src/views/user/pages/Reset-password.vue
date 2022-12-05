@@ -20,26 +20,34 @@
         </v-alert>
         <v-text-field
           v-model="userStore.resetPasswordData.password"
+          :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
+          :type="userStore.isShowPass ? 'text' : 'password'"
+          @click:append="userStore.isShowPass = !userStore.isShowPass"
           solo
           background-color="cream"
-          hide-details="true"
+          :rules="rules.password"
           full-width
           class="mt-2"
         ></v-text-field>
         <div class="text-xl mt-4">{{ $t("signin.new-password-confirm") }}</div>
         <v-text-field
           v-model="userStore.resetPasswordData.passwordConfirmation"
+          @click:append="userStore.isShowPass = !userStore.isShowPass"
           solo
+          :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
+          :type="userStore.isShowPass ? 'text' : 'password'"
           background-color="cream"
-          hide-details="true"
+          :rules="[passwordConfirmationRule]"
           full-width
           class="mt-2"
         ></v-text-field>
         <div class="text-center pt-4">
-          <v-btn class="py-7 px-3 btn-submit" color="#5E6BE9" @click="userStore.resetPassword()"
+          <v-btn
+            class="py-7 px-3 btn-submit"
+            color="#5E6BE9"
+            @click="userStore.resetPassword()"
             ><ArrowRight
-          /></v-btn
-          >
+          /></v-btn>
         </div>
       </div>
     </div>
@@ -49,27 +57,37 @@
 import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
 import ArrowRight from "@/components/svg/arrow-right.vue";
+import { rules } from "@/plugins/rules";
 export default {
   name: "ResetPassword",
   props: ["code"],
   data() {
     return {
       userStore: userStore(),
+      rules: rules,
     };
   },
   components: {
-    ArrowRight
+    ArrowRight,
+  },
+  computed: {
+    passwordConfirmationRule() {
+      return () =>
+        this.userStore.userData.password ===
+          this.userStore.resetPasswordData.passwordConfirmation ||
+        "Password must match";
+    },
   },
   created() {
     this.$watch(
       () => this.$route.params,
       () => {
-        this.fetchData()
+        this.fetchData();
       },
       // fetch the data when the view is created and the data is
       // already being observed
       { immediate: true }
-    )
+    );
   },
   methods: {
     gotoRouter(url) {
