@@ -40,6 +40,7 @@ export default new Vuetify({
                 brown: "#7C5546",
                 deepbrown: "#50332B",
                 background: "#EAEEF4",
+                greyblack: "#191919"
             },
         },
     },

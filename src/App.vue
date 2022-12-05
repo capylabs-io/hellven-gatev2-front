@@ -691,6 +691,9 @@ body {
 .border-radius-12 {
   border-radius: 12px !important;
 }
+.full-width {
+  width: 100%;
+}
 .text-xxs {
   font-size: 10px !important;
   line-height: 12px !important;

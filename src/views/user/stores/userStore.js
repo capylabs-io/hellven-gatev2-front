@@ -26,6 +26,7 @@ export const userStore = defineStore("users", {
     },
     isShowPass: false,
     isShowConfirmPass: false,
+    accountSettingMenu: 1, //1: Account Detail, 2: Security, 3: Privacy, 4: Transaction History
   }),
 
   actions: {

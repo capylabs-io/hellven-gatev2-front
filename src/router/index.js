@@ -46,6 +46,11 @@ const routes = [
         name: 'Signup',
         component: () => import('../views/user/pages/Sign-up.vue')
       },
+      {
+        path: 'account',
+        name: 'AccountSettings',
+        component: () => import('../views/user/pages/Account-Settings.vue')
+      },
     ]
   }
 ]
