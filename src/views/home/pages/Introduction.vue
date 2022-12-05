@@ -3,9 +3,7 @@
     class="introduction d-flex flex-column align-center"
     v-bind:style="{
       backgroundImage:
-        'url(' +
-        require('@/assets/home/introduction/background-introduction.webp') +
-        ')',
+        'url(' + require('@/assets/introduction-background.webp') + ')',
     }"
   >
     <div class="logo">
@@ -15,7 +13,6 @@
       ></v-img>
     </div>
     <div
-      v-scrollanimation
       class="text-capitalize mx-auto white--text text-shadow text-center introduction-title bungee-font"
     >
       <p class="text-break mx-auto">
@@ -50,8 +47,8 @@ export default {
   height: 950px;
   background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 6%;
   background-position: center;
+  padding-top: 6%;
   row-gap: 8%;
   position: relative;
 }

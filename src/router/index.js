@@ -2,16 +2,17 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueMeta from 'vue-meta'
 import Home from '../views/home/pages/Home.vue'
-import i18n from '@/i18n';
+// import i18n from '@/i18n';
 Vue.use(VueRouter)
 Vue.use(VueMeta)
 const routes = [
+  // {
+  //   path: '/',
+  //   redirect: `/${i18n.locale}`
+  // },
   {
-    path: '/',
-    redirect: `/${i18n.locale}`
-  },
-  {
-    path: '/:lang',
+    // path: '/:lang', 
+    path: '/', // todo: remove url #
     component: {
       render(c) { return c('router-view') }
     },
@@ -51,12 +52,17 @@ const routes = [
         name: 'comingsoon',
         component: () => import(/* webpackChunkName: "about" */ '../views/ComingSoon.vue')
       },
+      {
+        path: '404',
+        name: '404',
+        component: () => import(/* webpackChunkName: "about" */ '../views/PageNotFound.vue')
+      },
     ]
   }
 ]
 
 const router = new VueRouter({
-  routes
+  mode: 'history', routes
 })
 
 export default router

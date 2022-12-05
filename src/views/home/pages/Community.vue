@@ -1,54 +1,58 @@
 <template>
-  <div class="community d-lfex flex-column item-center text-center">
+  <div
+    class="community d-lfex flex-column item-center text-center"
+    v-bind:style="{
+      backgroundImage:
+        'url(' + require('@/assets/community-background.webp') + ')',
+    }"
+  >
     <div class="community-title bungee-font white--text">
       <span>JOIN THE COMMUNITY</span>
     </div>
     <!-- <v-img
       :src="require(`@/assets/home/community/community-title.webp`)"
     ></v-img> -->
-
-    <div class="pt-10 item-center kanit-font mx-auto text-break community-text">
-      <p>
-        {{ $t("community.text") }}
-      </p>
-    </div>
-    <v-btn
-      color="violet"
-      class="community-btn white--text btn-customize bungee-font"
-      height="70px"
-    >
-      <div class="text-break btn-title mb-4 ml-4 mr-2">
-        <p class="clear-margin">{{ $t("community.btndiscordtext1") }}</p>
-        <p class="clear-margin">{{ $t("community.btndiscordtext2") }}</p>
+    <v-card class="community-card mx-auto mt-10">
+      <div class="item-center kanit-font mx-auto text-break community-text">
+        <p>
+          {{ $t("community.text") }}
+        </p>
       </div>
-      <v-img
-        class="align-seft-center ml-3 mr-4"
-        max-width="60%"
-        :src="require(`@/assets/home/community/discord-btn-logo.webp`)"
-      ></v-img>
-    </v-btn>
+      <v-btn
+        color="violet"
+        class="community-btn white--text btn-customize bungee-font"
+        height="70px"
+      >
+        <div class="text-break btn-title mb-4 ml-4 mr-2">
+          <p class="clear-margin">{{ $t("community.btndiscordtext1") }}</p>
+          <p class="clear-margin">{{ $t("community.btndiscordtext2") }}</p>
+        </div>
+        <v-img
+          class="align-seft-center ml-3 mr-4"
+          max-width="60%"
+          :src="require(`@/assets/home/community/discord-btn-logo.webp`)"
+        ></v-img>
+      </v-btn>
 
-    <div class="d-flex social-icon">
-      <v-img
-        class="align-seft-center community-image"
-        :src="require(`@/assets/home/community/facebook-icon.webp`)"
-      ></v-img>
-      <v-img
-        class="align-seft-center community-image"
-        max-width="20%"
-        :src="require(`@/assets/home/community/twitter-icon.webp`)"
-      ></v-img>
-      <v-img
-        class="align-seft-center community-image"
-        max-width="20%"
-        :src="require(`@/assets/home/community/discord-icon.webp`)"
-      ></v-img>
-      <v-img
-        class="align-seft-center community-image"
-        max-width="20%"
-        :src="require(`@/assets/home/community/youtube-icon.webp`)"
-      ></v-img>
-    </div>
+      <div class="d-flex social-icon mx-auto flex-wrap">
+        <v-img
+          class="align-seft-center community-image"
+          :src="require(`@/assets/home/community/facebook-icon.webp`)"
+        ></v-img>
+        <v-img
+          class="align-seft-center community-image"
+          :src="require(`@/assets/home/community/twitter-icon.webp`)"
+        ></v-img>
+        <v-img
+          class="align-seft-center community-image"
+          :src="require(`@/assets/home/community/discord-icon.webp`)"
+        ></v-img>
+        <v-img
+          class="align-seft-center community-image"
+          :src="require(`@/assets/home/community/youtube-icon.webp`)"
+        ></v-img>
+      </div>
+    </v-card>
   </div>
 </template>
 
@@ -65,10 +69,12 @@ export default {
   width: 100%;
   padding-top: 6%;
   position: relative;
-  background: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .community-text {
-  max-width: 35%;
+  max-width: 85%;
   font-size: 20px;
 }
 .community-title {
@@ -82,7 +88,8 @@ export default {
   box-shadow: 8px 7px 0px -2px rgba(0, 0, 0, 0.2);
 }
 .community-image {
-  max-width: 20%;
+  width: 48px;
+  max-height: max-content;
 }
 .text-center {
   text-align: center;
@@ -113,9 +120,17 @@ export default {
   height: 22px;
 }
 .social-icon {
-  max-width: 15%;
-  margin-left: 43%;
+  align-items: center;
+  width: 40%;
   margin-top: 3%;
   column-gap: 5%;
+  object-fit: cover;
+}
+.community-card {
+  padding: 17px;
+  width: 40%;
+  height: max-content;
+  border-radius: 16px;
+  box-shadow: 0px 6px 1px 0px #d9d9d9 !important;
 }
 </style>

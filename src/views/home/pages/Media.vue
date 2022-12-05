@@ -3,6 +3,8 @@
     <div class="media-title white--text bungee-font">
       <span>MEDIA</span>
     </div>
+    
+    <!--todo: add popup view image -->
     <div class="media-content pt-15 item-center px-15">
       <div class="media-image-responsive item-center">
         <card

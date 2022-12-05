@@ -15,14 +15,22 @@
             class="hero-image"
             :src="require(`@/assets/home/hero/hero-image.webp`)"
           ></v-img> -->
+
           <heroImage
             v-for="(image, index) in heroImages"
             :key="image"
             :index="index"
             :visibleImage="visibleImage"
           >
+            <!-- <v-progress-circular
+              v-if=""
+              :size="70"
+              indeterminate
+              color="black"
+            ></v-progress-circular> -->
             <v-img class="hero-image" :src="image"></v-img>
           </heroImage>
+          <!--todo: add loading circle and fix size image static  -->
         </div>
         <div class="hero-card-mb d-flex item-center">
           <div class="slider-mb">
@@ -60,10 +68,12 @@
         </div>
         <div class="hero-card-list">
           <card v-for="(hero, index) in heros" :key="hero.index">
-            <v-img
-              :class="visibleImage == index ? 'indicators' : ''"
-              :src="require(`@/assets/home/hero/hero${hero.index}.webp`)"
-            ></v-img>
+            <v-btn @click="setvisibleImage(index)" color="#218AEC">
+              <v-img
+                :class="visibleImage == index ? 'indicators' : ''"
+                :src="require(`@/assets/home/hero/hero${hero.index}.webp`)"
+              ></v-img>
+            </v-btn>
           </card>
           <!-- <card v-for="hero in heros" :key="hero.index" v-bind:hero="hero">
             <v-img
@@ -296,8 +306,9 @@ export default {
 .flex-reverse {
 }
 .hero-image {
-  margin-top: 20px;
-  margin-left: 100px;
+  padding-bottom: 10px;
+  margin-left: 60px;
+  object-fit: cover;
 }
 .info-card {
   width: 35%;
@@ -317,5 +328,10 @@ export default {
 }
 .indicators {
   border: 3px solid white !important;
+}
+
+.v-btn {
+  width: 65px;
+  height: 64px !important;
 }
 </style>

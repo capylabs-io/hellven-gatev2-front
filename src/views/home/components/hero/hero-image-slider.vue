@@ -1,5 +1,5 @@
 <template>
-  <div v-if="visibleImage === index" v-scrollanimation class="fade-right">
+  <div v-if="visibleImage === index" v-scrollanimation class="fade-right image">
     <slot></slot>
   </div>
 </template>
@@ -33,5 +33,9 @@ export default {
     transform: translateX(0);
     opacity: 1;
   }
+}
+.image {
+  width: 460px;
+  height: 500px;
 }
 </style>

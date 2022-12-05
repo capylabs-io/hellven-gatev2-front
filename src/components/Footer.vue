@@ -35,10 +35,10 @@
         </div>
       </div>
 
-      <hr />
-      <div class="footer-bottom white--text d-flex mt-5">
+      <hr class="mt-2" />
+      <div class="footer-bottom white--text d-flex mt-7">
         <div class="footer-bottom-copyright">
-          <p class="font-weight-lighter">
+          <p class="font-weight-lighter align-seft-center">
             Copyright © 2022 Capy Lab. All Rights Reserved
           </p>
         </div>
@@ -80,9 +80,7 @@ export default {
   width: 21%;
 }
 .footer-top-right {
-  width: 20%;
   display: flex;
-  padding-bottom: 70px;
 }
 .footer-logo {
   max-width: 65%;
@@ -92,7 +90,6 @@ export default {
   width: 95%;
   position: relative;
   font-size: small;
-  align-items: center;
   justify-content: space-between;
 }
 
@@ -104,8 +101,5 @@ hr {
 .logo-nav {
   display: flex;
   gap: 10%;
-}
-.footer-image {
-  max-width: 48%;
 }
 </style>

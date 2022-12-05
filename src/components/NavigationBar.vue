@@ -16,6 +16,7 @@
               :src="require(`@/assets/game-logo-v2.webp`)"
               @click="gotoRouter('home')"
             />
+            <!--todo: add padding for each navbar -->
             <div class="nav-link">
               <div class="text-none">
                 <span>GAME</span>
@@ -126,9 +127,6 @@
 // import LanguageSwitch from "@/views/home/components/nav-bar/LanguageSwitch.vue";
 import i18n from "@/i18n";
 export default {
-  openLink(url) {
-    window.open(url, "_blank");
-  },
   // components: { LanguageSwitch },
   data: () => ({
     drawer: false,
@@ -178,7 +176,7 @@ export default {
 }
 .nav-link {
   display: flex;
-  column-gap: 12px;
+  column-gap: 30px;
 }
 .nav-btn-responsive {
   justify-content: center;

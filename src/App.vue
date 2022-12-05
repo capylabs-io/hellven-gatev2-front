@@ -17,6 +17,16 @@ export default {
     "app-navbar": NavigationBar,
     "app-footer": Footer,
   },
+  metaInfo: {
+    meta: [
+      { charset: "utf-8" },
+      {
+        name: "description",
+        content: "An example Vue application with vue-meta.",
+      },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+    ],
+  },
   data: () => ({
     //
   }),
@@ -202,6 +212,7 @@ export default {
     padding-top: 1%;
     flex-direction: column;
     height: 78% !important;
+    margin-bottom: 30px;
   }
   .footer-logo {
     max-width: 80% !important;
@@ -210,8 +221,9 @@ export default {
     padding-right: 70px !important;
   }
   .footer-top-right {
+    justify-content: center;
     margin-top: 20px;
-    width: 30% !important;
+    width: 50% !important;
   }
 
   .footer-bottom-copyright {
@@ -398,7 +410,7 @@ export default {
   }
   .footer-top-right {
     margin-top: 20px;
-    width: 46% !important;
+    justify-content: center;
   }
 }
 @media screen and (min-width: 600px) and (max-width: 960px) {
@@ -601,14 +613,15 @@ export default {
     padding-right: 70px !important;
   }
   .footer-top-right {
-    width: 80% !important;
+    width: 40% !important;
+    justify-content: center;
   }
 }
 @media screen and (min-width: 400px) and (max-width: 599px) {
   /* ------------------- home-nav --------------*/
 
   .nav-image {
-    max-width: 23% !important;
+    max-width: 20% !important;
   }
   /* ------------------- home-hero --------------*/
   .statistic-image {
@@ -617,11 +630,11 @@ export default {
 
   /* ------------------- home-footer --------------*/
   .footer-top-right {
-    width: 72% !important;
+    width: 40% !important;
   }
 
   .community-btn {
-    width: 78% !important; 
+    width: 78% !important;
   }
 }
 @media screen and (max-width: 399px) {
@@ -629,15 +642,15 @@ export default {
     width: 60% !important;
     height: 60px !important;
   }
-  
+
   .community-btn {
-    width: 90% !important; 
+    width: 90% !important;
   }
   .mode-card-image {
     max-width: 26% !important;
   }
   .nav-image {
-    max-width: 37% !important;
+    max-width: 25% !important;
   }
   .mode-title {
     max-width: 27% !important;
