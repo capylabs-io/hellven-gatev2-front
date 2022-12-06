@@ -126,10 +126,10 @@
           <v-btn
             x-small
             color="#5E6BE9"
-            class="py-5"
+            class="py-7 px-3 btn-submit"
             @click="submitForm"
             :disabled="!acceptTerm"
-            ><v-icon color="white">mdi-arrow-right-bold</v-icon></v-btn
+            ><ArrowRight/></v-btn
           >
         </div>
       </v-form>
@@ -141,10 +141,12 @@ import { userStore } from "../stores/userStore.js";
 import i18n from "@/i18n";
 import { rules } from "@/plugins/rules";
 import PasswordStrength from "@/components/Password-Strength.vue";
+import ArrowRight from "@/components/svg/arrow-right.vue";
 export default {
   name: "Signup",
   components: {
     PasswordStrength,
+    ArrowRight
   },
   data() {
     return {

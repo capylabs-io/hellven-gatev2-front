@@ -50,9 +50,9 @@
           <v-btn
             x-small
             color="#5E6BE9"
-            class="py-5"
+            class="py-7 px-3 btn-submit"
             @click="submitForm"
-            ><v-icon color="white">mdi-arrow-right-bold</v-icon></v-btn
+            ><ArrowRight/></v-btn
           >
         </div>
         <div class="text-center mt-6">
@@ -83,6 +83,7 @@ import AppleIcon from "@/components/svg/apple.vue";
 import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
 import {rules} from "@/plugins/rules";
+import ArrowRight from "@/components/svg/arrow-right.vue";
 export default {
   name: "Signin",
   data() {
@@ -95,6 +96,7 @@ export default {
     FacebookIcon,
     GoogleIcon,
     AppleIcon,
+    ArrowRight
   },
   methods: {
     gotoRouter(url) {
