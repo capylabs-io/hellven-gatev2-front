@@ -18,18 +18,33 @@
         >
           {{ userStore.errorMessage }}
         </v-alert>
-        <v-text-field
-          v-model="userStore.resetPasswordData.password"
-          :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
-          :type="userStore.isShowPass ? 'text' : 'password'"
-          @click:append="userStore.isShowPass = !userStore.isShowPass"
-          solo
-          background-color="cream"
-          :rules="rules.password"
-          full-width
-          class="mt-2"
-        ></v-text-field>
-        <div class="text-xl mt-4">{{ $t("signin.new-password-confirm") }}</div>
+        <v-tooltip bottom right>
+          <template v-slot:activator="{ on, attrs }">
+            <v-text-field
+              v-bind="attrs"
+              v-on="on"
+              v-model="userStore.resetPasswordData.password"
+              :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
+              :type="userStore.isShowPass ? 'text' : 'password'"
+              @click:append="userStore.isShowPass = !userStore.isShowPass"
+              solo
+              background-color="cream"
+              :rules="rules.password"
+              full-width
+              class="mt-2"
+            ></v-text-field>
+          </template>
+          <div>
+            <div>Password must meet the following requirements:</div>
+            <div>● At least 8 characters and less than 32 characters</div>
+            <div>● At least one capital letter</div>
+            <div>
+              ● Allow only letter, numbers and special characters (@$!%*?&)
+            </div>
+          </div>
+        </v-tooltip>
+        <PasswordStrength :password="userStore.resetPasswordData.password" v-if="userStore.resetPasswordData.password"/>
+        <div class="text-xl">{{ $t("signin.new-password-confirm") }}</div>
         <v-text-field
           v-model="userStore.resetPasswordData.passwordConfirmation"
           @click:append="userStore.isShowPass = !userStore.isShowPass"
@@ -58,6 +73,7 @@ import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
 import ArrowRight from "@/components/svg/arrow-right.vue";
 import { rules } from "@/plugins/rules";
+import PasswordStrength from "@/components/Password-Strength.vue";
 export default {
   name: "ResetPassword",
   props: ["code"],
@@ -69,6 +85,7 @@ export default {
   },
   components: {
     ArrowRight,
+    PasswordStrength
   },
   computed: {
     passwordConfirmationRule() {

@@ -35,18 +35,33 @@
           dense
         ></v-text-field>
         <div class="text-xl">{{ $t("signin.password") }}</div>
-        <v-text-field
-          :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
-          :type="userStore.isShowPass ? 'text' : 'password'"
-          @click:append="userStore.isShowPass = !userStore.isShowPass"
-          v-model="userStore.userData.password"
-          solo
-          :rules="rules.password"
-          background-color="cream"
-          full-width
-          class="mt-2"
-          dense
-        ></v-text-field>
+        <v-tooltip bottom right>
+          <template v-slot:activator="{ on, attrs }">
+            <v-text-field
+              v-bind="attrs"
+              v-on="on"
+              :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
+              :type="userStore.isShowPass ? 'text' : 'password'"
+              @click:append="userStore.isShowPass = !userStore.isShowPass"
+              v-model="userStore.userData.password"
+              solo
+              :rules="rules.password"
+              background-color="cream"
+              full-width
+              class="mt-2"
+              dense
+            ></v-text-field>
+          </template>
+          <div>
+            <div>Password must meet the following requirements:</div>
+            <div>● At least 8 characters and less than 32 characters</div>
+            <div>● At least one capital letter</div>
+            <div>
+              ● Allow only letter, numbers and special characters (@$!%*?&)
+            </div>
+          </div>
+        </v-tooltip>
+        <PasswordStrength :password="userStore.userData.password" v-if="userStore.userData.password"/>
         <div class="text-xl">{{ $t("signin.confirm-password") }}</div>
         <v-text-field
           solo
@@ -104,7 +119,7 @@
         <v-checkbox
           class="text-lg"
           v-model="acceptTerm"
-          :disabled = !isAllInputed
+          :disabled="!isAllInputed"
           :label="$t('signin.accept-term-service')"
         ></v-checkbox>
         <div class="text-center">
@@ -113,7 +128,7 @@
             color="#5E6BE9"
             class="py-5"
             @click="submitForm"
-            :disabled="!userStore.acceptTerm"
+            :disabled="!acceptTerm"
             ><v-icon color="white">mdi-arrow-right-bold</v-icon></v-btn
           >
         </div>
@@ -125,8 +140,12 @@
 import { userStore } from "../stores/userStore.js";
 import i18n from "@/i18n";
 import { rules } from "@/plugins/rules";
+import PasswordStrength from "@/components/Password-Strength.vue";
 export default {
   name: "Signup",
+  components: {
+    PasswordStrength,
+  },
   data() {
     return {
       activePicker: null,
@@ -135,7 +154,7 @@ export default {
       lang: i18n.locale,
       rules: rules,
       confirmPassword: "",
-      acceptTerm: false
+      acceptTerm: false,
     };
   },
   watch: {
@@ -143,18 +162,24 @@ export default {
       val && setTimeout(() => (this.activePicker = "YEAR"));
     },
   },
-  components: {},
   computed: {
     passwordConfirmationRule() {
       return () =>
-        this.userStore.userData.password === this.confirmPassword || "Password must match";
+        this.userStore.userData.password === this.confirmPassword ||
+        "Password must match";
     },
     isAllInputed() {
-      if (this.userStore.userData.email == "" || this.userStore.userData.username == ""  || this.userStore.userData.password == "" || this.confirmPassword == "" || this.userStore.userData.dateOfbirth == "" ) {
+      if (
+        this.userStore.userData.email == "" ||
+        this.userStore.userData.username == "" ||
+        this.userStore.userData.password == "" ||
+        this.confirmPassword == "" ||
+        this.userStore.userData.dateOfbirth == ""
+      ) {
         return false;
       }
       return true;
-    }
+    },
   },
   methods: {
     gotoRouter(url) {
@@ -168,7 +193,7 @@ export default {
     },
     submitForm() {
       if (this.$refs.form.validate()) {
-        this.userStore.signIn();
+        this.userStore.registerUser();
       }
     },
   },

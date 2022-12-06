@@ -39,11 +39,17 @@ export const rules = {
       v === 0 ||
       "Please input Password",
     (v) =>
+      (v && v.length >= 8) ||
       !v ||
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
-        v
-      ) ||
-      "Password is not vaid",
+      "Your password must be at least 8 characters",
+    (v) =>
+      !v ||
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/.test(v) ||
+      "Password allow only letter, numbers and special characters (@$!%*?&)",
+    (v) =>
+      (v && v.length <= 32) ||
+      !v ||
+      "Your password must be lower than or equal to 32 characters",
   ],
   phone: [
     (v) =>
@@ -56,8 +62,6 @@ export const rules = {
         /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/gi.test(v)) ||
       "Phone is not valid",
   ],
-  equal:[ (target) => (v) =>
-    !v || target === v || `Must be equal to ${target}`],
 };
 
 export const appRules = {};
