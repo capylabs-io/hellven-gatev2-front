@@ -1,10 +1,10 @@
 <template>
   <div class="main-content" :style="{ backgroundColor: '#12163D' }">
     <div class="content d-flex flex-column">
-      <div class="tower-title white--text bungee-font mx-auto mt-10">
+      <div class="booster-title white--text bungee-font mx-auto mt-10">
         <span>Towers</span>
       </div>
-      <div class="tower-text bungee-font d-flex mx-auto">
+      <div class="booster-text bungee-font d-flex mx-auto">
         <div class="text-none align-seft-center white--text">
           <span
             >Boosters are combat enhancement that only appear in-game When
@@ -14,21 +14,21 @@
         </div>
       </div>
       <div
-        class="tower-content d-flex gap-100 justify-center py-10"
+        class="booster-content d-flex gap-100 justify-center"
         v-bind:style="{
           backgroundImage:
             'url(' + require('@/assets/mode/modeBackground.webp') + ')',
         }"
       >
         <div class="info-card">
-          <towerInfo />
+          <boosterInfo />
         </div>
         <div class="image">
-          <v-img :src="require(`@/assets/tower/tower-image.webp`)"></v-img>
+          <v-img :src="require(`@/assets/booster-image.webp`)"></v-img>
         </div>
       </div>
       <div class="fighter-card-list">
-        <towerCard
+        <boosterCard
           v-for="(fighter, index) in fighterCard"
           :key="fighter.index"
           :index="index"
@@ -36,7 +36,7 @@
           <v-img
             :src="require(`@/assets/home/hero/hero${fighter.index}.webp`)"
           ></v-img>
-        </towerCard>
+        </boosterCard>
       </div>
       <!-- <div class="tower-card-list">
         <towerCard v-for="(card, index) in towerList" :key="index">
@@ -48,15 +48,15 @@
 </template>
 
 <script>
-import towerInfo from "../components/Tower-info.vue";
-import TowerCard from "../components/Tower-card.vue";
+import boosterinfo from "../components/Booster-info.vue";
+import boostercard from "../components/Boosterv2-card.vue";
 export default {
   setup() {
     return {};
   },
   components: {
-    towerInfo: towerInfo,
-    towerCard: TowerCard,
+    boosterInfo: boosterinfo,
+    boosterCard: boostercard,
   },
   data() {
     return {
@@ -106,14 +106,16 @@ export default {
   height: max-content;
   row-gap: 50px;
 }
-.tower-content {
+.booster-content {
   width: 100%;
   height: max-content;
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
+  padding-bottom: 100px;
+  padding-top: 100px;
 }
-.tower-title {
+.booster-title {
   width: max-content;
   margin: 0 auto;
   background-color: #5e6be9;
@@ -121,7 +123,7 @@ export default {
   padding: 12px;
   transform: skew(-5deg, 0deg);
 }
-.tower-text {
+.booster-text {
   width: 50%;
   text-align: center;
   font-size: larger;
@@ -142,7 +144,7 @@ export default {
   width: 35%;
   align-self: center;
 }
-.tower-card-list {
+.booster-card-list {
   width: 52%;
   column-gap: 1%;
   display: flex;
@@ -151,7 +153,7 @@ export default {
 .image {
   align-self: center;
 }
-.tower-card {
+.booster-card {
   align-self: center;
   width: calc(46px * 1.1);
   height: calc(64px * 1.1);

@@ -51,7 +51,7 @@ export default {
 
 <style lang="scss" scoped>
 .rune-info {
-  width: 600px;
+  width: 700px;
   height: 233px;
   border-radius: 16px;
   position: relative;

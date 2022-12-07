@@ -139,7 +139,6 @@ export default {
   column-gap: 100px;
 }
 .info-card {
-  width: 35%;
   align-self: center;
 }
 .tower-card-list {

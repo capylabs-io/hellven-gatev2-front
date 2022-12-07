@@ -62,7 +62,7 @@
                       <span>Fighters</span>
                     </v-list-item-title>
                   </v-list-item>
-                  <v-list-item class="white--text" @click="gotoRouter('')">
+                  <v-list-item class="white--text" @click="gotoRouter('spell')">
                     <v-list-item-title class="px-2 bungee-font">
                       <span>Spells</span>
                     </v-list-item-title>

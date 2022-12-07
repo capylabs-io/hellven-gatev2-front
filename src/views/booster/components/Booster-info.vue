@@ -2,7 +2,7 @@
   <v-card class="tower-info">
     <div class="info-content p-12">
       <v-card-title class="bungee-font" style="font-size: 23px"
-        >Basic tower</v-card-title
+        >Power up</v-card-title
       >
       <v-card-text class="text-break kanit-font" style="font-size: 18px"
         >Lorem ipsum dolor sit amet consectetur. Cursus nulla eget purus erat

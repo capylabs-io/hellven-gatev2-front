@@ -43,9 +43,14 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../views/rune/pages/Rune.vue')
       },
       {
+        path: 'spell',
+        name: 'spell',
+        component: () => import(/* webpackChunkName: "about" */ '../views/spell/pages/Spell.vue')
+      },
+      {
         path: 'booster',
         name: 'boosters',
-        component: () => import(/* webpackChunkName: "about" */ '../views/booster/pages/Booster.vue')
+        component: () => import(/* webpackChunkName: "about" */ '../views/booster/pages/Boosterv2.vue')
       },
       {
         path: 'comingsoon',

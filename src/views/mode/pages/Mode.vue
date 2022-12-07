@@ -131,6 +131,7 @@ export default {
   align-self: center;
 }
 .image {
+  width: 711px;
   align-self: center;
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="main-content">
+  <div class="main-content" :style="{ backgroundColor: '#12163D' }">
     <div class="content d-flex flex-column">
       <div class="fighter-title white--text bungee-font mx-auto mt-10">
         <span>FIGHTERS</span>
@@ -24,7 +24,7 @@
           <fighterInfo />
         </div>
         <div class="image">
-          <v-img :src="require(`@/assets/fighter/fighter-image.webp`)"></v-img>
+          <v-img :src="require(`@/assets/fighter-image.webp`)"></v-img>
         </div>
       </div>
       <div class="fighter-card-list">
@@ -94,34 +94,34 @@ export default {
 <style lang="scss" scoped>
 .main-content {
   width: 100%;
-  height: 100%;
-  padding-bottom: 160px;
+  height: max-content;
+  padding-bottom: 60px;
 }
 .content {
   position: relative;
   width: 100%;
-  height: 720px;
+  height: max-content;
   row-gap: 50px;
 }
 .fighter-content {
-  width: 100%;
-  height: 380px;
+  height: max-content;
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 .fighter-title {
   width: max-content;
   margin: 0 auto;
-  background-color: black;
+  background-color: #5e6be9;
   font-size: x-large;
   padding: 12px;
   transform: skew(-5deg, 0deg);
-  box-shadow: 8px 7px 0px -2px rgba(0, 0, 0, 0.2);
 }
 .fighter-link {
   column-gap: 30px;
-  background-color: black;
+  background-color: transparent;
   padding: 10px;
   border-radius: 15px;
 }
@@ -138,7 +138,7 @@ export default {
   column-gap: 100px;
 }
 .info-card {
-  width: 35%;
+  width: 40%;
   align-self: center;
 }
 .fighter-card-list {
@@ -147,5 +147,8 @@ export default {
   column-gap: 20px;
   margin: 0 auto;
   margin-top: 50px;
+}
+.image {
+  align-self: center;
 }
 </style>

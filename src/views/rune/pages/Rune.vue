@@ -24,7 +24,7 @@
           <runeInfo />
         </div>
         <div class="image">
-          <v-img :src="require(`@/assets/rune/rune-image.webp`)"></v-img>
+          <v-img :src="require(`@/assets/rune-image.webp`)"></v-img>
         </div>
       </div>
       <div class="fighter-card-list">

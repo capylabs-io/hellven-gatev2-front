@@ -2,7 +2,7 @@
   <v-card class="tower-info">
     <div class="info-content p-12">
       <v-card-title class="bungee-font" style="font-size: 23px"
-        >Basic tower</v-card-title
+        >drag me to hell</v-card-title
       >
       <v-card-text class="text-break kanit-font" style="font-size: 18px"
         >Lorem ipsum dolor sit amet consectetur. Cursus nulla eget purus erat
@@ -49,7 +49,7 @@ export default {
 
 <style lang="scss" scoped>
 .tower-info {
-  width: 500px;
+  width: 700px;
   height: 233px;
   border-radius: 16px;
   position: relative;
