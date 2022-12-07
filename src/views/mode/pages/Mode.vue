@@ -1,11 +1,5 @@
 <template>
-  <div
-    class="main-content"
-    v-bind:style="{
-      backgroundImage:
-        'url(' + require('@/assets/mode/modeBackground.webp') + ')',
-    }"
-  >
+  <div class="main-content" :style="{ backgroundColor: '#12163D' }">
     <div class="content d-flex flex-column">
       <div class="mode-title white--text bungee-font mx-auto mt-10">
         <span>MODES</span>
@@ -17,7 +11,13 @@
         <div class="box text-none align-seft-center">Survival</div>
         <div class="box text-none align-seft-center">City Defend</div>
       </div>
-      <div class="mode-content d-flex gap-50 justify-center">
+      <div
+        class="mode-content d-flex gap-50 justify-center"
+        v-bind:style="{
+          backgroundImage:
+            'url(' + require('@/assets/mode/modeBackground.webp') + ')',
+        }"
+      >
         <div class="slider">
           <button @click="prev">
             <v-img
@@ -92,22 +92,23 @@ export default {
 <style lang="scss" scoped>
 .main-content {
   width: 100%;
-  height: 100%;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
+  height: max-content;
 }
 .content {
   position: relative;
   width: 100%;
-  height: 720px;
+  height: max-content;
   row-gap: 50px;
 }
 .mode-content {
+  height: 820px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .mode-link {
   column-gap: 10px;
-  background-color: black;
+  background-color: transparent;
   padding: 10px;
   border-radius: 15px;
 }
@@ -136,10 +137,9 @@ export default {
 .mode-title {
   width: max-content;
   margin: 0 auto;
-  background-color: black;
+  background-color: #5e6be9;
   font-size: x-large;
   padding: 12px;
   transform: skew(-5deg, 0deg);
-  box-shadow: 8px 7px 0px -2px rgba(0, 0, 0, 0.2);
 }
 </style>

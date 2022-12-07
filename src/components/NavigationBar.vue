@@ -18,18 +18,78 @@
             />
             <!--todo: add padding for each navbar -->
             <div class="nav-link">
-              <div class="text-none">
-                <span>GAME</span>
-                <v-icon class="pb-2 pl-2" small color="white">
-                  mdi-chevron-down
-                </v-icon>
-              </div>
-              <div class="text-none">
-                <span>GUIDE</span>
-                <v-icon class="pb-2 pl-2" small color="white">
-                  mdi-chevron-down
-                </v-icon>
-              </div>
+              <v-menu offset-y transition="scale-transition">
+                <template v-slot:activator="{ on, attrs }">
+                  <div class="text-none" v-bind="attrs" v-on="on">
+                    <span>GAME</span>
+                    <v-icon class="pb-2 pl-2" small color="white">
+                      mdi-chevron-down
+                    </v-icon>
+                  </div>
+                </template>
+                <v-list color="black">
+                  <v-list-item class="white--text">
+                    <v-list-item-title class="px-2 bungee-font">
+                      <span>How to play</span>
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item
+                    class="white--text"
+                    @click="gotoRouter('gamemode')"
+                  >
+                    <v-list-item-title class="px-2 bungee-font">
+                      <span>MODES</span>
+                    </v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
+
+              <v-menu offset-y transition="scale-transition">
+                <template v-slot:activator="{ on, attrs }">
+                  <div class="text-none" v-bind="attrs" v-on="on">
+                    <span>GUIDE</span>
+                    <v-icon class="pb-2 pl-2" small color="white">
+                      mdi-chevron-down
+                    </v-icon>
+                  </div>
+                </template>
+                <v-list color="black">
+                  <v-list-item
+                    class="white--text"
+                    @click="gotoRouter('fighters')"
+                  >
+                    <v-list-item-title class="px-2 bungee-font">
+                      <span>Fighters</span>
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item class="white--text" @click="gotoRouter('')">
+                    <v-list-item-title class="px-2 bungee-font">
+                      <span>Spells</span>
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item
+                    class="white--text"
+                    @click="gotoRouter('boosters')"
+                  >
+                    <v-list-item-title class="px-2 bungee-font">
+                      <span>Booster</span>
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item
+                    class="white--text"
+                    @click="gotoRouter('towers')"
+                  >
+                    <v-list-item-title class="px-2 bungee-font">
+                      <span>Towers</span>
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-list-item class="white--text" @click="gotoRouter('runes')">
+                    <v-list-item-title class="px-2 bungee-font">
+                      <span>Runes</span>
+                    </v-list-item-title>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
               <!-- <div class="text-none align-seft-center">HEROES</div> -->
               <!-- <router-link :to="`/${$i18n.locale}/about`" class="text-copy-primary hover:text-gray-600">About</router-link> -->
               <div class="text-none align-seft-center">
@@ -59,11 +119,6 @@
                 class="white--text btn-customize"
                 @click="gotoRouter('comingsoon')"
               >
-                <!-- <v-img
-                    class="align-seft-center mr-2"
-                  max-width="18px"
-                  :src="require(`@/assets/nav/discord-icon.webp`)"
-                  ></v-img> -->
                 <span>{{ $t("navbar.btnplay") }}</span>
               </v-btn>
             </div>
@@ -125,7 +180,7 @@
 
 <script>
 // import LanguageSwitch from "@/views/home/components/nav-bar/LanguageSwitch.vue";
-import i18n from "@/i18n";
+// import i18n from "@/i18n";
 export default {
   // components: { LanguageSwitch },
   data: () => ({
@@ -138,10 +193,15 @@ export default {
     },
     gotoRouter(url) {
       this.$router.push({
-        params: { lang: i18n.locale },
         name: url,
       });
     },
+    // gotoRouter(url) {
+    //   this.$router.push({
+    //     params: { lang: i18n.locale },
+    //     name: url,
+    //   });
+    // },
   },
   watch: {
     group() {

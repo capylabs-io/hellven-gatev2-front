@@ -1,11 +1,11 @@
 <template>
-  <div class="main-content">
+  <div class="main-content" :style="{ backgroundColor: '#12163D' }">
     <div class="content d-flex flex-column">
       <div class="rune-title white--text bungee-font mx-auto mt-10">
         <span>RUNES</span>
       </div>
       <div class="rune-text bungee-font d-flex mx-auto">
-        <div class="text-none align-seft-center">
+        <div class="text-none align-seft-center white--text">
           <span
             >Boosters are combat enhancement that only appear in-game When
             obtained, boosters grant Fighter temporary boost in stat For a
@@ -27,9 +27,15 @@
           <v-img :src="require(`@/assets/rune/rune-image.webp`)"></v-img>
         </div>
       </div>
-      <div class="rune-card-list">
-        <runeCard v-for="(card, index) in towerList" :key="index">
-          <v-img :src="card" class="rune-card mx-auto"></v-img>
+      <div class="fighter-card-list">
+        <runeCard
+          v-for="(fighter, index) in fighterCard"
+          :key="fighter.index"
+          :index="index"
+        >
+          <v-img
+            :src="require(`@/assets/home/hero/hero${fighter.index}.webp`)"
+          ></v-img>
         </runeCard>
       </div>
     </div>
@@ -56,6 +62,28 @@ export default {
         require(`@/assets/tower/tower1.webp`),
         require(`@/assets/tower/tower1.webp`),
       ],
+      fighterCard: [
+        {
+          index: "1",
+          image: "@/assets/home/hero/Hero1.webp",
+        },
+        {
+          index: "2",
+          image: "@/assets/home/hero/Hero2.webp",
+        },
+        {
+          index: "3",
+          image: "@/assets/home/hero/Hero3.webp",
+        },
+        {
+          index: "4",
+          image: "@/assets/home/hero/Hero4.webp",
+        },
+        {
+          index: "5",
+          image: "@/assets/home/hero/Hero5.webp",
+        },
+      ],
     };
   },
 };
@@ -65,17 +93,17 @@ export default {
 .main-content {
   width: 100%;
   height: 100%;
-  padding-bottom: 160px;
+  padding-bottom: 60px;
 }
 .content {
   position: relative;
   width: 100%;
-  height: 720px;
+  height: max-content;
   row-gap: 50px;
 }
 .rune-content {
   width: 100%;
-  height: 380px;
+  height: max-content;
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -85,11 +113,10 @@ export default {
 .rune-title {
   width: max-content;
   margin: 0 auto;
-  background-color: black;
+  background-color: #5e6be9;
   font-size: x-large;
   padding: 12px;
   transform: skew(-5deg, 0deg);
-  box-shadow: 8px 7px 0px -2px rgba(0, 0, 0, 0.2);
 }
 .rune-text {
   width: 50%;
@@ -125,5 +152,12 @@ export default {
   align-self: center;
   width: calc(46px * 1.1);
   height: calc(64px * 1.1);
+}
+.fighter-card-list {
+  display: flex;
+  width: fit-content;
+  column-gap: 20px;
+  margin: 0 auto;
+  margin-top: 50px;
 }
 </style>

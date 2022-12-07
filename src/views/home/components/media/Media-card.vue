@@ -16,7 +16,7 @@ export default {
 .media-card {
   width: 16%;
   border-radius: 5px;
-  border: solid 3px white;
-  box-shadow: 0px 6px 1px 0px rgb(255, 255, 255, 0.5) !important;
+  border: solid 5px white;
+  box-shadow: 0px 6px 1px 0px #D9D9D9 !important;
 }
 </style>

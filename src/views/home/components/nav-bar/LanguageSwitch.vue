@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="">
     <v-menu bottom origin="center center" transition="scale-transition">
       <template v-slot:activator="{ on, attrs }">
         <div class="d-flex align-center ml-4">

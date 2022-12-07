@@ -27,13 +27,13 @@
           <v-img :src="require(`@/assets/fighter/fighter-image.webp`)"></v-img>
         </div>
       </div>
-      <div class="fighter-card-list mx-auto">
+      <div class="fighter-card-list">
         <fighterCard
           v-for="(fighter, index) in fighterCard"
           :key="fighter.index"
+          :index="index"
         >
           <v-img
-            :class="visibleImage == index ? 'indicators' : ''"
             :src="require(`@/assets/home/hero/hero${fighter.index}.webp`)"
           ></v-img>
         </fighterCard>
@@ -84,22 +84,6 @@ export default {
         {
           index: "5",
           image: "@/assets/home/hero/Hero5.webp",
-        },
-        {
-          index: "6",
-          image: "@/assets/home/hero/Hero6.webp",
-        },
-        {
-          index: "7",
-          image: "@/assets/home/hero/Hero7.webp",
-        },
-        {
-          index: "8",
-          image: "@/assets/home/hero/Hero8.webp",
-        },
-        {
-          index: "9",
-          image: "@/assets/home/hero/Hero9.webp",
         },
       ],
     };
@@ -158,10 +142,10 @@ export default {
   align-self: center;
 }
 .fighter-card-list {
-  width: 50%;
-  column-gap: 3%;
   display: flex;
-  justify-content: space-around;
+  width: fit-content;
+  column-gap: 20px;
+  margin: 0 auto;
   margin-top: 50px;
 }
 </style>

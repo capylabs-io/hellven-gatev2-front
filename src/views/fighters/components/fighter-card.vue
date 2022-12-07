@@ -21,8 +21,8 @@ export default {
 </script>
 <style scoped>
 .v-card {
-  width: 14%;
-  height: max-content;
+  width: 70px;
+  height: 70px;
   border-radius: 10px;
   background-color: black;
 }

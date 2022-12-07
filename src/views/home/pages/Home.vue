@@ -12,7 +12,7 @@
 
 <script>
 import Introduction from "./Introduction.vue";
-import Mode from "./Mode.vue";
+import Mode from "./Features.vue";
 import News from "./News.vue";
 import Media from "./Media.vue";
 import Community from "./Community.vue";

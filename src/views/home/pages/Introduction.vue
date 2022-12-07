@@ -49,7 +49,7 @@ export default {
   background-repeat: no-repeat;
   background-position: center;
   padding-top: 6%;
-  row-gap: 8%;
+  row-gap: 5%;
   position: relative;
 }
 .btn-customize-introduction {

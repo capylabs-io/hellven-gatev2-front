@@ -34,17 +34,17 @@ const routes = [
       },
       {
         path: 'tower',
-        name: 'tower',
+        name: 'towers',
         component: () => import(/* webpackChunkName: "about" */ '../views/tower/pages/Tower.vue')
       },
       {
         path: 'rune',
-        name: 'rune',
+        name: 'runes',
         component: () => import(/* webpackChunkName: "about" */ '../views/rune/pages/Rune.vue')
       },
       {
         path: 'booster',
-        name: 'booster',
+        name: 'boosters',
         component: () => import(/* webpackChunkName: "about" */ '../views/booster/pages/Booster.vue')
       },
       {
