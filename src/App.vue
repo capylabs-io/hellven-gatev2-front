@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <app-navbar></app-navbar>
-    <v-main>
+    <v-main>  
       <router-view />
     </v-main>
     <app-footer></app-footer>
@@ -49,7 +49,7 @@ export default {
   font-family: Kanit, Helvetica, Arial;
 }
 @media screen and (min-width: 1264px) and (max-width: 1500px) {
-  /* ------------------- home-hero --------------*/
+  /* ------------------- home-fighter --------------*/
   .info-card {
     width: 42% !important;
   }
@@ -65,8 +65,8 @@ export default {
   .mode-card {
     max-width: 29% !important;
   }
-  /* ------------------- home-hero --------------*/
-  .hero-card {
+  /* ------------------- home-fighter --------------*/
+  .fighter-card {
     column-gap: 8% !important;
   }
 
@@ -111,16 +111,16 @@ export default {
   .mode-card {
     max-width: 35% !important;
   }
-  /* ------------------- home-hero --------------*/
-  .hero {
+  /* ------------------- home-fighter --------------*/
+  .fighter {
     position: relative !important;
-    height: fit-content !important;
+    height: max-content !important;
     padding-bottom: 70px;
   }
-  .hero-title {
+  .fighter-title {
     max-width: 10% !important;
   }
-  .hero-card {
+  .fighter-card {
     margin-top: 4% !important;
     column-gap: 8% !important;
   }
@@ -130,7 +130,7 @@ export default {
   .title-left {
     margin-right: auto !important;
   }
-  .hero-info {
+  .fighter-info {
     flex-direction: column;
     row-gap: 80px !important;
   }
@@ -138,7 +138,7 @@ export default {
     display: flex !important;
     flex-direction: column-reverse !important ;
   }
-  .hero-image {
+  .fighter-image {
     align-self: center;
   }
   .info-card {
@@ -241,7 +241,7 @@ export default {
     flex-wrap: wrap;
     gap: 30px;
   }
-  .hero-image {
+  .fighter-image {
     margin: 0 auto !important;
     margin-top: 2% !important;
     margin-left: 39% !important;
@@ -317,14 +317,14 @@ export default {
   .mode-card-image {
     max-width: 22% !important;
   }
-  /* ------------------- home-hero --------------*/
-  .hero {
+  /* ------------------- home-fighter --------------*/
+  .fighter {
     margin-top: 50px !important;
   }
-  .hero-card-list {
+  .fighter-card-list {
     display: none !important;
   }
-  .hero-card-list-responsive {
+  .fighter-card-list-responsive {
     column-gap: 2%;
     display: flex !important;
     justify-content: space-around;
@@ -338,7 +338,7 @@ export default {
   .title-right .v-card__title {
     width: 200px !important;
   }
-  .hero-title {
+  .fighter-title {
     max-width: 16% !important;
   }
   /* ------------------- home-new --------------*/
@@ -438,8 +438,8 @@ export default {
     flex-wrap: wrap;
     gap: 16px;
   }
-  /* ------------------- home-hero --------------*/
-  .hero-image {
+  /* ------------------- home-fighter --------------*/
+  .fighter-image {
     margin: 0 auto !important;
     margin-top: 2% !important;
     margin-left: 34% !important;
@@ -453,7 +453,7 @@ export default {
     text-align: center;
     max-width: 420px !important;
   }
-  .hero-info-left {
+  .fighter-info-left {
     justify-content: center !important;
   }
 }
@@ -520,32 +520,32 @@ export default {
   .mode-card-image {
     max-width: 20% !important;
   }
-  /* ------------------- home-hero --------------*/
-  .hero {
+  /* ------------------- home-fighter --------------*/
+  .fighter {
     margin-top: 50px !important;
   }
   .shadow {
     width: 80%;
   }
-  .hero-card-list {
+  .fighter-card-list {
     display: none !important;
   }
-  .hero-card {
+  .fighter-card {
     display: none !important;
   }
-  .hero-card-mb {
+  .fighter-card-mb {
     display: flex !important;
     margin-top: 6%;
     column-gap: 3%;
     justify-content: center;
   }
-  .hero-card-list-responsive-mb {
+  .fighter-card-list-responsive-mb {
     column-gap: 7px;
     display: flex !important;
     justify-content: space-around;
     max-width: 70% !important;
   }
-  .hero-card-list-responsive-mb .v-card {
+  .fighter-card-list-responsive-mb .v-card {
     width: 23% !important ;
   }
   .slider-mb {
@@ -556,10 +556,10 @@ export default {
     margin: 0 auto;
     width: 95% !important;
   }
-  .hero-ability {
+  .fighter-ability {
     column-gap: 65px !important;
   }
-  .hero-ability-text {
+  .fighter-ability-text {
     column-gap: 35px !important;
     font-size: 12px !important;
   }
@@ -623,7 +623,7 @@ export default {
   .nav-image {
     max-width: 20% !important;
   }
-  /* ------------------- home-hero --------------*/
+  /* ------------------- home-fighter --------------*/
   .statistic-image {
     max-width: 79% !important;
   }
@@ -655,7 +655,7 @@ export default {
   .mode-title {
     max-width: 27% !important;
   }
-  .hero-title {
+  .fighter-title {
     max-width: 27% !important;
   }
   .news-title {

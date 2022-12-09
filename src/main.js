@@ -6,6 +6,7 @@ import vuetify from './plugins/vuetify'
 import i18n from './i18n'
 import VueMeta from 'vue-meta'
 import scrollanimation from './views/home/components/directives/scrollanimation'
+
 Vue.config.productionTip = false
 Vue.directive('scrollanimation', scrollanimation)
 Vue.use(VueMeta);

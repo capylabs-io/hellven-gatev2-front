@@ -3,7 +3,7 @@
     <div class="media-title white--text bungee-font">
       <span>MEDIA</span>
     </div>
-    
+
     <!--todo: add popup view image -->
     <div class="media-content pt-15 item-center px-15">
       <div class="media-image-responsive item-center">
@@ -21,40 +21,94 @@
         ></card>
       </div>
       <div class="media-section">
-        <div class="slider">
-          <v-img
-            class="align-seft-center"
-            :src="require(`@/assets/home/media/slide-left.webp`)"
-          ></v-img>
+        <div v-scrollanimation class="media-image item-center fade-bottom">
+          <card v-for="media in medias" :key="media.index" v-bind:media="media">
+            <v-img
+              @click="overlay = !overlay"
+              :src="require(`@/assets/home/media/Media${media.index}.webp`)"
+            ></v-img>
+          </card>
         </div>
-        <div class="media-image item-center">
-          <card
-            v-for="media in medias"
-            :key="media.index"
-            v-bind:media="media"
-          ></card>
-        </div>
-        <div class="slider">
-          <v-img
-            class="align-seft-center"
-            :src="require(`@/assets/home/media/slide-right.webp`)"
-          ></v-img>
+        <div class="d-flex mx-auto gap-50">
+          <div class="slider">
+            <v-img
+              class="align-seft-center"
+              :src="require(`@/assets/home/media/slide-left.webp`)"
+            ></v-img>
+          </div>
+          <div class="slider">
+            <v-img
+              class="align-seft-center"
+              :src="require(`@/assets/home/media/slide-right.webp`)"
+            ></v-img>
+          </div>
         </div>
       </div>
     </div>
+
+    <v-row justify="center mx-auto">
+      <v-overlay :z-index="zIndex" :value="overlay">
+        <div class="overlayContent d-flex flex-column align-center">
+          <div class="overlay-Count white--text bungee-font">
+            <span>1/36</span>
+          </div>
+          <div class="d-flex gap-50">
+            <div class="slider-overlay">
+              <v-img
+                class="align-seft-center"
+                :src="require(`@/assets/home/media/slide-left.webp`)"
+              ></v-img>
+            </div>
+            <cardDetail @click="overlay = false">
+              <v-img
+                class="imageDetail"
+                :src="require(`@/assets/home/media/Media10.webp`)"
+              ></v-img>
+            </cardDetail>
+            <div class="slider-overlay">
+              <v-img
+                class="align-seft-center"
+                :src="require(`@/assets/home/media/slide-right.webp`)"
+              ></v-img>
+            </div>
+          </div>
+          <div class="media-image-detail item-center">
+            <card
+              v-for="media in medias"
+              :key="media.index"
+              v-bind:media="media"
+            >
+              <v-img
+                v-bind="attrs"
+                v-on="on"
+                :src="require(`@/assets/home/media/Media${media.index}.webp`)"
+              ></v-img>
+            </card>
+          </div>
+          <v-btn color="violet" fab @click="overlay = false">
+            <v-icon white> mdi-close </v-icon>
+          </v-btn>
+        </div>
+      </v-overlay>
+    </v-row>
   </div>
 </template>
 
 <script>
 import Card from "@/views/home/components/media/Media-card.vue";
+import MediaDetail from "../components/media/view/Media-detail.vue";
 export default {
   name: "Media",
 
   components: {
     card: Card,
+    cardDetail: MediaDetail,
   },
   data() {
     return {
+      overlay: false,
+      zIndex: 99,
+
       medias: [
         {
           index: "1",
@@ -141,9 +195,10 @@ export default {
 </script>
 <style scoped>
 .media {
-  height: 770px;
+  height: max-content;
   width: 100%;
   padding-top: 6%;
+  padding-bottom: 6%;
   position: relative;
   background: linear-gradient(180deg, #4da9ff 0.52%, #0072dd 100%);
 }
@@ -153,9 +208,20 @@ export default {
   background-color: black;
   font-size: x-large;
   padding: 12px;
-
   transform: skew(-5deg, 0deg);
   box-shadow: 8px 7px 0px -2px rgba(0, 0, 0, 0.2);
+}
+.overlay-Count {
+  position: absolute;
+  z-index: 999;
+  width: max-content;
+  margin: 0 auto;
+  background-color: black;
+  font-size: x-large;
+  padding: 12px;
+  transform: skew(-5deg, 0deg);
+  box-shadow: 8px 7px 0px -2px rgba(0, 0, 0, 0.2);
+  margin-top: 12%;
 }
 .text-center {
   text-align: center;
@@ -164,12 +230,17 @@ export default {
   justify-content: center;
 }
 .slider {
-  padding-top: 9%;
+  padding-top: 60px;
 }
 .media-image {
   gap: 30px;
   display: flex;
   flex-wrap: wrap;
+}
+.media-image-detail {
+  gap: 30px;
+  display: flex;
+  overflow: hidden;
 }
 .media-image-responsive {
   display: none;
@@ -183,5 +254,24 @@ export default {
 }
 .media-section {
   display: flex;
+  flex-direction: column;
+}
+
+.imageDetail {
+  width: 1200px;
+  height: 500px;
+}
+.v-dialog__content {
+  padding-bottom: 200px;
+}
+.overlayContent {
+  padding-top: 80px;
+  row-gap: 50px;
+}
+.slider-overlay {
+  padding-top: 20%;
+}
+.gap-50 {
+  column-gap: 50px;
 }
 </style>

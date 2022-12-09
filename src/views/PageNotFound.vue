@@ -6,8 +6,8 @@
         'url(' + require('@/assets/coming-soon-background.webp') + ')',
     }"
   >
-    <div class="white--text title mx-auto">
-      <span class="bungee-font text-shadow">404 Not Found!</span>
+    <div class="white--text subtitle mx-auto">
+      <span class="bungee-font text-shadow">Whoop, 404 Not Found!</span>
     </div>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
 }
-.title {
+.subtitle {
   width: 50%;
   font-size: 37px !important;
   text-align: center;

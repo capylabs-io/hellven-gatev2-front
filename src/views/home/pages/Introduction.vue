@@ -6,7 +6,7 @@
         'url(' + require('@/assets/introduction-background.webp') + ')',
     }"
   >
-    <div class="logo">
+    <div v-scrollanimation class="logo fade-bottom">
       <v-img
         class="align-seft-center"
         :src="require(`@/assets/fighter-force.webp`)"
@@ -83,16 +83,5 @@ export default {
 }
 .v-btn {
   max-width: max-content;
-}
-.unactive {
-  position: relative;
-  transform: translateY(150px);
-  opacity: 0;
-  transition: all 1s cubic-bezier(0.41, 0.01, 0.57, 1.61);
-}
-
-.active {
-  transform: translateY(0);
-  opacity: 1;
 }
 </style>

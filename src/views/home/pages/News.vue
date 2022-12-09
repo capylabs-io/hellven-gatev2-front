@@ -3,7 +3,7 @@
     <div class="news-title white--text bungee-font">
       <span>NEWS</span>
     </div>
-    <v-row class="pt-10 ma-auto px-5 max-content">
+    <v-row v-scrollanimation class="pt-10 ma-auto px-5 max-content fade-right">
       <v-col cols="12" sm="6" lg="3">
         <v-card class="new-card-boder" white>
           <v-sheet

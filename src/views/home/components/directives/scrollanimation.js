@@ -11,7 +11,7 @@ const animatedScrollObserver = new IntersectionObserver(
         Because we don’t have to observe it anymore.
       */
       if (entry.isIntersecting) {
-        entry.target.classList.add('active');
+        entry.target.classList.add('transActive');
         animatedScrollObserver.unobserve(entry.target);
       }
     });

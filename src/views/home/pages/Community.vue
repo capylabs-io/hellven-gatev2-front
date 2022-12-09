@@ -6,19 +6,22 @@
         'url(' + require('@/assets/community-background.webp') + ')',
     }"
   >
-    <div class="community-title bungee-font white--text">
+    <div
+      v-scrollanimation
+      class="community-title bungee-font white--text fade-bottom"
+    >
       <span>JOIN THE COMMUNITY</span>
     </div>
     <!-- <v-img
       :src="require(`@/assets/home/community/community-title.webp`)"
     ></v-img> -->
-    <v-card class="community-card mx-auto mt-10">
+    <v-card v-scrollanimation class="community-card mx-auto mt-10 fade-bottom">
       <div class="item-center kanit-font mx-auto text-break community-text">
         <p>
           {{ $t("community.text") }}
         </p>
       </div>
-      <v-btn
+      <!-- <v-btn
         color="violet"
         class="community-btn white--text btn-customize bungee-font"
         height="70px"
@@ -32,7 +35,7 @@
           max-width="60%"
           :src="require(`@/assets/home/community/discord-btn-logo.webp`)"
         ></v-img>
-      </v-btn>
+      </v-btn> -->
 
       <div class="d-flex social-icon mx-auto flex-wrap">
         <v-img
@@ -65,9 +68,10 @@ export default {
 </script>
 <style scoped>
 .community {
-  height: 650px;
+  height: max-content;
   width: 100%;
   padding-top: 6%;
+  padding-bottom: 6%;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
@@ -75,7 +79,7 @@ export default {
 }
 .community-text {
   max-width: 85%;
-  font-size: 20px;
+  font-size: 23px;
 }
 .community-title {
   max-width: 16%;

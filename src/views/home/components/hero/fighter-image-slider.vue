@@ -13,27 +13,6 @@ export default {
 };
 </script>
 <style scoped>
-.unactive {
-  position: relative;
-  transform: translateY(150px);
-  opacity: 0;
-  transition: 1s all ease;
-}
-
-.active {
-  transform: translateY(0);
-  opacity: 1;
-}
-@keyframes fade-right {
-  0% {
-    transform: translateX(100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
 .image {
   align-self: center;
 }

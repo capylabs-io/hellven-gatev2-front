@@ -214,12 +214,13 @@ export default {
 </script>
 <style scoped>
 .fighter {
-  height: 950px;
-  width: 100% fit-content;
+  width: 100%;
+  height: max-content;
   margin-top: 2%;
   padding-top: 4%;
+  padding-bottom: 4%;
   position: relative !important;
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }

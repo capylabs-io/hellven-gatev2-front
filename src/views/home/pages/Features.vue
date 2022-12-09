@@ -4,8 +4,12 @@
       <span>FEATURES</span>
     </div>
 
-    <div class="d-flex item-center feature-list" v-if="translateValue == 1">
-      <v-card class="feature-card pt-5" white>
+    <div
+      v-scrollanimation
+      class="d-flex item-center feature-list fade-right"
+      v-if="translateValue == 1"
+    >
+      <!-- <v-card class="feature-card pt-5" white>
         <v-card-title class="bungee-font" style="font-size: 25px">
           <span> Play Your Way </span>
         </v-card-title>
@@ -21,7 +25,7 @@
             against fiendishly clever computer opponents, and much, much more.
           </span>
         </v-card-subtitle>
-      </v-card>
+      </v-card> -->
       <div class="d-flex flex-column feature-play">
         <div class="feature-play-card">
           <v-card class="feature-media-image-card">
@@ -46,7 +50,26 @@
           <v-card class="feature-media-image-card">
             <v-img
               class="feature-media-image"
-              :src="require(`@/assets/home/news/new1-image.webp`)"
+              :src="require(`@/assets/home/news/new4-image.webp`)"
+            ></v-img>
+          </v-card>
+          <div class="d-flex pt-3 gap-30 feature-play-card-info">
+            <v-img
+              class="feature-media-icon"
+              :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
+            />
+            <span class="kanit-font" style="font-size: 18px">
+              Challenge anyone, anywhere
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-column feature-play">
+        <div class="feature-play-card">
+          <v-card class="feature-media-image-card">
+            <v-img
+              class="feature-media-image"
+              :src="require(`@/assets/home/news/new4-image.webp`)"
             ></v-img>
           </v-card>
           <div class="d-flex pt-3 gap-30 feature-play-card-info">
@@ -70,7 +93,11 @@
       </div>
     </div>
 
-    <div class="d-flex item-center feature-list" v-else>
+    <div
+      v-scrollanimation
+      class="d-flex item-center feature-list fade-right"
+      v-else
+    >
       <div class="slider">
         <button @click="prev">
           <v-img
@@ -84,7 +111,7 @@
           <v-card class="feature-media-image-card">
             <v-img
               class="feature-media-image"
-              :src="require(`@/assets/home/news/new1-image.webp`)"
+              :src="require(`@/assets/home/news/new4-image.webp`)"
             ></v-img>
           </v-card>
           <div class="d-flex pt-3 gap-30 feature-play-card-info">
@@ -103,7 +130,7 @@
           <v-card class="feature-media-image-card">
             <v-img
               class="feature-media-image"
-              :src="require(`@/assets/home/news/new2-image.webp`)"
+              :src="require(`@/assets/home/news/new4-image.webp`)"
             ></v-img>
           </v-card>
           <div class="d-flex pt-3 gap-30 feature-play-card-info">
@@ -122,7 +149,7 @@
           <v-card class="feature-media-image-card">
             <v-img
               class="feature-media-image"
-              :src="require(`@/assets/home/news/new3-image.webp`)"
+              :src="require(`@/assets/home/news/new4-image.webp`)"
             ></v-img>
           </v-card>
           <div class="d-flex pt-3 gap-30 feature-play-card-info">
@@ -276,8 +303,8 @@ export default {
   max-width: 23%;
 }
 .feature-media-icon {
-  max-width: 65px;
-  max-height: 73px;
+  max-width: 40px;
+  max-height: 45px;
 }
 .feature-play {
   width: max-content;
@@ -300,6 +327,9 @@ export default {
 }
 .feature-play-card-info {
   width: 360px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .gap-30 {
   column-gap: 30px;

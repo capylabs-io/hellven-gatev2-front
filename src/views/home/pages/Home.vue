@@ -1,11 +1,11 @@
 <template>
-  <div class="main-content">
-    <introduction v-scrollanimation> </introduction>
-    <mode v-scrollanimation></mode>
+  <div class="home-content">
+    <introduction> </introduction>
+    <mode></mode>
     <fighter></fighter>
-    <new v-scrollanimation></new>
+    <new></new>
     <media></media>
-    <community v-scrollanimation class="fade-bottom"></community>
+    <community></community>
     <!-- <p class="mt-4" v-html="$t('about.content')" /> -->
   </div>
 </template>
@@ -19,7 +19,11 @@ import Community from "./Community.vue";
 import Fighter from "./Fighter_Home.vue";
 export default {
   name: "Home",
-
+  metaInfo: {
+    title: "Fighter-force",
+    // override the parent template and just use the above title only
+    titleTemplate: null,
+  },
   components: {
     introduction: Introduction,
     mode: Mode,
@@ -31,8 +35,8 @@ export default {
 };
 </script>
 
-<style scoped>
-.main-content {
+<style>
+.home-content {
   width: 100%;
   height: 100%;
   background-color: #eaeef4;
@@ -47,17 +51,17 @@ export default {
   transition: 1s all ease;
 }
 
-.active {
+.transActive {
   transform: translateY(0);
   opacity: 1;
 }
-.active.fade-bottom {
+.transActive.fade-bottom {
   animation: fade-bottom 1s ease-in;
 }
-.active.fade-left {
+.transActive.fade-left {
   animation: fade-left 1s ease-in;
 }
-.active.fade-right {
+.transActive.fade-right {
   animation: fade-right 1s ease-in;
 }
 @keyframes fade-bottom {
