@@ -62,12 +62,29 @@ const routes = [
         name: '404',
         component: () => import(/* webpackChunkName: "about" */ '../views/PageNotFound.vue')
       },
+      {
+        path: 'privacy',
+        name: 'privacy',
+        component: () => import(/* webpackChunkName: "about" */ '../views/Privacy.vue')
+      },
+      {
+        path: 'term',
+        name: 'term',
+        component: () => import(/* webpackChunkName: "about" */ '../views/Term.vue')
+      },
+      {
+        path: 'cookies',
+        name: 'cookies',
+        component: () => import(/* webpackChunkName: "about" */ '../views/Cookies.vue')
+      },
     ]
   }
 ]
 
 const router = new VueRouter({
-  mode: 'history', routes
+  mode: 'history',
+  routes,
 })
 
 export default router
+ 

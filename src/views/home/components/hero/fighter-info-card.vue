@@ -1,5 +1,5 @@
 <template>
-  <v-card class="fighter-info">
+  <v-card class="hero-info-card">
     <div class="info-content">
       <div class="info-top">
         <v-card-title class="bungee-font" style="font-size: 23px"
@@ -110,32 +110,22 @@
           </v-card-text>
         </div>
       </div>
-      <div class="info-btn mx-auto py-1">
-        <v-btn color="#5e6be9" class="white--text btn-customize bungee-font">
-          <span>base stats</span>
-        </v-btn>
-      </div>
     </div>
   </v-card>
 </template>
 
 <script>
-export default {
-  setup() {
-    return {};
-  },
-};
+export default {};
 </script>
-
-<style lang="scss" scoped>
-.fighter-info {
-  width: 700px;
-  height: max-content;
+<style scoped>
+.clear-margin {
+  margin: 0;
+}
+.hero-info-card {
   border-radius: 16px;
   position: relative;
-  width: fit-content !important;
-  height: max-content;
-  box-shadow: 0px 5px 1px 0px #d9d9d9 !important ;
+  width: max-content !important;
+  box-shadow: 0px 13px 1px 0px #d9d9d9 !important ;
 }
 .info-top {
   display: flex;
@@ -152,9 +142,7 @@ export default {
   height: 27px;
   align-self: center;
 }
-.btn-customize {
-  border-radius: 10px;
-}
+
 .v-card__text {
   padding-top: 0px;
 }
@@ -179,8 +167,5 @@ export default {
 }
 .gray-text {
   color: gray;
-}
-.info-btn {
-  width: max-content;
 }
 </style>

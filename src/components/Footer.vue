@@ -43,9 +43,15 @@
           </p>
         </div>
         <div class="d-flex font-weight-bold" style="gap: 20px">
-          <div class="text-none align-seft-center">Terms</div>
-          <div class="text-none align-seft-center">Privacy</div>
-          <div class="text-none align-seft-center">Cookies</div>
+          <a class="text-none align-seft-center" @click="gotoRouter('term')">
+            Terms
+          </a>
+          <a class="text-none align-seft-center" @click="gotoRouter('privacy')"
+            >Privacy</a
+          >
+          <a class="text-none align-seft-center" @click="gotoRouter('cookies')"
+            >Cookies</a
+          >
         </div>
       </div>
     </div>
@@ -53,9 +59,29 @@
 </template>
 <script>
 export default {
+  data: () => ({
+    drawer: false,
+    group: null,
+  }),
   methods: {
     openLink(url) {
       window.open(url, "_blank");
+    },
+    gotoRouter(url) {
+      this.$router.push({
+        name: url,
+      });
+    },
+    // gotoRouter(url) {
+    //   this.$router.push({
+    //     params: { lang: i18n.locale },
+    //     name: url,
+    //   });
+    // },
+  },
+  watch: {
+    group() {
+      this.drawer = false;
     },
   },
 };

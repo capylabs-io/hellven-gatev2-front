@@ -2,7 +2,7 @@
   <div class="main-content">
     <introduction v-scrollanimation> </introduction>
     <mode v-scrollanimation></mode>
-    <hero></hero>
+    <fighter></fighter>
     <new v-scrollanimation></new>
     <media></media>
     <community v-scrollanimation class="fade-bottom"></community>
@@ -16,7 +16,7 @@ import Mode from "./Features.vue";
 import News from "./News.vue";
 import Media from "./Media.vue";
 import Community from "./Community.vue";
-import Hero from "./Hero.vue";
+import Fighter from "./Fighter_Home.vue";
 export default {
   name: "Home",
 
@@ -26,7 +26,7 @@ export default {
     new: News,
     media: Media,
     community: Community,
-    hero: Hero,
+    fighter: Fighter,
   },
 };
 </script>

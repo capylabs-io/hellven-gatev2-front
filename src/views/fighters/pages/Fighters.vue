@@ -24,7 +24,7 @@
           <fighterInfo />
         </div>
         <div class="image">
-          <v-img :src="require(`@/assets/fighter-image.webp`)"></v-img>
+          <v-img :src="require(`@/assets/fighter/fighter1-image.webp`)"></v-img>
         </div>
       </div>
       <div class="fighter-card-list">

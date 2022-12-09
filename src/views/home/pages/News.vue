@@ -25,9 +25,9 @@
           <div class="pl-4 pt-4 bungee-font gray-text">
             <p style="margin: 0">{{ $t("new.new1.subtitle") }}</p>
           </div>
-          <v-card-title class="bungee-font" style="font-size: 23px">
+          <div class="bungee-font text-truncate pad-16" style="font-size: 23px">
             {{ $t("new.new1.title") }}
-          </v-card-title>
+          </div>
 
           <v-card-subtitle
             class="text-break kanit-font pt-2"
@@ -58,9 +58,9 @@
           <div class="pl-4 pt-4 bungee-font gray-text">
             <p style="margin: 0">{{ $t("new.new2.subtitle") }}</p>
           </div>
-          <v-card-title class="bungee-font" style="font-size: 23px">
+          <div class="bungee-font text-truncate pad-16" style="font-size: 23px">
             {{ $t("new.new2.title") }}
-          </v-card-title>
+          </div>
 
           <v-card-subtitle
             class="text-break kanit-font pt-2"
@@ -91,9 +91,9 @@
           <div class="pl-4 pt-4 bungee-font gray-text">
             <p style="margin: 0">{{ $t("new.new3.subtitle") }}</p>
           </div>
-          <v-card-title class="bungee-font" style="font-size: 23px">
+          <div class="bungee-font text-truncate pad-16" style="font-size: 23px">
             {{ $t("new.new3.title") }}
-          </v-card-title>
+          </div>
 
           <v-card-subtitle
             class="text-break kanit-font pt-2"
@@ -124,9 +124,9 @@
           <div class="pl-4 pt-4 bungee-font gray-text">
             <p style="margin: 0">{{ $t("new.new1.subtitle") }}</p>
           </div>
-          <v-card-title class="bungee-font" style="font-size: 23px">
+          <div class="bungee-font text-truncate pad-16" style="font-size: 23px">
             {{ $t("new.new1.title") }}
-          </v-card-title>
+          </div>
 
           <v-card-subtitle
             class="text-break kanit-font pt-2"
@@ -360,5 +360,8 @@ export default {
 }
 .new-card-image {
   max-height: 70%;
+}
+.pad-16 {
+  padding: 10px 16px 0px 16px;
 }
 </style>
