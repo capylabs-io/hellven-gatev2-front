@@ -52,6 +52,12 @@ const routes = [
         component: () => import('../views/user/pages/Register-Vertify-Sent.vue')
       },
       {
+        //  localhost:8080/confirm?confirmation=b82df32ba0ec5666b5f154e7ab5e29cc5fd8e073  
+        path: 'confirm/confirmation=:confirmCode',
+        name: 'RegisterVertified',
+        component: () => import('../views/user/pages/Resgister-Vertified.vue')
+      },
+      {
         path: 'account',
         name: 'AccountSettings',
         component: () => import('../views/user/pages/Account-Settings.vue')

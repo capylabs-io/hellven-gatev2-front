@@ -32,7 +32,8 @@ export const userStore = defineStore("users", {
     },
     vetifyAccount: {
       hideEmail: "",
-      vetifyEmail: ""
+      vetifyEmail: "",
+      countSeconds: 0,
     },
     isShowPass: false,
     isShowConfirmPass: false,
@@ -52,13 +53,16 @@ export const userStore = defineStore("users", {
         .then((response) => {
           loadingController.decreaseRequest();
           if (response.statusText == "OK") {
-            let index = this.userData.email.indexOf('@');
-            let hideChar="";
-            for (let i=1; i< index-1 ; i++) {
+            let index = this.userData.email.indexOf("@");
+            let hideChar = "";
+            for (let i = 1; i < index - 1; i++) {
               hideChar = hideChar + "*";
             }
             this.vetifyAccount.vetifyEmail = this.userData.email;
-            this.vetifyAccount.hideEmail = this.vetifyAccount.vetifyEmail.charAt(0) + hideChar + this.vetifyAccount.vetifyEmail.substring(index-1);
+            this.vetifyAccount.hideEmail =
+              this.vetifyAccount.vetifyEmail.charAt(0) +
+              hideChar +
+              this.vetifyAccount.vetifyEmail.substring(index - 1);
             snackController.success("Register is successful");
             this.errorMessage = "";
             this.router.push({
@@ -71,6 +75,59 @@ export const userStore = defineStore("users", {
           loadingController.decreaseRequest();
           snackController.commonError(error);
           // this.errorMessage = error.response.data.data[0].messages[0].message;
+        });
+    },
+    async resentVertifyRegister() {
+      loadingController.increaseRequest();
+      let registerUrl = baseUrl + "auth/send-email-confirmation";
+      axios
+        .post(
+          registerUrl,
+          {
+            email: this.vetifyAccount.vetifyEmail,
+          },
+          {
+            headers: {
+              "Content-Type":
+                "application/x-www-form-urlencoded; charset=UTF-8",
+            },
+          }
+        )
+        .then((response) => {
+          loadingController.decreaseRequest();
+          if (response.statusText == "OK") {
+            snackController.success(
+              "Email sent successfully, please check your mailbox"
+            );
+            this.errorMessage = "";
+          }
+        })
+        .catch((error) => {
+          loadingController.decreaseRequest();
+          snackController.commonError(error);
+          // this.errorMessage = error.response.data.data[0].messages[0].message;
+        });
+    },
+    async vertifyRegister(confirmCode) {
+      console.log(confirmCode);
+      this.vetifyAccount.countSeconds = 10;
+      let vertifyUrl =
+        baseUrl + "auth/email-confirmation?confirmation=" + confirmCode;
+      try {
+        axios.get(vertifyUrl);
+      } catch (error) {
+        snackController.commonError(error);
+      }
+        snackController.success("Verified successfully!");
+        this.errorMessage = "";
+        while (this.vetifyAccount.countSeconds > 0) {
+          await this.delay(1000);
+          this.vetifyAccount.countSeconds = this.vetifyAccount.countSeconds - 1;
+          console.log(this.vetifyAccount.countSeconds);
+        }
+        this.router.push({
+          params: { lang: i18n.locale },
+          name: "home",
         });
     },
     async signIn() {
@@ -159,6 +216,11 @@ export const userStore = defineStore("users", {
           snackController.commonError(error);
           // this.errorMessage = error.response.data.data[0].messages[0].message;
         });
+    },
+    delay(milliseconds) {
+      return new Promise((resolve) => {
+        setTimeout(resolve, milliseconds);
+      });
     },
   },
 });

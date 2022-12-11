@@ -83,6 +83,9 @@
     "new-password-confirm" : "Enter new password again",
     "verify-your-account": "Verify your account",
     "register-confirm-sent-sub" : "Please check the verification link in your email:",
-    "resend-verify-link" : "Resend verify link"
+    "resend-verify-link" : "Resend verify link",
+    "verified-successfully": "Verified successfully!",
+    "verified-successfully-sub": "You will be redirected back to Homepage in... ",
+    "log-in-now" : "Log in now"
   }
 }

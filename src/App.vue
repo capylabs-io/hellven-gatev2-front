@@ -13,7 +13,12 @@
 <script>
 import Footer from "../src/components/Footer.vue";
 import NavigationBar from "../src/components/NavigationBar.vue";
-const moduleNotUseTemplate = ["sign-in", "forget-password", "sign-up", "resgister-vertify-sent"];
+const moduleNotUseTemplate = [
+  "sign-in",
+  "forget-password",
+  "sign-up",
+  "resgister-vertify-sent",
+];
 import SnackBar from "@/components/snack-bar/snack-bar.vue";
 import LoadingController from "@/components/global-loading/global-loading.vue";
 export default {
@@ -22,33 +27,25 @@ export default {
     "app-navbar": NavigationBar,
     "app-footer": Footer,
     SnackBar,
-    LoadingController
+    LoadingController,
   },
   data() {
     return {
       isDisplayTemplate: true,
     };
   },
-  created() {
-    this.setDisplayTemplate();
-  },
-  updated() {
-    this.setDisplayTemplate();
-  },
-  methods: {
-    setDisplayTemplate() {
-      var fullPath;
-      if (this.$router.fullPath) {
-        fullPath = this.$router.fullPath;
-      } else {
-        fullPath = window.location.href;
-      }
+  watch: {
+    $route(to) {
+      var fullPath = to.fullPath;
       var absolutePath = fullPath.substr(fullPath.lastIndexOf("/") + 1);
       if (
         moduleNotUseTemplate.includes(absolutePath) ||
-        fullPath.includes("reset-password")
+        fullPath.includes("reset-password") ||
+        fullPath.includes("confirm/confirmation")
       ) {
         this.isDisplayTemplate = false;
+      } else {
+        this.isDisplayTemplate = true;
       }
     },
   },

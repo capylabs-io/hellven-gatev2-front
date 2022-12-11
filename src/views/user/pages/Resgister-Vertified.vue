@@ -7,22 +7,24 @@
         lazy-validation
         class="sign-in-form ma-auto pa-4 pa-sm-8 text-center"
       >
-        <img src="@/assets/wait-vertify.png" />
-        <div class="text-dp-xs bungee-font text-xl">
-          {{ $t("signin.verify-your-account") }}
+        <div class="success-icon ma-auto d-flex justify-center">
+          <v-icon color="white" x-large>mdi-check</v-icon>
+        </div>
+        <div class="text-dp-xs bungee-font text-xl mt-5">
+          {{ $t("signin.verified-successfully") }}
         </div>
         <div class="text-md mt-2 darkgrey--text">
-          {{ $t("signin.register-confirm-sent-sub") }}
+          {{ $t("signin.verified-successfully-sub") }}
         </div>
-        <div class="text-md lightblue--text">
-          {{ userStore.vetifyAccount.hideEmail }}
+        <div class="text-dp-md bungee-font greyblack--text">
+          {{ countDown }}s
         </div>
         <div class="text-center mt-5">
           <v-btn
             color="#5E6BE9"
             class="py-7 px-3 btn-submit bungee-font white--text"
-            @click="submitForm"
-            >{{ $t("signin.resend-verify-link") }}</v-btn
+            @click="gotoRouter('home')"
+            >{{ $t("signin.log-in-now") }}</v-btn
           >
         </div>
       </v-form>
@@ -35,7 +37,8 @@ import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
 import { rules } from "@/plugins/rules";
 export default {
-  name: "RegisterVertifySent",
+  name: "RegisterVertified",
+  props: ["confirmCode"],
   data() {
     return {
       userStore: userStore(),
@@ -43,6 +46,22 @@ export default {
     };
   },
   components: {},
+  created() {
+    this.$watch(
+      () => this.$route.params,
+      () => {
+        this.fetchData();
+      },
+      // fetch the data when the view is created and the data is
+      // already being observed
+      { immediate: true }
+    );
+  },
+  computed: {
+    countDown() {
+      return this.userStore.vetifyAccount.countSeconds;
+    }
+  },
   methods: {
     gotoRouter(url) {
       this.$router.push({
@@ -50,10 +69,8 @@ export default {
         name: url,
       });
     },
-    submitForm() {
-      if (this.$refs.form.validate()) {
-        this.userStore.resentVertifyRegister();
-      }
+    fetchData() {
+      this.userStore.vertifyRegister(this.$route.params.confirmCode);
     },
   },
 };
@@ -92,6 +109,13 @@ export default {
       box-shadow: inset 0px -8px 0px rgba(0, 0, 0, 0.15);
       border-radius: 24px;
       z-index: 10;
+      .success-icon {
+        width: 64px;
+        height: 64px;
+        background: #34c02b;
+        box-shadow: inset 0px -4px 0px rgba(0, 0, 0, 0.25);
+        border-radius: 100px;
+      }
     }
   }
   @media screen and (max-width: 600px) {
