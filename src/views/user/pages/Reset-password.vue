@@ -146,7 +146,7 @@ export default {
     left: 0;
     .sign-in-form {
       width: 90%;
-      max-width: 588px;
+      max-width: 464px;
       height: fit-content;
       font-family: Kanit, Helvetica, Arial;
       background: #ffffff;

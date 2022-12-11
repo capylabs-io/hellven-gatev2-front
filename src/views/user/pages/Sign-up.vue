@@ -1,12 +1,24 @@
 <template>
   <div class="sign-in-page">
+    <div class="btn-back pa-0 cursor-pointer">
+      <v-icon small color="white"> mdi-chevron-left</v-icon>
+      <span class="text-capitalize white--text">Back</span>
+    </div>
     <div class="sign-in-content d-flex">
-      <v-form ref="form" lazy-validation class="sign-in-form ma-auto pa-12">
+      <v-form
+        ref="form"
+        lazy-validation
+        class="sign-in-form ma-auto pa-4 pa-sm-8"
+      >
+        <div class="btn-back pa-0 cursor-pointer" @click="gotoRouter('Signin')">
+          <v-icon small color="white"> mdi-chevron-left</v-icon>
+          <span class="text-capitalize white--text">Back</span>
+        </div>
         <div class="text-dp-xs bungee-font text-center">
           <span>{{ $t("signin.sign-up") }}</span>
         </div>
         <v-alert
-          class="deeporange--text mt-4"
+          class="deeporange--text mt-2 mt-sm-4"
           dense
           outlined
           type="error"
@@ -14,12 +26,12 @@
         >
           {{ userStore.errorMessage }}
         </v-alert>
-        <div class="text-xl mt-4">{{ $t("signin.email") }}</div>
+        <div class="text-xl mt-2 mt-sm-4">{{ $t("signin.email") }}</div>
         <v-text-field
           v-model="userStore.userData.email"
           :rules="rules.email"
           full-width
-          class="mt-2"
+          class="mt-1 mt-sm-2"
           background-color="cream"
           solo
           dense
@@ -31,7 +43,7 @@
           :rules="rules.phone"
           background-color="cream"
           full-width
-          class="mt-2"
+          class="mt-1 mt-sm-2"
           dense
         ></v-text-field>
         <div class="text-xl">{{ $t("signin.password") }}</div>
@@ -48,7 +60,7 @@
               :rules="rules.password"
               background-color="cream"
               full-width
-              class="mt-2"
+              class="mt-1 mt-sm-2"
               dense
             ></v-text-field>
           </template>
@@ -61,7 +73,10 @@
             </div>
           </div>
         </v-tooltip>
-        <PasswordStrength :password="userStore.userData.password" v-if="userStore.userData.password"/>
+        <PasswordStrength
+          :password="userStore.userData.password"
+          v-if="userStore.userData.password"
+        />
         <div class="text-xl">{{ $t("signin.confirm-password") }}</div>
         <v-text-field
           solo
@@ -73,11 +88,11 @@
           "
           background-color="cream"
           v-model="confirmPassword"
-          class="mt-2"
+          class="mt-1 mt-sm-2"
           :rules="[passwordConfirmationRule]"
           dense
         ></v-text-field>
-        <div class="text-xl">{{ $t("signin.date-of-birth") }}</div>
+        <div class="text-xl mt-1 mt-sm-2">{{ $t("signin.date-of-birth") }}</div>
         <v-menu
           ref="menu"
           v-model="menu"
@@ -93,6 +108,7 @@
               readonly
               full-width
               v-bind="attrs"
+              hide-details
               v-on="on"
               background-color="cream"
               solo
@@ -117,20 +133,21 @@
           </v-date-picker>
         </v-menu>
         <v-checkbox
-          class="text-lg"
+          class="text-lg pt-0"
+          hide-details
           v-model="acceptTerm"
           :disabled="!isAllInputed"
           :label="$t('signin.accept-term-service')"
         ></v-checkbox>
-        <div class="text-center">
+        <div class="text-center mt-1 mt-sm-2">
           <v-btn
             x-small
             color="#5E6BE9"
             class="py-7 px-3 btn-submit"
             @click="submitForm"
             :disabled="!acceptTerm"
-            ><ArrowRight/></v-btn
-          >
+            ><ArrowRight
+          /></v-btn>
         </div>
       </v-form>
     </div>
@@ -146,7 +163,7 @@ export default {
   name: "Signup",
   components: {
     PasswordStrength,
-    ArrowRight
+    ArrowRight,
   },
   data() {
     return {
@@ -219,6 +236,11 @@ export default {
     left: 0;
     z-index: 0;
   }
+  .btn-back {
+    position: absolute;
+    top: 7%;
+    left: 5%;
+  }
   .sign-in-content {
     width: 100vw;
     min-height: 100vh;
@@ -228,13 +250,35 @@ export default {
     left: 0;
     .sign-in-form {
       width: 90%;
-      max-width: 588px;
+      max-width: 464px;
       height: fit-content;
       font-family: Kanit, Helvetica, Arial;
       background: #ffffff;
       box-shadow: inset 0px -8px 0px rgba(0, 0, 0, 0.15);
       border-radius: 24px;
       z-index: 10;
+    }
+    @media screen and (max-width: 600px) {
+      .text-dp-xs {
+        font-size: 16px !important;
+        line-height: 24px !important;
+      }
+      .text-xl {
+        font-size: 14px !important;
+        line-height: 20px !important;
+      }
+      .text-md {
+        font-size: 12px !important;
+        line-height: 16px !important;
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .sign-in-page {
+    min-height: 810px !important;
+    .sign-in-content {
+      min-height: 810px !important;
     }
   }
 }

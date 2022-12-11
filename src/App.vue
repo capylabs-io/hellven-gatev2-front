@@ -2,6 +2,8 @@
   <v-app>
     <app-navbar v-if="isDisplayTemplate"></app-navbar>
     <v-main>
+      <SnackBar />
+      <LoadingController />
       <router-view :key="$route.fullPath" />
     </v-main>
     <app-footer v-if="isDisplayTemplate"></app-footer>
@@ -11,12 +13,16 @@
 <script>
 import Footer from "../src/components/Footer.vue";
 import NavigationBar from "../src/components/NavigationBar.vue";
-const moduleNotUseTemplate = ["sign-in", "forget-password", "sign-up"];
+const moduleNotUseTemplate = ["sign-in", "forget-password", "sign-up", "resgister-vertify-sent"];
+import SnackBar from "@/components/snack-bar/snack-bar.vue";
+import LoadingController from "@/components/global-loading/global-loading.vue";
 export default {
   name: "App",
   components: {
     "app-navbar": NavigationBar,
     "app-footer": Footer,
+    SnackBar,
+    LoadingController
   },
   data() {
     return {
@@ -683,6 +689,9 @@ body {
   .community-title {
     max-width: 27% !important;
   }
+}
+.cursor-pointer {
+  cursor: pointer;
 }
 .btn-submit {
   box-shadow: inset 0px -4px 0px rgb(0 0 0 / 25%);

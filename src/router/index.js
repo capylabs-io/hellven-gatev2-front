@@ -47,6 +47,11 @@ const routes = [
         component: () => import('../views/user/pages/Sign-up.vue')
       },
       {
+        path: 'resgister-vertify-sent',
+        name: 'RegisterVertifySent',
+        component: () => import('../views/user/pages/Register-Vertify-Sent.vue')
+      },
+      {
         path: 'account',
         name: 'AccountSettings',
         component: () => import('../views/user/pages/Account-Settings.vue')

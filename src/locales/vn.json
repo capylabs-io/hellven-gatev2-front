@@ -80,6 +80,9 @@
     "reset-password": "change password",
     "reset-password-des" : "Please enter your new password below for your account",
     "new-password" : "New password",
-    "new-password-confirm" : "Enter new password again"
+    "new-password-confirm" : "Enter new password again",
+    "verify-your-account": "Verify your account",
+    "register-confirm-sent-sub" : "Please check the verification link in your email:",
+    "resend-verify-link" : "Resend verify link"
   }
 }

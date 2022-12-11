@@ -2,27 +2,30 @@
   <div class="sign-in-page">
     <div class="sign-in-content d-flex">
       <!-- <div class="sign-in-form ma-auto pa-12"> -->
-      <v-form ref="form" lazy-validation class="sign-in-form ma-auto pa-12">
+      <v-form
+        ref="form"
+        lazy-validation
+        class="sign-in-form ma-auto pa-4 pa-sm-8"
+      >
+        <div
+          class="btn-back pa-0 cursor-pointer"
+          @click="gotoRouter('home')"
+        >
+          <v-icon small color="white"> mdi-chevron-left</v-icon>
+          <span class="text-capitalize white--text">Back</span>
+        </div>
         <div class="text-dp-xs bungee-font text-center">
           {{ $t("signin.signin") }}
         </div>
-        <v-alert
-          class="deeporange--text mt-4"
-          dense
-          outlined
-          type="error"
-          v-if="userStore.errorMessage"
-        >
-          {{ userStore.errorMessage }}
-        </v-alert>
-        <div class="text-xl mt-4">{{ $t("signin.ID") }}</div>
+        <div class="text-xl mt-sm-4 mt-2">{{ $t("signin.ID") }}</div>
         <v-text-field
           v-model="userStore.siginInData.identifier"
           :rules="rules.checkIdentifier"
-          solo
+          type="text"
           background-color="cream"
-          full-width
           class="mt-2"
+          solo
+          dense
         ></v-text-field>
         <div class="text-xl">{{ $t("signin.password") }}</div>
         <v-text-field
@@ -31,44 +34,50 @@
           :type="userStore.isShowPass ? 'text' : 'password'"
           @click:append="userStore.isShowPass = !userStore.isShowPass"
           solo
+          dense
           background-color="cream"
           v-model="userStore.siginInData.password"
           class="mt-2"
         ></v-text-field>
-        <div class="d-flex mt-6 flex-sm-row flex-column">
-          <v-btn color="#2B69EA" class="px-14"><FacebookIcon /></v-btn>
-          <v-btn color="white" class="px-14 mx-sm-2 my-sm-0 my-2 mx-0"
-            ><GoogleIcon
-          /></v-btn>
-          <v-btn color="black" class="px-14"><AppleIcon /></v-btn>
-        </div>
+        <v-row class="mt-sm-2">
+          <v-col cols="4" class="pa-1"
+            ><v-btn color="#2B69EA" class="full-width py-0 py-sm-5"><FacebookIcon /></v-btn
+          ></v-col>
+          <v-col cols="4" class="pa-1"
+            ><v-btn color="white" class="full-width py-0 py-sm-5"><GoogleIcon /></v-btn
+          ></v-col>
+          <v-col cols="4" class="pa-1"
+            ><v-btn color="black" class="full-width py-0 py-sm-5"><AppleIcon /></v-btn
+          ></v-col>
+        </v-row>
         <v-checkbox
-          class="text-lg"
+          class="text-lg mt-sm-4"
+          hide-details="true"
           :label="$t('signin.remember-me')"
         ></v-checkbox>
-        <div class="text-center">
+        <div class="text-center mt-2">
           <v-btn
             x-small
             color="#5E6BE9"
             class="py-7 px-3 btn-submit"
             @click="submitForm"
-            ><ArrowRight/></v-btn
-          >
+            ><ArrowRight
+          /></v-btn>
         </div>
-        <div class="text-center mt-6">
-          <v-btn
-            text
-            class="text-capitalize text-md"
+        <div class="text-center">
+          <div
+            x-small
+            class="text-capitalize text-md cursor-pointer mt-2"
             @click="gotoRouter('ForgetPassword')"
-            >{{ $t("signin.forget-password") }}</v-btn
+            >{{ $t("signin.forget-password") }}</div
           >
         </div>
         <div class="text-center">
-          <v-btn
-            text
-            class="text-capitalize text-md"
+          <div
+            x-small
+            class="text-capitalize text-md cursor-pointer"
             @click="gotoRouter('Signup')"
-            >{{ $t("signin.create-new-account") }}</v-btn
+            >{{ $t("signin.create-new-account") }}</div
           >
         </div>
       </v-form>
@@ -82,7 +91,7 @@ import GoogleIcon from "@/components/svg/google.vue";
 import AppleIcon from "@/components/svg/apple.vue";
 import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
-import {rules} from "@/plugins/rules";
+import { rules } from "@/plugins/rules";
 import ArrowRight from "@/components/svg/arrow-right.vue";
 export default {
   name: "Signin",
@@ -96,7 +105,7 @@ export default {
     FacebookIcon,
     GoogleIcon,
     AppleIcon,
-    ArrowRight
+    ArrowRight,
   },
   methods: {
     gotoRouter(url) {
@@ -106,7 +115,7 @@ export default {
       });
     },
     submitForm() {
-      if (this.$refs.form.validate()){
+      if (this.$refs.form.validate()) {
         this.userStore.signIn();
       }
     },
@@ -117,7 +126,7 @@ export default {
 .sign-in-page {
   position: relative;
   min-height: 100vh;
-  height: fit-content;
+  height: auto;
   width: 100vw;
   &::before {
     content: "";
@@ -131,6 +140,11 @@ export default {
     left: 0;
     z-index: 0;
   }
+  .btn-back {
+    position: absolute;
+    top: 7%;
+    left: 5%;
+  }
   .sign-in-content {
     width: 100vw;
     min-height: 100vh;
@@ -140,13 +154,27 @@ export default {
     left: 0;
     .sign-in-form {
       width: 90%;
-      max-width: 588px;
+      max-width: 464px;
       height: fit-content;
       font-family: Kanit, Helvetica, Arial;
       background: #ffffff;
       box-shadow: inset 0px -8px 0px rgba(0, 0, 0, 0.15);
       border-radius: 24px;
       z-index: 10;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .text-dp-xs {
+      font-size: 16px !important;
+      line-height: 24px !important;
+    }
+    .text-xl {
+      font-size: 14px !important;
+      line-height: 20px !important;
+    }
+    .text-md {
+      font-size: 12px !important;
+      line-height: 16px !important;
     }
   }
 }

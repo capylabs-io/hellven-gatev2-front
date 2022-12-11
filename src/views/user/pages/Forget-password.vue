@@ -2,6 +2,13 @@
   <div class="sign-in-page">
     <div class="sign-in-content d-flex">
       <v-form ref="form" lazy-validation class="sign-in-form ma-auto pa-12">
+        <div
+          class="btn-back pa-0 cursor-pointer"
+          @click="gotoRouter('Signin')"
+        >
+          <v-icon small color="white"> mdi-chevron-left</v-icon>
+          <span class="text-capitalize white--text">Back</span>
+        </div>
         <div class="text-dp-xs bungee-font text-center">
           {{ $t("signin.forget-password") }}
         </div>
@@ -111,7 +118,7 @@ export default {
     left: 0;
     .sign-in-form {
       width: 90%;
-      max-width: 588px;
+      max-width: 464px;
       height: fit-content;
       font-family: Kanit, Helvetica, Arial;
       background: #ffffff;
