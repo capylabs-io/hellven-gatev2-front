@@ -86,6 +86,8 @@
     "resend-verify-link" : "Resend verify link",
     "verified-successfully": "Verified successfully!",
     "verified-successfully-sub": "You will be redirected back to Homepage in... ",
-    "log-in-now" : "Log in now"
+    "log-in-now" : "Log in now",
+    "password-changed": "Password changed!",
+    "password-changed-sub" : "Please login to your account again."
   }
 }

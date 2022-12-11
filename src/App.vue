@@ -36,7 +36,12 @@ export default {
   },
   watch: {
     $route(to) {
-      var fullPath = to.fullPath;
+      this.setDisplayTemplate(to)
+    },
+  },
+  methods: {
+    setDisplayTemplate(router) {
+      var fullPath = router.fullPath;
       var absolutePath = fullPath.substr(fullPath.lastIndexOf("/") + 1);
       if (
         moduleNotUseTemplate.includes(absolutePath) ||

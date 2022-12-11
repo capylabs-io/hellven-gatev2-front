@@ -1,13 +1,19 @@
 <template>
   <div class="sign-in-page">
     <div class="sign-in-content d-flex">
-      <div class="sign-in-form ma-auto pa-12">
+      <v-form
+        v-if="!userStore.resetPasswordData.isSuccess"
+        ref="form"
+        lazy-validation
+        class="sign-in-form ma-auto pa-4 pa-sm-8"
+      >
         <div class="text-dp-xs bungee-font text-center">
           {{ $t("signin.reset-password") }}
         </div>
-        <div class="text-lg text-center">
+        <div class="text-lg">
           {{ $t("signin.reset-password-des") }}
         </div>
+        <div class="lightblue--text">{{ hideEmail }}</div>
         <div class="text-xl mt-4">{{ $t("signin.new-password") }}</div>
         <v-alert
           class="deeporange--text mt-4"
@@ -43,7 +49,10 @@
             </div>
           </div>
         </v-tooltip>
-        <PasswordStrength :password="userStore.resetPasswordData.password" v-if="userStore.resetPasswordData.password"/>
+        <PasswordStrength
+          :password="userStore.resetPasswordData.password"
+          v-if="userStore.resetPasswordData.password"
+        />
         <div class="text-xl">{{ $t("signin.new-password-confirm") }}</div>
         <v-text-field
           v-model="userStore.resetPasswordData.passwordConfirmation"
@@ -60,9 +69,28 @@
           <v-btn
             class="py-7 px-3 btn-submit"
             color="#5E6BE9"
-            @click="userStore.resetPassword()"
+            @click="submitForm"
             ><ArrowRight
           /></v-btn>
+        </div>
+      </v-form>
+      <div v-else class="sign-in-form ma-auto pa-4 pa-sm-8 text-center">
+        <div class="success-icon ma-auto d-flex justify-center">
+          <v-icon color="white" x-large>mdi-check</v-icon>
+        </div>
+        <div class="text-dp-xs bungee-font text-xl mt-5">
+          {{ $t("signin.password-changed") }}
+        </div>
+        <div class="text-md mt-2 darkgrey--text">
+          {{ $t("signin.password-changed-sub") }}
+        </div>
+        <div class="text-center mt-5">
+          <v-btn
+            color="#5E6BE9"
+            class="py-7 px-3 btn-submit bungee-font white--text"
+            @click="gotoRouter('Signin')"
+            >{{ $t("signin.log-in-now") }}</v-btn
+          >
         </div>
       </div>
     </div>
@@ -76,21 +104,22 @@ import { rules } from "@/plugins/rules";
 import PasswordStrength from "@/components/Password-Strength.vue";
 export default {
   name: "ResetPassword",
-  props: ["code"],
+  props: ["code", "email"],
   data() {
     return {
       userStore: userStore(),
       rules: rules,
+      hideEmail: "",
     };
   },
   components: {
     ArrowRight,
-    PasswordStrength
+    PasswordStrength,
   },
   computed: {
     passwordConfirmationRule() {
       return () =>
-        this.userStore.userData.password ===
+        this.userStore.resetPasswordData.password ===
           this.userStore.resetPasswordData.passwordConfirmation ||
         "Password must match";
     },
@@ -115,6 +144,10 @@ export default {
     },
     fetchData() {
       this.userStore.resetPasswordData.code = this.$route.params.code;
+      this.hideEmail = this.userStore.hideEmail(this.$route.params.email);
+    },
+    submitForm() {
+      this.userStore.resetPassword();
     },
   },
 };
@@ -153,6 +186,13 @@ export default {
       box-shadow: inset 0px -8px 0px rgba(0, 0, 0, 0.15);
       border-radius: 24px;
       z-index: 10;
+      .success-icon {
+        width: 64px;
+        height: 64px;
+        background: #34c02b;
+        box-shadow: inset 0px -4px 0px rgba(0, 0, 0, 0.25);
+        border-radius: 100px;
+      }
     }
   }
 }

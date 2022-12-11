@@ -29,6 +29,7 @@ export const userStore = defineStore("users", {
       code: "",
       password: "",
       passwordConfirmation: "",
+      isSuccess: false
     },
     vetifyAccount: {
       hideEmail: "",
@@ -53,16 +54,8 @@ export const userStore = defineStore("users", {
         .then((response) => {
           loadingController.decreaseRequest();
           if (response.statusText == "OK") {
-            let index = this.userData.email.indexOf("@");
-            let hideChar = "";
-            for (let i = 1; i < index - 1; i++) {
-              hideChar = hideChar + "*";
-            }
             this.vetifyAccount.vetifyEmail = this.userData.email;
-            this.vetifyAccount.hideEmail =
-              this.vetifyAccount.vetifyEmail.charAt(0) +
-              hideChar +
-              this.vetifyAccount.vetifyEmail.substring(index - 1);
+            this.vetifyAccount.hideEmail = this.hideEmail(this.userData.email);
             snackController.success("Register is successful");
             this.errorMessage = "";
             this.router.push({
@@ -118,17 +111,16 @@ export const userStore = defineStore("users", {
       } catch (error) {
         snackController.commonError(error);
       }
-        snackController.success("Verified successfully!");
-        this.errorMessage = "";
-        while (this.vetifyAccount.countSeconds > 0) {
-          await this.delay(1000);
-          this.vetifyAccount.countSeconds = this.vetifyAccount.countSeconds - 1;
-          console.log(this.vetifyAccount.countSeconds);
-        }
-        this.router.push({
-          params: { lang: i18n.locale },
-          name: "home",
-        });
+      snackController.success("Verified successfully!");
+      this.errorMessage = "";
+      while (this.vetifyAccount.countSeconds > 0) {
+        await this.delay(1000);
+        this.vetifyAccount.countSeconds = this.vetifyAccount.countSeconds - 1;
+      }
+      this.router.push({
+        params: { lang: i18n.locale },
+        name: "home",
+      });
     },
     async signIn() {
       loadingController.increaseRequest();
@@ -204,11 +196,8 @@ export const userStore = defineStore("users", {
         .then((response) => {
           loadingController.decreaseRequest();
           if (response.statusText == "OK") {
+            this.resetPasswordData.isSuccess = true;
             this.errorMessage = "";
-            this.router.push({
-              params: { lang: i18n.locale },
-              name: "Signin",
-            });
           }
         })
         .catch((error) => {
@@ -221,6 +210,16 @@ export const userStore = defineStore("users", {
       return new Promise((resolve) => {
         setTimeout(resolve, milliseconds);
       });
+    },
+    hideEmail(email) {
+      let index = email.indexOf("@");
+      let hideChar = "";
+      for (let i = 1; i < index - 1; i++) {
+        hideChar = hideChar + "*";
+      }
+
+      hideChar = email.charAt(0) + hideChar + email.substring(index - 1);
+      return hideChar;
     },
   },
 });
