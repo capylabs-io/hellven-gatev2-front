@@ -3,10 +3,12 @@ import axios from "axios";
 import i18n from "@/i18n";
 import { snackBarController } from "@/components/snack-bar/snack-bar-controller";
 import { globalLoadingController } from "@/components/global-loading/global-loading-controller";
+import { accountInfo } from "@/store/account-info";
 
 const baseUrl = process.env.VUE_APP_API_URL;
 const snackController = snackBarController();
 const loadingController = globalLoadingController();
+const accountStore = accountInfo();
 
 export const userStore = defineStore("users", {
   state: () => ({
@@ -29,7 +31,7 @@ export const userStore = defineStore("users", {
       code: "",
       password: "",
       passwordConfirmation: "",
-      isSuccess: false
+      isSuccess: false,
     },
     vetifyAccount: {
       hideEmail: "",
@@ -126,24 +128,17 @@ export const userStore = defineStore("users", {
       loadingController.increaseRequest();
       let signInUrl = baseUrl + "auth/local";
       axios
-        .post(
-          signInUrl,
-          {
-            identifier: this.userData.username,
-            password: this.userData.password,
+        .post(signInUrl, this.siginInData, {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
           },
-          {
-            headers: {
-              "Content-Type":
-                "application/x-www-form-urlencoded; charset=UTF-8",
-            },
-          }
-        )
+        })
         .then((response) => {
           loadingController.decreaseRequest();
           if (response.statusText == "OK") {
             snackController.success("Login is successful");
             this.errorMessage = "";
+            this.saveAccountDetail(response.data);
             this.router.push({
               params: { lang: i18n.locale },
               name: "home",
@@ -209,6 +204,16 @@ export const userStore = defineStore("users", {
     delay(milliseconds) {
       return new Promise((resolve) => {
         setTimeout(resolve, milliseconds);
+      });
+    },
+    async saveAccountDetail(result) {
+      await accountStore.$load({
+        jwt: result.jwt,
+        id: result.user.id,
+        email: result.user.email,
+        username: result.user.username,
+        updatedAt: result.user.updatedAt,
+        createdAt: result.user.createdAt,
       });
     },
     hideEmail(email) {

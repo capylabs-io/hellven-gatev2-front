@@ -41,11 +41,20 @@
             </div>
             <div class="align-center">
               <v-btn
+                v-if="!accountStore.$state.email"
                 color="darkgrey"
                 class="white--text btn-customize gap-20"
                 @click="gotoRouter('Signin')"
               >
                 <span>{{ $t("navbar.btnlogin") }}</span>
+              </v-btn>
+              <v-btn
+                v-else
+                color="darkgrey"
+                class="white--text btn-customize gap-20"
+                @click="gotoRouter('AccountSettings')"
+              >
+                <span>{{ accountStore.$state.email }}</span>
               </v-btn>
             </div>
 
@@ -118,14 +127,15 @@
 <script>
 import LanguageSwitch from "@/views/home/components/nav-bar/LanguageSwitch.vue";
 import i18n from "@/i18n";
+import { accountInfo } from "@/store/account-info";
 
 export default {
   components: { LanguageSwitch },
   data: () => ({
     drawer: false,
     group: null,
+    accountStore: accountInfo()
   }),
-
   watch: {
     group() {
       this.drawer = false;

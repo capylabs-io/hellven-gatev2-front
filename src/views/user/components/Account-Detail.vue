@@ -18,7 +18,7 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>Name</v-list-item-subtitle>
-            <v-list-item-content>Khoi Vo</v-list-item-content>
+            <v-list-item-content>{{accountInfo.$state.username}}</v-list-item-content>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
@@ -51,7 +51,7 @@
           <v-list-item-content>
             <v-list-item-subtitle>Email</v-list-item-subtitle>
             <v-list-item-content
-              >khoivo.ba.dev.design.test@gmail.com</v-list-item-content
+              >{{accountInfo.$state.email}}</v-list-item-content
             >
           </v-list-item-content>
         </v-list-item>
@@ -99,11 +99,13 @@
 import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
 import EditIcon from "@/components/svg/editIcon.vue";
+import { accountInfo } from "@/store/account-info";
 export default {
   name: "AccountDetail",
   data() {
     return {
       userStore: userStore(),
+      accountInfo: accountInfo()
     };
   },
   components: {
