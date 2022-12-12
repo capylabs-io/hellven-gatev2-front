@@ -72,7 +72,7 @@ export default {
     },
     fetchData() {
       if (this.$route.query.confirmCode) {
-        this.userStore.vertifyRegister(this.$route.query.confirmCode);
+        this.userStore.vertifyRegister(this.$route.query.confirmation);
       } else {
         snackController.error("Please try again!");
         this.$router.push({
