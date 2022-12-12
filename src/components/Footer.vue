@@ -43,13 +43,13 @@
           </p>
         </div>
         <div class="d-flex font-weight-bold" style="gap: 20px">
-          <a class="text-none align-seft-center" @click="gotoRouter('term')">
+          <a class="text-none align-seft-center" href="/term"  @click="gotoRouter('term')">
             Terms
           </a>
-          <a class="text-none align-seft-center" @click="gotoRouter('privacy')"
+          <a class="text-none align-seft-center" href="/privacy" @click="gotoRouter('privacy')"
             >Privacy</a
           >
-          <a class="text-none align-seft-center" @click="gotoRouter('cookies')"
+          <a class="text-none align-seft-center" href="/cookies" @click="gotoRouter('cookies')"
             >Cookies</a
           >
         </div>
