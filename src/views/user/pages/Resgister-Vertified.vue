@@ -71,7 +71,7 @@ export default {
       });
     },
     fetchData() {
-      if (this.$route.query.confirmCode) {
+      if (this.$route.query.confirmation) {
         this.userStore.vertifyRegister(this.$route.query.confirmation);
       } else {
         snackController.error("Please try again!");
