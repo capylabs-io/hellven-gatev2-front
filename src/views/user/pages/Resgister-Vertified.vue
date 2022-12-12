@@ -36,9 +36,10 @@
 import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
 import { rules } from "@/plugins/rules";
+import { snackBarController } from "@/components/snack-bar/snack-bar-controller";
+const snackController = snackBarController();
 export default {
   name: "RegisterVertified",
-  props: ["confirmCode"],
   data() {
     return {
       userStore: userStore(),
@@ -70,7 +71,15 @@ export default {
       });
     },
     fetchData() {
-      this.userStore.vertifyRegister(this.$route.params.confirmCode);
+      if (this.$route.query.confirmCode) {
+        this.userStore.vertifyRegister(this.$route.query.confirmCode);
+      } else {
+        snackController.error("Please try again!");
+        this.$router.push({
+          params: { lang: i18n.locale },
+          name: "Signup",
+        });
+      }
     },
   },
 };

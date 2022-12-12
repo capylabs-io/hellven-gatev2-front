@@ -44,8 +44,8 @@ export const rules = {
       "Your password must be at least 8 characters",
     (v) =>
       !v ||
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/.test(v) ||
-      "Password allow only letter, numbers and special characters (@$!%*?&)",
+      /^(?=.*[a-z])(?=.*\d)(?=.)[A-Za-z\d@$!%*?#]{8,32}$/.test(v) ||
+      "Password allow only letter, numbers and special characters (@$!%*?#)",
     (v) =>
       (v && v.length <= 32) ||
       !v ||

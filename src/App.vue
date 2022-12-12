@@ -18,6 +18,8 @@ const moduleNotUseTemplate = [
   "forget-password",
   "sign-up",
   "resgister-vertify-sent",
+  "confirm",
+  "reset-password"
 ];
 import SnackBar from "@/components/snack-bar/snack-bar.vue";
 import LoadingController from "@/components/global-loading/global-loading.vue";
@@ -43,11 +45,7 @@ export default {
     setDisplayTemplate(router) {
       var fullPath = router.fullPath;
       var absolutePath = fullPath.substr(fullPath.lastIndexOf("/") + 1);
-      if (
-        moduleNotUseTemplate.includes(absolutePath) ||
-        fullPath.includes("reset-password") ||
-        fullPath.includes("confirm/confirmation")
-      ) {
+      if (moduleNotUseTemplate.includes(absolutePath)){
         this.isDisplayTemplate = false;
       } else {
         this.isDisplayTemplate = true;

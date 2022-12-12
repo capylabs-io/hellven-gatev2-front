@@ -11,6 +11,14 @@ const routes = [
     redirect: `/${i18n.locale}`
   },
   {
+    path: '/reset-password',
+    redirect: `/${i18n.locale}/reset-password`
+  },
+  {
+    path: '/confirm',
+    redirect: `/${i18n.locale}/confirm`
+  },
+  {
     path: '/:lang',
     component: {
       render (c) { return c('router-view') }
@@ -37,7 +45,7 @@ const routes = [
         component: () => import('../views/user/pages/Forget-password.vue')
       },
       {
-        path: 'reset-password/code=:code/:email',
+        path: 'reset-password',
         name: 'ResetPassword',
         component: () => import('../views/user/pages/Reset-password.vue')
       },
@@ -53,7 +61,7 @@ const routes = [
       },
       {
         //  localhost:8080/confirm?confirmation=b82df32ba0ec5666b5f154e7ab5e29cc5fd8e073  
-        path: 'confirm/confirmation=:confirmCode',
+        path: 'confirm',
         name: 'RegisterVertified',
         component: () => import('../views/user/pages/Resgister-Vertified.vue')
       },

@@ -34,6 +34,8 @@
 import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
 import { rules } from "@/plugins/rules";
+import { snackBarController } from "@/components/snack-bar/snack-bar-controller";
+const snackController = snackBarController();
 export default {
   name: "RegisterVertifySent",
   data() {
@@ -43,6 +45,15 @@ export default {
     };
   },
   components: {},
+  created() {
+    if (!this.userStore.vetifyAccount.vetifyEmail) {
+      snackController.error("Please try again!");
+      this.$router.push({
+        params: { lang: i18n.locale },
+        name: "Signup",
+      });
+    }
+  },
   methods: {
     gotoRouter(url) {
       this.$router.push({

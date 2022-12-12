@@ -14,41 +14,35 @@
           {{ $t("signin.reset-password-des") }}
         </div>
         <div class="lightblue--text">{{ hideEmail }}</div>
-        <div class="text-xl mt-4">{{ $t("signin.new-password") }}</div>
-        <v-alert
-          class="deeporange--text mt-4"
-          dense
-          outlined
-          type="error"
-          v-if="userStore.errorMessage"
-        >
-          {{ userStore.errorMessage }}
-        </v-alert>
-        <v-tooltip bottom right>
-          <template v-slot:activator="{ on, attrs }">
-            <v-text-field
-              v-bind="attrs"
-              v-on="on"
-              v-model="userStore.resetPasswordData.password"
-              :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
-              :type="userStore.isShowPass ? 'text' : 'password'"
-              @click:append="userStore.isShowPass = !userStore.isShowPass"
-              solo
-              background-color="cream"
-              :rules="rules.password"
-              full-width
-              class="mt-2"
-            ></v-text-field>
-          </template>
-          <div>
-            <div>Password must meet the following requirements:</div>
-            <div>● At least 8 characters and less than 32 characters</div>
-            <div>● At least one capital letter</div>
+        <div class="text-xl mt-4">
+          <span>{{ $t("signin.new-password") }}</span>
+          <v-tooltip top>
+            <template v-slot:activator="{ on, attrs }">
+              <v-icon class="ml-1" small v-bind="attrs" v-on="on"
+                >mdi-alert-circle-outline</v-icon
+              >
+            </template>
             <div>
-              ● Allow only letter, numbers and special characters (@$!%*?&)
+              <div>Password must meet the following requirements:</div>
+              <div>● At least 8 characters and less than 32 characters</div>
+              <div>● At least one capital letter</div>
+              <div>
+                ● Allow only letter, numbers and special characters (@$!%*?&)
+              </div>
             </div>
-          </div>
-        </v-tooltip>
+          </v-tooltip>
+        </div>
+        <v-text-field
+          v-model="userStore.resetPasswordData.password"
+          :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
+          :type="userStore.isShowPass ? 'text' : 'password'"
+          @click:append="userStore.isShowPass = !userStore.isShowPass"
+          solo
+          background-color="cream"
+          :rules="rules.password"
+          full-width
+          class="mt-2"
+        ></v-text-field>
         <PasswordStrength
           :password="userStore.resetPasswordData.password"
           v-if="userStore.resetPasswordData.password"
@@ -102,14 +96,17 @@ import { userStore } from "../stores/userStore.js";
 import ArrowRight from "@/components/svg/arrow-right.vue";
 import { rules } from "@/plugins/rules";
 import PasswordStrength from "@/components/Password-Strength.vue";
+import { snackBarController } from "@/components/snack-bar/snack-bar-controller";
+const snackController = snackBarController();
 export default {
   name: "ResetPassword",
-  props: ["code", "email"],
   data() {
     return {
       userStore: userStore(),
       rules: rules,
       hideEmail: "",
+      code: "",
+      email: "",
     };
   },
   components: {
@@ -143,8 +140,16 @@ export default {
       });
     },
     fetchData() {
-      this.userStore.resetPasswordData.code = this.$route.params.code;
-      this.hideEmail = this.userStore.hideEmail(this.$route.params.email);
+      if (this.$router.query) {
+        this.userStore.resetPasswordData.code = this.$route.query.code;
+        this.hideEmail = this.userStore.hideEmail(this.$route.query.email);
+      } else {
+        snackController.error("Please try again!");
+        this.$router.push({
+          params: { lang: i18n.locale },
+          name: "ForgetPassword",
+        });
+      }
     },
     submitForm() {
       this.userStore.resetPassword();

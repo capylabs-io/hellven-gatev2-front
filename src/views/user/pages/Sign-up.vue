@@ -46,33 +46,37 @@
           class="mt-1 mt-sm-2"
           dense
         ></v-text-field>
-        <div class="text-xl">{{ $t("signin.password") }}</div>
-        <v-tooltip bottom right>
-          <template v-slot:activator="{ on, attrs }">
-            <v-text-field
-              v-bind="attrs"
-              v-on="on"
-              :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
-              :type="userStore.isShowPass ? 'text' : 'password'"
-              @click:append="userStore.isShowPass = !userStore.isShowPass"
-              v-model="userStore.userData.password"
-              solo
-              :rules="rules.password"
-              background-color="cream"
-              full-width
-              class="mt-1 mt-sm-2"
-              dense
-            ></v-text-field>
-          </template>
-          <div>
-            <div>Password must meet the following requirements:</div>
-            <div>● At least 8 characters and less than 32 characters</div>
-            <div>● At least one capital letter</div>
+        <div class="text-xl">
+          <span>{{ $t("signin.password") }}</span>
+          <v-tooltip top>
+            <template v-slot:activator="{ on, attrs }">
+              <v-icon class="ml-1" small v-bind="attrs" v-on="on"
+                >mdi-alert-circle-outline</v-icon
+              >
+            </template>
             <div>
-              ● Allow only letter, numbers and special characters (@$!%*?&)
+              <div>Password must meet the following requirements:</div>
+              <div>● At least 8 characters and less than 32 characters</div>
+              <div>● At least one capital letter</div>
+              <div>
+                ● Allow only letter, numbers and special characters (@$!%*?&)
+              </div>
             </div>
-          </div>
-        </v-tooltip>
+          </v-tooltip>
+        </div>
+
+        <v-text-field
+          :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
+          :type="userStore.isShowPass ? 'text' : 'password'"
+          @click:append="userStore.isShowPass = !userStore.isShowPass"
+          v-model="userStore.userData.password"
+          solo
+          :rules="rules.password"
+          background-color="cream"
+          full-width
+          class="mt-1 mt-sm-2"
+          dense
+        ></v-text-field>
         <PasswordStrength
           :password="userStore.userData.password"
           v-if="userStore.userData.password"
