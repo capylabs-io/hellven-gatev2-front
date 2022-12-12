@@ -6,7 +6,8 @@
 
     <div
       v-scrollanimation
-      class="d-flex item-center feature-list fade-right"
+      class="d-flex justify-center feature-list fade-right"
+      :class="windowWidth < 1264 ? 'feature-list-md-down align-center' : ''"
       v-if="translateValue == 1"
     >
       <!-- <v-card class="feature-card pt-5" white>
@@ -26,20 +27,100 @@
           </span>
         </v-card-subtitle>
       </v-card> -->
-      <div v-for="(info, index) in news" :key="info.index" :index="index">
-        <div class="d-flex flex-column feature-play">
-          <div class="feature-play-card">
-            <v-card class="feature-media-image-card">
-              <v-img class="feature-media-image" :src="info.image"></v-img>
-            </v-card>
-            <div class="d-flex pt-3 gap-30 feature-play-card-info">
-              <v-img
-                class="feature-media-icon"
-                :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
-              />
-              <span class="kanit-font" style="font-size: 18px">
-                {{ info.title }}
-              </span>
+      <div class="d-flex gap-20" v-if="windowWidth >= 1904">
+        <div v-for="(info, index) in features" :key="info.title" :index="index">
+          <div class="d-flex flex-column feature-play">
+            <div class="feature-play-card">
+              <v-card class="feature-media-image-card">
+                <v-img class="feature-media-image" :src="info.image"></v-img>
+              </v-card>
+              <div class="d-flex pt-3 gap-30 feature-play-card-info">
+                <v-img
+                  class="feature-media-icon"
+                  :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
+                />
+                <span class="kanit-font" style="font-size: 18px">
+                  {{ info.title }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="d-flex gap-20"
+        v-if="windowWidth < 1904 && windowWidth >= 1264"
+      >
+        <div
+          v-for="(info, index) in features1"
+          :key="info.title"
+          :index="index"
+        >
+          <div class="d-flex flex-column feature-play">
+            <div class="feature-play-card">
+              <v-card class="feature-media-image-card">
+                <v-img class="feature-media-image" :src="info.image"></v-img>
+              </v-card>
+              <div class="d-flex pt-3 gap-30 feature-play-card-info">
+                <v-img
+                  class="feature-media-icon"
+                  :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
+                />
+                <span class="kanit-font" style="font-size: 18px">
+                  {{ info.title }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="d-flex gap-20"
+        v-if="windowWidth >= 800 && windowWidth < 1264"
+      >
+        <div
+          v-for="(info, index) in features2"
+          :key="info.title"
+          :index="index"
+        >
+          <div class="d-flex flex-column feature-play">
+            <div class="feature-play-card">
+              <v-card class="feature-media-image-card">
+                <v-img class="feature-media-image" :src="info.image"></v-img>
+              </v-card>
+              <div class="d-flex pt-3 gap-30 feature-play-card-info">
+                <v-img
+                  class="feature-media-icon"
+                  :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
+                />
+                <span class="kanit-font" style="font-size: 18px">
+                  {{ info.title }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-column gap-20" v-if="windowWidth < 800">
+        <div
+          v-for="(info, index) in features2"
+          :key="info.title"
+          :index="index"
+        >
+          <div class="d-flex flex-column feature-play">
+            <div class="feature-play-card">
+              <v-card class="feature-media-image-card">
+                <v-img class="feature-media-image" :src="info.image"></v-img>
+              </v-card>
+              <div class="d-flex pt-3 gap-30 feature-play-card-info">
+                <v-img
+                  class="feature-media-icon"
+                  :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
+                />
+                <span class="kanit-font" style="font-size: 18px">
+                  {{ info.title }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -57,7 +138,12 @@
 
     <div
       v-scrollanimation
-      class="d-flex item-center feature-list fade-right"
+      class="d-flex justify-center feature-list fade-right"
+      :class="
+        windowWidth < 1264
+          ? 'feature-list-md-down flex-reverse align-center'
+          : ''
+      "
       v-else
     >
       <div class="slider">
@@ -68,135 +154,82 @@
           ></v-img>
         </button>
       </div>
-      <div class="d-flex flex-column feature-play">
-        <div class="feature-play-card">
-          <v-card class="feature-media-image-card">
-            <v-img
-              class="feature-media-image"
-              :src="require(`@/assets/home/news/new4-image.webp`)"
-            ></v-img>
-          </v-card>
-          <div class="d-flex pt-3 gap-30 feature-play-card-info">
-            <v-img
-              class="feature-media-icon"
-              :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
-            />
-            <span class="kanit-font" style="font-size: 18px">
-              Hone your skills and refine your decks in Casual mode!
-            </span>
+      <div class="d-flex gap-20" v-if="windowWidth >= 1264">
+        <div
+          v-for="(info, index) in features1"
+          :key="info.title"
+          :index="index"
+        >
+          <div class="d-flex flex-column feature-play">
+            <div class="feature-play-card">
+              <v-card class="feature-media-image-card">
+                <v-img class="feature-media-image" :src="info.image"></v-img>
+              </v-card>
+              <div class="d-flex pt-3 gap-30 feature-play-card-info">
+                <v-img
+                  class="feature-media-icon"
+                  :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
+                />
+                <span class="kanit-font" style="font-size: 18px">
+                  {{ info.title }}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="d-flex flex-column feature-play">
-        <div class="feature-play-card">
-          <v-card class="feature-media-image-card">
-            <v-img
-              class="feature-media-image"
-              :src="require(`@/assets/home/news/new4-image.webp`)"
-            ></v-img>
-          </v-card>
-          <div class="d-flex pt-3 gap-30 feature-play-card-info">
-            <v-img
-              class="feature-media-icon"
-              :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
-            />
-            <span class="kanit-font" style="font-size: 18px">
-              Hone your skills and refine your decks in Casual mode!
-            </span>
+      <div
+        class="d-flex gap-20"
+        v-if="windowWidth >= 800 && windowWidth < 1264"
+      >
+        <div
+          v-for="(info, index) in features2"
+          :key="info.title"
+          :index="index"
+        >
+          <div class="d-flex flex-column feature-play">
+            <div class="feature-play-card">
+              <v-card class="feature-media-image-card">
+                <v-img class="feature-media-image" :src="info.image"></v-img>
+              </v-card>
+              <div class="d-flex pt-3 gap-30 feature-play-card-info">
+                <v-img
+                  class="feature-media-icon"
+                  :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
+                />
+                <span class="kanit-font" style="font-size: 18px">
+                  {{ info.title }}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="d-flex flex-column feature-play">
-        <div class="feature-play-card">
-          <v-card class="feature-media-image-card">
-            <v-img
-              class="feature-media-image"
-              :src="require(`@/assets/home/news/new4-image.webp`)"
-            ></v-img>
-          </v-card>
-          <div class="d-flex pt-3 gap-30 feature-play-card-info">
-            <v-img
-              class="feature-media-icon"
-              :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
-            />
-            <span class="kanit-font" style="font-size: 18px">
-              Challenge anyone, anywhere
-            </span>
+      <div class="d-flex flex-column gap-20" v-if="windowWidth < 800">
+        <div
+          v-for="(info, index) in features2"
+          :key="info.title"
+          :index="index"
+        >
+          <div class="d-flex flex-column feature-play">
+            <div class="feature-play-card">
+              <v-card class="feature-media-image-card">
+                <v-img class="feature-media-image" :src="info.image"></v-img>
+              </v-card>
+              <div class="d-flex pt-3 gap-30 feature-play-card-info">
+                <v-img
+                  class="feature-media-icon"
+                  :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
+                />
+                <span class="kanit-font" style="font-size: 18px">
+                  {{ info.title }}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- <div class="pt-10 d-flex item-center feature-list">
-      <div class="slider">
-        <button @click="prev">
-          <v-img
-            class="align-seft-center"
-            :src="require(`@/assets/home/media/slide-left.webp`)"
-          ></v-img>
-        </button>
-      </div>
-      <v-card class="feature-card pt-5" white>
-        <v-img
-          class="mx-auto feature-card-image"
-          :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
-        />
-
-        <v-card-title
-          class="justify-center bungee-font"
-          style="font-size: 25px"
-        >
-          {{ $t("mode.card1.title") }}
-        </v-card-title>
-
-        <v-card-subtitle
-          class="text-break kanit-font pt-2 pb-10 text-center mx-auto card-text"
-          style="font-size: 20px"
-        >
-          {{ $t("mode.card1.text") }}
-        </v-card-subtitle>
-      </v-card>
-      <v-card class="feature-card pt-5" white>
-        <v-img
-          class="mx-auto feature-card-image"
-          :src="require(`@/assets/home/mode/gamemode2-icon.webp`)"
-        />
-
-        <v-card-title
-          class="justify-center bungee-font"
-          style="font-size: 25px"
-        >
-          {{ $t("mode.card2.title") }}
-        </v-card-title>
-
-        <v-card-subtitle
-          class="text-break kanit-font pt-2 pb-10 text-center mx-auto card-text"
-          style="font-size: 20px"
-        >
-          {{ $t("mode.card2.text") }}
-        </v-card-subtitle>
-      </v-card>
-      <v-card class="feature-card pt-5" white>
-        <v-img
-          class="mx-auto feature-card-image"
-          :src="require(`@/assets/home/mode/gamemode3-icon.webp`)"
-        />
-
-        <v-card-title
-          class="justify-center bungee-font"
-          style="font-size: 25px"
-        >
-          {{ $t("mode.card3.title") }}
-        </v-card-title>
-
-        <v-card-subtitle
-          class="text-break kanit-font pt-2 pb-10 text-center mx-auto card-text"
-          style="font-size: 20px"
-        >
-          {{ $t("mode.card3.text") }}
-        </v-card-subtitle>
-      </v-card>
-    </div> -->
   </div>
 </template>
 
@@ -206,7 +239,7 @@ export default {
   data() {
     return {
       translateValue: 1,
-      news: [
+      features: [
         {
           index: "1",
           title:
@@ -232,7 +265,49 @@ export default {
           image: require(`@/assets/home/news/new4-image.webp`),
         },
       ],
+      features1: [
+        {
+          index: "1",
+          title:
+            "A fast pace turn-based tactical game that can satisfy any strategic mind",
+          image: require(`@/assets/home/news/new4-image.webp`),
+        },
+        {
+          index: "2",
+          title:
+            "Thousands of combination from a wide range of unique hero for player to experiement",
+          image: require(`@/assets/home/news/new4-image.webp`),
+        },
+        {
+          index: "3",
+          title:
+            "An immense collection of challenging modes that rotates constantly to keep the game fresh",
+          image: require(`@/assets/home/news/new4-image.webp`),
+        },
+      ],
+      features2: [
+        {
+          index: "1",
+          title:
+            "A fast pace turn-based tactical game that can satisfy any strategic mind",
+          image: require(`@/assets/home/news/new4-image.webp`),
+        },
+        {
+          index: "2",
+          title:
+            "Thousands of combination from a wide range of unique hero for player to experiement",
+          image: require(`@/assets/home/news/new4-image.webp`),
+        },
+      ],
+      windowWidth: 0,
     };
+  },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.handleResize);
   },
   methods: {
     next() {
@@ -241,15 +316,19 @@ export default {
     prev() {
       this.translateValue = 1;
     },
+    handleResize() {
+      this.windowWidth = window.innerWidth;
+    },
   },
   components: {},
 };
 </script>
 <style scoped>
 .feature {
-  height: 650px;
-  width: calc(100%-50px);
+  height: max-content;
+  width: 100%;
   padding-top: 6%;
+  padding-bottom: 4%;
   position: relative;
   background: transparent;
   overflow: hidden;
@@ -278,11 +357,12 @@ export default {
   margin-top: 80px;
   transition: 0.5 all ease;
 }
+.feature-list-md-down {
+  flex-direction: column;
+  align-self: center;
+}
 .text-center {
   text-align: center;
-}
-.item-center {
-  justify-content: center;
 }
 
 .card-text {
@@ -323,9 +403,12 @@ export default {
 .gap-30 {
   column-gap: 30px;
 }
+.gap-20 {
+  column-gap: 20px;
+}
 .slider {
-  padding-top: 6%;
   transition: 0.3 all ease;
+  align-self: center;
 }
 .visible {
   display: none;

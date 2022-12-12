@@ -28,7 +28,8 @@ export default {
     ],
   },
   data: () => ({
-    //
+   
+    // this.$vuetify.breakpoint.width
   }),
 };
 </script>
