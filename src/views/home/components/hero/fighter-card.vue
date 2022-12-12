@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'on-hover cursor-pointer': hover }">
+  <div>
     <slot></slot>
   </div>
   <!-- <v-hover v-slot="{ hover }">

@@ -27,10 +27,7 @@ export default {
       { name: "viewport", content: "width=device-width, initial-scale=1" },
     ],
   },
-  data: () => ({
-   
-    // this.$vuetify.breakpoint.width
-  }),
+  data: () => ({}),
 };
 </script>
 <style>
@@ -329,9 +326,7 @@ export default {
   .fighter {
     margin-top: 50px !important;
   }
-  .fighter-card-list {
-    display: none !important;
-  }
+
   .fighter-card-list-responsive {
     column-gap: 2%;
     display: flex !important;
@@ -530,11 +525,8 @@ export default {
   .shadow {
     width: 80%;
   }
-  .fighter-card-list {
-    display: none !important;
-  }
+
   .fighter-card {
-    display: none !important;
   }
   .fighter-card-mb {
     display: flex !important;
@@ -550,6 +542,9 @@ export default {
   }
   .fighter-card-list-responsive-mb .v-card {
     width: 23% !important ;
+  }
+  .fighter-info-left {
+    width: 90% !important;
   }
   .slider-mb {
     padding-top: 10px;

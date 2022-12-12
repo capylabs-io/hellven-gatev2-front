@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <v-row justify="center mx-auto">
+    <v-row >
       <v-overlay :z-index="zIndex" :value="overlay">
         <div class="overlayContent d-flex flex-column align-center">
           <div class="overlay-Count white--text bungee-font">
@@ -80,8 +80,6 @@
               v-bind:media="media"
             >
               <v-img
-                v-bind="attrs"
-                v-on="on"
                 :src="require(`@/assets/home/media/Media${media.index}.webp`)"
               ></v-img>
             </card>

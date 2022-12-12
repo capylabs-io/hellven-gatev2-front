@@ -225,7 +225,6 @@ export default {
       }
     },
   },
-  computed() {},
 };
 </script>
 <style scoped>
