@@ -132,7 +132,7 @@ export default {
 }
 .community-card {
   padding: 17px;
-  width: 40%;
+  width: 60%;
   height: max-content;
   border-radius: 16px;
   box-shadow: 0px 6px 1px 0px #d9d9d9 !important;

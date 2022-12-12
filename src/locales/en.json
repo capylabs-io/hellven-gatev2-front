@@ -23,6 +23,20 @@
       "text": "Dive into a deep combat system utilizing troop abilities and powerful magic. Combine troops to maximize available spells and damage potential."
     }
   },
+  "feature": {
+    "card1": {
+      "title": "Adventure Awaits",
+      "text": "Explore a wide variety of herores. Venture into contrasting biomes with unique enemy factions, environments and battlefields."
+    },
+    "card2": {
+      "title": "Build an Empire",
+      "text": "Manage resources, research new advancements and level up your heroes. Plan your team to match your playstyle."
+    },
+    "card3": {
+      "title": "Wage War",
+      "text": "Dive into a deep combat system utilizing troop abilities and powerful magic. Combine troops to maximize available spells and damage potential."
+    }
+  },
   "hero": {
     "heroType": "TANKER",
     "heroRank": "LEGENDARY",

@@ -1,9 +1,7 @@
 <template>
-  <v-hover v-slot="{ hover }">
-    <div :class="{ 'on-hover cursor-pointer': hover }">
-      <slot></slot>
-    </div>
-  </v-hover>
+  <div :class="{ 'on-hover cursor-pointer': hover }">
+    <slot></slot>
+  </div>
   <!-- <v-hover v-slot="{ hover }">
     <v-card :class="{ 'on-hover cursor-pointer': hover }">
      <slot></slot>

@@ -55,7 +55,7 @@ export default {
 .btn-customize-introduction {
   border-radius: 15px;
   box-shadow: 0px 8px 1px 0px #40b22d;
-  width: 13%;
+  width: max-content;
   height: 60px !important;
 }
 

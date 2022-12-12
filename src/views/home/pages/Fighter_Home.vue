@@ -9,7 +9,7 @@
     <div class="fighter-title white--text bungee-font">
       <span>FIGHTERS</span>
     </div>
-    <div class="fighter-link white--text bungee-font d-flex mt-5">
+    <div class="fighter-link white--text bungee-font d-flex mt-5 flex-wrap">
       <div class="box text-none align-seft-center link-active">vanguard</div>
       <div class="box text-none align-seft-center">titan soul</div>
       <div class="box text-none align-seft-center">lightforce</div>
@@ -18,13 +18,21 @@
       <div class="box text-none align-seft-center">phantom exile</div>
       <div class="box text-none align-seft-center">jester</div>
     </div>
-    <div class="flex-reverse">
-      <div class="fighter-info item-center">
+    <div class="">
+      <div class="fighter-info item-center flex-reverse">
         <div class="info-card">
           <infoCard></infoCard>
         </div>
+        <div class="fighter-info-left d-flex justify-center">
+          <div class="slider-mb">
+            <button @click="prev">
+              <v-img
+                class="align-seft-center"
+                :src="require(`@/assets/home/media/slide-left.webp`)"
+              ></v-img>
+            </button>
+          </div>
 
-        <div class="fighter-info-left d-flex flex-column justify-center">
           <fighterImage
             v-for="(info, index) in fighters"
             :key="info.index"
@@ -39,6 +47,14 @@
             ></v-progress-circular> -->
             <v-img class="fighter-image mx-auto" :src="info.image"></v-img>
           </fighterImage>
+          <div class="slider-mb">
+            <button @click="next">
+              <v-img
+                class="align-seft-center"
+                :src="require(`@/assets/home/media/slide-right.webp`)"
+              ></v-img>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -223,6 +239,7 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  overflow: hidden;
 }
 
 .fighter-card {

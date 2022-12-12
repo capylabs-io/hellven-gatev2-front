@@ -4,20 +4,21 @@
       <span>MEDIA</span>
     </div>
 
-    <!--todo: add popup view image -->
     <div class="media-content pt-15 item-center px-15">
       <div class="media-image-responsive item-center">
-        <card
-          v-for="media in medias2"
-          :key="media.index"
-          v-bind:media="media"
+        <card v-for="media in medias2" :key="media.index" v-bind:media="media">
+          <v-img
+            @click="overlay = !overlay"
+            :src="require(`@/assets/home/media/Media${media.index}.webp`)"
+          ></v-img
         ></card>
       </div>
       <div class="media-image-responsive-mb item-center">
-        <card
-          v-for="media in medias"
-          :key="media.index"
-          v-bind:media="media"
+        <card v-for="media in medias" :key="media.index" v-bind:media="media">
+          <v-img
+            @click="overlay = !overlay"
+            :src="require(`@/assets/home/media/Media${media.index}.webp`)"
+          ></v-img
         ></card>
       </div>
       <div class="media-section">

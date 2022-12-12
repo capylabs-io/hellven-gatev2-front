@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <app-navbar></app-navbar>
-    <v-main>  
+    <v-main>
       <router-view />
     </v-main>
     <app-footer></app-footer>
@@ -55,7 +55,6 @@ export default {
   }
   /* ------------------- home-introduction --------------*/
   .btn-customize-introduction {
-    width: 16% !important;
     height: 60px !important;
   }
   .introduction-title {
@@ -88,7 +87,6 @@ export default {
   }
   /* ------------------- home-introduction --------------*/
   .btn-customize-introduction {
-    width: 16% !important;
     height: 60px !important;
   }
   .introduction-title {
@@ -117,9 +115,7 @@ export default {
     height: max-content !important;
     padding-bottom: 70px;
   }
-  .fighter-title {
-    max-width: 10% !important;
-  }
+
   .fighter-card {
     margin-top: 4% !important;
     column-gap: 8% !important;
@@ -138,6 +134,11 @@ export default {
     display: flex !important;
     flex-direction: column-reverse !important ;
   }
+  .fighter-info-left {
+    align-self: center;
+    justify-content: center;
+    column-gap: 20%;
+  }
   .fighter-image {
     align-self: center;
   }
@@ -145,13 +146,16 @@ export default {
     margin: 0 auto;
     width: 60% !important;
   }
-
+  .slider-mb {
+    display: block !important;
+    object-fit: contain;
+    align-self: center;
+  }
   /* ------------------- home-new --------------*/
   .news {
     height: 650px !important;
   }
   .news-title {
-    max-width: 10% !important;
   }
   .new-btn {
     margin-top: 6% !important;
@@ -165,9 +169,7 @@ export default {
     height: max-content !important;
     padding-bottom: 20px;
   }
-  .media-title {
-    max-width: 10% !important;
-  }
+
   .media-content {
     flex-direction: column;
   }
@@ -202,6 +204,12 @@ export default {
   }
   .social-icon {
     margin-left: 40% !important;
+  }
+  .community-card {
+    width: 85% !important;
+  }
+  .social-icon {
+    width: 46% !important;
   }
 
   /* ------------------- home-footer --------------*/
@@ -292,7 +300,6 @@ export default {
     padding-bottom: 100px !important;
   }
   .btn-customize-introduction {
-    width: 25% !important;
     height: 60px !important;
   }
   .introduction-title {
@@ -338,15 +345,12 @@ export default {
   .title-right .v-card__title {
     width: 200px !important;
   }
-  .fighter-title {
-    max-width: 16% !important;
-  }
+
   /* ------------------- home-new --------------*/
   .news {
     height: 650px !important;
   }
   .news-title {
-    max-width: 16% !important;
   }
   .new-btn {
     margin-top: 6% !important;
@@ -371,9 +375,6 @@ export default {
   }
   .media-card {
     width: 31% !important;
-  }
-  .media-title {
-    max-width: 16% !important;
   }
 
   /* ------------------- home-community --------------*/
@@ -454,7 +455,9 @@ export default {
     max-width: 420px !important;
   }
   .fighter-info-left {
-    justify-content: center !important;
+    align-self: center;
+    justify-content: center;
+    column-gap: 20%;
   }
 }
 @media screen and (max-width: 747px) {
@@ -506,7 +509,6 @@ export default {
   /* ------------------- home-introduction --------------*/
 
   .btn-customize-introduction {
-    width: 45% !important;
     height: 60px !important;
   }
   .introduction-title {
@@ -569,6 +571,11 @@ export default {
   .statistic-responsive {
     display: block !important;
   }
+  .fighter-info-left {
+    align-self: center;
+    justify-content: center;
+    column-gap: 10px;
+  }
   /* ------------------- home-news --------------*/
   .news {
     height: max-content !important;
@@ -599,6 +606,9 @@ export default {
 
   .community-text {
     font-size: 15px !important;
+  }
+  .social-icon {
+    width: 78% !important;
   }
   /* ------------------- home-footer --------------*/
   .footer-top {
@@ -634,12 +644,11 @@ export default {
   }
 
   .community-btn {
-    width: 78% !important;
+    width: 80% !important;
   }
 }
 @media screen and (max-width: 399px) {
   .btn-customize-introduction {
-    width: 60% !important;
     height: 60px !important;
   }
 
@@ -652,10 +661,7 @@ export default {
   .nav-image {
     max-width: 25% !important;
   }
-  .mode-title {
-    max-width: 27% !important;
-  }
-  .fighter-title {
+  /* .mode-title {
     max-width: 27% !important;
   }
   .news-title {
@@ -666,6 +672,6 @@ export default {
   }
   .community-title {
     max-width: 27% !important;
-  }
+  } */
 }
 </style>
