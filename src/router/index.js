@@ -53,6 +53,16 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../views/booster/pages/Boosterv2.vue')
       },
       {
+        path: 'news',
+        name: 'news',
+        component: () => import(/* webpackChunkName: "about" */ '../views/news/pages/News.vue')
+      },
+      {
+        path: 'new',
+        name: 'newDetail',
+        component: () => import(/* webpackChunkName: "about" */ '../views/news/pages/NewsDetail.vue')
+      },
+      {
         path: 'comingsoon',
         name: 'comingsoon',
         component: () => import(/* webpackChunkName: "about" */ '../views/ComingSoon.vue')
@@ -87,4 +97,3 @@ const router = new VueRouter({
 })
 
 export default router
- 

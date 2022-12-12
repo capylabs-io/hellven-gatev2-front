@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="focus">
     <slot></slot>
   </div>
   <!-- <v-hover v-slot="{ hover }">
@@ -18,6 +18,9 @@ export default {
 };
 </script>
 <style scoped>
+.focus {
+  cursor: pointer;
+}
 .active {
   border: 3px solid white !important;
 }

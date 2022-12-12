@@ -227,7 +227,7 @@ export default {
 }
 
 .btn-customize {
-  border-radius: 15px;
+  border-radius: 10px;
   height: 45px !important;
 }
 .nav-image {
