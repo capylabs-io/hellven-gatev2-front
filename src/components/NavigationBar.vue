@@ -92,10 +92,13 @@
               </v-menu>
               <!-- <div class="text-none align-seft-center">HEROES</div> -->
               <!-- <router-link :to="`/${$i18n.locale}/about`" class="text-copy-primary hover:text-gray-600">About</router-link> -->
-              <div class="text-none align-seft-center">
+              <div class="text-none align-seft-center cursor">
                 {{ $t("navbar.media") }}
               </div>
-              <div class="text-none align-seft-center">
+              <div
+                class="cursor text-none align-seft-center"
+                @click="gotoRouter('news')"
+              >
                 {{ $t("navbar.new") }}
               </div>
             </div>
@@ -254,5 +257,8 @@ export default {
 }
 .gap-20 {
   column-gap: 20px;
+}
+.cursor {
+  cursor: pointer;
 }
 </style>

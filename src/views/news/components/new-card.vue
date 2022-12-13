@@ -1,5 +1,5 @@
 <template>
-  <v-card class="new-card-border" white>
+  <v-card class="new-card-border" white @click="gotoRouter('newDetail')">
     <v-img class="new-card-image" :src="news.image" />
     <div class="kanit-font text-truncate pad-16" style="font-size: 15px">
       <span> {{ news.descript }} </span>
@@ -15,6 +15,16 @@ export default {
   props: ["news"],
   setup() {
     return {};
+  },
+  methods: {
+    openLink(url) {
+      window.open(url, "_blank");
+    },
+    gotoRouter(url) {
+      this.$router.push({
+        name: url,
+      });
+    },
   },
 };
 </script>
@@ -34,6 +44,7 @@ export default {
   height: max-content;
   border-radius: 18px;
   box-shadow: 0px 6px 1px 0px #d9d9d9 !important;
+  cursor: pointer;
 }
 
 .card-title {

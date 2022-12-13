@@ -2,8 +2,9 @@
   <div class="d-flex">
     <div class="content-right new-detail">
       <div class="d-flex flex-column main-content">
-        <v-card class="mt-5">
+        <v-card class="mt-5 new-pic">
           <v-img
+            lazy-src=""
             class="new-image"
             :src="require(`@/assets/home/news/new1-image.webp`)"
           >
@@ -15,7 +16,7 @@
           >
         </div>
         <div>
-          <p class="d-flex kanit-font gap-2" style="font-size: 17px">
+          <p class="d-flex kanit-font col-gap-2" style="font-size: 17px">
             <span class="red-text" style="font-weight: bold">COMMUNITY</span>
             <span class="gray-text">10 Oct 2022</span>
           </p>
@@ -71,7 +72,7 @@
           </p>
         </div>
         <div class="d-flex justify-space-between mt-12">
-          <div class="d-flex kanit-font gap-15 align-center">
+          <div class="d-flex kanit-font col-gap-15 align-center">
             <div class="slider">
               <v-img
                 :src="require(`@/assets/home/media/slide-left.webp`)"
@@ -86,7 +87,7 @@
               <span>View All</span>
             </v-btn>
           </div>
-          <div class="d-flex kanit-font gap-15 align-center">
+          <div class="d-flex kanit-font col-gap-15 align-center">
             <span class="align-seft-center gray-text" style="font-size: 19px"
               >Newer</span
             >
@@ -99,20 +100,61 @@
         </div>
       </div>
     </div>
-    <div class="content-left"></div>
+    <div class="content-left">
+      <div class="d-flex flex-column row-gap-15 new-list mt-10 ml-8">
+        <detailCard
+          v-for="(value, index) in news"
+          :key="value.type"
+          :index="index"
+          :news="value"
+        >
+        </detailCard>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import detailCard from "../components/new-detail-card.vue";
 export default {
-  setup() {
-    return {};
+  components: {
+    detailCard: detailCard,
+  },
+  data() {
+    return {
+      news: [
+        {
+          image: require(`@/assets/home/news/new1-image.webp`),
+          type: "NEWS",
+          title: "WAS THE HARDEST CHALLENGE EVER...",
+          createdDate: "10 Oct 2022",
+        },
+        {
+          image: require(`@/assets/home/news/new1-image.webp`),
+          type: "NEWS",
+          title: "WAS THE HARDEST CHALLENGE EVER...",
+          createdDate: "10 Oct 2022",
+        },
+        {
+          image: require(`@/assets/home/news/new1-image.webp`),
+          type: "NEWS",
+          title: "WAS THE HARDEST CHALLENGE EVER...",
+          createdDate: "10 Oct 2022",
+        },
+        {
+          image: require(`@/assets/home/news/new1-image.webp`),
+          type: "NEWS",
+          title: "WAS THE HARDEST CHALLENGE EVER...",
+          createdDate: "10 Oct 2022",
+        },
+      ],
+    };
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.v-card {
+.new-pic {
   width: 100%;
   max-height: max-content;
   border: solid 5px black;
@@ -144,16 +186,22 @@ export default {
   object-fit: contain;
   max-height: 450px;
 }
-.gap-2 {
+.col-gap-2 {
   column-gap: 2%;
 }
-.gap-15 {
+.col-gap-15 {
   column-gap: 15px;
+}
+.row-gap-15 {
+  row-gap: 20px;
 }
 .red-text {
   color: red;
 }
 .gray-text {
   color: gray;
+}
+.new-list {
+  width: 70%;
 }
 </style>
