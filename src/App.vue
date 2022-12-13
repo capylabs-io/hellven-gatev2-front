@@ -14,12 +14,12 @@
 import Footer from "../src/components/Footer.vue";
 import NavigationBar from "../src/components/NavigationBar.vue";
 const moduleNotUseTemplate = [
-  "sign-in",
-  "forget-password",
-  "sign-up",
-  "resgister-vertify-sent",
-  "confirm",
-  "reset-password"
+  "Signup",
+  "ResetPassword",
+  "ForgetPassword",
+  "Signin",
+  "RegisterVertifySent",
+  "RegisterVertified"
 ];
 import SnackBar from "@/components/snack-bar/snack-bar.vue";
 import LoadingController from "@/components/global-loading/global-loading.vue";
@@ -43,9 +43,7 @@ export default {
   },
   methods: {
     setDisplayTemplate(router) {
-      var fullPath = router.fullPath;
-      var absolutePath = fullPath.substr(fullPath.lastIndexOf("/") + 1);
-      if (moduleNotUseTemplate.includes(absolutePath)){
+      if (moduleNotUseTemplate.includes(router.name)){
         this.isDisplayTemplate = false;
       } else {
         this.isDisplayTemplate = true;
