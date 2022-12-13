@@ -41,7 +41,7 @@
             </div>
             <div class="align-center">
               <v-btn
-                v-if="!accountStore.$state.email"
+                v-if="!getEmail"
                 color="darkgrey"
                 class="white--text btn-customize gap-20"
                 @click="gotoRouter('Signin')"
@@ -54,7 +54,7 @@
                 class="white--text btn-customize gap-20"
                 @click="gotoRouter('AccountSettings')"
               >
-                <span>{{ accountStore.$state.email }}</span>
+                <span>{{ getEmail }}</span>
               </v-btn>
             </div>
 
@@ -127,14 +127,12 @@
 <script>
 import LanguageSwitch from "@/views/home/components/nav-bar/LanguageSwitch.vue";
 import i18n from "@/i18n";
-import { accountInfo } from "@/store/account-info";
 
 export default {
   components: { LanguageSwitch },
   data: () => ({
     drawer: false,
     group: null,
-    accountStore: accountInfo()
   }),
   watch: {
     group() {
@@ -150,6 +148,12 @@ export default {
         params: { lang: i18n.locale },
         name: url,
       });
+    },
+  },
+  computed: {
+    getEmail() {
+      let userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+      return userInfo.email;
     },
   },
 };

@@ -3,12 +3,10 @@ import axios from "axios";
 import i18n from "@/i18n";
 import { snackBarController } from "@/components/snack-bar/snack-bar-controller";
 import { globalLoadingController } from "@/components/global-loading/global-loading-controller";
-import { accountInfo } from "@/store/account-info";
 
 const baseUrl = process.env.VUE_APP_API_URL;
 const snackController = snackBarController();
 const loadingController = globalLoadingController();
-const accountStore = accountInfo();
 
 export const userStore = defineStore("users", {
   state: () => ({
@@ -138,7 +136,8 @@ export const userStore = defineStore("users", {
           if (response.statusText == "OK") {
             snackController.success("Login is successful");
             this.errorMessage = "";
-            this.saveAccountDetail(response.data);
+            sessionStorage.setItem("userInfo", JSON.stringify(response.data.user));
+            sessionStorage.setItem("jwt", JSON.stringify(response.data.jwt));
             this.router.push({
               params: { lang: i18n.locale },
               name: "home",
@@ -204,16 +203,6 @@ export const userStore = defineStore("users", {
     delay(milliseconds) {
       return new Promise((resolve) => {
         setTimeout(resolve, milliseconds);
-      });
-    },
-    async saveAccountDetail(result) {
-      await accountStore.$load({
-        jwt: result.jwt,
-        id: result.user.id,
-        email: result.user.email,
-        username: result.user.username,
-        updatedAt: result.user.updatedAt,
-        createdAt: result.user.createdAt,
       });
     },
     hideEmail(email) {
