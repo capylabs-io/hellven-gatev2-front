@@ -140,7 +140,7 @@ export default {
       });
     },
     fetchData() {
-      if (this.$router.query) {
+      if (this.$route.query) {
         this.userStore.resetPasswordData.code = this.$route.query.code;
         this.hideEmail = this.userStore.hideEmail(this.$route.query.email);
       } else {
