@@ -31,17 +31,18 @@ export default {
 };
 </script>
 <style>
-@font-face {
+/*@font-face {
   font-family: "Bungee";
   src: local("Bungee"),
     url(./fonts/Bungee/Bungee-Regular.ttf) format("truetype");
-}
+}*/
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
 @font-face {
   font-family: "Kanit";
   src: local("Kanit"), url(./fonts/Kanit/Kanit-Regular.ttf) format("truetype");
 }
 .bungee-font {
-  font-family: Bungee, Helvetica, Arial;
+  font-family: Bungee, sans-serif;
 }
 .kanit-font {
   font-family: Kanit, Helvetica, Arial;
@@ -463,9 +464,7 @@ export default {
   .nav-link {
     display: none !important;
   }
-  .nav-right {
-    display: none !important;
-  }
+
   .nav-btn-responsive {
     justify-content: flex-end;
     display: flex !important;
@@ -487,7 +486,6 @@ export default {
     display: none !important;
   }
   .nav-right {
-    display: none !important;
   }
   .nav-btn-responsive {
     justify-content: flex-end;

@@ -2,11 +2,8 @@
 <template>
   <v-footer height="300px" width="100%" color="black">
     <div class="footer-container d-flex flex-column align-center">
-      <div class="footer-top white--text align-center justify-space-between">
-        <div
-          class="footer-top-left d-flex flex-column align-center"
-          style="row-gap: 20px"
-        >
+      <div class="footer-top white--text d-flex justify-space-between">
+        <div class="footer-top-left d-flex flex-column align-center">
           <v-img
             class="align-seft-center footer-logo"
             :src="require(`@/assets/fighter-force.webp`)"
@@ -23,7 +20,7 @@
             <div class="text-none align-seft-center">NEWS</div>
           </div>
         </div>
-        <div class="footer-top-right">
+        <div class="footer-top-right mt-5">
           <v-img
             class="align-seft-center mr-2 footer-image"
             :src="require(`@/assets/footer/AppStore_ft.webp`)"
@@ -35,23 +32,27 @@
         </div>
       </div>
 
-      <hr class="mt-2" />
-      <div class="footer-bottom white--text d-flex mt-7">
+      <hr class="my-5" />
+      <div class="footer-bottom white--text d-flex align-center">
         <div class="footer-bottom-copyright">
-          <p class="font-weight-lighter align-seft-center">
+          <p class="font-weight-lighter">
             Copyright © 2022 Capy Lab. All Rights Reserved
           </p>
         </div>
         <div class="d-flex font-weight-bold" style="gap: 20px">
-          <a class="text-none align-seft-center" href="/term"  @click="gotoRouter('term')">
-            Terms
-          </a>
-          <a class="text-none align-seft-center" href="/privacy" @click="gotoRouter('privacy')"
-            >Privacy</a
+          <div class="text-none cursor" @click="gotoRouter('term')">Terms</div>
+          <div
+            class="text-none align-seft-center cursor"
+            @click="gotoRouter('privacy')"
           >
-          <a class="text-none align-seft-center" href="/cookies" @click="gotoRouter('cookies')"
-            >Cookies</a
+            Privacy
+          </div>
+          <div
+            class="text-none align-seft-center cursor"
+            @click="gotoRouter('cookies')"
           >
+            Cookies
+          </div>
         </div>
       </div>
     </div>
@@ -93,17 +94,18 @@ export default {
   position: relative;
   height: 100%;
 }
-
+.footer-image {
+  height: 48px;
+  max-width: 165px;
+}
 .footer-top {
   width: 98%;
-  position: relative;
-  column-gap: 400px;
   height: 72%;
   font-family: Bungee, Helvetica, Arial;
-  display: flex;
+  position: relative;
 }
 .footer-top-left {
-  width: 21%;
+  row-gap: 20px;
 }
 .footer-top-right {
   display: flex;
@@ -126,6 +128,9 @@ hr {
 }
 .logo-nav {
   display: flex;
-  gap: 10%;
+  column-gap: 10px;
+}
+.cursor {
+  cursor: pointer;
 }
 </style>

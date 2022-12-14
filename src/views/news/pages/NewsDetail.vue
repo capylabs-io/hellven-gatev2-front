@@ -2,14 +2,12 @@
   <div class="d-flex">
     <div class="content-right new-detail">
       <div class="d-flex flex-column main-content">
-        <v-card class="mt-5 new-pic">
-          <v-img
-            lazy-src=""
-            class="new-image"
-            :src="require(`@/assets/home/news/new1-image.webp`)"
-          >
-          </v-img>
-        </v-card>
+        <v-img
+          lazy-src=""
+          class="new-image mt-5"
+          :src="require(`@/assets/home/news/new1-image.webp`)"
+        >
+        </v-img>
         <div class="kanit-font text-break mt-5" style="font-size: 50px">
           <span style="font-weight: bold"
             >WAS THE HARDEST CHALLENGE EVER TOO EASY FOR YOU?</span
@@ -154,12 +152,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.new-pic {
-  width: 100%;
-  max-height: max-content;
-  border: solid 5px black;
-  border-radius: 16px;
-}
 .new-detail {
   height: max-content;
   margin-bottom: 50px;
@@ -183,8 +175,9 @@ export default {
   background-color: #f8f8f8;
 }
 .new-image {
-  object-fit: contain;
   max-height: 450px;
+  border: solid 5px black;
+  border-radius: 16px;
 }
 .col-gap-2 {
   column-gap: 2%;

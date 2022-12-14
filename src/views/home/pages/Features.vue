@@ -10,6 +10,14 @@
       :class="windowWidth < 1264 ? 'feature-list-md-down align-center' : ''"
       v-if="translateValue == 1"
     >
+      <div class="slider">
+        <button @click="prev" v-show="translateValue == 2">
+          <v-img
+            class="align-seft-center"
+            :src="require(`@/assets/home/media/slide-left.webp`)"
+          ></v-img>
+        </button>
+      </div>
       <!-- <v-card class="feature-card pt-5" white>
         <v-card-title class="bungee-font" style="font-size: 25px">
           <span> Play Your Way </span>
@@ -35,10 +43,7 @@
                 <v-img class="feature-media-image" :src="info.image"></v-img>
               </v-card>
               <div class="d-flex pt-3 gap-30 feature-play-card-info">
-                <v-img
-                  class="feature-media-icon"
-                  :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
-                />
+                <v-img class="feature-media-icon" :src="info.icon" />
                 <span class="kanit-font" style="font-size: 18px">
                   {{ info.title }}
                 </span>
@@ -229,6 +234,14 @@
           </div>
         </div>
       </div>
+      <div class="slider">
+        <button @click="next" v-show="translateValue == 1">
+          <v-img
+            class="align-seft-center"
+            :src="require(`@/assets/home/media/slide-left.webp`)"
+          ></v-img>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -244,25 +257,29 @@ export default {
           index: "1",
           title:
             "A fast pace turn-based tactical game that can satisfy any strategic mind",
-          image: require(`@/assets/home/news/new4-image.webp`),
+          image: require(`@/assets/home/feature/feature2.webp`),
+          icon: require(`@/assets/home/mode/gamemode1-icon.webp`),
         },
         {
           index: "2",
           title:
             "Thousands of combination from a wide range of unique hero for player to experiement",
-          image: require(`@/assets/home/news/new4-image.webp`),
+          image: require(`@/assets/home/feature/feature3.webp`),
+          icon: require(`@/assets/home/mode/gamemode1-icon.webp`),
         },
         {
           index: "3",
           title:
             "An immense collection of challenging modes that rotates constantly to keep the game fresh",
-          image: require(`@/assets/home/news/new4-image.webp`),
+          image: require(`@/assets/home/feature/feature1.webp`),
+          icon: require(`@/assets/home/mode/gamemode1-icon.webp`),
         },
         {
           index: "4",
           title:
             "Constantly improve and evolve to improve player’s experience as we learn from your feedbacks",
-          image: require(`@/assets/home/news/new4-image.webp`),
+          image: require(`@/assets/home/feature/feature1.webp`),
+          icon: require(`@/assets/home/mode/gamemode1-icon.webp`),
         },
       ],
       features1: [

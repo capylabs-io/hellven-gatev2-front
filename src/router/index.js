@@ -24,7 +24,7 @@ const routes = [
       },
       {
         path: 'mode',
-        name: 'gamemode',
+        name: 'modes',
         component: () => import(/* webpackChunkName: "about" */ '../views/mode/pages/Mode.vue')
       },
       {

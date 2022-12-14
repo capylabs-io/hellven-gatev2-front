@@ -19,7 +19,7 @@
         }"
       >
         <div class="slider">
-          <button @click="prev">
+          <button>
             <v-img
               class="align-seft-center"
               :src="require(`@/assets/mode/slide-left.webp`)"
@@ -33,7 +33,7 @@
           <modeImage />
         </div>
         <div class="slider">
-          <button @click="next">
+          <button>
             <v-img
               class="align-seft-center"
               :src="require(`@/assets/mode/slide-right.webp`)"

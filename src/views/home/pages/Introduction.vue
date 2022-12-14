@@ -1,6 +1,6 @@
 <template>
   <div
-    class="introduction d-flex flex-column align-center"
+    class="introduction d-flex flex-column align-center justify-center"
     v-bind:style="{
       backgroundImage:
         'url(' + require('@/assets/introduction-background.webp') + ')',
@@ -13,18 +13,13 @@
       ></v-img>
     </div>
     <div
-      class="text-capitalize mx-auto white--text text-shadow text-center introduction-title bungee-font"
+      class="text-capitalize mx-auto white--text text-shadow text-center introduction-title"
     >
       <p class="text-break mx-auto">
         {{ $t("introduction.title") }}
       </p>
     </div>
-    <v-btn color="yellow" class="black--text btn-customize-introduction px-3">
-      <!-- <v-img
-        class="align-seft-center mr-2"
-        max-width="35px"
-        :src="require(`@/assets/introduction/steam-icon.webp`)"
-      ></v-img> -->
+    <v-btn color="yellow" class="black--text btn-customize-introduction">
       <span class="bungee-font" style="font-size: 20px">{{
         $t("introduction.btnplay")
       }}</span>
@@ -44,12 +39,11 @@ export default {
 <style scoped>
 .introduction {
   width: 100%;
-  height: 950px;
+  height: 1000px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding-top: 6%;
-  row-gap: 5%;
+  row-gap: 50px;
   position: relative;
 }
 .btn-customize-introduction {
@@ -75,10 +69,13 @@ export default {
   text-align: center;
 }
 .introduction-title {
-  font-size: 26px;
-  font-weight: bolder;
+  font-family: bungee;
+  font-size: 40px;
+  font-weight: 1000;
+  line-height: 40px;
+  letter-spacing: 0px;
   justify-content: center;
-  max-width: 35%;
+  max-width: 40%;
   transition-delay: 0.1s;
 }
 .v-btn {

@@ -10,19 +10,30 @@
     <div class="nav-container mx-auto white--text" style="min-width: 93%">
       <v-row class="d-flex align-center">
         <v-col col="3">
-          <div class="nav-left justify-start">
+          <div class="nav-left justify-start align-center">
             <v-img
-              class="nav-image"
+              class="nav-image cursor"
               :src="require(`@/assets/game-logo-v2.webp`)"
               @click="gotoRouter('home')"
             />
             <!--todo: add padding for each navbar -->
             <div class="nav-link">
-              <v-menu offset-y transition="scale-transition">
+              <v-menu
+                open-on-hover
+                bottom
+                offset-y
+                transition="scale-transition"
+              >
                 <template v-slot:activator="{ on, attrs }">
-                  <div class="text-none" v-bind="attrs" v-on="on">
-                    <span>GAME</span>
-                    <v-icon class="pb-2 pl-2" small color="white">
+                  <div
+                    class="text-none d-flex align-center gap-5 cursor"
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                    <div>
+                      <span>GAME</span>
+                    </div>
+                    <v-icon class="" small color="white">
                       mdi-chevron-down
                     </v-icon>
                   </div>
@@ -35,7 +46,7 @@
                   </v-list-item>
                   <v-list-item
                     class="white--text"
-                    @click="gotoRouter('gamemode')"
+                    @click="gotoRouter('modes')"
                   >
                     <v-list-item-title class="px-2 bungee-font">
                       <span>MODES</span>
@@ -44,11 +55,17 @@
                 </v-list>
               </v-menu>
 
-              <v-menu offset-y transition="scale-transition">
+              <v-menu open-on-hover offset-y transition="scale-transition">
                 <template v-slot:activator="{ on, attrs }">
-                  <div class="text-none" v-bind="attrs" v-on="on">
-                    <span>GUIDE</span>
-                    <v-icon class="pb-2 pl-2" small color="white">
+                  <div
+                    class="text-none d-flex align-center gap-5 cursor"
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                    <div>
+                      <span>GUIDE</span>
+                    </div>
+                    <v-icon class="" small color="white">
                       mdi-chevron-down
                     </v-icon>
                   </div>
@@ -92,13 +109,10 @@
               </v-menu>
               <!-- <div class="text-none align-seft-center">HEROES</div> -->
               <!-- <router-link :to="`/${$i18n.locale}/about`" class="text-copy-primary hover:text-gray-600">About</router-link> -->
-              <div class="text-none align-seft-center cursor">
+              <div class="text-none cursor">
                 {{ $t("navbar.media") }}
               </div>
-              <div
-                class="cursor text-none align-seft-center"
-                @click="gotoRouter('news')"
-              >
+              <div class="cursor text-none" @click="gotoRouter('news')">
                 {{ $t("navbar.new") }}
               </div>
             </div>
@@ -106,12 +120,15 @@
         </v-col>
         <!-- <LanguageSwitch class="nav-lang-responsive"></LanguageSwitch> -->
         <v-col col="3">
-          <div class="nav-right">
+          <div
+            class="nav-right align-center d-flex justify-end"
+            v-if="windowWidth >= 748"
+          >
             <!-- <div>
               <LanguageSwitch></LanguageSwitch>
             </div> -->
             <div class="align-center">
-              <v-btn color="darkgrey" class="white--text btn-customize gap-20">
+              <v-btn color="darkgrey" class="white--text btn-customize">
                 <span>{{ $t("navbar.btnlogin") }}</span>
               </v-btn>
             </div>
@@ -131,6 +148,7 @@
             color="white"
             class="nav-btn-responsive"
             @click.stop="drawer = !drawer"
+            v-else
           ></v-app-bar-nav-icon>
 
           <v-navigation-drawer
@@ -139,6 +157,7 @@
             right
             hide-overlay
             color="black"
+            v-if="windowWidth <= 748"
           >
             <v-list nav dense>
               <v-list-item-group v-model="group" active-class=" text--accent-4">
@@ -151,9 +170,9 @@
                   ></v-list-item-title>
                 </v-list-item>
                 <v-list-item class="white--text">
-                  <v-list-item-title
+                  <v-list-item-title class="d-flex align-center"
                     ><span>GAME</span>
-                    <v-icon class="pb-2 pl-2" small color="white">
+                    <v-icon class="" small color="white">
                       mdi-chevron-down
                     </v-icon>
                   </v-list-item-title>
@@ -189,7 +208,15 @@ export default {
   data: () => ({
     drawer: false,
     group: null,
+    windowWidth: 0,
   }),
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.handleResize);
+  },
   methods: {
     openLink(url) {
       window.open(url, "_blank");
@@ -205,6 +232,9 @@ export default {
     //     name: url,
     //   });
     // },
+    handleResize() {
+      this.windowWidth = window.innerWidth;
+    },
   },
   watch: {
     group() {
@@ -223,14 +253,11 @@ export default {
   column-gap: 3%;
 }
 .nav-right {
-  justify-content: flex-end;
-  display: flex;
-  column-gap: 3%;
-  align-items: center;
+  column-gap: 1%;
 }
 
 .btn-customize {
-  border-radius: 10px;
+  border-radius: 8px;
   height: 45px !important;
 }
 .nav-image {
@@ -239,7 +266,7 @@ export default {
 }
 .nav-link {
   display: flex;
-  column-gap: 30px;
+  column-gap: 20px;
 }
 .nav-btn-responsive {
   justify-content: center;
@@ -255,8 +282,11 @@ export default {
   margin: 0 auto;
   max-width: 80%;
 }
-.gap-20 {
-  column-gap: 20px;
+.gap-10 {
+  column-gap: 10px;
+}
+.gap-5 {
+  column-gap: 5px;
 }
 .cursor {
   cursor: pointer;

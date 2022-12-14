@@ -1,12 +1,12 @@
 <template>
   <div
-    class="main-content"
+    class="main-content d-flex flex-column align-center justify-center"
     v-bind:style="{
       backgroundImage:
         'url(' + require('@/assets/coming-soon-background.webp') + ')',
     }"
   >
-    <div class="white--text subtitle mx-auto">
+    <div class="white--text subtitle">
       <span class="bungee-font text-shadow">Whoop, 404 Not Found!</span>
     </div>
   </div>
@@ -27,8 +27,9 @@ export default {
 <style lang="scss" scoped>
 .main-content {
   width: 100%;
-  height: 902px;
+  height: 903px;
   background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -43,6 +44,5 @@ export default {
   font-size: 37px !important;
   text-align: center;
   font-weight: bolder;
-  padding-top: 440px;
 }
 </style>
