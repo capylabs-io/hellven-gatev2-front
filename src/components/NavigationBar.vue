@@ -153,7 +153,10 @@ export default {
   computed: {
     getEmail() {
       let userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
-      return userInfo.email;
+      if (userInfo) {
+        return userInfo.email;
+      }
+      return "";
     },
   },
 };
