@@ -24,10 +24,23 @@
       <div class="media-section">
         <div v-scrollanimation class="media-image item-center fade-bottom">
           <card v-for="media in medias" :key="media.index" v-bind:media="media">
-            <v-img
-              @click="overlay = !overlay"
-              :src="require(`@/assets/home/media/Media${media.index}.webp`)"
-            ></v-img>
+            <v-sheet
+              v-if="loading"
+              :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
+            >
+              <v-skeleton-loader
+                class="mx-auto"
+                width="275px"
+                height="161px"
+                type="image"
+              ></v-skeleton-loader>
+            </v-sheet>
+            <template v-else>
+              <v-img
+                @click="overlay = !overlay"
+                :src="require(`@/assets/home/media/Media${media.index}.webp`)"
+              ></v-img>
+            </template>
           </card>
         </div>
         <div class="d-flex mx-auto gap-50">
@@ -47,8 +60,8 @@
       </div>
     </div>
 
-    <v-row >
-      <v-overlay :z-index="zIndex" :value="overlay">
+    <v-row>
+      <v-overlay :z-index="zIndex" :value="overlay" opacity>
         <div class="overlayContent d-flex flex-column align-center">
           <div class="overlay-Count white--text bungee-font">
             <span>1/36</span>
@@ -188,7 +201,19 @@ export default {
           image: `@/assets/home/media/Media10.webp`,
         },
       ],
+      loading: true,
     };
+  },
+
+  mounted() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 1500);
+  },
+  inject: {
+    theme: {
+      default: { isDark: false },
+    },
   },
 };
 </script>

@@ -13,28 +13,33 @@
             <v-skeleton-loader
               class="mx-auto"
               max-width="100%"
-              type="image"
+              type="image,list-item-avatar-three-line"
             ></v-skeleton-loader>
           </v-sheet>
-          <v-img
-            v-else
-            class="mx-auto new-card-image"
-            :src="require(`@/assets/home/news/new1-image.webp`)"
-            max-width="100%"
-          />
-          <div class="pl-4 pt-4 bungee-font gray-text">
-            <p style="margin: 0">{{ $t("new.new1.subtitle") }}</p>
-          </div>
-          <div class="bungee-font text-truncate pad-16" style="font-size: 23px">
-            {{ $t("new.new1.title") }}
-          </div>
 
-          <v-card-subtitle
-            class="text-break kanit-font pt-2"
-            style="font-size: 15px"
-          >
-            {{ $t("new.new1.link") }}
-          </v-card-subtitle>
+          <template v-else>
+            <v-img
+              class="mx-auto new-card-image"
+              :src="require(`@/assets/home/news/new1-image.webp`)"
+              max-width="100%"
+            />
+            <div class="pl-4 pt-4 bungee-font gray-text">
+              <p style="margin: 0">{{ $t("new.new1.subtitle") }}</p>
+            </div>
+            <div
+              class="bungee-font text-truncate pad-16"
+              style="font-size: 23px"
+            >
+              {{ $t("new.new1.title") }}
+            </div>
+
+            <v-card-subtitle
+              class="text-break kanit-font pt-2"
+              style="font-size: 15px"
+            >
+              {{ $t("new.new1.link") }}
+            </v-card-subtitle>
+          </template>
         </v-card>
       </v-col>
       <v-col cols="12" sm="6" lg="3">
@@ -46,28 +51,32 @@
             <v-skeleton-loader
               class="mx-auto"
               max-width="100%"
-              type="image"
+              type="image,list-item-avatar-three-line"
             ></v-skeleton-loader>
           </v-sheet>
-          <v-img
-            v-else
-            class="mx-auto new-card-image"
-            :src="require(`@/assets/home/news/new2-image.webp`)"
-            max-width="100%"
-          />
-          <div class="pl-4 pt-4 bungee-font gray-text">
-            <p style="margin: 0">{{ $t("new.new2.subtitle") }}</p>
-          </div>
-          <div class="bungee-font text-truncate pad-16" style="font-size: 23px">
-            {{ $t("new.new2.title") }}
-          </div>
+          <template v-else>
+            <v-img
+              class="mx-auto new-card-image"
+              :src="require(`@/assets/home/news/new2-image.webp`)"
+              max-width="100%"
+            />
+            <div class="pl-4 pt-4 bungee-font gray-text">
+              <p style="margin: 0">{{ $t("new.new2.subtitle") }}</p>
+            </div>
+            <div
+              class="bungee-font text-truncate pad-16"
+              style="font-size: 23px"
+            >
+              {{ $t("new.new2.title") }}
+            </div>
 
-          <v-card-subtitle
-            class="text-break kanit-font pt-2"
-            style="font-size: 15px"
-          >
-            {{ $t("new.new2.link") }}
-          </v-card-subtitle>
+            <v-card-subtitle
+              class="text-break kanit-font pt-2"
+              style="font-size: 15px"
+            >
+              {{ $t("new.new2.link") }}
+            </v-card-subtitle>
+          </template>
         </v-card>
       </v-col>
       <v-col cols="12" sm="6" lg="3">
@@ -79,28 +88,32 @@
             <v-skeleton-loader
               class="mx-auto"
               max-width="100%"
-              type="image"
+              type="image,list-item-avatar-three-line"
             ></v-skeleton-loader>
           </v-sheet>
-          <v-img
-            v-else
-            class="mx-auto new-card-image"
-            :src="require(`@/assets/home/news/new3-image.webp`)"
-            max-width="100%"
-          />
-          <div class="pl-4 pt-4 bungee-font gray-text">
-            <p style="margin: 0">{{ $t("new.new3.subtitle") }}</p>
-          </div>
-          <div class="bungee-font text-truncate pad-16" style="font-size: 23px">
-            {{ $t("new.new3.title") }}
-          </div>
+          <template v-else>
+            <v-img
+              class="mx-auto new-card-image"
+              :src="require(`@/assets/home/news/new3-image.webp`)"
+              max-width="100%"
+            />
+            <div class="pl-4 pt-4 bungee-font gray-text">
+              <p style="margin: 0">{{ $t("new.new3.subtitle") }}</p>
+            </div>
+            <div
+              class="bungee-font text-truncate pad-16"
+              style="font-size: 23px"
+            >
+              {{ $t("new.new3.title") }}
+            </div>
 
-          <v-card-subtitle
-            class="text-break kanit-font pt-2"
-            style="font-size: 15px"
-          >
-            {{ $t("new.new3.link") }}
-          </v-card-subtitle>
+            <v-card-subtitle
+              class="text-break kanit-font pt-2"
+              style="font-size: 15px"
+            >
+              {{ $t("new.new3.link") }}
+            </v-card-subtitle>
+          </template>
         </v-card>
       </v-col>
       <v-col cols="12" sm="6" lg="3">
@@ -112,28 +125,32 @@
             <v-skeleton-loader
               class="mx-auto"
               max-width="100%"
-              type="image"
+              type="image,list-item-three-line"
             ></v-skeleton-loader>
           </v-sheet>
-          <v-img
-            v-else
-            class="mx-auto new-card-image"
-            :src="require(`@/assets/home/news/new1-image.webp`)"
-            max-width="100%"
-          />
-          <div class="pl-4 pt-4 bungee-font gray-text">
-            <p style="margin: 0">{{ $t("new.new1.subtitle") }}</p>
-          </div>
-          <div class="bungee-font text-truncate pad-16" style="font-size: 23px">
-            {{ $t("new.new1.title") }}
-          </div>
+          <template v-else>
+            <v-img
+              class="mx-auto new-card-image"
+              :src="require(`@/assets/home/news/new1-image.webp`)"
+              max-width="100%"
+            />
+            <div class="pl-4 pt-4 bungee-font gray-text">
+              <p style="margin: 0">{{ $t("new.new1.subtitle") }}</p>
+            </div>
+            <div
+              class="bungee-font text-truncate pad-16"
+              style="font-size: 23px"
+            >
+              {{ $t("new.new1.title") }}
+            </div>
 
-          <v-card-subtitle
-            class="text-break kanit-font pt-2"
-            style="font-size: 15px"
-          >
-            {{ $t("new.new1.link") }}
-          </v-card-subtitle>
+            <v-card-subtitle
+              class="text-break kanit-font pt-2"
+              style="font-size: 15px"
+            >
+              {{ $t("new.new1.link") }}
+            </v-card-subtitle>
+          </template>
         </v-card>
       </v-col>
     </v-row>
@@ -142,6 +159,7 @@
         color="violet"
         class="white--text btn-customize bungee-font"
         height="50px"
+        @click="gotoRouter('news')"
       >
         <span style="font-size: 18px">{{ $t("new.btnView") }}</span>
       </v-btn>
@@ -159,6 +177,7 @@ export default {
       default: { isDark: false },
     },
   },
+
   mounted() {
     setTimeout(() => {
       this.loading = false;
@@ -168,6 +187,19 @@ export default {
     return {
       loading: true,
     };
+  },
+  methods: {
+    openLink(url) {
+      window.open(url, "_blank");
+    },
+    gotoRouter(url) {
+      this.$router.push({
+        name: url,
+      });
+    },
+    handleResize() {
+      this.windowWidth = window.innerWidth;
+    },
   },
 };
 </script>

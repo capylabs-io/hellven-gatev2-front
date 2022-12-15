@@ -6,22 +6,39 @@
         'url(' + require('@/assets/community-background.webp') + ')',
     }"
   >
-    <div
-      v-scrollanimation
-      class="community-title bungee-font white--text fade-bottom"
-    >
-      <span>JOIN THE COMMUNITY</span>
-    </div>
-    <!-- <v-img
+    <template v-if="loading">
+      <div
+        class="text-center d-flex flex-column justify-center align-center"
+        style="height: 500px"
+      >
+        <v-progress-circular
+          :size="70"
+          :width="7"
+          indeterminate
+          color="black"
+        ></v-progress-circular>
+      </div>
+    </template>
+    <template v-else>
+      <div
+        v-scrollanimation
+        class="community-title bungee-font white--text fade-bottom"
+      >
+        <span>JOIN THE COMMUNITY</span>
+      </div>
+      <!-- <v-img
       :src="require(`@/assets/home/community/community-title.webp`)"
     ></v-img> -->
-    <v-card v-scrollanimation class="community-card mx-auto mt-10 fade-bottom">
-      <div class="item-center kanit-font mx-auto text-break community-text">
-        <p>
-          {{ $t("community.text") }}
-        </p>
-      </div>
-      <!-- <v-btn
+      <v-card
+        v-scrollanimation
+        class="community-card mx-auto mt-10 fade-bottom"
+      >
+        <div class="item-center kanit-font mx-auto text-break community-text">
+          <p>
+            {{ $t("community.text") }}
+          </p>
+        </div>
+        <!-- <v-btn
         color="violet"
         class="community-btn white--text btn-customize bungee-font"
         height="70px"
@@ -37,32 +54,42 @@
         ></v-img>
       </v-btn> -->
 
-      <div class="d-flex social-icon mx-auto flex-wrap">
-        <v-img
-          class="align-seft-center community-image"
-          :src="require(`@/assets/home/community/facebook-icon.webp`)"
-        ></v-img>
-        <v-img
-          class="align-seft-center community-image"
-          :src="require(`@/assets/home/community/twitter-icon.webp`)"
-        ></v-img>
-        <v-img
-          class="align-seft-center community-image"
-          :src="require(`@/assets/home/community/discord-icon.webp`)"
-        ></v-img>
-        <v-img
-          class="align-seft-center community-image"
-          :src="require(`@/assets/home/community/youtube-icon.webp`)"
-        ></v-img>
-      </div>
-    </v-card>
+        <div class="d-flex social-icon mx-auto flex-wrap">
+          <v-img
+            class="align-seft-center community-image"
+            :src="require(`@/assets/home/community/facebook-icon.webp`)"
+          ></v-img>
+          <v-img
+            class="align-seft-center community-image"
+            :src="require(`@/assets/home/community/twitter-icon.webp`)"
+          ></v-img>
+          <v-img
+            class="align-seft-center community-image"
+            :src="require(`@/assets/home/community/discord-icon.webp`)"
+          ></v-img>
+          <v-img
+            class="align-seft-center community-image"
+            :src="require(`@/assets/home/community/youtube-icon.webp`)"
+          ></v-img>
+        </div>
+      </v-card>
+    </template>
   </div>
 </template>
 
 <script>
 export default {
   name: "Home",
-
+  data() {
+    return {
+      loading: true,
+    };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 1500);
+  },
   components: {},
 };
 </script>

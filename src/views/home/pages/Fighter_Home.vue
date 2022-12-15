@@ -6,60 +6,76 @@
         'url(' + require('@/assets/mode/modeBackground.webp') + ')',
     }"
   >
-    <div class="fighter-title white--text bungee-font">
-      <span>FIGHTERS</span>
-    </div>
-    <div class="fighter-link white--text bungee-font d-flex mt-5 flex-wrap">
-      <div class="box text-none align-seft-center link-active">vanguard</div>
-      <div class="box text-none align-seft-center">titan soul</div>
-      <div class="box text-none align-seft-center">lightforce</div>
-      <div class="box text-none align-seft-center">daredevil</div>
-      <div class="box text-none align-seft-center">brawler</div>
-      <div class="box text-none align-seft-center">phantom exile</div>
-      <div class="box text-none align-seft-center">jester</div>
-    </div>
-    <div class="">
-      <div class="fighter-info item-center flex-reverse">
-        <div class="info-card">
-          <infoCard></infoCard>
+    <template v-if="loading">
+      <div
+        class="text-center d-flex flex-column justify-center align-center"
+        style="height: 900px"
+      >
+        <v-progress-circular
+          :size="70"
+          :width="7"
+          indeterminate
+          color="black"
+        ></v-progress-circular>
+      </div>
+    </template>
+    <template v-else>
+      <div class="fighter-title white--text bungee-font">
+        <span>FIGHTERS</span>
+      </div>
+      <div class="fighter-link white--text bungee-font d-flex mt-5 flex-wrap">
+        <div class="box text-none align-seft-center link-active cursor">
+          vanguard
         </div>
-        <div class="fighter-info-left d-flex justify-center">
-          <div class="slider-mb">
-            <button @click="prev">
-              <v-img
-                class="align-seft-center"
-                :src="require(`@/assets/home/media/slide-left.webp`)"
-              ></v-img>
-            </button>
+        <div class="box text-none align-seft-center cursor">titan soul</div>
+        <div class="box text-none align-seft-center cursor">lightforce</div>
+        <div class="box text-none align-seft-center cursor">daredevil</div>
+        <div class="box text-none align-seft-center cursor">brawler</div>
+        <div class="box text-none align-seft-center cursor">phantom exile</div>
+        <div class="box text-none align-seft-center cursor">jester</div>
+      </div>
+      <div class="">
+        <div class="fighter-info item-center flex-reverse">
+          <div class="info-card">
+            <infoCard></infoCard>
           </div>
+          <div class="fighter-info-left d-flex justify-center">
+            <div class="slider-mb">
+              <button @click="prev">
+                <v-img
+                  class="align-seft-center"
+                  :src="require(`@/assets/home/media/slide-left.webp`)"
+                ></v-img>
+              </button>
+            </div>
 
-          <fighterImage
-            v-for="(info, index) in fighters"
-            :key="info.index"
-            :index="index"
-            :visibleImage="visibleImage"
-          >
-            <!-- <v-progress-circular
+            <fighterImage
+              v-for="(info, index) in fighters"
+              :key="info.index"
+              :index="index"
+              :visibleImage="visibleImage"
+            >
+              <!-- <v-progress-circular
               v-if=""
               :size="70"
               indeterminate
               color="black"
             ></v-progress-circular> -->
-            <v-img class="fighter-image mx-auto" :src="info.image"></v-img>
-          </fighterImage>
-          <div class="slider-mb">
-            <button @click="next">
-              <v-img
-                class="align-seft-center"
-                :src="require(`@/assets/home/media/slide-right.webp`)"
-              ></v-img>
-            </button>
+              <v-img class="fighter-image mx-auto" :src="info.image"></v-img>
+            </fighterImage>
+            <div class="slider-mb">
+              <button @click="next">
+                <v-img
+                  class="align-seft-center"
+                  :src="require(`@/assets/home/media/slide-right.webp`)"
+                ></v-img>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="fighter-card">
-        <!-- <div class="slider">
+        <div class="fighter-card">
+          <!-- <div class="slider">
           <button @click="prev">
             <v-img
               class="align-seft-center"
@@ -75,17 +91,21 @@
             ></v-img>
           </button>
         </div> -->
-        <div class="fighter-card-list">
-          <card v-for="(fighter, index) in fighterImages" :key="fighter.index">
-            <v-img
-              @click="setvisibleImage(index)"
-              :class="visibleImage == index ? 'indicators' : ''"
-              :src="fighter.image"
-            ></v-img>
-          </card>
+          <div class="fighter-card-list">
+            <card
+              v-for="(fighter, index) in fighterImages"
+              :key="fighter.index"
+            >
+              <v-img
+                @click="setvisibleImage(index)"
+                :class="visibleImage == index ? 'indicators' : ''"
+                :src="fighter.image"
+              ></v-img>
+            </card>
+          </div>
         </div>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 
@@ -191,7 +211,13 @@ export default {
       ],
       visibleImage: 0,
       imageInterval: null,
+      loading: true,
     };
+  },
+  inject: {
+    theme: {
+      default: { isDark: false },
+    },
   },
   mounted() {
     this.imageInterval = setInterval(() => {
@@ -201,6 +227,9 @@ export default {
           : 0;
       this.setvisibleImage(index);
     }, 5000);
+    setTimeout(() => {
+      this.loading = false;
+    }, 1500);
   },
   beforeMount() {
     clearInterval(this.imageInterval);
@@ -337,5 +366,8 @@ export default {
 }
 .box {
   padding: 10px;
+}
+.cursor {
+  cursor: pointer;
 }
 </style>

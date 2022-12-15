@@ -6,24 +6,40 @@
         'url(' + require('@/assets/introduction-background.webp') + ')',
     }"
   >
-    <div v-scrollanimation class="logo fade-bottom">
-      <v-img
-        class="align-seft-center"
-        :src="require(`@/assets/fighter-force.webp`)"
-      ></v-img>
-    </div>
-    <div
-      class="text-capitalize mx-auto white--text text-shadow text-center introduction-title"
-    >
-      <p class="text-break mx-auto">
-        {{ $t("introduction.title") }}
-      </p>
-    </div>
-    <v-btn color="yellow" class="black--text btn-customize-introduction">
-      <span class="bungee-font" style="font-size: 20px">{{
-        $t("introduction.btnplay")
-      }}</span>
-    </v-btn>
+    <template v-if="loading">
+      <div
+        class="text-center d-flex flex-column justify-center align-center"
+        style="height: 900px"
+      >
+        <v-progress-circular
+          :size="70"
+          :width="7"
+          indeterminate
+          color="black"
+        ></v-progress-circular>
+      </div>
+    </template>
+    <template v-else>
+      <div v-scrollanimation class="logo fade-bottom">
+        <v-img
+          class="align-seft-center"
+          :src="require(`@/assets/fighter-force.webp`)"
+        ></v-img>
+      </div>
+      <div
+        class="text-capitalize mx-auto white--text text-shadow text-center introduction-title"
+      >
+        <p class="text-break mx-auto">
+          {{ $t("introduction.title") }}
+        </p>
+      </div>
+      <v-btn color="yellow" class="black--text btn-customize-introduction">
+        <span class="bungee-font" style="font-size: 20px">{{
+          $t("introduction.btnplay")
+        }}</span>
+      </v-btn>
+    </template>
+
     <!-- -webkit-text-stroke-width: 0.5px;
 -webkit-text-stroke-color: black; -->
   </div>
@@ -34,6 +50,16 @@ export default {
   name: "Home",
 
   components: {},
+  data() {
+    return {
+      loading: true,
+    };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 1500);
+  },
 };
 </script>
 <style scoped>

@@ -8,7 +8,6 @@
       v-scrollanimation
       class="d-flex justify-center feature-list fade-right"
       :class="windowWidth < 1264 ? 'feature-list-md-down align-center' : ''"
-      v-if="translateValue == 1"
     >
       <div class="slider">
         <button @click="prev" v-show="translateValue == 2">
@@ -35,8 +34,48 @@
           </span>
         </v-card-subtitle>
       </v-card> -->
-      <div class="d-flex gap-20" v-if="windowWidth >= 1904">
+      <div
+        class="d-flex gap-20"
+        v-if="windowWidth >= 1904 && translateValue == 1"
+      >
         <div v-for="(info, index) in features" :key="info.title" :index="index">
+          <v-sheet
+            v-if="loading"
+            :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
+          >
+            <v-skeleton-loader
+              class="mx-auto"
+              width="360px"
+              height="max-content"
+              type="image, list-item-three-line"
+            ></v-skeleton-loader>
+          </v-sheet>
+          <template v-else>
+            <div class="d-flex flex-column feature-play">
+              <div class="feature-play-card">
+                <v-card class="feature-media-image-card">
+                  <v-img class="feature-media-image" :src="info.image"></v-img>
+                </v-card>
+                <div class="d-flex pt-3 gap-30 feature-play-card-info">
+                  <v-img class="feature-media-icon" :src="info.icon" />
+                  <span class="kanit-font" style="font-size: 18px">
+                    {{ info.title }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+      <div
+        class="d-flex gap-20"
+        v-if="windowWidth < 1904 && windowWidth >= 1264 && translateValue == 1"
+      >
+        <div
+          v-for="(info, index) in features1"
+          :key="info.title"
+          :index="index"
+        >
           <div class="d-flex flex-column feature-play">
             <div class="feature-play-card">
               <v-card class="feature-media-image-card">
@@ -54,7 +93,58 @@
       </div>
       <div
         class="d-flex gap-20"
-        v-if="windowWidth < 1904 && windowWidth >= 1264"
+        v-if="windowWidth >= 800 && windowWidth < 1264 && translateValue == 1"
+      >
+        <div
+          v-for="(info, index) in features2"
+          :key="info.title"
+          :index="index"
+        >
+          <div class="d-flex flex-column feature-play">
+            <div class="feature-play-card">
+              <v-card class="feature-media-image-card">
+                <v-img class="feature-media-image" :src="info.image"></v-img>
+              </v-card>
+              <div class="d-flex pt-3 gap-30 feature-play-card-info">
+                <v-img class="feature-media-icon" :src="info.icon" />
+                <span class="kanit-font" style="font-size: 18px">
+                  {{ info.title }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="d-flex flex-column gap-20"
+        v-if="windowWidth < 800 && translateValue == 1"
+      >
+        <div
+          v-for="(info, index) in features2"
+          :key="info.title"
+          :index="index"
+        >
+          <div class="d-flex flex-column feature-play">
+            <div class="feature-play-card">
+              <v-card class="feature-media-image-card">
+                <v-img class="feature-media-image" :src="info.image"></v-img>
+              </v-card>
+              <div class="d-flex pt-3 gap-30 feature-play-card-info">
+                <v-img class="feature-media-icon" :src="info.icon" />
+                <span class="kanit-font" style="font-size: 18px">
+                  {{ info.title }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!---------- translatevalue ===2 ---------->
+
+      <div
+        class="d-flex gap-20"
+        v-if="windowWidth >= 1264 && translateValue == 2"
       >
         <div
           v-for="(info, index) in features1"
@@ -67,10 +157,7 @@
                 <v-img class="feature-media-image" :src="info.image"></v-img>
               </v-card>
               <div class="d-flex pt-3 gap-30 feature-play-card-info">
-                <v-img
-                  class="feature-media-icon"
-                  :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
-                />
+                <v-img class="feature-media-icon" :src="info.icon" />
                 <span class="kanit-font" style="font-size: 18px">
                   {{ info.title }}
                 </span>
@@ -81,7 +168,7 @@
       </div>
       <div
         class="d-flex gap-20"
-        v-if="windowWidth >= 800 && windowWidth < 1264"
+        v-if="windowWidth >= 800 && windowWidth < 1264 && translateValue == 2"
       >
         <div
           v-for="(info, index) in features2"
@@ -94,10 +181,7 @@
                 <v-img class="feature-media-image" :src="info.image"></v-img>
               </v-card>
               <div class="d-flex pt-3 gap-30 feature-play-card-info">
-                <v-img
-                  class="feature-media-icon"
-                  :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
-                />
+                <v-img class="feature-media-icon" :src="info.icon" />
                 <span class="kanit-font" style="font-size: 18px">
                   {{ info.title }}
                 </span>
@@ -106,7 +190,10 @@
           </div>
         </div>
       </div>
-      <div class="d-flex flex-column gap-20" v-if="windowWidth < 800">
+      <div
+        class="d-flex flex-column gap-20"
+        v-if="windowWidth < 800 && translateValue == 2"
+      >
         <div
           v-for="(info, index) in features2"
           :key="info.title"
@@ -118,10 +205,7 @@
                 <v-img class="feature-media-image" :src="info.image"></v-img>
               </v-card>
               <div class="d-flex pt-3 gap-30 feature-play-card-info">
-                <v-img
-                  class="feature-media-icon"
-                  :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
-                />
+                <v-img class="feature-media-icon" :src="info.icon" />
                 <span class="kanit-font" style="font-size: 18px">
                   {{ info.title }}
                 </span>
@@ -131,114 +215,11 @@
         </div>
       </div>
 
-      <div class="slider">
+      <div class="slider" v-show="translateValue == 1">
         <button @click="next">
           <v-img
             class="align-seft-center"
             :src="require(`@/assets/home/media/slide-right.webp`)"
-          ></v-img>
-        </button>
-      </div>
-    </div>
-
-    <div
-      v-scrollanimation
-      class="d-flex justify-center feature-list fade-right"
-      :class="
-        windowWidth < 1264
-          ? 'feature-list-md-down flex-reverse align-center'
-          : ''
-      "
-      v-else
-    >
-      <div class="slider">
-        <button @click="prev">
-          <v-img
-            class="align-seft-center"
-            :src="require(`@/assets/home/media/slide-left.webp`)"
-          ></v-img>
-        </button>
-      </div>
-      <div class="d-flex gap-20" v-if="windowWidth >= 1264">
-        <div
-          v-for="(info, index) in features1"
-          :key="info.title"
-          :index="index"
-        >
-          <div class="d-flex flex-column feature-play">
-            <div class="feature-play-card">
-              <v-card class="feature-media-image-card">
-                <v-img class="feature-media-image" :src="info.image"></v-img>
-              </v-card>
-              <div class="d-flex pt-3 gap-30 feature-play-card-info">
-                <v-img
-                  class="feature-media-icon"
-                  :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
-                />
-                <span class="kanit-font" style="font-size: 18px">
-                  {{ info.title }}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="d-flex gap-20"
-        v-if="windowWidth >= 800 && windowWidth < 1264"
-      >
-        <div
-          v-for="(info, index) in features2"
-          :key="info.title"
-          :index="index"
-        >
-          <div class="d-flex flex-column feature-play">
-            <div class="feature-play-card">
-              <v-card class="feature-media-image-card">
-                <v-img class="feature-media-image" :src="info.image"></v-img>
-              </v-card>
-              <div class="d-flex pt-3 gap-30 feature-play-card-info">
-                <v-img
-                  class="feature-media-icon"
-                  :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
-                />
-                <span class="kanit-font" style="font-size: 18px">
-                  {{ info.title }}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="d-flex flex-column gap-20" v-if="windowWidth < 800">
-        <div
-          v-for="(info, index) in features2"
-          :key="info.title"
-          :index="index"
-        >
-          <div class="d-flex flex-column feature-play">
-            <div class="feature-play-card">
-              <v-card class="feature-media-image-card">
-                <v-img class="feature-media-image" :src="info.image"></v-img>
-              </v-card>
-              <div class="d-flex pt-3 gap-30 feature-play-card-info">
-                <v-img
-                  class="feature-media-icon"
-                  :src="require(`@/assets/home/mode/gamemode1-icon.webp`)"
-                />
-                <span class="kanit-font" style="font-size: 18px">
-                  {{ info.title }}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="slider">
-        <button @click="next" v-show="translateValue == 1">
-          <v-img
-            class="align-seft-center"
-            :src="require(`@/assets/home/media/slide-left.webp`)"
           ></v-img>
         </button>
       </div>
@@ -286,37 +267,43 @@ export default {
         {
           index: "1",
           title:
-            "A fast pace turn-based tactical game that can satisfy any strategic mind",
-          image: require(`@/assets/home/news/new4-image.webp`),
+            "Lorem ipsum dolor sit amet consectetur lorem nulla habitant id id proin risus.",
+          image: require(`@/assets/home/feature/feature1.webp`),
+          icon: require(`@/assets/home/mode/gamemode1-icon.webp`),
         },
         {
           index: "2",
           title:
-            "Thousands of combination from a wide range of unique hero for player to experiement",
-          image: require(`@/assets/home/news/new4-image.webp`),
+            "Lorem ipsum dolor sit amet consectetur lorem nulla habitant id id proin risus.",
+          image: require(`@/assets/home/feature/feature1.webp`),
+          icon: require(`@/assets/home/mode/gamemode1-icon.webp`),
         },
         {
           index: "3",
           title:
-            "An immense collection of challenging modes that rotates constantly to keep the game fresh",
-          image: require(`@/assets/home/news/new4-image.webp`),
+            "Lorem ipsum dolor sit amet consectetur lorem nulla habitant id id proin risus.",
+          image: require(`@/assets/home/feature/feature1.webp`),
+          icon: require(`@/assets/home/mode/gamemode1-icon.webp`),
         },
       ],
       features2: [
         {
           index: "1",
           title:
-            "A fast pace turn-based tactical game that can satisfy any strategic mind",
-          image: require(`@/assets/home/news/new4-image.webp`),
+            "Lorem ipsum dolor sit amet consectetur lorem nulla habitant id id proin risus.",
+          image: require(`@/assets/home/feature/feature1.webp`),
+          icon: require(`@/assets/home/mode/gamemode1-icon.webp`),
         },
         {
           index: "2",
           title:
-            "Thousands of combination from a wide range of unique hero for player to experiement",
-          image: require(`@/assets/home/news/new4-image.webp`),
+            "Lorem ipsum dolor sit amet consectetur lorem nulla habitant id id proin risus.",
+          image: require(`@/assets/home/feature/feature1.webp`),
+          icon: require(`@/assets/home/mode/gamemode1-icon.webp`),
         },
       ],
       windowWidth: 0,
+      loading: true,
     };
   },
   created() {
@@ -337,7 +324,17 @@ export default {
       this.windowWidth = window.innerWidth;
     },
   },
+  mounted() {
+    setTimeout(() => {
+      this.loading = false;
+    }, 1500);
+  },
   components: {},
+  inject: {
+    theme: {
+      default: { isDark: false },
+    },
+  },
 };
 </script>
 <style scoped>
