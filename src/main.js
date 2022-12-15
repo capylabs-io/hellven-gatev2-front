@@ -7,9 +7,7 @@ import i18n from "./i18n";
 import scrollanimation from "./views/home/components/directives/scrollanimation";
 import { createPinia, PiniaVuePlugin } from "pinia";
 import { markRaw } from "vue";
-import VueSessionStorage from "vue-sessionstorage";
 
-Vue.use(VueSessionStorage);
 Vue.use(PiniaVuePlugin);
 const pinia = createPinia();
 pinia.use(({ store }) => {

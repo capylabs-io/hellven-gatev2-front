@@ -48,14 +48,56 @@
               >
                 <span>{{ $t("navbar.btnlogin") }}</span>
               </v-btn>
-              <v-btn
+              <!-- <v-btn
                 v-else
                 color="darkgrey"
                 class="white--text btn-customize gap-20"
                 @click="gotoRouter('AccountSettings')"
               >
                 <span>{{ getEmail }}</span>
-              </v-btn>
+              </v-btn> -->
+              <v-menu open-on-hover offset-y v-else>
+                <template v-slot:activator="{ on, attrs }">
+                  <div
+                    class="
+                      darkgrey
+                      white--text
+                      text-decoration-none
+                      px-4
+                      btn-customize
+                      gap-20
+                      d-flex
+                      align-center
+                    "
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                    <div class="text-none">{{ getEmail }}</div>
+                  </div>
+                </template>
+                <v-list class="d-flex flex-column submenu">
+                  <v-list-item>
+                    <router-link
+                      to="account"
+                      class="white--text text-decoration-none px-4"
+                      active-class="active"
+                    >
+                      <div class="white--text">
+                        Account Settings
+                      </div>
+                    </router-link>
+                  </v-list-item>
+                  <v-list-item>
+                    <div
+                      @click="logout()"
+                      class="white--text text-decoration-none px-4"
+                      active-class="active"
+                    >
+                      <div class="white--text">Logout</div>
+                    </div>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
             </div>
 
             <div class="d-flex align-center">
@@ -149,6 +191,11 @@ export default {
         name: url,
       });
     },
+    logout() {
+      sessionStorage.removeItem("userInfo");
+      sessionStorage.removeItem("jwt");
+      window.location.reload();
+    }
   },
   computed: {
     getEmail() {
@@ -176,7 +223,12 @@ export default {
   column-gap: 3%;
   align-items: center;
 }
-
+.submenu {
+  font-family: 'Bungee';
+  background: #333333;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
 .btn-customize {
   border-radius: 15px;
   height: 45px !important;

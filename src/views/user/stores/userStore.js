@@ -38,6 +38,7 @@ export const userStore = defineStore("users", {
     },
     isShowPass: false,
     isShowConfirmPass: false,
+    rememberMe: false,
     accountSettingMenu: 1, //1: Account Detail, 2: Security, 3: Privacy, 4: Transaction History
   }),
 
@@ -138,6 +139,11 @@ export const userStore = defineStore("users", {
             this.errorMessage = "";
             sessionStorage.setItem("userInfo", JSON.stringify(response.data.user));
             sessionStorage.setItem("jwt", JSON.stringify(response.data.jwt));
+            if (this.rememberMe) {
+              localStorage.setItem("siginInData", JSON.stringify(this.siginInData));
+            } else {
+              localStorage.removeItem("siginInData");
+            }
             this.router.push({
               params: { lang: i18n.locale },
               name: "home",

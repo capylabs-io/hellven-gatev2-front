@@ -53,6 +53,7 @@
         <v-checkbox
           class="text-lg mt-sm-4"
           hide-details="true"
+          v-model="userStore.rememberMe"
           :label="$t('signin.remember-me')"
         ></v-checkbox>
         <div class="text-center mt-2">
@@ -106,6 +107,12 @@ export default {
     GoogleIcon,
     AppleIcon,
     ArrowRight,
+  },
+  created() {
+    let signIn = JSON.parse(localStorage.getItem("siginInData"));
+    if (signIn) {
+      this.userStore.siginInData = signIn;
+    }
   },
   methods: {
     gotoRouter(url) {

@@ -13,6 +13,7 @@
 <script>
 import Footer from "../src/components/Footer.vue";
 import NavigationBar from "../src/components/NavigationBar.vue";
+import axios from "axios";
 const moduleNotUseTemplate = [
   "Signup",
   "ResetPassword",
@@ -36,9 +37,30 @@ export default {
       isDisplayTemplate: true,
     };
   },
+  beforeCreate() {
+    let signIn = JSON.parse(localStorage.getItem("siginInData"));
+    if (signIn) {
+      let signInUrl = process.env.VUE_APP_API_URL + "auth/local";
+      axios
+        .post(signInUrl, signIn, {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+          },
+        })
+        .then((response) => {
+          if (response.statusText == "OK") {
+            sessionStorage.setItem("userInfo", JSON.stringify(response.data.user));
+            sessionStorage.setItem("jwt", JSON.stringify(response.data.jwt));
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  },
   watch: {
     $route(to) {
-      this.setDisplayTemplate(to)
+      this.setDisplayTemplate(to);
     },
   },
   methods: {
