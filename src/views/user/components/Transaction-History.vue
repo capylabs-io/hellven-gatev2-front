@@ -1,6 +1,6 @@
 <template>
   <div class="transaction-history pa-3">
-    <div class="greyblack--text text-dp-xs font-weight-medium text-uppercase">
+    <div class="greyblack--text text-dp-xs font-weight-medium text-uppercase bungee-font">
       Transaction History
     </div>
     <div class="card-content mt-3 pa-6">

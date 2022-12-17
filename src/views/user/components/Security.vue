@@ -1,7 +1,7 @@
 <template>
   <div class="account-detail pa-3">
     <ChangePassword />
-    <div class="greyblack--text text-dp-xs font-weight-medium text-uppercase">
+    <div class="greyblack--text text-dp-xs font-weight-medium text-uppercase bungee-font">
       Security
     </div>
     <v-card class="card-content mt-3">

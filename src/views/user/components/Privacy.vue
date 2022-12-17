@@ -2,7 +2,7 @@
   <div class="account-detail pa-3">
     <PrivacyEdit/>
     <CommunicationPreferencesEdit/>
-    <div class="greyblack--text text-dp-xs font-weight-medium text-uppercase">
+    <div class="greyblack--text text-dp-xs font-weight-medium text-uppercase bungee-font">
       {{ $t("account.privacy-commmunication") }}
     </div>
     <v-card class="card-content mt-3">

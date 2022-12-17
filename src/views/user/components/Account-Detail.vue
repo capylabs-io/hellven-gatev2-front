@@ -3,8 +3,8 @@
     <PersonalInformationEdit />
     <EmailEdit />
     <PhoneEdit />
-    <div class="greyblack--text text-dp-xs font-weight-medium text-uppercase">
-      Account details
+    <div class="greyblack--text text-dp-xs font-weight-medium text-uppercase bungee-font">
+      {{$t("account-details")}}
     </div>
     <v-card class="card-content mt-6">
       <v-card-title class="justify-space-between">
