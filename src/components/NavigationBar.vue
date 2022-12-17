@@ -90,7 +90,7 @@
                   <v-list-item>
                     <div
                       @click="logout()"
-                      class="white--text text-decoration-none px-4"
+                      class="white--text text-decoration-none px-4 cursor-pointer"
                       active-class="active"
                     >
                       <div class="white--text">Logout</div>

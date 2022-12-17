@@ -1,7 +1,9 @@
 <template>
   <div class="account-detail pa-3">
+    <PrivacyEdit/>
+    <CommunicationPreferencesEdit/>
     <div class="greyblack--text text-dp-xs font-weight-medium text-uppercase">
-      privacy & communication
+      {{ $t("account.privacy-commmunication") }}
     </div>
     <v-card class="card-content mt-3">
       <v-card-title>
@@ -9,9 +11,9 @@
           <div
             class="text-lg greyblack--text font-weight-medium text-uppercase"
           >
-            game data and profile privacy
+            {{ $t("account.game-privacy") }}
           </div>
-          <div>
+          <div class="cursor-pointer" @click="userStore.changePrivacyEdit()">
             <EditIcon />
             <span class="violet--text ml-2">EDIT</span>
           </div>
@@ -46,7 +48,7 @@
           >
             communication preferences
           </div>
-          <div>
+          <div class="cursor-pointer" @click="userStore.changeCommunicationPreferencesEdit()">
             <EditIcon />
             <span class="violet--text ml-2">EDIT</span>
           </div>
@@ -64,7 +66,7 @@
                   We recommend updating your password periodically to prevent
                   unauthorized access.
                 </div>
-                <div>English (US)</div>
+                <div>{{lang.label}} ({{lang.value}})</div>
               </div>
             </v-list-item-content>
           </v-list-item-content>
@@ -78,7 +80,7 @@
                   Lorem ipsum dolor sit amet consectetur. Dictum tincidunt eu
                   penatibus pretium consectetur ut condimentum sapien maecenas.
                 </div>
-                <div>English (US)</div>
+                <div>Yes</div>
               </div>
             </v-list-item-content>
           </v-list-item-content>
@@ -91,7 +93,7 @@
                 <div class="max-width-690">
                   Lorem ipsum dolor sit amet consectetur. Dictum tincidunt eu penatibus pretium consectetur ut condimentum sapien maecenas.
                 </div>
-                <div>English (US)</div>
+                <div>Yes</div>
               </div>
             </v-list-item-content>
           </v-list-item-content>
@@ -104,15 +106,32 @@
 import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
 import EditIcon from "@/components/svg/editIcon.vue";
+import PrivacyEdit from "../dialogs/privacy-edit.vue";
+import CommunicationPreferencesEdit from "../dialogs/communication-preferences-edit.vue";
 export default {
   name: "Privacy",
   data() {
     return {
       userStore: userStore(),
+      lang: "",
+      langList: [
+        { label: "English", value: "en" },
+        { label: "Vietnames", value: "vn" },
+      ],
     };
+  },
+  created() {
+    this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+    this.langList.forEach(e => {
+        if (e.value == i18n.locale) {
+          this.lang = e;
+        }
+      });
   },
   components: {
     EditIcon,
+    PrivacyEdit,
+    CommunicationPreferencesEdit
   },
   methods: {
     gotoRouter(url) {

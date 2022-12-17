@@ -1,5 +1,8 @@
 <template>
   <div class="account-detail pa-3">
+    <PersonalInformationEdit />
+    <EmailEdit />
+    <PhoneEdit />
     <div class="greyblack--text text-dp-xs font-weight-medium text-uppercase">
       Account details
     </div>
@@ -8,7 +11,7 @@
         <div class="text-lg greyblack--text font-weight-medium text-uppercase">
           personal information
         </div>
-        <div>
+        <div class="cursor-pointer" @click="userStore.changePersonalInfoEdit()">
           <v-icon class="mr-2" color="violet" small>mdi-account-edit</v-icon>
           <span class="violet--text">EDIT</span>
         </div>
@@ -18,19 +21,21 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>Name</v-list-item-subtitle>
-            <v-list-item-content>{{userInfo.username}}</v-list-item-content>
+            <v-list-item-content>{{ userInfo.username }}</v-list-item-content>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>Country / Region</v-list-item-subtitle>
-            <v-list-item-content>Vietnam</v-list-item-content>
+            <v-list-item-content>{{ userInfo.country }}</v-list-item-content>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>D.O.B</v-list-item-subtitle>
-            <v-list-item-content>19/04/1996</v-list-item-content>
+            <v-list-item-content>{{
+              userInfo.dateOfBirth
+            }}</v-list-item-content>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -40,7 +45,7 @@
         <div class="text-lg greyblack--text font-weight-medium text-uppercase">
           EMAIL
         </div>
-        <div>
+        <div class="cursor-pointer" @click="userStore.changeEmailEdit()">
           <EditIcon />
           <span class="violet--text ml-2">EDIT</span>
         </div>
@@ -50,9 +55,7 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>Email</v-list-item-subtitle>
-            <v-list-item-content
-              >{{userInfo.email}}</v-list-item-content
-            >
+            <v-list-item-content>{{ userInfo.email }}</v-list-item-content>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -65,7 +68,11 @@
           >
             Phone number
           </div>
-          <div>
+          <div
+            v-if="userInfo.phone"
+            class="cursor-pointer"
+            @click="userStore.changePhoneEdit()"
+          >
             <EditIcon />
             <span class="violet--text ml-2">EDIT</span>
           </div>
@@ -82,12 +89,17 @@
           <v-list-item-content>
             <v-list-item-subtitle>Phone number</v-list-item-subtitle>
             <v-list-item-content>
-              <div>
+              <div
+                v-if="!userInfo.phone"
+                class="cursor-pointer"
+                @click="userStore.changePhoneEdit()"
+              >
                 <v-icon small class="mr-2" color="violet"
                   >mdi-phone-plus</v-icon
                 >
                 <span class="violet--text text-md">Add phone number</span>
               </div>
+              <div v-else>{{ userInfo.phone }}</div>
             </v-list-item-content>
           </v-list-item-content>
         </v-list-item>
@@ -99,19 +111,26 @@
 import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
 import EditIcon from "@/components/svg/editIcon.vue";
+import PersonalInformationEdit from "../dialogs/personal-informaion-edit.vue";
+import EmailEdit from "../dialogs/email-edit.vue";
+import PhoneEdit from "../dialogs/phone-edit.vue";
 export default {
   name: "AccountDetail",
   data() {
     return {
       userStore: userStore(),
-      userInfo: []
+      userInfo: [],
     };
   },
   created() {
     this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+    console.log(this.userInfo);
   },
   components: {
     EditIcon,
+    PersonalInformationEdit,
+    EmailEdit,
+    PhoneEdit,
   },
   methods: {
     gotoRouter(url) {

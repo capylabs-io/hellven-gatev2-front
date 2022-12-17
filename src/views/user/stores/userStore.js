@@ -24,7 +24,6 @@ export const userStore = defineStore("users", {
       email: "",
       isSuccess: false,
     },
-    errorMessage: "",
     resetPasswordData: {
       code: "",
       password: "",
@@ -40,6 +39,12 @@ export const userStore = defineStore("users", {
     isShowConfirmPass: false,
     rememberMe: false,
     accountSettingMenu: 1, //1: Account Detail, 2: Security, 3: Privacy, 4: Transaction History
+    isOpenPersonalInfoEdit: false,
+    isOpenEmailEdit: false,
+    isOpenPhoneEdit: false,
+    isOpenChangePassword: false,
+    isOpenPrivacyEdit: false,
+    isOpenCommunicationPreferencesEdit: false,
   }),
 
   actions: {
@@ -58,7 +63,6 @@ export const userStore = defineStore("users", {
             this.vetifyAccount.vetifyEmail = this.userData.email;
             this.vetifyAccount.hideEmail = this.hideEmail(this.userData.email);
             snackController.success("Register is successful");
-            this.errorMessage = "";
             this.router.push({
               params: { lang: i18n.locale },
               name: "RegisterVertifySent",
@@ -93,7 +97,6 @@ export const userStore = defineStore("users", {
             snackController.success(
               "Email sent successfully, please check your mailbox"
             );
-            this.errorMessage = "";
           }
         })
         .catch((error) => {
@@ -113,7 +116,6 @@ export const userStore = defineStore("users", {
         snackController.commonError(error);
       }
       snackController.success("Verified successfully!");
-      this.errorMessage = "";
       while (this.vetifyAccount.countSeconds > 0) {
         await this.delay(1000);
         this.vetifyAccount.countSeconds = this.vetifyAccount.countSeconds - 1;
@@ -136,11 +138,17 @@ export const userStore = defineStore("users", {
           loadingController.decreaseRequest();
           if (response.statusText == "OK") {
             snackController.success("Login is successful");
-            this.errorMessage = "";
-            sessionStorage.setItem("userInfo", JSON.stringify(response.data.user));
+            sessionStorage.setItem(
+              "userInfo",
+              JSON.stringify(response.data.user)
+            );
             sessionStorage.setItem("jwt", JSON.stringify(response.data.jwt));
+            sessionStorage.setItem("accountMenu",1);
             if (this.rememberMe) {
-              localStorage.setItem("siginInData", JSON.stringify(this.siginInData));
+              localStorage.setItem(
+                "siginInData",
+                JSON.stringify(this.siginInData)
+              );
             } else {
               localStorage.removeItem("siginInData");
             }
@@ -174,7 +182,6 @@ export const userStore = defineStore("users", {
         .then((response) => {
           loadingController.decreaseRequest();
           if (response.statusText == "OK") {
-            this.errorMessage = "";
             this.fogetPasswordData.isSuccess = true;
           }
         })
@@ -197,7 +204,6 @@ export const userStore = defineStore("users", {
           loadingController.decreaseRequest();
           if (response.statusText == "OK") {
             this.resetPasswordData.isSuccess = true;
-            this.errorMessage = "";
           }
         })
         .catch((error) => {
@@ -205,6 +211,59 @@ export const userStore = defineStore("users", {
           snackController.commonError(error);
           // this.errorMessage = error.response.data.data[0].messages[0].message;
         });
+    },
+    editPersonalInfo(editInfo) {
+      loadingController.increaseRequest();
+      let info = JSON.parse(sessionStorage.getItem("userInfo"));
+      if (
+        info.username != editInfo.username ||
+        info.dateOfBirth != editInfo.dateOfBirth ||
+        info.country != editInfo.country ||
+        info.email != editInfo.email ||
+        info.phone != editInfo.phone
+      ) {
+        let editInfoUrl = baseUrl + "users/" + info.id;
+        axios
+          .put(
+            editInfoUrl,
+            {
+              Username: editInfo.username,
+              DateOfBirth: editInfo.dateOfBirth,
+              Country: editInfo.country,
+              Email: editInfo.email,
+            },
+            {
+              headers: {
+                "Content-Type":
+                  "application/x-www-form-urlencoded; charset=UTF-8",
+              },
+            }
+          )
+          .then((response) => {
+            if (response.statusText == "OK") {
+              snackController.success("Edit successfull");
+              this.isOpenEmailEdit = false;
+              this.isOpenPersonalInfoEdit = false;
+              this.isOpenPhoneEdit = false;
+              sessionStorage.setItem("userInfo", JSON.stringify(response.data));
+            }
+            loadingController.decreaseRequest();
+          })
+          .catch((error) => {
+            loadingController.decreaseRequest();
+            snackController.commonError(error);
+            // this.errorMessage = error.response.data.data[0].messages[0].message;
+          });
+      } else {
+        loadingController.decreaseRequest();
+        snackController.error("Please insert your edit");
+      }
+    },
+    changePassword(editInfo) {
+      if (editInfo) {
+        this.isOpenChangePassword();
+        snackController.success("Change password successfull");
+      }
     },
     delay(milliseconds) {
       return new Promise((resolve) => {
@@ -220,6 +279,25 @@ export const userStore = defineStore("users", {
 
       hideChar = email.charAt(0) + hideChar + email.substring(index - 1);
       return hideChar;
+    },
+    changePersonalInfoEdit() {
+      this.isOpenPersonalInfoEdit = !this.isOpenPersonalInfoEdit;
+    },
+    changeEmailEdit() {
+      this.isOpenEmailEdit = !this.isOpenEmailEdit;
+    },
+    changePhoneEdit() {
+      this.isOpenPhoneEdit = !this.isOpenPhoneEdit;
+    },
+    changeOpenChangePassword() {
+      this.isOpenChangePassword = !this.isOpenChangePassword;
+    },
+    changePrivacyEdit() {
+      this.isOpenPrivacyEdit = !this.isOpenPrivacyEdit;
+    },
+    changeCommunicationPreferencesEdit() {
+      this.isOpenCommunicationPreferencesEdit =
+        !this.isOpenCommunicationPreferencesEdit;
     },
   },
 });

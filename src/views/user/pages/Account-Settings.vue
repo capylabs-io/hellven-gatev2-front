@@ -8,7 +8,7 @@
               <v-list-item
                 class="border-raidus-top"
                 :class="userStore.accountSettingMenu == 1 ? 'violet' : ''"
-                @click="userStore.accountSettingMenu = 1"
+                @click="gotoMenu(1)"
               >
                 <v-icon
                   class="mr-2"
@@ -19,7 +19,7 @@
               </v-list-item>
               <v-list-item
                 :class="userStore.accountSettingMenu == 2 ? 'violet' : ''"
-                @click="userStore.accountSettingMenu = 2"
+                @click="gotoMenu(2)"
               >
                 <v-icon
                   class="mr-2"
@@ -30,7 +30,7 @@
               </v-list-item>
               <v-list-item
                 :class="userStore.accountSettingMenu == 3 ? 'violet' : ''"
-                @click="userStore.accountSettingMenu = 3"
+                @click="gotoMenu(3)"
               >
                 <v-icon
                   class="mr-2"
@@ -42,7 +42,7 @@
               <v-list-item
                 :class="userStore.accountSettingMenu == 4 ? 'violet' : ''"
                 class="border-raidus-bottom"
-                @click="userStore.accountSettingMenu = 4"
+                @click="gotoMenu(4)"
               >
                 <v-icon
                   class="mr-2"
@@ -78,11 +78,19 @@ export default {
       userStore: userStore(),
     };
   },
+  created() {
+    if (!sessionStorage.getItem("userInfo")) {
+      this.gotoRouter("home");
+    }
+    if (sessionStorage.getItem("accountMenu")) {
+      this.userStore.accountSettingMenu = sessionStorage.getItem("accountMenu");
+    }
+  },
   components: {
     AccountDetail,
     Security,
     Privacy,
-    TransactionHistory
+    TransactionHistory,
   },
   methods: {
     gotoRouter(url) {
@@ -90,6 +98,10 @@ export default {
         params: { lang: i18n.locale },
         name: url,
       });
+    },
+    gotoMenu(index) {
+      this.userStore.accountSettingMenu = index;
+      sessionStorage.setItem("accountMenu", index);
     },
   },
 };

@@ -1,5 +1,6 @@
 <template>
   <div class="account-detail pa-3">
+    <ChangePassword />
     <div class="greyblack--text text-dp-xs font-weight-medium text-uppercase">
       Security
     </div>
@@ -9,15 +10,15 @@
           <div
             class="text-lg greyblack--text font-weight-medium text-uppercase"
           >
-            Password
+            {{ $t("signin.password") }}
           </div>
-          <div>
+          <div class="cursor-pointer" @click="userStore.changeOpenChangePassword()">
             <EditIcon />
             <span class="violet--text ml-2">EDIT</span>
           </div>
         </div>
         <div class="text-md text-sub">
-          We recommend updating your password periodically to prevent unauthorized access.
+          {{ $t("account.change-password-sub") }}
         </div>
       </v-card-title>
 
@@ -25,7 +26,7 @@
       <v-list>
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-subtitle>Password</v-list-item-subtitle>
+            <v-list-item-subtitle>{{ $t("signin.password") }}</v-list-item-subtitle>
             <v-list-item-content>
                 Last updated Apr 19, 2022
             </v-list-item-content>
@@ -66,6 +67,8 @@
 import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
 import EditIcon from "@/components/svg/editIcon.vue";
+import ChangePassword from "../dialogs/change-password.vue";
+
 export default {
   name: "Security",
   data() {
@@ -75,6 +78,7 @@ export default {
   },
   components: {
     EditIcon,
+    ChangePassword
   },
   methods: {
     gotoRouter(url) {
