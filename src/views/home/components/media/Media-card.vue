@@ -15,5 +15,7 @@ export default {
   border-radius: 5px;
   border: solid 5px white;
   box-shadow: 0px 6px 1px 0px #d9d9d9 !important;
+  object-fit: cover;
+  object-position: center;
 }
 </style>

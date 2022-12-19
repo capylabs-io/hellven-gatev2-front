@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="visibleImage === index">
     <v-card>
       <slot></slot>
       <!-- <v-card-text> 
@@ -20,6 +20,7 @@
 
 <script>
 export default {
+  props: ["visibleImage", "index"],
   setup() {
     return {};
   },

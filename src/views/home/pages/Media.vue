@@ -64,26 +64,32 @@
       <v-overlay :z-index="zIndex" :value="overlay" :opacity="opacity">
         <div class="overlayContent d-flex flex-column align-center">
           <div class="overlay-Count white--text bungee-font">
-            <span>1/36</span>
+            <span>{{ visibleImage + 1 }}/{{ medias.length }}</span>
           </div>
           <div class="d-flex gap-50">
             <div class="slider-overlay">
-              <v-img
-                class="align-seft-center"
-                :src="require(`@/assets/home/media/slide-left.webp`)"
-              ></v-img>
+              <button @click="prev">
+                <v-img
+                  class="align-seft-center"
+                  :src="require(`@/assets/home/media/slide-left.webp`)"
+                ></v-img>
+              </button>
             </div>
-            <cardDetail @click="overlay = false">
-              <v-img
-                class="imageDetail"
-                :src="require(`@/assets/home/media/Media10.webp`)"
-              ></v-img>
+            <cardDetail
+              v-for="(media, index) in medias"
+              :key="media.image"
+              :index="index"
+              :visibleImage="visibleImage"
+            >
+              <v-img class="imageDetail" :src="media.image"></v-img>
             </cardDetail>
             <div class="slider-overlay">
-              <v-img
-                class="align-seft-center"
-                :src="require(`@/assets/home/media/slide-right.webp`)"
-              ></v-img>
+              <button @click="next">
+                <v-img
+                  class="align-seft-center"
+                  :src="require(`@/assets/home/media/slide-right.webp`)"
+                ></v-img>
+              </button>
             </div>
           </div>
           <div class="media-image-detail item-center">
@@ -93,6 +99,7 @@
               v-bind:media="media"
             >
               <v-img
+                draggable="false"
                 :src="require(`@/assets/home/media/Media${media.index}.webp`)"
               ></v-img>
             </card>
@@ -125,43 +132,43 @@ export default {
       medias: [
         {
           index: "1",
-          image: "@/assets/home/media/Media1.webp",
+          image: require(`@/assets/home/media/Media1.webp`),
         },
         {
           index: "2",
-          image: `@/assets/home/media/Media2.webp`,
+          image: require(`@/assets/home/media/Media2.webp`),
         },
         {
           index: "3",
-          image: `@/assets/home/media/Media3.webp`,
+          image: require(`@/assets/home/media/Media3.webp`),
         },
         {
           index: "4",
-          image: `@/assets/home/media/Media4.webp`,
+          image: require(`@/assets/home/media/Media4.webp`),
         },
         {
           index: "5",
-          image: `@/assets/home/media/Media5.webp`,
+          image: require(`@/assets/home/media/Media5.webp`),
         },
         {
           index: "6",
-          image: `@/assets/home/media/Media6.webp`,
+          image: require(`@/assets/home/media/Media6.webp`),
         },
         {
           index: "7",
-          image: `@/assets/home/media/Media7.webp`,
+          image: require(`@/assets/home/media/Media7.webp`),
         },
         {
           index: "8",
-          image: `@/assets/home/media/Media8.webp`,
+          image: require(`@/assets/home/media/Media8.webp`),
         },
         {
           index: "9",
-          image: `@/assets/home/media/Media9.webp`,
+          image: require(`@/assets/home/media/Media9.webp`),
         },
         {
           index: "10",
-          image: `@/assets/home/media/Media10.webp`,
+          image: require(`@/assets/home/media/Media10.webp`),
         },
       ],
       medias2: [
@@ -203,6 +210,8 @@ export default {
         },
       ],
       loading: true,
+      visibleImage: 0,
+      imageInterval: null,
     };
   },
 
@@ -210,6 +219,50 @@ export default {
     setTimeout(() => {
       this.loading = false;
     }, 1500);
+  },
+  beforeMount() {
+    clearInterval(this.imageInterval);
+  },
+  methods: {
+    // mousedown() {
+    //   const track = document.getElementsByClassName("media-image-detail");
+    //   track.dataset.mouseDownAt = event.clientX;
+    // },
+    // mousemove() {
+    //   const track = document.getElementsByClassName("media-image-detail");
+    //   if (track.dataset.mouseDownAt === "0") return;
+    //   const mouseDelta = parseFloat(track.dataset.mouseDownAt) - event.clientX;
+    //   const maxDelta = window.innerWidth / 2;
+    //   const percent = (mouseDelta / maxDelta) * -100;
+    //   const nextpercent = parseFloat(track.dataset.prevPercentage) + percent;
+    //   Math.min(nextpercent, 0);
+    //   Math.max(nextpercent, -100);
+    //   track.dataset.percentage = nextpercent;
+    //   track.style.transform = `translate(${nextpercent}%,-50%)`;
+    // },
+    // mouseup() {
+    //   const track = document.getElementsByClassName("media-image-detail");
+    //   track.dataset.mouseDownAt = "0";
+    //   track.dataset.prevPercentage = track.dataset.percentage;
+    // },
+    setvisibleImage(index) {
+      this.visibleImage = index;
+    },
+    next() {
+      if (this.visibleImage >= this.medias.length - 1) {
+        this.visibleImage = 0;
+      } else {
+        this.visibleImage++;
+      }
+    },
+
+    prev() {
+      if (this.visibleImage <= 0) {
+        this.visibleImage = this.medias.length - 1;
+      } else {
+        this.visibleImage--;
+      }
+    },
   },
   inject: {
     theme: {
@@ -265,7 +318,7 @@ export default {
 .media-image-detail {
   gap: 30px;
   display: flex;
-  overflow: hidden;
+  transform: translate0(0, -50%);
 }
 .media-image-responsive {
   display: none;
