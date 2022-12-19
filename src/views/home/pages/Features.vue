@@ -339,10 +339,9 @@ export default {
 </script>
 <style scoped>
 .feature {
-  height: max-content;
+  height: 700px;
   width: 100%;
   padding-top: 6%;
-  padding-bottom: 4%;
   position: relative;
   background: transparent;
   overflow: hidden;

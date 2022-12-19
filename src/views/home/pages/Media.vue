@@ -61,7 +61,7 @@
     </div>
 
     <v-row>
-      <v-overlay :z-index="zIndex" :value="overlay" opacity>
+      <v-overlay :z-index="zIndex" :value="overlay" :opacity="opacity">
         <div class="overlayContent d-flex flex-column align-center">
           <div class="overlay-Count white--text bungee-font">
             <span>1/36</span>
@@ -119,6 +119,7 @@ export default {
   data() {
     return {
       overlay: false,
+      opacity: 1,
       zIndex: 99,
 
       medias: [
