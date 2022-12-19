@@ -6140,6 +6140,11 @@
   "resolved" "https://registry.npmjs.org/vue-router/-/vue-router-3.6.5.tgz"
   "version" "3.6.5"
 
+"vue-scroll-snap@^0.1.11":
+  "integrity" "sha512-4ak7oU7Tdrl8AgWcZa2wrQYCn68TVg+TQQmn0xfsKJ2my59MGEx21dGC5IrF3gD23rTyJHzHnaovTsKMOVVxiQ=="
+  "resolved" "https://registry.npmjs.org/vue-scroll-snap/-/vue-scroll-snap-0.1.11.tgz"
+  "version" "0.1.11"
+
 "vue-slick-carousel@^1.0.6":
   "integrity" "sha512-1CN/hpWC8m1U/eO7Kuc71jntJqdg6Z/ieLji21OPfQUhs8ZYnnGhQSu1covpa3IyuovM9T5puPCVgexs3DDF5A=="
   "resolved" "https://registry.npmjs.org/vue-slick-carousel/-/vue-slick-carousel-1.0.6.tgz"

@@ -17,5 +17,6 @@ export default {
   box-shadow: 0px 6px 1px 0px #d9d9d9 !important;
   object-fit: cover;
   object-position: center;
+  scroll-snap-align: center;
 }
 </style>

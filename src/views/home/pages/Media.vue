@@ -116,12 +116,14 @@
 <script>
 import Card from "@/views/home/components/media/Media-card.vue";
 import MediaDetail from "../components/media/view/Media-detail.vue";
+// import VueScrollSnap from "vue-scroll-snap";
 export default {
   name: "Media",
 
   components: {
     card: Card,
     cardDetail: MediaDetail,
+    // vuescrollSnap: VueScrollSnap,
   },
   data() {
     return {
@@ -224,27 +226,6 @@ export default {
     clearInterval(this.imageInterval);
   },
   methods: {
-    // mousedown() {
-    //   const track = document.getElementsByClassName("media-image-detail");
-    //   track.dataset.mouseDownAt = event.clientX;
-    // },
-    // mousemove() {
-    //   const track = document.getElementsByClassName("media-image-detail");
-    //   if (track.dataset.mouseDownAt === "0") return;
-    //   const mouseDelta = parseFloat(track.dataset.mouseDownAt) - event.clientX;
-    //   const maxDelta = window.innerWidth / 2;
-    //   const percent = (mouseDelta / maxDelta) * -100;
-    //   const nextpercent = parseFloat(track.dataset.prevPercentage) + percent;
-    //   Math.min(nextpercent, 0);
-    //   Math.max(nextpercent, -100);
-    //   track.dataset.percentage = nextpercent;
-    //   track.style.transform = `translate(${nextpercent}%,-50%)`;
-    // },
-    // mouseup() {
-    //   const track = document.getElementsByClassName("media-image-detail");
-    //   track.dataset.mouseDownAt = "0";
-    //   track.dataset.prevPercentage = track.dataset.percentage;
-    // },
     setvisibleImage(index) {
       this.visibleImage = index;
     },
@@ -318,7 +299,7 @@ export default {
 .media-image-detail {
   gap: 30px;
   display: flex;
-  transform: translate0(0, -50%);
+  overflow-x: auto;
 }
 .media-image-responsive {
   display: none;
