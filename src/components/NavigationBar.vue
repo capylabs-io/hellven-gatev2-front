@@ -41,12 +41,80 @@
             </div>
             <div class="align-center">
               <v-btn
+                v-if="!userInfo"
                 color="darkgrey"
                 class="white--text btn-customize gap-20"
                 @click="gotoRouter('Signin')"
               >
                 <span>{{ $t("navbar.btnlogin") }}</span>
               </v-btn>
+              <!-- <v-btn
+                v-else
+                color="darkgrey"
+                class="white--text btn-customize gap-20"
+                @click="gotoRouter('AccountSettings')"
+              >
+                <span>{{ getEmail }}</span>
+              </v-btn> -->
+              <v-menu open-on-hover offset-y v-else>
+                <template v-slot:activator="{ on, attrs }">
+                  <div
+                    class="
+                      darkgrey
+                      white--text
+                      text-decoration-none
+                      px-4
+                      btn-customize
+                      gap-20
+                      d-flex
+                      align-center
+                      cursor-pointer
+                    "
+                    v-bind="attrs"
+                    v-on="on"
+                  >
+                    <div class="text-none">{{ userInfo.username || "" }}</div>
+                  </div>
+                </template>
+                <v-list class="d-flex flex-column submenu kanit-font px-4">
+                  <v-list-item>
+                    <div
+                      to="account"
+                      class="white--text text-decoration-none"
+                      active-class="active"
+                    >
+                      <div class="white--text text-md">
+                        {{ userInfo.username || "" }}
+                      </div>
+                      <div class="grey--text text-sm">{{ userInfo.email || "" }}</div>
+                    </div>
+                  </v-list-item>
+                  <v-divider class="darkgrey my-2"></v-divider>
+                  <v-list-item>
+                    <router-link
+                      to="account"
+                      class="white--text text-decoration-none"
+                      active-class="active"
+                    >
+                      <div class="white--text d-flex align-center">
+                        <SettingIcon/> 
+                        <div class="ml-2">Account Settings</div>
+                      </div>
+                    </router-link>
+                  </v-list-item>
+                  <v-list-item>
+                    <div
+                      @click="logout()"
+                      class="white--text text-decoration-none cursor-pointer"
+                      active-class="active"
+                    >
+                      <div class="red--text">
+                        <v-icon color="red">mdi-logout</v-icon> Logout
+                      </div>
+                    </div>
+                  </v-list-item>
+                </v-list>
+              </v-menu>
             </div>
 
             <div class="d-flex align-center">
@@ -118,18 +186,22 @@
 <script>
 import LanguageSwitch from "@/views/home/components/nav-bar/LanguageSwitch.vue";
 import i18n from "@/i18n";
+import SettingIcon from "@/components/svg/setting.vue";
 
 export default {
-  components: { LanguageSwitch },
+  components: { LanguageSwitch, SettingIcon },
   data: () => ({
     drawer: false,
     group: null,
+    userInfo: [],
   }),
-
   watch: {
     group() {
       this.drawer = false;
     },
+  },
+  created() {
+    this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
   },
   methods: {
     openLink(url) {
@@ -140,6 +212,11 @@ export default {
         params: { lang: i18n.locale },
         name: url,
       });
+    },
+    logout() {
+      sessionStorage.removeItem("userInfo");
+      sessionStorage.removeItem("jwt");
+      window.location.reload();
     },
   },
 };
@@ -159,7 +236,13 @@ export default {
   column-gap: 3%;
   align-items: center;
 }
-
+.submenu {
+  font-family: "Bungee";
+  background: #191919;
+  border: 1px solid #626262;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
 .btn-customize {
   border-radius: 15px;
   height: 45px !important;

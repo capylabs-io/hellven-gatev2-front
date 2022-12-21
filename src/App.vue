@@ -2,6 +2,8 @@
   <v-app>
     <app-navbar v-if="isDisplayTemplate"></app-navbar>
     <v-main>
+      <SnackBar />
+      <LoadingController />
       <router-view :key="$route.fullPath" />
     </v-main>
     <app-footer v-if="isDisplayTemplate"></app-footer>
@@ -11,35 +13,62 @@
 <script>
 import Footer from "../src/components/Footer.vue";
 import NavigationBar from "../src/components/NavigationBar.vue";
-const moduleNotUseTemplate = ['sign-in','forget-password','sign-up'];
+import axios from "axios";
+const moduleNotUseTemplate = [
+  "Signup",
+  "ResetPassword",
+  "ForgetPassword",
+  "Signin",
+  "RegisterVertifySent",
+  "RegisterVertified"
+];
+import SnackBar from "@/components/snack-bar/snack-bar.vue";
+import LoadingController from "@/components/global-loading/global-loading.vue";
 export default {
   name: "App",
   components: {
     "app-navbar": NavigationBar,
     "app-footer": Footer,
+    SnackBar,
+    LoadingController,
   },
   data() {
     return {
       isDisplayTemplate: true,
     };
   },
-  created() {
-    this.setDisplayTemplate();
+  beforeCreate() {
+    let signIn = JSON.parse(localStorage.getItem("siginInData"));
+    if (signIn) {
+      let signInUrl = process.env.VUE_APP_API_URL + "auth/local";
+      axios
+        .post(signInUrl, signIn, {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+          },
+        })
+        .then((response) => {
+          if (response.statusText == "OK") {
+            sessionStorage.setItem("userInfo", JSON.stringify(response.data.user));
+            sessionStorage.setItem("jwt", JSON.stringify(response.data.jwt));
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   },
-  updated() {
-    this.setDisplayTemplate();
+  watch: {
+    $route(to) {
+      this.setDisplayTemplate(to);
+    },
   },
   methods: {
-    setDisplayTemplate() {
-      var fullPath;
-      if (this.$router.fullPath) {
-        fullPath = this.$router.fullPath;
-      } else {
-        fullPath = window.location.href;
-      }
-      var absolutePath = fullPath.substr(fullPath.lastIndexOf("/") + 1);
-      if (moduleNotUseTemplate.includes(absolutePath)) {
+    setDisplayTemplate(router) {
+      if (moduleNotUseTemplate.includes(router.name)){
         this.isDisplayTemplate = false;
+      } else {
+        this.isDisplayTemplate = true;
       }
     },
   },
@@ -681,8 +710,19 @@ body {
     max-width: 27% !important;
   }
 }
-//Typography
-//Font-size
+.cursor-pointer {
+  cursor: pointer;
+}
+.btn-submit {
+  box-shadow: inset 0px -4px 0px rgb(0 0 0 / 25%);
+  border-radius: 12px;
+}
+.border-radius-12 {
+  border-radius: 12px !important;
+}
+.full-width {
+  width: 100%;
+}
 .text-xxs {
   font-size: 10px !important;
   line-height: 12px !important;

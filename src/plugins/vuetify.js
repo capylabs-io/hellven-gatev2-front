@@ -16,6 +16,7 @@ export default new Vuetify({
                 darkgrey: "#626262",
                 cream: "#F2F2F2",
                 cyan: "#00BCD9",
+                lightcyan: "#F5F9FF",
                 blue1: "#1B379A",
                 lightblue: "#516FFD",
                 blue: "#516FFD",
@@ -39,6 +40,7 @@ export default new Vuetify({
                 brown: "#7C5546",
                 deepbrown: "#50332B",
                 background: "#EAEEF4",
+                greyblack: "#191919"
             },
         },
     },
