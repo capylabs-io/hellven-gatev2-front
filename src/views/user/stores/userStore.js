@@ -18,7 +18,7 @@ export const userStore = defineStore("users", {
       username: "",
       email: "",
       password: "",
-      dateOfbirth: "1980-01-01",
+      dateOfBirth: "1980-01-01",
     },
     fogetPasswordData: {
       email: "",
@@ -45,6 +45,7 @@ export const userStore = defineStore("users", {
     isOpenChangePassword: false,
     isOpenPrivacyEdit: false,
     isOpenCommunicationPreferencesEdit: false,
+    timer: null,
   }),
 
   actions: {
@@ -106,23 +107,31 @@ export const userStore = defineStore("users", {
         });
     },
     async vertifyRegister(confirmCode) {
-      console.log(confirmCode);
-      this.vetifyAccount.countSeconds = 10;
       let vertifyUrl =
         baseUrl + "auth/email-confirmation?confirmation=" + confirmCode;
-      try {
-        axios.get(vertifyUrl);
-      } catch (error) {
-        snackController.commonError(error);
-      }
-      snackController.success("Verified successfully!");
+      var result = "";
+      axios
+        .get(vertifyUrl)
+        .then((response) => {
+          result = response.data.statusText;
+          snackController.success("Verified successfully!");
+        })
+        .catch((error) => {
+          this.router.push({
+            params: { lang: i18n.locale },
+            name: "home",
+          });
+          snackController.commonError(error);
+        });
+      console.log(result);
+      this.vetifyAccount.countSeconds = 10;
       while (this.vetifyAccount.countSeconds > 0) {
         await this.delay(1000);
         this.vetifyAccount.countSeconds = this.vetifyAccount.countSeconds - 1;
       }
       this.router.push({
         params: { lang: i18n.locale },
-        name: "home",
+        name: "Signin",
       });
     },
     async signIn() {
@@ -143,7 +152,7 @@ export const userStore = defineStore("users", {
               JSON.stringify(response.data.user)
             );
             sessionStorage.setItem("jwt", JSON.stringify(response.data.jwt));
-            sessionStorage.setItem("accountMenu",1);
+            sessionStorage.setItem("accountMenu", 1);
             if (this.rememberMe) {
               localStorage.setItem(
                 "siginInData",
@@ -219,18 +228,17 @@ export const userStore = defineStore("users", {
         info.username != editInfo.username ||
         info.dateOfBirth != editInfo.dateOfBirth ||
         info.country != editInfo.country ||
-        info.email != editInfo.email ||
-        info.phone != editInfo.phone
+        info.email != editInfo.email
       ) {
-        let editInfoUrl = baseUrl + "users/" + info.id;
+        let editInfoUrl = baseUrl + "users/edit/" + info.id;
         axios
           .put(
             editInfoUrl,
             {
-              Username: editInfo.username,
-              DateOfBirth: editInfo.dateOfBirth,
-              Country: editInfo.country,
-              Email: editInfo.email,
+              username: editInfo.username,
+              dateOfBirth: editInfo.dateOfBirth,
+              country: editInfo.country,
+              email: editInfo.email,
             },
             {
               headers: {
@@ -259,15 +267,46 @@ export const userStore = defineStore("users", {
         snackController.error("Please insert your edit");
       }
     },
-    changePassword(editInfo) {
-      if (editInfo) {
-        this.isOpenChangePassword();
-        snackController.success("Change password successfull");
+    changePassword(currentPassword, newPassword, confirmNewPassword) {
+      if (currentPassword || newPassword || confirmNewPassword) {
+        let changePassUrl = baseUrl + "users/change-password";
+        let token = `Bearer ${JSON.parse(sessionStorage.getItem("jwt"))}`;
+        axios
+          .post(
+            changePassUrl,
+            {
+              currentPassword: currentPassword,
+              newPassword: newPassword,
+              confirmNewPassword: confirmNewPassword,
+            },
+            {
+              headers: {
+                Authorization: token,
+                "Content-Type":
+                  "application/x-www-form-urlencoded; charset=UTF-8",
+              },
+            }
+          )
+          .then((response) => {
+            if (response.statusText == "OK") {
+              snackController.success("Change password successfull");
+              this.isOpenChangePassword = false;
+            }
+            loadingController.decreaseRequest();
+          })
+          .catch((error) => {
+            loadingController.decreaseRequest();
+            snackController.commonError(error);
+            // this.errorMessage = error.response.data.data[0].messages[0].message;
+          });
+      } else {
+        loadingController.decreaseRequest();
+        snackController.error("Please insert your edit");
       }
     },
     delay(milliseconds) {
       return new Promise((resolve) => {
-        setTimeout(resolve, milliseconds);
+        this.timer = setTimeout(resolve, milliseconds);
       });
     },
     hideEmail(email) {

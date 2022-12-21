@@ -1,7 +1,15 @@
 <template>
   <div class="account-detail pa-3">
     <ChangePassword />
-    <div class="greyblack--text text-dp-xs font-weight-medium text-uppercase bungee-font">
+    <div
+      class="
+        greyblack--text
+        text-dp-xs
+        font-weight-medium
+        text-uppercase
+        bungee-font
+      "
+    >
       Security
     </div>
     <v-card class="card-content mt-3">
@@ -12,7 +20,10 @@
           >
             {{ $t("signin.password") }}
           </div>
-          <div class="cursor-pointer" @click="userStore.changeOpenChangePassword()">
+          <div
+            class="cursor-pointer"
+            @click="userStore.changeOpenChangePassword()"
+          >
             <EditIcon />
             <span class="violet--text ml-2">EDIT</span>
           </div>
@@ -26,9 +37,11 @@
       <v-list>
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-subtitle>{{ $t("signin.password") }}</v-list-item-subtitle>
+            <v-list-item-subtitle>{{
+              $t("signin.password")
+            }}</v-list-item-subtitle>
             <v-list-item-content>
-                Last updated Apr 19, 2022
+              Last updated {{ getLaschangePass }}
             </v-list-item-content>
           </v-list-item-content>
         </v-list-item>
@@ -54,9 +67,7 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>Question</v-list-item-subtitle>
-            <v-list-item-content>
-                Is CZ bald or not?
-            </v-list-item-content>
+            <v-list-item-content> Is CZ bald or not? </v-list-item-content>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -78,7 +89,7 @@ export default {
   },
   components: {
     EditIcon,
-    ChangePassword
+    ChangePassword,
   },
   methods: {
     gotoRouter(url) {
@@ -86,6 +97,16 @@ export default {
         params: { lang: i18n.locale },
         name: url,
       });
+    },
+  },
+  computed: {
+    getLaschangePass() {
+      const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+      if (userInfo.metadata) {
+        var data = userInfo.metadata;
+        return new Date(data.lastChangePassword).toLocaleDateString("en-US") || "";
+      }
+      return "";
     },
   },
 };

@@ -21,20 +21,20 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>Name</v-list-item-subtitle>
-            <v-list-item-content>{{ userInfo.username }}</v-list-item-content>
+            <v-list-item-content>{{ userInfo.username || "" }}</v-list-item-content>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>Country / Region</v-list-item-subtitle>
-            <v-list-item-content>{{ userInfo.country }}</v-list-item-content>
+            <v-list-item-content>{{ userInfo.country || "" }}</v-list-item-content>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>D.O.B</v-list-item-subtitle>
             <v-list-item-content>{{
-              userInfo.dateOfBirth
+              userInfo.dateOfBirth || "" 
             }}</v-list-item-content>
           </v-list-item-content>
         </v-list-item>
@@ -55,7 +55,7 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>Email</v-list-item-subtitle>
-            <v-list-item-content>{{ userInfo.email }}</v-list-item-content>
+            <v-list-item-content>{{ userInfo.email || "" }}</v-list-item-content>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -99,7 +99,7 @@
                 >
                 <span class="violet--text text-md">Add phone number</span>
               </div>
-              <div v-else>{{ userInfo.phone }}</div>
+              <div v-else>{{ userInfo.phone || "" }}</div>
             </v-list-item-content>
           </v-list-item-content>
         </v-list-item>

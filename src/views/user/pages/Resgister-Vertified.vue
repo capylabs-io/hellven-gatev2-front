@@ -23,7 +23,7 @@
           <v-btn
             color="#5E6BE9"
             class="py-7 px-3 btn-submit bungee-font white--text"
-            @click="gotoRouter('home')"
+            @click="gotoRouter('Signin')"
             >{{ $t("signin.log-in-now") }}</v-btn
           >
         </div>
@@ -65,6 +65,7 @@ export default {
   },
   methods: {
     gotoRouter(url) {
+      clearTimeout();
       this.$router.push({
         params: { lang: i18n.locale },
         name: url,

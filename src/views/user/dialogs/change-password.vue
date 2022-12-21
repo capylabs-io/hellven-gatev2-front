@@ -28,9 +28,10 @@
         <v-card-text class="mt-3 text-sm font-weight-regular">
           <div class="text-xl">{{ $t("account.old-password") }}</div>
           <v-text-field
-            :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
-            :type="userStore.isShowPass ? 'text' : 'password'"
-            @click:append="userStore.isShowPass = !userStore.isShowPass"
+            v-model="oldPass"
+            :append-icon="isShowOldPass ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="isShowOldPass ? 'text' : 'password'"
+            @click:append="isShowOldPass = !isShowOldPass"
             solo
             background-color="cream"
             :rules="rules.password"
@@ -57,10 +58,10 @@
             </v-tooltip>
           </div>
           <v-text-field
-            v-model="userStore.resetPasswordData.password"
-            :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
-            :type="userStore.isShowPass ? 'text' : 'password'"
-            @click:append="userStore.isShowPass = !userStore.isShowPass"
+            v-model="newPass"
+            :append-icon="isShowNewPass ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="isShowNewPass ? 'text' : 'password'"
+            @click:append="isShowNewPass = !isShowNewPass"
             solo
             background-color="cream"
             :rules="rules.password"
@@ -69,16 +70,16 @@
             :placeholder='$t("account.enter-new-passwrord")'
           ></v-text-field>
           <PasswordStrength
-            :password="userStore.resetPasswordData.password"
-            v-if="userStore.resetPasswordData.password"
+            :password="newPass"
+            v-if="newPass"
           />
           <div class="text-xl">{{ $t("signin.new-password-confirm") }}</div>
           <v-text-field
-            v-model="userStore.resetPasswordData.passwordConfirmation"
-            @click:append="userStore.isShowPass = !userStore.isShowPass"
+            v-model="confirmPass"
+            @click:append="isShowConfirmPass = !isShowConfirmPass"
             solo
-            :append-icon="userStore.isShowPass ? 'mdi-eye' : 'mdi-eye-off'"
-            :type="userStore.isShowPass ? 'text' : 'password'"
+            :append-icon="isShowConfirmPass ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="isShowConfirmPass ? 'text' : 'password'"
             background-color="cream"
             :rules="[passwordConfirmationRule]"
             full-width
@@ -122,13 +123,19 @@ export default {
       userInfo: [],
       rules: rules,
       lang: i18n.locale,
+      isShowOldPass: false,
+      isShowNewPass: false,
+      isShowConfirmPass: false,
+      oldPass: "",
+      newPass: "",
+      confirmPass: ""
     };
   },
   computed: {
     passwordConfirmationRule() {
       return () =>
-        this.userStore.resetPasswordData.password ===
-          this.userStore.resetPasswordData.passwordConfirmation ||
+        this.newPass ===
+          this.confirmPass ||
         "Password must match";
     },
   },
@@ -141,7 +148,7 @@ export default {
   methods: {
     submitForm() {
       if (this.$refs.form.validate()) {
-        this.userStore.changePassword(this.userInfo);
+        this.userStore.changePassword(this.oldPass, this.newPass, this.confirmPass);
       }
     },
   },

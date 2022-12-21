@@ -107,7 +107,7 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <v-text-field
-              v-model="userStore.userData.dateOfbirth"
+              v-model="userStore.userData.dateOfBirth"
               prepend-icon="mdi-calendar"
               readonly
               full-width
@@ -120,7 +120,7 @@
             ></v-text-field>
           </template>
           <v-date-picker
-            v-model="userStore.userData.dateOfbirth"
+            v-model="userStore.userData.dateOfBirth"
             no-title
             scrollable
             :active-picker.sync="activePicker"
@@ -197,7 +197,7 @@ export default {
         this.userStore.userData.username == "" ||
         this.userStore.userData.password == "" ||
         this.confirmPassword == "" ||
-        this.userStore.userData.dateOfbirth == ""
+        this.userStore.userData.dateOfBirth == ""
       ) {
         return false;
       }
