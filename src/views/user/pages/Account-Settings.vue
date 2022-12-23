@@ -15,7 +15,7 @@
                   :color="userStore.accountSettingMenu == 1 ? 'white' : ''"
                   >mdi-account-outline</v-icon
                 >
-                <span>{{$t("account.account-detail")}}</span>
+                <span>{{$t("account.account-details")}}</span>
               </v-list-item>
               <v-list-item
                 :class="userStore.accountSettingMenu == 2 ? 'violet' : ''"

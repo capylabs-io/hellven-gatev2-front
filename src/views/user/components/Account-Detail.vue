@@ -4,7 +4,7 @@
     <EmailEdit />
     <PhoneEdit />
     <div class="greyblack--text text-dp-xs font-weight-medium text-uppercase bungee-font">
-      {{$t("account-details")}}
+      {{$t("account.account-details")}}
     </div>
     <v-card class="card-content mt-6">
       <v-card-title class="justify-space-between">
@@ -124,7 +124,6 @@ export default {
   },
   created() {
     this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
-    console.log(this.userInfo);
   },
   components: {
     EditIcon,
@@ -139,7 +138,7 @@ export default {
         name: url,
       });
     },
-  },
+  }
 };
 </script>
 <style lang="scss">

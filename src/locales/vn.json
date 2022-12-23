@@ -91,7 +91,7 @@
     "password-changed-sub" : "Please login to your account again."
   },
   "account": {
-    "account-detail": "Account details",
+    "account-details": "Account details",
     "personal-info": "Personal information",
     "privacy-commmunication":"privacy & communication",
     "game-privacy":"game data and profile privacy",
@@ -108,6 +108,7 @@
     "push-notification":"Push notification",
     "push-notification-des" : "Receive push notifications from Fighter Force",
     "new-offers":"News and Special Offers",
-    "new-offers-des":"Receive selected news, event information, updates and special offers of Fighter Force"
+    "new-offers-des":"Receive selected news, event information, updates and special offers of Fighter Force",
+    "reentry-pass" : "Please reenter your password"
   }
 }

@@ -227,8 +227,7 @@ export const userStore = defineStore("users", {
       if (
         info.username != editInfo.username ||
         info.dateOfBirth != editInfo.dateOfBirth ||
-        info.country != editInfo.country ||
-        info.email != editInfo.email
+        info.country != editInfo.country
       ) {
         let editInfoUrl = baseUrl + "users/edit/" + info.id;
         axios
@@ -238,7 +237,6 @@ export const userStore = defineStore("users", {
               username: editInfo.username,
               dateOfBirth: editInfo.dateOfBirth,
               country: editInfo.country,
-              email: editInfo.email,
             },
             {
               headers: {
@@ -250,10 +248,10 @@ export const userStore = defineStore("users", {
           .then((response) => {
             if (response.statusText == "OK") {
               snackController.success("Edit successfull");
-              this.isOpenEmailEdit = false;
               this.isOpenPersonalInfoEdit = false;
               this.isOpenPhoneEdit = false;
               sessionStorage.setItem("userInfo", JSON.stringify(response.data));
+              window.location.reload();
             }
             loadingController.decreaseRequest();
           })
@@ -303,6 +301,40 @@ export const userStore = defineStore("users", {
         loadingController.decreaseRequest();
         snackController.error("Please insert your edit");
       }
+    },
+    editEmail(newEmail,password) {
+      let changePassUrl = baseUrl + "users/edit-email";
+        let token = `Bearer ${JSON.parse(sessionStorage.getItem("jwt"))}`;
+        axios
+          .post(
+            changePassUrl,
+            {
+              newEmail: newEmail,
+              password: password
+            },
+            {
+              headers: {
+                Authorization: token,
+                "Content-Type":
+                  "application/x-www-form-urlencoded; charset=UTF-8",
+              },
+            }
+          )
+          .then((response) => {
+            if (response.statusText == "OK") {
+              snackController.success("Your email has been updated.");
+              sessionStorage.setItem("userInfo", JSON.stringify(response.data));
+              console.log(response.data);
+              this.isOpenEmailEdit = false;
+              window.location.reload();
+            }
+            loadingController.decreaseRequest();
+          })
+          .catch((error) => {
+            loadingController.decreaseRequest();
+            snackController.commonError(error);
+            // this.errorMessage = error.response.data.data[0].messages[0].message;
+          });
     },
     delay(milliseconds) {
       return new Promise((resolve) => {

@@ -79,7 +79,6 @@
                 <v-list class="d-flex flex-column submenu kanit-font px-4">
                   <v-list-item>
                     <div
-                      to="account"
                       class="white--text text-decoration-none"
                       active-class="active"
                     >
@@ -91,16 +90,16 @@
                   </v-list-item>
                   <v-divider class="darkgrey my-2"></v-divider>
                   <v-list-item>
-                    <router-link
-                      to="account"
-                      class="white--text text-decoration-none"
+                    <div
+                      @click="gotoRouter('AccountSettings')"
+                      class="white--text text-decoration-none cursor-pointer"
                       active-class="active"
                     >
                       <div class="white--text d-flex align-center">
                         <SettingIcon/> 
                         <div class="ml-2">Account Settings</div>
                       </div>
-                    </router-link>
+                    </div>
                   </v-list-item>
                   <v-list-item>
                     <div
