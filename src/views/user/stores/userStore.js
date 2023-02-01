@@ -1,347 +1,257 @@
 import { defineStore } from "pinia";
-import axios from "axios";
 import i18n from "@/i18n";
-import { snackBarController } from "@/components/snack-bar/snack-bar-controller";
-import { globalLoadingController } from "@/components/global-loading/global-loading-controller";
+import { User, Auth } from "@/plugins/api.js";
+import { snackBarController } from "@/components/snack-bar/snack-bar-controller.js";
+import { loadingController } from "@/components/global-loading/global-loading-controller.js";
+import { ref, computed } from "vue";
+// const baseUrl = process.env.VUE_APP_API_URL;
 
-const baseUrl = process.env.VUE_APP_API_URL;
-const snackController = snackBarController();
-const loadingController = globalLoadingController();
+export const userStore = defineStore(
+  "users",
+  () => {
+    /* eslint-disable */
+    const loading = loadingController(); //store
+    const snackbar = snackBarController(); //store
 
-export const userStore = defineStore("users", {
-  state: () => ({
-    siginInData: {
+    //#region states
+    const signInData = ref({
       identifier: "",
       password: "",
-    },
-    userData: {
+    });
+    const jwt = ref("");
+    const userData = ref({
       username: "",
       email: "",
       password: "",
       dateOfBirth: "1980-01-01",
-    },
-    fogetPasswordData: {
-      email: "",
-      isSuccess: false,
-    },
-    resetPasswordData: {
+      phone: "",
+    });
+    const resetPasswordData = ref({
       code: "",
       password: "",
       passwordConfirmation: "",
       isSuccess: false,
-    },
-    vetifyAccount: {
+    });
+    const verifyAccount = ref({
       hideEmail: "",
-      vetifyEmail: "",
+      verifyEmail: "",
       countSeconds: 0,
-    },
-    isShowPass: false,
-    isShowConfirmPass: false,
-    rememberMe: false,
-    accountSettingMenu: 1, //1: Account Detail, 2: Security, 3: Privacy, 4: Transaction History
-    isOpenPersonalInfoEdit: false,
-    isOpenEmailEdit: false,
-    isOpenPhoneEdit: false,
-    isOpenChangePassword: false,
-    isOpenPrivacyEdit: false,
-    isOpenCommunicationPreferencesEdit: false,
-    timer: null,
-  }),
+    });
+    const isShowPass = ref(false);
+    const isShowConfirmPass = ref(false);
+    const rememberMe = ref(false);
+    const accountSettingMenu = ref(1); //1: Account Detail, 2: Security, 3: Privacy, 4: Transaction History
+    const isOpenPersonalInfoEdit = ref(false);
+    const isOpenEmailEdit = ref(false);
+    const isOpenPhoneEdit = ref(false);
+    const isOpenChangePassword = ref(false);
+    const isOpenPrivacyEdit = ref(false);
+    const isOpenCommunicationPreferencesEdit = ref(false);
+    // timer: null,
+    //#endregion
 
-  actions: {
-    async registerUser() {
-      loadingController.increaseRequest();
-      let registerUrl = baseUrl + "auth/local/register";
-      axios
-        .post(registerUrl, this.userData, {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-          },
-        })
-        .then((response) => {
-          loadingController.decreaseRequest();
-          if (response.statusText == "OK") {
-            this.vetifyAccount.vetifyEmail = this.userData.email;
-            this.vetifyAccount.hideEmail = this.hideEmail(this.userData.email);
-            snackController.success("Register is successful");
-            this.router.push({
-              params: { lang: i18n.locale },
-              name: "RegisterVertifySent",
-            });
-          }
-        })
-        .catch((error) => {
-          loadingController.decreaseRequest();
-          snackController.commonError(error);
-          // this.errorMessage = error.response.data.data[0].messages[0].message;
+    //#region actions
+    async function registerUser() {
+      try {
+        loading.increaseRequest();
+        const res = await Auth.register(this.userData);
+        if (!res) {
+          snackbar.commonError(`Error occurred! Please try again later!`);
+          return;
+        }
+        this.verifyAccount.verifyEmail = this.userData.email;
+        this.verifyAccount.hideEmail = this.hideEmail(this.userData.email);
+        snackbar.success("Register successfully!");
+        this.router.push({
+          params: { lang: i18n.locale },
+          name: "RegisterVertifySent",
         });
-    },
-    async resentVertifyRegister() {
-      loadingController.increaseRequest();
-      let registerUrl = baseUrl + "auth/send-email-confirmation";
-      axios
-        .post(
-          registerUrl,
-          {
-            email: this.vetifyAccount.vetifyEmail,
-          },
-          {
-            headers: {
-              "Content-Type":
-                "application/x-www-form-urlencoded; charset=UTF-8",
-            },
-          }
-        )
-        .then((response) => {
-          loadingController.decreaseRequest();
-          if (response.statusText == "OK") {
-            snackController.success(
-              "Email sent successfully, please check your mailbox"
-            );
-          }
-        })
-        .catch((error) => {
-          loadingController.decreaseRequest();
-          snackController.commonError(error);
-          // this.errorMessage = error.response.data.data[0].messages[0].message;
-        });
-    },
-    async vertifyRegister(confirmCode) {
-      let vertifyUrl =
-        baseUrl + "auth/email-confirmation?confirmation=" + confirmCode;
-      var result = "";
-      axios
-        .get(vertifyUrl)
-        .then((response) => {
-          result = response.data.statusText;
-          snackController.success("Verified successfully!");
-        })
-        .catch((error) => {
-          this.router.push({
-            params: { lang: i18n.locale },
-            name: "home",
-          });
-          snackController.commonError(error);
-        });
-      console.log(result);
-      this.vetifyAccount.countSeconds = 10;
-      while (this.vetifyAccount.countSeconds > 0) {
-        await this.delay(1000);
-        this.vetifyAccount.countSeconds = this.vetifyAccount.countSeconds - 1;
+      } catch (error) {
+        console.error(`Error: ${error}`);
+        snackbar.commonError(error);
+      } finally {
+        loading.decreaseRequest();
       }
-      this.router.push({
-        params: { lang: i18n.locale },
-        name: "Signin",
-      });
-    },
-    async signIn() {
-      loadingController.increaseRequest();
-      let signInUrl = baseUrl + "auth/local";
-      axios
-        .post(signInUrl, this.siginInData, {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-          },
-        })
-        .then((response) => {
-          loadingController.decreaseRequest();
-          if (response.statusText == "OK") {
-            snackController.success("Login is successful");
-            sessionStorage.setItem(
-              "userInfo",
-              JSON.stringify(response.data.user)
-            );
-            sessionStorage.setItem("jwt", JSON.stringify(response.data.jwt));
-            sessionStorage.setItem("accountMenu", 1);
-            if (this.rememberMe) {
-              localStorage.setItem(
-                "siginInData",
-                JSON.stringify(this.siginInData)
-              );
-            } else {
-              localStorage.removeItem("siginInData");
-            }
-            this.router.push({
-              params: { lang: i18n.locale },
-              name: "home",
-            });
-          }
-        })
-        .catch((error) => {
-          loadingController.decreaseRequest();
-          snackController.commonError(error);
-        });
-    },
-    async forgetPassword() {
-      loadingController.increaseRequest();
-      let forgetPasswordUrl = baseUrl + "auth/forgot-password";
-      axios
-        .post(
-          forgetPasswordUrl,
-          {
-            email: this.fogetPasswordData.email,
-          },
-          {
-            headers: {
-              "Content-Type":
-                "application/x-www-form-urlencoded; charset=UTF-8",
-            },
-          }
-        )
-        .then((response) => {
-          loadingController.decreaseRequest();
-          if (response.statusText == "OK") {
-            this.fogetPasswordData.isSuccess = true;
-          }
-        })
-        .catch((error) => {
-          loadingController.decreaseRequest();
-          snackController.commonError(error);
-          // this.errorMessage = error.response.data.data[0].messages[0].message;
-        });
-    },
-    async resetPassword() {
-      loadingController.increaseRequest();
-      let resetPasswordUrl = baseUrl + "auth/reset-password";
-      axios
-        .post(resetPasswordUrl, this.resetPasswordData, {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-          },
-        })
-        .then((response) => {
-          loadingController.decreaseRequest();
-          if (response.statusText == "OK") {
-            this.resetPasswordData.isSuccess = true;
-          }
-        })
-        .catch((error) => {
-          loadingController.decreaseRequest();
-          snackController.commonError(error);
-          // this.errorMessage = error.response.data.data[0].messages[0].message;
-        });
-    },
-    editPersonalInfo(editInfo) {
-      loadingController.increaseRequest();
-      let info = JSON.parse(sessionStorage.getItem("userInfo"));
-      if (
-        info.username != editInfo.username ||
-        info.dateOfBirth != editInfo.dateOfBirth ||
-        info.country != editInfo.country
-      ) {
-        let editInfoUrl = baseUrl + "users/edit/" + info.id;
-        axios
-          .put(
-            editInfoUrl,
-            {
-              username: editInfo.username,
-              dateOfBirth: editInfo.dateOfBirth,
-              country: editInfo.country,
-            },
-            {
-              headers: {
-                "Content-Type":
-                  "application/x-www-form-urlencoded; charset=UTF-8",
-              },
-            }
-          )
-          .then((response) => {
-            if (response.statusText == "OK") {
-              snackController.success("Edit successfull");
-              this.isOpenPersonalInfoEdit = false;
-              this.isOpenPhoneEdit = false;
-              sessionStorage.setItem("userInfo", JSON.stringify(response.data));
-              window.location.reload();
-            }
-            loadingController.decreaseRequest();
-          })
-          .catch((error) => {
-            loadingController.decreaseRequest();
-            snackController.commonError(error);
-            // this.errorMessage = error.response.data.data[0].messages[0].message;
-          });
-      } else {
-        loadingController.decreaseRequest();
-        snackController.error("Please insert your edit");
+    }
+    async function resentVertifyRegister() {
+      try {
+        loading.increaseRequest();
+        const res = await Auth.resendRegisterLink(this.verifyAccount.verifyEmail);
+        if (!res) {
+          snackbar.commonError(`Error occurred! Please try again later!`);
+          return;
+        }
+        snackbar.success("Email sent successfully! Please check your mailbox!");
+      } catch (error) {
+        console.error(`Error: ${error}`);
+        snackbar.commonError(error);
+      } finally {
+        loading.decreaseRequest();
       }
-    },
-    changePassword(currentPassword, newPassword, confirmNewPassword) {
-      if (currentPassword || newPassword || confirmNewPassword) {
-        let changePassUrl = baseUrl + "users/change-password";
-        let token = `Bearer ${JSON.parse(sessionStorage.getItem("jwt"))}`;
-        axios
-          .post(
-            changePassUrl,
-            {
-              currentPassword: currentPassword,
-              newPassword: newPassword,
-              confirmNewPassword: confirmNewPassword,
-            },
-            {
-              headers: {
-                Authorization: token,
-                "Content-Type":
-                  "application/x-www-form-urlencoded; charset=UTF-8",
-              },
-            }
-          )
-          .then((response) => {
-            if (response.statusText == "OK") {
-              snackController.success("Change password successfull");
-              this.isOpenChangePassword = false;
-            }
-            loadingController.decreaseRequest();
-          })
-          .catch((error) => {
-            loadingController.decreaseRequest();
-            snackController.commonError(error);
-            // this.errorMessage = error.response.data.data[0].messages[0].message;
-          });
-      } else {
-        loadingController.decreaseRequest();
-        snackController.error("Please insert your edit");
+    }
+    async function verifyRegister(confirmCode) {
+      try {
+        loading.increaseRequest();
+        const res = await Auth.verifyRegister(confirmCode);
+        if (!res) {
+          snackbar.commonError(`Error occurred! Please try again later!`);
+          return;
+        }
+        snackbar.success("Verified account successfully!");
+        this.router.push({
+          params: { lang: i18n.locale },
+          name: "Signin",
+        });
+        this.verifyAccount.countSeconds = 10;
+        while (this.verifyAccount.countSeconds > 0) {
+          await this.$utils.delay(1000);
+          this.verifyAccount.countSeconds = this.verifyAccount.countSeconds - 1;
+        }
+      } catch (error) {
+        console.error(`Error: ${error}`);
+        snackbar.commonError(error);
+        this.router.push({
+          params: { lang: i18n.locale },
+          name: "home",
+        });
+      } finally {
+        loading.decreaseRequest();
       }
-    },
-    editEmail(newEmail,password) {
-      let changePassUrl = baseUrl + "users/edit-email";
-        let token = `Bearer ${JSON.parse(sessionStorage.getItem("jwt"))}`;
-        axios
-          .post(
-            changePassUrl,
-            {
-              newEmail: newEmail,
-              password: password
-            },
-            {
-              headers: {
-                Authorization: token,
-                "Content-Type":
-                  "application/x-www-form-urlencoded; charset=UTF-8",
-              },
-            }
-          )
-          .then((response) => {
-            if (response.statusText == "OK") {
-              snackController.success("Your email has been updated.");
-              sessionStorage.setItem("userInfo", JSON.stringify(response.data));
-              console.log(response.data);
-              this.isOpenEmailEdit = false;
-              window.location.reload();
-            }
-            loadingController.decreaseRequest();
-          })
-          .catch((error) => {
-            loadingController.decreaseRequest();
-            snackController.commonError(error);
-            // this.errorMessage = error.response.data.data[0].messages[0].message;
-          });
-    },
-    delay(milliseconds) {
-      return new Promise((resolve) => {
-        this.timer = setTimeout(resolve, milliseconds);
-      });
-    },
-    hideEmail(email) {
+    }
+    async function signIn() {
+      try {
+        loading.increaseRequest();
+        const res = await Auth.signIn(this.signInData);
+        if (!res) {
+          snackbar.commonError(`Error occurred! Please try again later!`);
+          return;
+        }
+        snackbar.success("Login successfully!");
+        this.jwt = res.data.jwt;
+        this.userData = res.data.user;
+        // sessionStorage.setItem("userInfo", JSON.stringify(res.data.user));
+        // sessionStorage.setItem("jwt", JSON.stringify(res.data.jwt));
+        sessionStorage.setItem("accountMenu", 1);
+        if (this.rememberMe) {
+          localStorage.setItem("signInData", JSON.stringify(this.signInData));
+        } else {
+          localStorage.removeItem("signInData");
+        }
+        this.router.push({
+          params: { lang: i18n.locale },
+          name: "home",
+        });
+      } catch (error) {
+        console.error(`Error: ${error}`);
+        snackbar.commonError(error);
+      } finally {
+        loading.decreaseRequest();
+      }
+    }
+    async function forgetPassword() {
+      try {
+        loading.increaseRequest();
+        const res = await Auth.forgetPassword(this.forgetPasswordData.email);
+        if (!res) {
+          snackbar.commonError(`Error occurred! Please try again later!`);
+          return;
+        }
+        snackbar.success("Email sent successfully! Please check your mailbox!");
+        this.forgetPasswordData.isSuccess = true;
+      } catch (error) {
+        console.error(`Error: ${error}`);
+        snackbar.commonError(error);
+      } finally {
+        loading.decreaseRequest();
+      }
+    }
+    async function resetPassword() {
+      try {
+        loading.increaseRequest();
+        const res = await Auth.resetPassword(this.resetPasswordData);
+        if (!res) {
+          snackbar.commonError(`Error occurred! Please try again later!`);
+          return;
+        }
+        snackbar.success("Reset Password Successfully!");
+        this.resetPasswordData.isSuccess = true;
+      } catch (error) {
+        console.error(`Error: ${error}`);
+        snackbar.commonError(error);
+      } finally {
+        loading.decreaseRequest();
+      }
+    }
+    async function editPersonalInfo(editInfo) {
+      try {
+        loading.increaseRequest();
+        const query = {};
+        const userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+
+        Object.entries(editInfo).forEach(([info, infoValue]) => {
+          if (userInfo[info] != infoValue) {
+            query[info] = infoValue;
+          }
+        });
+        if (!query) {
+          window.location.reload();
+          return;
+        }
+        const res = await User.updateUserInfo(query);
+        if (!res) {
+          snackbar.commonError(`Error occurred! Please try again later!`);
+          return;
+        }
+        snackbar.success("Update info successfully!");
+        this.isOpenPersonalInfoEdit = false;
+        this.isOpenPhoneEdit = false;
+        sessionStorage.setItem("userInfo", JSON.stringify(res.data));
+        window.location.reload(); //Khong nen reload lai trang web
+      } catch (error) {
+        console.error(`Error: ${error}`);
+        snackbar.commonError(error);
+      } finally {
+        loading.decreaseRequest();
+      }
+    }
+    async function changePassword(currentPassword, newPassword, confirmNewPassword) {
+      try {
+        loading.increaseRequest();
+        if (!currentPassword || !newPassword || !confirmNewPassword) return;
+        const res = await User.changePassword(currentPassword, newPassword, confirmNewPassword);
+        if (!res) {
+          snackbar.commonError(`Error occurred! Please try again later!`);
+          return;
+        }
+        snackbar.success("Change password successfully!");
+        this.isOpenChangePassword = false;
+      } catch (error) {
+        console.error(`Error: ${error}`);
+        snackbar.commonError(error);
+      } finally {
+        loading.decreaseRequest();
+      }
+    }
+    async function editEmail(newEmail, password) {
+      try {
+        loading.increaseRequest();
+        const res = await User.updateUserEmail(newEmail, password);
+        if (!res) {
+          snackbar.commonError(`Error occurred! Please try again later!`);
+          return;
+        }
+        snackbar.success("Update email successfully!");
+        // sessionStorage.setItem("userInfo", JSON.stringify(response.data));
+        this.isOpenEmailEdit = false;
+        // window.location.reload();
+      } catch (error) {
+        console.error(`Error: ${error}`);
+        snackbar.commonError(error);
+      } finally {
+        loading.decreaseRequest();
+      }
+    }
+    function hideEmail(email) {
       let index = email.indexOf("@");
       let hideChar = "";
       for (let i = 1; i < index - 1; i++) {
@@ -350,25 +260,82 @@ export const userStore = defineStore("users", {
 
       hideChar = email.charAt(0) + hideChar + email.substring(index - 1);
       return hideChar;
-    },
-    changePersonalInfoEdit() {
+    }
+    function changePersonalInfoEdit() {
       this.isOpenPersonalInfoEdit = !this.isOpenPersonalInfoEdit;
-    },
-    changeEmailEdit() {
+    }
+    function changeEmailEdit() {
       this.isOpenEmailEdit = !this.isOpenEmailEdit;
-    },
-    changePhoneEdit() {
+    }
+    function changePhoneEdit() {
       this.isOpenPhoneEdit = !this.isOpenPhoneEdit;
-    },
-    changeOpenChangePassword() {
+    }
+    function changeOpenChangePassword() {
       this.isOpenChangePassword = !this.isOpenChangePassword;
-    },
-    changePrivacyEdit() {
+    }
+    function changePrivacyEdit() {
       this.isOpenPrivacyEdit = !this.isOpenPrivacyEdit;
-    },
-    changeCommunicationPreferencesEdit() {
-      this.isOpenCommunicationPreferencesEdit =
-        !this.isOpenCommunicationPreferencesEdit;
-    },
+    }
+    function changeCommunicationPreferencesEdit() {
+      this.isOpenCommunicationPreferencesEdit = !this.isOpenCommunicationPreferencesEdit;
+    }
+    //#endregion
+
+    //#region Computed
+    const isConnected = computed(() => this.jwt && this.userData);
+    //#endregion
+
+    return {
+      //Computed
+      isConnected,
+
+      //actions
+      registerUser,
+      resentVertifyRegister,
+      verifyRegister,
+      signIn,
+      forgetPassword,
+      resetPassword,
+      editPersonalInfo,
+      changePassword,
+      editEmail,
+      hideEmail,
+      changePersonalInfoEdit,
+      changeEmailEdit,
+      changePhoneEdit,
+      changeOpenChangePassword,
+      changePrivacyEdit,
+      changeCommunicationPreferencesEdit,
+
+      //states
+      signInData,
+      jwt,
+      userData,
+      resetPasswordData,
+      verifyAccount,
+      isShowPass,
+      isShowConfirmPass,
+      rememberMe,
+      accountSettingMenu, //1: Account Detail, 2: Security, 3: Privacy, 4: Transaction History
+      isOpenPersonalInfoEdit,
+      isOpenEmailEdit,
+      isOpenPhoneEdit,
+      isOpenChangePassword,
+      isOpenPrivacyEdit,
+      isOpenCommunicationPreferencesEdit,
+    };
   },
-});
+  {
+    persist: [
+      {
+        paths: ["signInData", "rememberMe"],
+        storage: localStorage,
+      },
+      {
+        paths: ["userData", "jwt"],
+        storage: sessionStorage,
+      },
+    ],
+  }
+);
+/* eslint-enable */

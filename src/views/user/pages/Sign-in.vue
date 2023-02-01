@@ -7,10 +7,7 @@
         lazy-validation
         class="sign-in-form ma-auto pa-4 pa-sm-8"
       >
-        <div
-          class="btn-back pa-0 cursor-pointer"
-          @click="gotoRouter('home')"
-        >
+        <div class="btn-back pa-0 cursor-pointer" @click="gotoRouter('home')">
           <v-icon small color="white"> mdi-chevron-left</v-icon>
           <span class="text-capitalize white--text">Back</span>
         </div>
@@ -19,7 +16,7 @@
         </div>
         <div class="text-xl mt-sm-4 mt-2">{{ $t("signin.ID") }}</div>
         <v-text-field
-          v-model="userStore.siginInData.identifier"
+          v-model="userStore.signInData.identifier"
           :rules="rules.checkIdentifier"
           type="text"
           background-color="cream"
@@ -36,18 +33,21 @@
           solo
           dense
           background-color="cream"
-          v-model="userStore.siginInData.password"
+          v-model="userStore.signInData.password"
           class="mt-2"
         ></v-text-field>
         <v-row class="mt-sm-2">
           <v-col cols="4" class="pa-1"
-            ><v-btn color="#2B69EA" class="full-width py-0 py-sm-5"><FacebookIcon /></v-btn
+            ><v-btn color="#2B69EA" class="full-width py-0 py-sm-5"
+              ><FacebookIcon /></v-btn
           ></v-col>
           <v-col cols="4" class="pa-1"
-            ><v-btn color="white" class="full-width py-0 py-sm-5"><GoogleIcon /></v-btn
+            ><v-btn color="white" class="full-width py-0 py-sm-5"
+              ><GoogleIcon /></v-btn
           ></v-col>
           <v-col cols="4" class="pa-1"
-            ><v-btn color="black" class="full-width py-0 py-sm-5"><AppleIcon /></v-btn
+            ><v-btn color="black" class="full-width py-0 py-sm-5"
+              ><AppleIcon /></v-btn
           ></v-col>
         </v-row>
         <v-checkbox
@@ -70,16 +70,18 @@
             x-small
             class="text-capitalize text-md cursor-pointer mt-2"
             @click="gotoRouter('ForgetPassword')"
-            >{{ $t("signin.forget-password") }}</div
           >
+            {{ $t("signin.forget-password") }}
+          </div>
         </div>
         <div class="text-center">
           <div
             x-small
             class="text-capitalize text-md cursor-pointer"
             @click="gotoRouter('Signup')"
-            >{{ $t("signin.create-new-account") }}</div
           >
+            {{ $t("signin.create-new-account") }}
+          </div>
         </div>
       </v-form>
       <!-- </div> -->
@@ -109,9 +111,9 @@ export default {
     ArrowRight,
   },
   created() {
-    let signIn = JSON.parse(localStorage.getItem("siginInData"));
+    let signIn = JSON.parse(localStorage.getItem("signInData"));
     if (signIn) {
-      this.userStore.siginInData = signIn;
+      this.userStore.signInData = signIn;
     }
   },
   methods: {

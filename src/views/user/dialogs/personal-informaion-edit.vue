@@ -112,6 +112,7 @@ import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
 import { rules } from "@/plugins/rules";
 import { countryList } from "@/plugins/country";
+import { mapStores } from "pinia";
 
 export default {
   name: "PersonalInformationEdit",
@@ -126,9 +127,16 @@ export default {
       countryList: countryList,
     };
   },
-  created() {
-    this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+  computed: {
+    ...mapStores(userStore),
   },
+  mounted() {
+    // this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+    this.userInfo = this.usersStore.userData;
+  },
+  // created() {
+  //   this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+  // },
   watch: {
     menu(val) {
       val && setTimeout(() => (this.activePicker = "YEAR"));

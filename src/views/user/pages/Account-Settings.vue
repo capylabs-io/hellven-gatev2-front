@@ -15,7 +15,7 @@
                   :color="userStore.accountSettingMenu == 1 ? 'white' : ''"
                   >mdi-account-outline</v-icon
                 >
-                <span>{{$t("account.account-details")}}</span>
+                <span>{{ $t("account.account-details") }}</span>
               </v-list-item>
               <v-list-item
                 :class="userStore.accountSettingMenu == 2 ? 'violet' : ''"
@@ -79,9 +79,9 @@ export default {
     };
   },
   created() {
-    if (!sessionStorage.getItem("userInfo")) {
-      this.gotoRouter("home");
-    }
+    // if (!sessionStorage.getItem("userInfo")) {
+    //   this.gotoRouter("home");
+    // }
     if (sessionStorage.getItem("accountMenu")) {
       this.userStore.accountSettingMenu = sessionStorage.getItem("accountMenu");
     }

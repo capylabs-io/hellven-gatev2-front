@@ -3,8 +3,16 @@
     <PersonalInformationEdit />
     <EmailEdit />
     <PhoneEdit />
-    <div class="greyblack--text text-dp-xs font-weight-medium text-uppercase bungee-font">
-      {{$t("account.account-details")}}
+    <div
+      class="
+        greyblack--text
+        text-dp-xs
+        font-weight-medium
+        text-uppercase
+        bungee-font
+      "
+    >
+      {{ $t("account.account-details") }}
     </div>
     <v-card class="card-content mt-6">
       <v-card-title class="justify-space-between">
@@ -21,20 +29,24 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>Name</v-list-item-subtitle>
-            <v-list-item-content>{{ userInfo.username || "" }}</v-list-item-content>
+            <v-list-item-content>{{
+              userInfo.username || ""
+            }}</v-list-item-content>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>Country / Region</v-list-item-subtitle>
-            <v-list-item-content>{{ userInfo.country || "" }}</v-list-item-content>
+            <v-list-item-content>{{
+              userInfo.country || ""
+            }}</v-list-item-content>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>D.O.B</v-list-item-subtitle>
             <v-list-item-content>{{
-              userInfo.dateOfBirth || "" 
+              userInfo.dateOfBirth || ""
             }}</v-list-item-content>
           </v-list-item-content>
         </v-list-item>
@@ -55,7 +67,9 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-subtitle>Email</v-list-item-subtitle>
-            <v-list-item-content>{{ userInfo.email || "" }}</v-list-item-content>
+            <v-list-item-content>{{
+              userInfo.email || ""
+            }}</v-list-item-content>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -110,20 +124,36 @@
 <script>
 import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
+import { mapStores } from "pinia";
 import EditIcon from "@/components/svg/editIcon.vue";
 import PersonalInformationEdit from "../dialogs/personal-informaion-edit.vue";
 import EmailEdit from "../dialogs/email-edit.vue";
 import PhoneEdit from "../dialogs/phone-edit.vue";
+
 export default {
   name: "AccountDetail",
+  // setup() {
+  //   const userStore = userStore();
+  //   return {
+  //     userStore,
+  //   };
+  // },
   data() {
     return {
-      userStore: userStore(),
       userInfo: [],
+      // userStore: userStore(),
     };
   },
-  created() {
-    this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+  // created() {
+  //   this.userInfo = userStore.userData;
+  //   console.log("userInfo", this.userInfo);
+  // },
+  computed: {
+    ...mapStores(userStore),
+  },
+  mounted() {
+    // this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+    this.userInfo = this.usersStore.userData;
   },
   components: {
     EditIcon,
@@ -138,7 +168,7 @@ export default {
         name: url,
       });
     },
-  }
+  },
 };
 </script>
 <style lang="scss">

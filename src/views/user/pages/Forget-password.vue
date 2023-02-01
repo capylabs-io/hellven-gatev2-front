@@ -2,10 +2,7 @@
   <div class="sign-in-page">
     <div class="sign-in-content d-flex">
       <v-form ref="form" lazy-validation class="sign-in-form ma-auto pa-12">
-        <div
-          class="btn-back pa-0 cursor-pointer"
-          @click="gotoRouter('Signin')"
-        >
+        <div class="btn-back pa-0 cursor-pointer" @click="gotoRouter('Signin')">
           <v-icon small color="white"> mdi-chevron-left</v-icon>
           <span class="text-capitalize white--text">Back</span>
         </div>
@@ -17,7 +14,7 @@
         </div>
         <div
           class="pa-3 lightcyan border-radius-12 my-4"
-          v-if="userStore.fogetPasswordData.isSuccess"
+          v-if="userStore.forgetPasswordData.isSuccess"
         >
           {{ $t("signin.forget-password-done")
           }}<a>{{ $t("signin.forget-password-contact") }}</a>
@@ -33,12 +30,12 @@
         </v-alert>
         <div class="text-xl mt-4">{{ $t("signin.ID") }}</div>
         <v-text-field
-          v-model="userStore.fogetPasswordData.email"
+          v-model="userStore.forgetPasswordData.email"
           :rules="rules.checkIdentifier"
           solo
           background-color="cream"
           full-width
-          :disabled="userStore.fogetPasswordData.isSuccess"
+          :disabled="userStore.forgetPasswordData.isSuccess"
           class="mt-2"
         ></v-text-field>
         <div class="text-center">
@@ -46,7 +43,10 @@
             x-small
             color="#5E6BE9"
             class="py-7 px-3 btn-submit"
-            :disabled="userStore.fogetPasswordData.isSuccess || userStore.fogetPasswordData.email === ''"
+            :disabled="
+              userStore.forgetPasswordData.isSuccess ||
+              userStore.forgetPasswordData.email === ''
+            "
             @click="submitForm"
             ><ArrowRight
           /></v-btn>
@@ -64,13 +64,13 @@
 import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
 import ArrowRight from "@/components/svg/arrow-right.vue";
-import {rules} from "@/plugins/rules";
+import { rules } from "@/plugins/rules";
 export default {
   name: "ForgetPassword",
   data() {
     return {
       userStore: userStore(),
-      rules: rules
+      rules: rules,
     };
   },
   components: {
@@ -84,7 +84,7 @@ export default {
       });
     },
     submitForm() {
-      if (this.$refs.form.validate()){
+      if (this.$refs.form.validate()) {
         this.userStore.forgetPassword();
       }
     },

@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-export const globalLoadingController = defineStore("globalLoadingController", {
+export const loadingController = defineStore("globalLoadingController", {
   state: () => ({
     numberRequests: 0,
   }),

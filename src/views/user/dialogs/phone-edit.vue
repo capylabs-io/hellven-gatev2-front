@@ -1,11 +1,11 @@
 <template>
   <v-dialog
     transition="dialog-bottom-transition"
-    v-model="userStore.isOpenPhoneEdit"
+    v-model="usersStore.isOpenPhoneEdit"
     width="500px"
     persistent
   >
-    <v-form ref="form" lazy-validation>
+    <v-form ref="form">
       <v-card class="box white">
         <v-card-title>
           <div class="d-flex justify-space-between full-width">
@@ -15,12 +15,12 @@
               {{ $t("signin.phone") }}
             </div>
             <div>
-            <v-icon
-              class="mr-1"
-              @click="userStore.changePhoneEdit()"
-              color="blueJeans"
-              >mdi-close</v-icon
-            >
+              <v-icon
+                class="mr-1"
+                @click="usersStore.changePhoneEdit()"
+                color="blueJeans"
+                >mdi-close</v-icon
+              >
             </div>
           </div>
           <div class="text-md text-sub">
@@ -33,7 +33,7 @@
           <div class="text-xl mt-2 mt-sm-4">{{ $t("signin.phone") }}</div>
           <v-text-field
             v-model="userInfo.phone"
-            :rules="rules.phone"
+            :rules="$rules.phone"
             full-width
             class="mt-1 mt-sm-2"
             background-color="cream"
@@ -54,7 +54,7 @@
             outlined
             color="violet"
             class="px-4"
-            @click="userStore.changePhoneEdit()"
+            @click="usersStore.changePhoneEdit()"
             >Cancel</v-btn
           >
         </v-card-actions>
@@ -66,26 +66,31 @@
 <script>
 import i18n from "@/i18n";
 import { userStore } from "../stores/userStore.js";
-import { rules } from "@/plugins/rules";
-
+import { mapStores } from "pinia";
 export default {
   name: "PhoneEdit",
   data() {
     return {
-      userStore: userStore(),
+      // userStore: userStore(),
       userInfo: [],
-      rules: rules,
       lang: i18n.locale,
     };
   },
-  created() {
-    this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+  computed: {
+    ...mapStores(userStore),
   },
+  mounted() {
+    // this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+    this.userInfo = this.usersStore.userData;
+  },
+  // created() {
+  //   this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+  // },
   components: {},
   methods: {
     submitForm() {
       if (this.$refs.form.validate()) {
-        this.userStore.editPersonalInfo(this.userInfo);
+        this.usersStore.editPersonalInfo(this.userInfo);
       }
     },
   },

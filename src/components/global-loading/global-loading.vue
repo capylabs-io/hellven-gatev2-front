@@ -4,12 +4,12 @@
   </v-overlay>
 </template>
 <script>
-import { globalLoadingController } from "./global-loading-controller";
+import { loadingController } from "./global-loading-controller";
 export default {
   name: "LoadingController",
   data() {
     return {
-      loadingController: globalLoadingController(),
+      loadingController: loadingController(),
     };
   },
 };

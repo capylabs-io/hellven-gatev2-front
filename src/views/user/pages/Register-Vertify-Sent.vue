@@ -15,7 +15,7 @@
           {{ $t("signin.register-confirm-sent-sub") }}
         </div>
         <div class="text-md lightblue--text">
-          {{ userStore.vetifyAccount.hideEmail }}
+          {{ userStore.verifyAccount.hideEmail }}
         </div>
         <div class="text-center mt-5">
           <v-btn
@@ -46,7 +46,7 @@ export default {
   },
   components: {},
   created() {
-    if (!this.userStore.vetifyAccount.vetifyEmail) {
+    if (!this.userStore.verifyAccount.verifyEmail) {
       snackController.error("Please try again!");
       this.$router.push({
         params: { lang: i18n.locale },

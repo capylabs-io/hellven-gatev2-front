@@ -60,8 +60,8 @@ export default {
   },
   computed: {
     countDown() {
-      return this.userStore.vetifyAccount.countSeconds;
-    }
+      return this.userStore.verifyAccount.countSeconds;
+    },
   },
   methods: {
     gotoRouter(url) {
@@ -73,7 +73,7 @@ export default {
     },
     fetchData() {
       if (this.$route.query.confirmation) {
-        this.userStore.vertifyRegister(this.$route.query.confirmation);
+        this.userStore.verifyRegister(this.$route.query.confirmation);
       } else {
         snackController.error("Please try again!");
         this.$router.push({

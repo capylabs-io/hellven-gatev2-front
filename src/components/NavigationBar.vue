@@ -85,7 +85,9 @@
                       <div class="white--text text-md">
                         {{ userInfo.username || "" }}
                       </div>
-                      <div class="grey--text text-sm">{{ userInfo.email || "" }}</div>
+                      <div class="grey--text text-sm">
+                        {{ userInfo.email || "" }}
+                      </div>
                     </div>
                   </v-list-item>
                   <v-divider class="darkgrey my-2"></v-divider>
@@ -96,7 +98,7 @@
                       active-class="active"
                     >
                       <div class="white--text d-flex align-center">
-                        <SettingIcon/> 
+                        <SettingIcon />
                         <div class="ml-2">Account Settings</div>
                       </div>
                     </div>
@@ -186,6 +188,8 @@
 import LanguageSwitch from "@/views/home/components/nav-bar/LanguageSwitch.vue";
 import i18n from "@/i18n";
 import SettingIcon from "@/components/svg/setting.vue";
+import { userStore } from "@/views/user/stores/userStore.js";
+import { mapStores } from "pinia";
 
 export default {
   components: { LanguageSwitch, SettingIcon },
@@ -193,14 +197,19 @@ export default {
     drawer: false,
     group: null,
     userInfo: [],
+    // userStore: userStore(),
   }),
   watch: {
     group() {
       this.drawer = false;
     },
   },
-  created() {
-    this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+  computed: {
+    ...mapStores(userStore),
+  },
+  mounted() {
+    // this.userInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+    this.userInfo = this.usersStore.userData;
   },
   methods: {
     openLink(url) {
